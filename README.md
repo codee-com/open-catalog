@@ -6,6 +6,12 @@ This catalog is a collaborative effort to consolidate the collective wisdom of
 performance experts on the best practices for performance. It consist of a
 glossary and a list of checks for the C, C++ and Fortran programming languages.
 
+## Benchmarks
+
+This catalog includes [a suite of microbenchmarks](Benchmark/README.md) that
+demonstrate the potential performance improvement that can be attained by
+applying the fixes that are suggested for each check.
+
 ## Checks
 
 | ID                       | Title                                                                                                                                                              | C | Fortran | C++ |
