@@ -2,38 +2,41 @@
 
 ### Issue
 
-Performance of the loop nest can benefit from loop interchange, but scalar
-reduction prevents loop interchange.
+Performance of the loop nest can benefit from
+[loop interchange](/Glossary/Loop-interchange.md), but an
+[scalar reduction](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+prevents it.
 
 ### Relevance
 
 Inefficient [memory access pattern](/Glossary/Memory-access-pattern.md) and low
 [locality of reference](/Glossary/Locality-of-reference.md) are among the main
 reasons for low performance on modern computer systems. Matrices are
-[stored in a row-major order in C and column-major order in Fortran](https://www.appentra.com/knowledge/glossary-row-major-and-column-major-order/).
+[stored in a row-major order in C and column-major order in Fortran](/Glossary/Row-major-and-column-major-order.md).
 Iterating over them column-wise (in C) and row-wise (in Fortran) is inefficient,
 because it uses the memory subsystem suboptimally.
 
 Nested loops that iterate over matrices inefficiently can be optimized by
-applying [loop interchange](/Glossary/Loop-interchange.md). Using loop
-interchange, the inefficient matrix access pattern is replaced with a more
-efficient one. Often, loop interchange enables vectorization of the innermost
-loop which additionally improves performance.
+applying loop interchange. Using loop interchange, the inefficient matrix access
+pattern is replaced with a more efficient one. Often, loop interchange enables
+[vectorization](/Glossary/Vectorization.md) of the innermost loop which
+additionally improves performance.
 
 In order to perform the loop interchange, the loops need to be
 [perfectly nested](/Glossary/Perfect-loop-nesting.md), i.e. all the statements
 need to be inside the innermost loop. However, due to the initialization of a
-reduction variablе, loop interchange is not directly applicable.
+reduction variable, loop interchange is not directly applicable.
 
 ### Actions
 
 Replace the scalar reduction by a vector, particularly by the vector that
-contains the final result of the original loop. Then, perform loop fission to
-isolate the computation of the scalar reduction in a perfect loop nesting and
-enable loop interchange. This typically leads to creating two loops: the first
-loop initializes the scalar reduction; and the second loop computes the scalar
-reduction. All these operations are performed directly on the vector of final
-results of the original loop. See below a code example on how it is done.
+contains the final result of the original loop. Then, perform
+[loop fission](/Glossary/Loop-fission.md) to isolate the computation of the
+scalar reduction in a perfect loop nesting and enable loop interchange. This
+typically leads to creating two loops: the first loop initializes the scalar
+reduction; and the second loop computes the scalar reduction. All these
+operations are performed directly on the vector of final results of the original
+loop. See below a code example on how it is done.
 
 ### Code example
 
@@ -100,6 +103,8 @@ for (int j = 0; j < n; j++) {
 ```
 
 ### Related resources
+
+* [Source code examples and solutions](/Checks/PWR043/)
 
 * [PWR010: Avoid column-major array access in C/C++](/Checks/PWR010/README.md)
 
