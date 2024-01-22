@@ -5,7 +5,7 @@
 - CMake version 3.10 or higher
 - A C++ compiler with C++11 support
 - A Fortran 90 compiler (optional if you want to run the Fortran benchmarks)
-- Google benchmark library
+- Google benchmark library version 1.5.3 or above (optional)
 
 ## Instructions to run the benchmarks
 
