@@ -18,6 +18,11 @@ template <typename Ty> std::vector<Ty> CreateZeroVector(const std::size_t n) {
   return std::vector<Ty>(n, static_cast<Ty>(0));
 }
 
+template <typename Ty>
+std::vector<Ty> CreateUninitializedVector(const std::size_t n) {
+  return std::vector<Ty>(n);
+}
+
 /// Returns a vector of `n` random floats uniformly distributed between
 /// `lowerBound` and `upperBound` (default to small number to avoid overflow and
 /// underflow)
