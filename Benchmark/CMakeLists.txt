@@ -19,3 +19,5 @@ include(Config)
 
 # Set up a macro to simplify benchmark creation
 include(Benchmark)
+
+add_subdirectory(src)
