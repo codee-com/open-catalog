@@ -1,7 +1,7 @@
 ! PWR039: Consider loop interchange to improve the locality of reference and
 ! enable vectorization
 
-subroutine matmul_f(n, A, B, C) bind(c)
+subroutine matmul_improved_f(n, A, B, C) bind(c)
   use iso_c_binding, only : c_int, c_double
 
   implicit none
@@ -11,10 +11,10 @@ subroutine matmul_f(n, A, B, C) bind(c)
   integer(kind=c_int) :: i, j, k
 
   do i = 1, n
-    do j = 1, n
-      do k = 1, n
+    do k = 1, n
+      do j = 1, n
         C(j, i) = C(j, i) + A(j, k) * B(k, i)
       end do
     end do
   end do
-end subroutine matmul_f
+end subroutine matmul_improved_f
