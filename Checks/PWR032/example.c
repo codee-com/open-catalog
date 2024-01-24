@@ -4,5 +4,5 @@
 #include <math.h>
 
 void example(float x) {
- float res = sin(x);
+  float res = sin(x);
 }

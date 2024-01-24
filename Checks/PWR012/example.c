@@ -16,7 +16,7 @@ int foo(data *d) {
 }
 
 void example() {
-  data *d = (data *) malloc(sizeof(data));
+  data *d = (data *)malloc(sizeof(data));
   for (int i = 0; i < 1000; i++) {
     d->A[i] = d->B[i] = 1;
   }

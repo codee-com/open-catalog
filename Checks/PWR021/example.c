@@ -1,7 +1,7 @@
 // PWR021: temporary computation can be extracted to a vectorizable loop
 
 int expensive_computation(int *C, int i) {
-    return C[i] * 2;
+  return C[i] * 2;
 }
 
 void example(int *A, int *C) {

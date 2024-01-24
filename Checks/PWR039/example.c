@@ -1,5 +1,5 @@
 // PWR039: Consider loop interchange to improve the locality of reference and
-// enable vectorization 
+// enable vectorization
 
 void example(double **A, int n) {
   for (int i = 0; i < n; i++) {

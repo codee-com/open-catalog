@@ -1,0 +1,16 @@
+# We use clang-format, but it has some limitations that must be handled
+# manually:
+#  - There is no support for identing `pragma` directives with the scope it
+#    applies to
+#  - Some types of OpenMP/OpenACC clauses are incorrectly treated.
+#
+# Otherwise, we are based on the LLVM style with little modifications
+BasedOnStyle: LLVM
+# When closing the scopes created for specific compiler pragmas, we like to
+# annotate them with comments that we don't like aligned
+AlignTrailingComments: Never
+AllowShortFunctionsOnASingleLine: Empty
+# Seems like clang-format confuses formatting ranges in OpenMP directives with
+# bitfields, so we can reduce the frition with the tool with this little hack
+BitFieldColonSpacing: None
+IndentPPDirectives: BeforeHash
