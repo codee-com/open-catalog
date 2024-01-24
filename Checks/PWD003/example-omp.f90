@@ -1,5 +1,5 @@
 ! PWD003: Copy of pointer value instead of pointed-to data to an accelerator
-! device 
+! device
 
 SUBROUTINE example(a, b, result, size)
   IMPLICIT NONE

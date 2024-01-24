@@ -9,5 +9,5 @@ SUBROUTINE example(A, n, sum)
   sum = 0
   DO i = 1, n
     sum = sum + A(i)
-  END DO 
+  END DO
 END SUBROUTINE example

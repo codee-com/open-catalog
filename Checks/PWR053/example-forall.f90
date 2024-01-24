@@ -9,5 +9,5 @@ SUBROUTINE example(D, X, Y, n, a)
 
   DO i = 1, n
     D(i) = a * X(i) + Y(i)
-  END DO 
+  END DO
 END SUBROUTINE example
