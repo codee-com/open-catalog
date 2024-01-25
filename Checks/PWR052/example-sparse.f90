@@ -3,7 +3,7 @@
 SUBROUTINE example(A, nodes, n)
   INTEGER, INTENT(IN) :: n
   INTEGER, DIMENSION(1:n), INTENT(IN) :: nodes
-  DOUBLE PRECISION, DIMENSION(1:n), INTENT(OUT) :: A
+  REAL(KIND=8), DIMENSION(1:n), INTENT(OUT) :: A
   INTEGER :: nel
 
   DO nel = 1, n

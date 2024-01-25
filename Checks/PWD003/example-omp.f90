@@ -3,8 +3,9 @@
 
 SUBROUTINE example(a, b, result, size)
   IMPLICIT NONE
-  INTEGER, INTENT(IN) :: a(*), b(*), size
-  INTEGER, INTENT(OUT) :: result(*)
+  INTEGER, INTENT(IN) :: size
+  INTEGER, DIMENSION(1:size), INTENT(IN) :: a, b
+  INTEGER, DIMENSION(1:size), INTENT(OUT) :: result
   INTEGER :: i
 
   ! Array bounds should be specified

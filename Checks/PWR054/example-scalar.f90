@@ -2,8 +2,8 @@
 
 SUBROUTINE example(A, n, sum)
   INTEGER, INTENT(IN) :: n
-  DOUBLE PRECISION, DIMENSION(1:n), INTENT(IN) :: A
-  DOUBLE PRECISION, INTENT(OUT) :: sum
+  REAL(KIND=8), DIMENSION(1:n), INTENT(IN) :: A
+  REAL(KIND=8), INTENT(OUT) :: sum
   INTEGER :: i
 
   sum = 0
