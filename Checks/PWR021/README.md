@@ -119,22 +119,22 @@ benefit from vectorization, but it is prevented by the indirect memory accesses
 `a(c(i))` of the sparse reduction pattern.
 
 ```f90
-INTEGER FUNCTION expensive_computation(c, i)
-  IMPLICIT NONE
-  INTEGER, INTENT(IN) :: i, c(1000)
+integer function expensive_computation(c, i)
+  implicit none
+  integer, intent(in) :: i, c(1000)
 
   expensive_computation = c(i) * 2
-END FUNCTION expensive_computation
+end function expensive_computation
 
-SUBROUTINE example()
-  IMPLICIT NONE
-  INTEGER :: a(1000), c(1000), i, t, expensive_computation
+subroutine example()
+  implicit none
+  integer :: a(1000), c(1000), i, t, expensive_computation
 
-  DO i = 1, 1000
+  do i = 1, 1000
     t = expensive_computation(c, i)
     a(c(i)) = a(c(i)) + t
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example
 ```
 
 After applying loop fission, the original loop is split into two loops: first
@@ -144,24 +144,24 @@ array `t` is created to store all the results of the first loop, so that those
 values can be used as inputs in the second loop.
 
 ```f90
-INTEGER FUNCTION expensive_computation(c, i)
-  IMPLICIT NONE
-  INTEGER, INTENT(IN) :: i, c(1000)
+integer function expensive_computation(c, i)
+  implicit none
+  integer, intent(in) :: i, c(1000)
 
   expensive_computation = c(i) * 2
-END FUNCTION expensive_computation
+end function expensive_computation
 
-SUBROUTINE example()
-  IMPLICIT NONE
-  INTEGER :: a(1000), c(1000), t(1000), i, b, expensive_computation
+subroutine example()
+  implicit none
+  integer :: a(1000), c(1000), t(1000), i, b, expensive_computation
 
-  DO i = 1, 1000
+  do i = 1, 1000
     t(i) = expensive_computation(c, i)
-  END DO
-  DO i = 1, 1000
+  end do
+  do i = 1, 1000
     a(c(i)) = a(c(i)) + t(i)
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example
 ```
 
 ### Related resources

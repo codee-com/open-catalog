@@ -31,9 +31,9 @@ for (int i = 1; i < N; i++) {
 
 ```f90
 y(1) = 0
-DO i = 2, N
+do i = 2, N
   y(2) = y(i - 1) + x(i - 1)
-END DO
+end do
 ```
 
 ### Parallelizing recurrences with OpenMP and OpenACC

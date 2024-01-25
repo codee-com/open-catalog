@@ -1,27 +1,27 @@
 ! PWR063: avoid using legacy Fortran constructs
 
-      PROGRAM LegacyFortran
-        INTEGER A, B, C, X, I
-        COMMON /MyCommonBlock/ A, B, C
-        DATA A /10/, B /20/, C /30/, X /0/, I /1/
+      program LegacyFortran
+        integer A, B, C, X, I
+        common /MyCommonBlock/ A, B, C
+        data A /10/, B /20/, C /30/, X /0/, I /1/
 
-10      CONTINUE
-        CALL UpdateValue(X)
-        WRITE(*,*) "Update X =", X
+10      continue
+        call UpdateValue(X)
+        write(*,*) "Update X =", X
         I = I + 1
-        IF (I - 11) 10, 20, 30
+        if (I - 11) 10, 20, 30
 
-20      CONTINUE
-        WRITE(*,*) "Final  X =", X
-        STOP
+20      continue
+        write(*,*) "Final  X =", X
+        stop
 
-30      CONTINUE
-        WRITE(*,*) "Error: loop exceeded 10 iterations"
-        STOP
-      END PROGRAM LegacyFortran
+30      continue
+        write(*,*) "Error: loop exceeded 10 iterations"
+        stop
+      end program LegacyFortran
 
-      SUBROUTINE UpdateValue(X)
-        INTEGER A, B, C, X
-        COMMON /MyCommonBlock/ A, B, C
+      subroutine UpdateValue(x)
+        integer A, B, C, X
+        common /MyCommonBlock/ A, B, C
         X = X + A + B + C
-      END SUBROUTINE UpdateValue
+      end subroutine UpdateValue

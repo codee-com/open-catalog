@@ -1,12 +1,13 @@
 ! PWR052: Consider applying multithreading parallelism to sparse reduction loop
 
-SUBROUTINE example(A, nodes, n)
-  INTEGER, INTENT(IN) :: n
-  INTEGER, DIMENSION(1:n), INTENT(IN) :: nodes
-  REAL(KIND=8), DIMENSION(1:n), INTENT(OUT) :: A
-  INTEGER :: nel
+subroutine example(A, nodes, n)
+  implicit none
+  integer, intent(in) :: n
+  integer, dimension(1:n), intent(in) :: nodes
+  real(kind=8), dimension(1:n), intent(out) :: A
+  integer :: nel
 
-  DO nel = 1, n
+  do nel = 1, n
     A(nodes(nel)) = A(nodes(nel)) + (nel * 1)
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example

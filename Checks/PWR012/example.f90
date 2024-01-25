@@ -1,20 +1,23 @@
 ! PWR012: Pass only required fields from derived type as parameters
 
-PROGRAM example
-  TYPE data
-    INTEGER :: a(10)
-    INTEGER :: b(10)
-  END TYPE data
-CONTAINS
-  SUBROUTINE foo(d)
-    TYPE(data), INTENT(IN) :: d
-    INTEGER :: i, sum
-    DO i = 1, 10
+program example
+  implicit none
+  type data
+    integer :: a(10)
+    integer :: b(10)
+  end type data
+contains
+  subroutine foo(d)
+    implicit none
+    type(data), intent(in) :: d
+    integer :: i, sum
+    do i = 1, 10
       sum = sum + d%a(i)
-    END DO
-  END SUBROUTINE foo
-  SUBROUTINE bar()
-    TYPE(data) :: d
-    CALL foo(d)
-  END SUBROUTINE bar
-END PROGRAM example
+    end do
+  end subroutine foo
+  subroutine bar()
+    implicit none
+    type(data) :: d
+    call foo(d)
+  end subroutine bar
+end program example

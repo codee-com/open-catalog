@@ -102,24 +102,25 @@ void example() {
 #### Fortran
 
 The second loop in the following example exhibits a forall and a sparse
-reduction compute pattern for arrays `A` and `B`, respectively. The sparse
+reduction compute pattern for arrays `a` and `b`, respectively. The sparse
 reduction introduces loop-carried dependencies that inhibit loop vectorization.
 
 ```f90
-SUBROUTINE example()
-  INTEGER :: a(100), b(100), c(100), i
+subroutine example()
+  implicit none
+  integer :: a(100), b(100), c(100), i
 
-  DO i = 1, 100
+  do i = 1, 100
     a(i) = i
     b(i) = i
     c(i) = i
-  END DO
+  end do
 
-  DO i = 1, 100
+  do i = 1, 100
     a(i) = a(i) + i
     b(c(i)) = b(c(i)) + i
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example
 ```
 
 After applying loop fission, the original loop is split into two loops: first
@@ -128,23 +129,24 @@ second loop computes the non-vectorizable part in scalar mode (the sparse
 reduction).
 
 ```f90
-SUBROUTINE example()
-  INTEGER :: a(100), b(100), c(100), i
+subroutine example()
+  implicit none
+  integer :: a(100), b(100), c(100), i
 
-  DO i = 1, 100
+  do i = 1, 100
     a(i) = i
     b(i) = i
     c(i) = i
-  END DO
+  end do
 
-  DO i = 1, 100
+  do i = 1, 100
     a(i) = a(i) + i
-  END DO
+  end do
 
-  DO i = 1, 100
+  do i = 1, 100
     b(c(i)) = b(c(i)) + i
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example
 ```
 
 ### Related resources

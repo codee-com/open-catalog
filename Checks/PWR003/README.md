@@ -12,7 +12,7 @@ except for local variables.
 any system resource that may change between calls.
 
 Some programming languages provide built-in keywords to declare properties about
-functions, such as Fortran `PURE` keyword. Others need extensions implemented by
+functions, such as Fortran `pure` keyword. Others need extensions implemented by
 compilers/tools, for instance the GNU C compiler `const` attribute (note that it
 also has a `pure` attribute not compliant with the definition presented here).
 
@@ -37,7 +37,7 @@ Add the appropriate annotations to your code explicitly. For instance:
 * In the GCC compiler for the C programming language, use the keyword
 `__attribute__((const))`.
 
-* In the Fortran programming language, use the built-in keyword `PURE`.
+* In the Fortran programming language, use the built-in keyword `pure`.
 
 ### Code example
 

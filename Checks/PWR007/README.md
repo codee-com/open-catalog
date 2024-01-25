@@ -7,16 +7,16 @@ error prone and reduces the legibility of the code.
 
 ### Actions
 
-Add `IMPLICIT NONE` after the `PROGRAM` or `MODULE` declaration statement.
+Add `implicit none` after the `program` or `module` declaration statement.
 
 ### Relevance
 
 Since Fortran 77, variables can be implicitly declared by following certain
 conventions. When no type is explicitly declared for a variable, the first
 letter of its name is used to determine its type. Thus, when the first letter is
-I, J, K, L, M, or N, then the data type is `INTEGER`; otherwise, it is `REAL`.
+I, J, K, L, M, or N, then the data type is `integer`; otherwise, it is `real`.
 This implicit behavior is discouraged since it is error prone and reduces the
-legibility of the code. It can be disabled by adding an `IMPLICIT NONE`
+legibility of the code. It can be disabled by adding an `implicit none`
 statement.
 
 >**Note**  
@@ -31,32 +31,32 @@ In the following example, the data type of all the variables is determined
 implicitly:
 
 ```f90
-PROGRAM example
-  NUM1 = 7
-  NUM2 = 2.5
-  RES = NUM1 / NUM2 ! RES = 3.0
-END PROGRAM example
+program example
+  num1 = 7
+  num2 = 2.5
+  res = num1 / num2 ! res = 3.0
+end program example
 ```
 
-By disabling implicit data typing with the `IMPLICIT NONE` statement, the
+By disabling implicit data typing with the `implicit none` statement, the
 compiler raises an error if the data types of all the variables is not declared
 explicitly as follows:
 
 ```f90
-PROGRAM example
-  IMPLICIT NONE
-  INTEGER :: NUM1 = 7
-  REAL :: NUM2 = 2.5, RES
-  RES = NUM1 / NUM2 ! RES = 2.799...
-END PROGRAM example
+program example
+  implicit none
+  integer :: num1 = 7
+  real :: num2 = 2.5, res
+  res = num1 / num2 ! res = 2.799...
+end program example
 ```
 
 Note that the example code above probably fixes a precision issue as well. This
-is due to implicit data typing of `NUM2`, which starts with the letter N and
-thus it is implicitly assigned the `INTEGER` type. This leads to the division
-`NUM1 / NUM2` being an integer division operation (the `REAL` result `RES`
+is due to implicit data typing of `num2`, which starts with the letter N and
+thus it is implicitly assigned the `integer` type. This leads to the division
+`num1 / num2` being an integer division operation (the `real` result `res`
 equals `3.0`), instead of the probably intended real division operation (the
-`REAL` result `RES` equals `2.799….`).
+`real` result `res` equals `2.799….`).
 
 ### Related resources
 

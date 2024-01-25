@@ -93,7 +93,7 @@ void example() {
 >**Note**  
 >The Fortran programming language does not allow to declare variables inside
 >loops, in the statements of the loop body. In modern Fortran there are some
->circumstances where this is allowed, such as `DO CONCURRENT` statements.
+>circumstances where this is allowed, such as `do concurrent` statements.
 
 ### Related resources
 

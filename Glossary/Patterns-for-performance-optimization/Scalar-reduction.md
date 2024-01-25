@@ -27,9 +27,9 @@ for (int i = 0; i < N; ++i) {
 #### Fortran
 
 ```f90
-DO i = 1, n
+do i = 1, n
   sum = sum + A(i)
-END DO
+end do
 ```
 
 ### Parallelizing scalar reductions with OpenMP and OpenACC

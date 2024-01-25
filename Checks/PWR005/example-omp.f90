@@ -1,13 +1,13 @@
 ! PWR005: Disable default OpenMP scoping
 
-SUBROUTINE example(result)
-  IMPLICIT NONE
-  INTEGER, INTENT(OUT) :: result(:)
-  INTEGER :: i
+subroutine example(result)
+  implicit none
+  integer, intent(out) :: result(:)
+  integer :: i
 
-  ! Default data scoping is used which may not be correct
+  ! default data scoping is used which may not be correct
   !$omp parallel do
-  DO i = 1, size(result, 1)
+  do i = 1, size(result, 1)
     result(i) = i
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example

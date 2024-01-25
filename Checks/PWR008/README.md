@@ -32,45 +32,45 @@ In the following example, the intent of all the parameters of the function is
 not explicit in the code:
 
 ```f90
-PROGRAM example
-  IMPLICIT NONE
-  INTEGER :: s = 2
-  CALL foo(s, 2)
-CONTAINS
-  SUBROUTINE foo(a, b)
-    IMPLICIT NONE
-    INTEGER :: a
-    INTEGER :: b
+program example
+  implicit none
+  integer :: s = 2
+  call foo(s, 2)
+contains
+  subroutine foo(a, b)
+    implicit none
+    integer :: a
+    integer :: b
     a = 5
     b = a * 2
-  END SUBROUTINE foo
-END PROGRAM example
+  end subroutine foo
+end program example
 ```
 
 By enforcing the explicit declaration of the intent of the parameters of the
 function, the source code looks as follows:
 
 ```f90
-PROGRAM example
-  IMPLICIT NONE
-  INTEGER :: s = 2
-  CALL foo(s, 2)
-CONTAINS
-  SUBROUTINE foo(a, b)
-    IMPLICIT NONE
-    INTEGER, INTENT(IN) :: a
-    INTEGER, INTENT(OUT) :: b
+program example
+  implicit none
+  integer :: s = 2
+  call foo(s, 2)
+contains
+  subroutine foo(a, b)
+    implicit none
+    integer, intent(in) :: a
+    integer, intent(out) :: b
     a = 5
     b = a * 2
-  END SUBROUTINE foo
-END PROGRAM example
+  end subroutine foo
+end program example
 ```
 
 Note that the example code above raises two runtime errors due to the incorrect
 usage of variable's intent. For example, a variable like `a` with an
-`INTENT(IN)` cannot be assigned inside the function. Another example is variable
-`b` with an `INTENT(OUT)` which cannot be mapped to a constant `2` at the
-function call site `CALL foo(s, 2)`.
+`intent(in)` cannot be assigned inside the function. Another example is variable
+`b` with an `intent(out)` which cannot be mapped to a constant `2` at the
+function call site `call foo(s, 2)`.
 
 ### Related resources
 

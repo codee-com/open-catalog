@@ -111,15 +111,16 @@ necessary to keep track of the read and write operations to the variables
 declared in the module (and in real codes even across multiple files).
 
 ```f90
-MODULE globalsMod
-  REAL global_a
-END MODULE globalsMod
+module globalsMod
+  implicit none
+  real :: global_a
+end module globalsMod
 
-REAL FUNCTION example()
-  USE globalsMod
-  IMPLICIT NONE
+real function example()
+  use globalsMod
+  implicit none
   example = global_a
-END FUNCTION
+end function
 ```
 
 When the use of module variables is declared explicitly, with a simple glance at
@@ -128,15 +129,16 @@ Thus, it is easier to determine the flow of data at runtime, and thus to
 determine the function's side effects.
 
 ```f90
-MODULE globalsMod
-  REAL global_a
-END MODULE globalsMod
+module globalsMod
+  implicit none
+  real :: global_a
+end module globalsMod
 
-REAL FUNCTION example()
-  USE globalsMod, ONLY : global_a
-  IMPLICIT NONE
+real function example()
+  use globalsMod, only : global_a
+  implicit none
   example = global_a
-END FUNCTION example
+end function example
 ```
 
 ### Related resources

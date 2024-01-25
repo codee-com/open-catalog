@@ -39,11 +39,11 @@ for (int nel = 0; nel < nelements; ++nelements) {
 #### Fortran
 
 ```f90
-DO nel = 1, nelements
+do nel = 1, nelements
   A(nodes1(nel)) = A(nodes1(nel)) + elemental_contribution(nel)
   A(nodes2(nel)) = A(nodes2(nel)) + elemental_contribution(nel)
   A(nodes3(nel)) = A(nodes3(nel)) + elemental_contribution(nel)
-END DO
+end do
 ```
 
 ### Parallelizing sparse reductions with OpenMP or OpenACC

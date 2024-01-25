@@ -1,13 +1,14 @@
 ! PWR051: Consider applying multithreading parallelism to scalar reduction loop
 
-SUBROUTINE example(A, n, sum)
-  INTEGER, INTENT(IN) :: n
-  REAL(KIND=8), DIMENSION(1:n), INTENT(IN) :: A
-  REAL(KIND=8), INTENT(OUT) :: sum
-  INTEGER :: i
+subroutine example(A, n, sum)
+  implicit none
+  integer, intent(in) :: n
+  real(kind=8), dimension(1:n), intent(in) :: A
+  real(kind=8), intent(out) :: sum
+  integer :: i
 
   sum = 0
-  DO i = 1, n
+  do i = 1, n
     sum = sum + A(i)
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example

@@ -25,9 +25,9 @@ for (int i = 0; i < n; ++i) {
 #### Fortran
 
 ```f90
-DO i = 1, n
+do i = 1, n
   D(i) = a * X(i) + Y(i)
-END DO
+end do
 ```
 
 ### Parallelizing forall loops with OpenMP and OpenACC

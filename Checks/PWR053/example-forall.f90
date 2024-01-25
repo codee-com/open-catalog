@@ -1,13 +1,14 @@
 ! PWR053: consider applying vectorization to forall loop
 
-SUBROUTINE example(D, X, Y, n, a)
-  INTEGER, INTENT(IN) :: n
-  REAL(KIND=8), INTENT(IN) :: a
-  INTEGER, DIMENSION(1:n), INTENT(IN) :: X, Y
-  REAL(KIND=8), DIMENSION(1:n), INTENT(OUT) :: D
-  INTEGER :: i
+subroutine example(D, X, Y, n, a)
+  implicit none
+  integer, intent(in) :: n
+  real(kind=8), intent(in) :: a
+  real(kind=8), dimension(1:n), intent(in) :: X, Y
+  real(kind=8), dimension(1:n), intent(out) :: D
+  integer :: i
 
-  DO i = 1, n
+  do i = 1, n
     D(i) = a * X(i) + Y(i)
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example

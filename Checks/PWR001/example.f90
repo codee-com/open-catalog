@@ -1,11 +1,12 @@
 ! PWR001: Declare global variables as function parameters
 
-MODULE globalsMod
-  REAL :: global_a
-END MODULE globalsMod
+module globalsMod
+  implicit none
+  real :: global_a
+end module globalsMod
 
-REAL FUNCTION example()
-  USE globalsMod
-  IMPLICIT NONE
+real function example()
+  use globalsMod
+  implicit none
   example = global_a
-END FUNCTION example
+end function

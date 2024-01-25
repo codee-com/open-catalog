@@ -10,10 +10,10 @@ maintainability, and performance.
 Fortran has undergone numerous revisions since its debut in the 1950s, with
 Fortran 2023 as the most recent one. Each iteration has introduced more powerful
 features to enhance productivity, while also addressing the shortcomings of
-previous versions. A notable example is the once indispensable `GO TO`
+previous versions. A notable example is the once indispensable `go to`
 statement. This feature was crucial for handling program flow in the
 pre-structured programming era, but its usage is now heavily discouraged in
-favor of newer and more explicit constructs, like `IF`/`ELSE` and `CASE`.
+favor of newer and more explicit constructs, like `if`/`else` and `case`.
 
 In software development, it's common to reuse old source code due to its
 time-tested reliability. Hence, many modern codebases integrate legacy
@@ -35,48 +35,48 @@ Among current best practices for modernizing Fortran code, we can find:
 
 * In terms of data storage:
 
-  * Use `MODULE` structures instead of `COMMON` blocks for better organization
+  * Use `module` structures instead of `common` blocks for better organization
   and modularity.
 
-  * Prefer `REAL` over `DOUBLE PRECISION` for a more standardized data type.
+  * Prefer `real` over `double precision` for a more standardized data type.
 
   * Choose modern character types over Hollerith Constants.
 
-  * Use pointers or derived types rather than the `EQUIVALENCE` statement to
+  * Use pointers or derived types rather than the `equivalence` statement to
   declare references to the same memory location.
 
   * Avoid implicit array shape changes in subroutine calls.
 
 * For clearer program flow control:
 
-  * Use `CASE` constructs instead of assigned or computed `GO TO` statements.
+  * Use `case` constructs instead of assigned or computed `go to` statements.
 
-  * Replace arithmetic `IF` statements with block `IF` constructs.
+  * Replace arithmetic `if` statements with block `if` constructs.
 
-  * Ensure that any branch to and `END IF` statement is within the corresponding
-  block `IF`.
+  * Ensure that any branch to and `end if` statement is within the corresponding
+  block `if`.
 
-  * Use only integer control variables in `DO` loops.
+  * Use only integer control variables in `do` loops.
 
-  * Replace `PAUSE` with contemporary mechanisms.
+  * Replace `pause` with contemporary mechanisms.
 
-  * Limit `RETURN` statements to have a single exit point.
+  * Limit `return` statements to have a single exit point.
 
-  * Avoid alternate `RETURN` statements.
+  * Avoid alternate `return` statements.
 
 * Other outdated or less efficient statements to avoid include:
 
-  * `ASSIGN`.
+  * `assign`.
 
-  * `BACKSPACE`.
+  * `backspace`.
 
-  * Blank `COMMON`.
+  * Blank `common`.
 
-  * `BLOCK DATA`.
+  * `block data`.
 
-  * `DATA`.
+  * `data`.
 
-  * Labeled `DO`.
+  * Labeled `do`.
 
 ### Actions
 
@@ -90,129 +90,133 @@ by eliminating legacy Fortran constructs. This aids programmers in understanding
 and maintaining their code, while also enabling compilers to apply performance
 optimizations more effectively.
 
-#### Arithmetic `IF`
+#### Arithmetic `if`
 
 The following example demonstrates a loop that iterates from 1 to 10 using an
-arithmetic `IF` statement:
+arithmetic `if` statement:
 
 ```f90
-      PROGRAM ArithmeticIf
-        INTEGER I, X(10)
+      program ArithmeticIf
+        implicit none
+        integer I, X(10)
         I = 1
 
-10      CONTINUE
+10      continue
         X(I) = I * 10
-        WRITE(*,*) "Update X =", X
+        write(*,*) "Update X =", X
         I = I + 1
-        IF (I - 11) 10, 20, 30
+        if (I - 11) 10, 20, 30
 
-20      CONTINUE
-        WRITE(*,*) "Final X = ", X
-        STOP
+20      continue
+        write(*,*) "Final X = ", X
+        stop
 
-30      CONTINUE
-        WRITE(*,*) "Error: out of bounds!"
-        STOP
-      END PROGRAM ArithmeticIf
+30      continue
+        write(*,*) "Error: out of bounds!"
+        stop
+      end program ArithmeticIf
 ```
 
-Although it is a simple program, using an arithmetic `IF` to drive the flow of
+Although it is a simple program, using an arithmetic `if` to drive the flow of
 the loop makes the behaviour of the program less explicit than modern loop
 construct.
 
 We may improve the readability, intent, and maintainability of the code if we
-use a modern `DO` loop construct:
+use a modern `do` loop construct:
 
 ```f90
-      PROGRAM DoLoop
-        INTEGER I, X(10)
+      program DoLoop
+        implicit none
+        integer I, X(10)
 
-        DO I = 1, 10
+        do I = 1, 10
           X(I) = I * 10
-          WRITE(*,*) "Update X =", X
-        END DO
+          write(*,*) "Update X =", X
+        end do
 
-        WRITE(*, *) "Final X =", X
-      END PROGRAM DoLoop
+        write(*, *) "Final X =", X
+      end program DoLoop
 ```
 
 This construct provides a straightforward and safer iteration control mechanism,
 clearly stating its "jumps" and stop conditions.
 
-#### Using `COMMON` and `DATA` constructs
+#### Using `common` and `data` constructs
 
 The following program demonstrates three global variables (i.e., `A`, `B`, `C`)
-that are shared between the main program and a subroutine using the `COMMON`
-construct and are initialized out of line using the `DATA` construct:
+that are shared between the main program and a subroutine using the `common`
+construct and are initialized out of line using the `data` construct:
 
 ```f90
-      PROGRAM CommonDataConstructs
-        INTEGER A, B, C, I
-        COMMON /CommonBlock/ A, B, C
-        DATA A /10/, B /20/, C /30/
+      program CommonDataConstructs
+        implicit none
+        integer A, B, C, I
+        common /MyCommonBlock/ A, B, C
+        data A /10/, B /20/, C /30/
 
-        DO I = 1, 5
-          CALL UpdateValues(I)
-          WRITE(*,*) "Update A, B, and C", A, B, C
-        END DO
+        do I = 1, 5
+          call UpdateValues(I)
+          write(*,*) "Update A, B, and C", A, B, C
+        end do
 
-        WRITE(*,*) "Final A, B, and C", A, B, C
-      END PROGRAM CommonDataConstructs
+        write(*,*) "Final A, B, and C", A, B, C
+      end program CommonDataConstructs
 
-      SUBROUTINE UpdateValues(X)
-        INTEGER A, B, C, X
-        COMMON /CommonBlock/ A, B, C
+      subroutine UpdateValues(X)
+        implicit none
+        integer A, B, C, X
+        common /commonblock/ A, B, C
 
         A = A + X
         B = B * X
         C = C + A + B
-      END SUBROUTINE UpdateValues
+      end subroutine UpdateValues
 ```
 
-Again, although the program is simple, the `COMMON` construct makes it harder to
+Again, although the program is simple, the `common` construct makes it harder to
 reason about the state of the variables `A`, `B`, and `C` and creates a hidden
 dependency between the main program and the subroutine that may make the code
 more prone to errors during modifications. Moreover, variables are initialized
-separately from their declarations using the `DATA` construct, thus reducing
+separately from their declarations using the `data` construct, thus reducing
 intent and clarity.
 
-The code above may be improved if we use the `MODULE` construct and declare and
+The code above may be improved if we use the `module` construct and declare and
 initialize variables simultaneously:
 
 ```f90
-      MODULE MyModule
-        IMPLICIT NONE
-        INTEGER :: A = 10, B = 20, C = 30
+      module MyModule
+        implicit none
+        integer :: A = 10, B = 20, C = 30
 
-      CONTAINS
-        SUBROUTINE UpdateValues(X)
-          IMPLICIT NONE
-          INTEGER :: X
+      contains
+        subroutine UpdateValues(X)
+          implicit none
+          integer :: X
 
           A = A + X
           B = B * X
           C = C + A + B
-        END SUBROUTINE UpdateValues
-      END MODULE MyModule
+        end subroutine UpdateValues
+      end module MyModule
 
-      PROGRAM ModernExample
-        USE MyModule
+      program ModernExample
+        use MyModule
 
-        IMPLICIT NONE
-        INTEGER :: I
+        implicit none
+        integer :: I
 
-        DO I = 1, 5
-          CALL UpdateValues(I)
-          WRITE(*,*) "Update A, B, and C", A, B, C
-        END DO
+        do I = 1, 5
+          call UpdateValues(I)
+          write(*,*) "Update A, B, and C", A, B, C
+        end do
 
-        WRITE(*,*) "Final A, B, and C", A, B, C
-      END PROGRAM ModernExample
+        write(*,*) "Final A, B, and C", A, B, C
+      end program ModernExample
 ```
 
 This alternative program is clearer and benefits from the encapsulation provided
-by the `MODULE` construct. The subroutine and its related variables are now
-stored together within a `MODULE`, clearly stating their relationship.
+by the `module` construct. The subroutine and its related variables are now
+stored together within a `module`, clearly stating their relationship.
 
 ### Related resources
 

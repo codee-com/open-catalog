@@ -1,15 +1,15 @@
 ! PWR060 : consider loop fission to separate gather memory access pattern
 
-SUBROUTINE example(a, D, X, Y, index, n)
-  IMPLICIT NONE
-  REAL(KIND=8), INTENT(IN) :: a
-  REAL(KIND=8), DIMENSION(n), INTENT(OUT) :: D
-  REAL(KIND=8), DIMENSION(n), INTENT(IN) :: X, Y
-  INTEGER, DIMENSION(n), INTENT(IN) :: index
-  INTEGER, INTENT(in) :: n
-  INTEGER :: i
+subroutine example(a, D, X, Y, index, n)
+  implicit none
+  real(kind=8), intent(in) :: a
+  real(kind=8), dimension(n), intent(out) :: D
+  real(kind=8), dimension(n), intent(in) :: X, Y
+  integer, dimension(n), intent(in) :: index
+  integer, intent(in) :: n
+  integer :: i
 
-  DO i = 1, n
+  do i = 1, n
     D(i) = a * X(index(i)) + Y(i)
-  END DO
-END SUBROUTINE example
+  end do
+end subroutine example
