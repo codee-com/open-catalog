@@ -52,7 +52,6 @@ applying the fixes that are suggested for each check.
 | [PWR035](Checks/PWR035/) | Avoid non-consecutive array access to improve performance                                                                                                          | x |    x    |  x  |
 | [PWR036](Checks/PWR036/) | Avoid indirect array access to improve performance                                                                                                                 | x |    x    |  x  |
 | [PWR037](Checks/PWR037/) | Potential precision loss in call to mathematical function                                                                                                          | x |         |  x  |
-| [PWR038](Checks/PWR038/) | Apply loop sectioning to improve performance                                                                                                                       | x |    x    |  x  |
 | [PWR039](Checks/PWR039/) | Consider loop interchange to improve the locality of reference and enable vectorization                                                                            | x |    x    |  x  |
 | [PWR040](Checks/PWR040/) | Consider loop tiling to improve the locality of reference                                                                                                          | x |    x    |  x  |
 | [PWR042](Checks/PWR042/) | Consider loop interchange by promoting the scalar reduction variable to an array                                                                                   | x |    x    |  x  |
