@@ -18,7 +18,7 @@ and the third loop computes the final result of the original loop.
 Inefficient [memory access pattern](/Glossary/Memory-access-pattern.md) and low
 [locality of reference](/Glossary/Locality-of-reference.md) are among the main
 reasons for low performance on modern computer systems. Matrices are
-[stored in a row-major order in C and column-major order in Fortran](https://www.appentra.com/knowledge/glossary-row-major-and-column-major-order/).
+[stored in a row-major order in C and column-major order in Fortran](/Glossary/Row-major-and-column-major-order.md).
 Iterating over them column-wise (in C) and row-wise (in Fortran) is inefficient,
 because it uses the memory subsystem suboptimally.
 

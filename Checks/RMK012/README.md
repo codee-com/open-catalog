@@ -29,11 +29,11 @@ vectorization.
 * If the condition in the loop is always evaluated to a  loop-invariant value
 (i.e. its value is either true or false across the execution of the loop), this
 condition can be moved outside of the loop (see
-[loop unswitching](https://www.appentra.com/knowledge/glossary-loop-unswitching/)).
+[loop unswitching](/Glossary/Loop-unswitching.md)).
 
 * If the condition in the loop depends on iterator variables only, the conditions
 can be removed by splitting the loop into several loops using
-[loop fission](https://www.appentra.com/knowledge/glossary-loop-fission/).
+[loop fission](/Glossary/Loop-fission.md).
 
 ### Actions
 

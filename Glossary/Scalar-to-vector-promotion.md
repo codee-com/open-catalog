@@ -4,10 +4,10 @@ Scalar to vector promotion is an optimization technique used to enable further
 optimization techniques, notably
 [loop interchange](/Glossary/Loop-interchange.md) and
 [vectorization](/Glossary/Vectorization.md) through
-[loop fission](https://www.appentra.com/knowledge/glossary-loop-fission/).
-In this technique, a temporary scalar is converted to a vector whose value is
-preserved between loop iterations, with the goal to enable loop fission needed
-to extract the statements preventing optimizations outside of the critical loop.
+[loop fission](/Glossary/Loop-fission.md). In this technique, a temporary scalar
+is converted to a vector whose value is preserved between loop iterations, with
+the goal to enable loop fission needed to extract the statements preventing
+optimizations outside of the critical loop.
 
 ### Loop interchange
 
