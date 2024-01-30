@@ -4,16 +4,16 @@
 
 A variable is being incorrectly privatized in the OpenMP datascoping clauses.
 
+### Actions
+
+Change the data scope of the variable to `lastprivate`.
+
 ### Relevance
 
 In some parallel loops, variables need to be private to each thread but the
 value computed in the last loop iterations needs to be used afterwards. For such
 cases, the OpenMP `private` scoping is incorrect and `lastprivate` must be used
 instead.
-
-### Actions
-
-Change the data scope of the variable to `lastprivate`.
 
 ### Code example
 

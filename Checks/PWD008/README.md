@@ -6,6 +6,11 @@ An index outside the dimension size of an array is being used to access it,
 resulting in an access to a different dimension which introduces a data race in
 the form of an unprotected recurrence.
 
+### Actions
+
+Explicitly access each array dimension and ensure that the recurrence is
+executed correctly in parallel.
+
 ### Relevance
 
 C/C++ array access syntax allows the use of indices outside the ranges array
@@ -15,11 +20,6 @@ outside the dimension bounds that results in accessing a valid array position in
 a different dimension is technically correct; however, it produces obscure code
 which is difficult to understand and reason about. Moreover, doing this in
 parallel code can introduce a data race when there is a recurrence pattern.
-
-### Actions
-
-Explicitly access each array dimension and ensure that the recurrence is
-executed correctly in parallel.
 
 ### Code example
 

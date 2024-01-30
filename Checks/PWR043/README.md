@@ -7,6 +7,17 @@ Performance of the loop nest can benefit from
 [scalar reduction](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
 prevents it.
 
+### Actions
+
+Replace the scalar reduction by a vector, particularly by the vector that
+contains the final result of the original loop. Then, perform
+[loop fission](/Glossary/Loop-fission.md) to isolate the computation of the
+scalar reduction in a perfect loop nesting and enable loop interchange. This
+typically leads to creating two loops: the first loop initializes the scalar
+reduction; and the second loop computes the scalar reduction. All these
+operations are performed directly on the vector of final results of the original
+loop. See below a code example on how it is done.
+
 ### Relevance
 
 Inefficient [memory access pattern](/Glossary/Memory-access-pattern.md) and low
@@ -26,17 +37,6 @@ In order to perform the loop interchange, the loops need to be
 [perfectly nested](/Glossary/Perfect-loop-nesting.md), i.e. all the statements
 need to be inside the innermost loop. However, due to the initialization of a
 reduction variable, loop interchange is not directly applicable.
-
-### Actions
-
-Replace the scalar reduction by a vector, particularly by the vector that
-contains the final result of the original loop. Then, perform
-[loop fission](/Glossary/Loop-fission.md) to isolate the computation of the
-scalar reduction in a perfect loop nesting and enable loop interchange. This
-typically leads to creating two loops: the first loop initializes the scalar
-reduction; and the second loop computes the scalar reduction. All these
-operations are performed directly on the vector of final results of the original
-loop. See below a code example on how it is done.
 
 ### Code example
 

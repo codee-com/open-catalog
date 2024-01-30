@@ -6,16 +6,16 @@ Unused variables should never be copied to or from the GPU to prevent
 unnecessary [data movements](/Glossary/Offloading.md) between the CPU and the
 GPU, which impacts performance.
 
+### Actions
+
+Remove the unused variables from the data mapping clauses.
+
 ### Relevance
 
 One of the key challenges when offloading work to the GPU is minimizing the data
 transfers between CPU memory and GPU memory. These transfers can greatly affect
 performance and should be minimized. Thus, only the strictly required data
 should be copied to or from the GPU memory.
-
-### Actions
-
-Remove the unused variables from the data mapping clauses.
 
 ### Code example
 

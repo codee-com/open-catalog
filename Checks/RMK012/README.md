@@ -5,6 +5,11 @@
 The loop appears to be vectorizable, but the statements in the conditions of the
 loop render vectorization inefficient.
 
+### Actions
+
+If the conditions in the loop do not depend on the data, remove them using loop
+unswitching or loop fission.
+
 ### Relevance
 
 The main assumption of [vectorization](/Glossary/Vectorization.md) is that the
@@ -34,11 +39,6 @@ condition can be moved outside of the loop (see
 * If the condition in the loop depends on iterator variables only, the conditions
 can be removed by splitting the loop into several loops using
 [loop fission](/Glossary/Loop-fission.md).
-
-### Actions
-
-If the conditions in the loop do not depend on the data, remove them using loop
-unswitching or loop fission.
 
 ### Related resources
 

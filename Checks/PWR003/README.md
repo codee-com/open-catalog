@@ -16,6 +16,15 @@ functions, such as Fortran `pure` keyword. Others need extensions implemented by
 compilers/tools, for instance the GNU C compiler `const` attribute (note that it
 also has a `pure` attribute not compliant with the definition presented here).
 
+### Actions
+
+Add the appropriate annotations to your code explicitly. For instance:
+
+* In the GCC compiler for the C programming language, use the keyword
+`__attribute__((const))`.
+
+* In the Fortran programming language, use the built-in keyword `pure`.
+
 ### Relevance
 
 Explicitly declaring properties about functions called in the code provides
@@ -29,15 +38,6 @@ Data flow analysis can be simplified through the identification of pure
 functions, which are free of side effects. Thus, declaring functions as pure
 states that invoking those functions won't introduce race conditions, which
 facilitates analysis both to developers and compilers/tools.
-
-### Actions
-
-Add the appropriate annotations to your code explicitly. For instance:
-
-* In the GCC compiler for the C programming language, use the keyword
-`__attribute__((const))`.
-
-* In the Fortran programming language, use the built-in keyword `pure`.
 
 ### Code example
 

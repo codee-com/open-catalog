@@ -5,6 +5,11 @@
 OpenMP teams should be used to distribute work
 [offloaded to the GPU](/Glossary/Offloading.md).
 
+### Actions
+
+Use the `target teams distribute parallel for` combined construct to offload
+work to the GPU using two levels of parallelism.
+
 ### Relevance
 
 GPUs are notably different from CPUs, being composed by a high number of
@@ -30,11 +35,6 @@ distributed better fitting the hierarchical organization of the processing units
 of GPUs. Additionally, using teams enhances performance portability, ensuring a
 more predictable performance no matter which compiler and hardware combination
 is used.
-
-### Actions
-
-Use the `target teams distribute parallel for` combined construct to offload
-work to the GPU using two levels of parallelism.
 
 ### Code example
 

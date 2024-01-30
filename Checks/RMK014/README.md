@@ -5,6 +5,13 @@
 Loop is not a SIMD opportunity because of the unpredictable memory accesses in
 the loop body.
 
+### Actions
+
+Use `pwdirectives` to vectorize the loop.
+
+Alternatively, you can perform [loop fission](/Glossary/Loop-fission.md) to
+isolate the unpredictable memory accesses to a separate loop.
+
 ### Relevance
 
 [Memory access pattern](/Glossary/Memory-access-pattern.md) is very important
@@ -24,13 +31,6 @@ if the loop in question is a part of a loop nest, performing
 [loop interchange](/Glossary/Loop-interchange.md) or
 [loop tiling](/Glossary/Loop-tiling.md) can decrease the pressure on the memory
 subsystem as well.
-
-### Actions
-
-Use `pwdirectives` to vectorize the loop.
-
-Alternatively, you can perform [loop fission](/Glossary/Loop-fission.md) to
-isolate the unpredictable memory accesses to a separate loop.
 
 ### Related resources
 

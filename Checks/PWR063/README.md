@@ -5,6 +5,11 @@
 Legacy Fortran constructs can be detrimental to code readability,
 maintainability, and performance.
 
+### Actions
+
+Replace the identified legacy construct with modern Fortran statements, while
+preserving the original functionality of the code.
+
 ### Relevance
 
 Fortran has undergone numerous revisions since its debut in the 1950s, with
@@ -77,11 +82,6 @@ Among current best practices for modernizing Fortran code, we can find:
   * `data`.
 
   * Labeled `do`.
-
-### Actions
-
-Replace the identified legacy construct with modern Fortran statements, while
-preserving the original functionality of the code.
 
 ### Code examples
 

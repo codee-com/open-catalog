@@ -6,6 +6,12 @@ A loop contains a pointer increment statement enabling access to the elements of
 an array, but the pointer increment introduces dependencies between the
 iterations of the loop that defeat performance optimization.
 
+### Actions
+
+Remove the pointer increment instruction from the loop body, updating the
+dereferences of the pointer in the loop body and recalculating the offsets
+correspondingly.
+
 ### Relevance
 
 Performance optimization best practices give recommendations regarding the
@@ -25,12 +31,6 @@ Programmers may write different programs, and tools are expected to detect these
 challenging situations, help programmers to understand the implications from the
 performance viewpoint, and suggest how to overcome these issues through
 alternative ways of coding that are more hardware-friendly.
-
-### Actions
-
-Remove the pointer increment instruction from the loop body, updating the
-dereferences of the pointer in the loop body and recalculating the offsets
-correspondingly.
 
 ### Code example
 

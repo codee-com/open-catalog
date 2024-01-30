@@ -5,6 +5,10 @@
 Copying data to the GPU from an array whose size is not known to the compiler
 requires specifying information about the desired array data range to be copied.
 
+### Actions
+
+Specify the array range to be copied to device memory.
+
 ### Relevance
 
 When offloading to the GPU, copying array data from the host memory to the GPU
@@ -18,10 +22,6 @@ undefined behavior. For instance, for C dynamic arrays the pointer scalar value
 might be copied instead of any pointed-to data; for Fortran assumed size arrays,
 an invalid memory access might occur or erroneous memory (i.e., from wrong
 memory locations) might be copied.
-
-### Actions
-
-Specify the array range to be copied to device memory.
 
 ### Code example
 

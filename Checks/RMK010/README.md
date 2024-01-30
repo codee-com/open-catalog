@@ -5,6 +5,11 @@
 Loop is not an SIMD opportunity because of the strided memory accesses in the
 loop body.
 
+### Actions
+
+If the loop is part of the loop nest, consider applying loop interchange or loop
+tiling.
+
 ### Relevance
 
 [Memory access pattern](/Glossary/Memory-access-pattern.md) is very important
@@ -25,8 +30,3 @@ stride. For example, instead of loop which writes to elements of the array
 `a[3 * i]`, `a[3 * i + 1]` and `a[3 * i + 2]`, we introduce three separate
 arrays and write to them: `a1[i]`, `a2[i]` and `a3[i]`. This kind of
 transformation however may require rewriting a large part of the code.
-
-### Actions
-
-If the loop is part of the loop nest, consider applying loop interchange or loop
-tiling.

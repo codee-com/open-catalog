@@ -6,6 +6,10 @@ Inefficient
 [matrix access pattern](/Glossary/Row-major-and-column-major-order.md) detected
 that can be improved through [loop interchange](/Glossary/Loop-interchange.md).
 
+### Actions
+
+Interchange the inner and outer loops in the loop nest.
+
 ### Relevance
 
 Inefficient [memory access pattern](/Glossary/Memory-access-pattern.md) and low
@@ -26,10 +30,6 @@ additionally improves performance.
 >where all the statements are in the body of the innermost loop. If the loops
 >are not perfectly nested, it is often possible to make them
 >[perfectly nested through refactoring](/Glossary/Perfect-loop-nesting.md).
-
-### Actions
-
-Interchange the inner and outer loops in the loop nest.
 
 ### Code example
 

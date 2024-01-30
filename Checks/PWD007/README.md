@@ -5,6 +5,10 @@
 An unprotected multithreading recurrence in parallel code is causing a data
 race.
 
+### Actions
+
+Protect the recurrence or execute the code sequentially if that is not possible.
+
 ### Relevance
 
 The recurrence computation pattern occurs when the same memory position is read
@@ -15,10 +19,6 @@ also used. If a loop with a recurrence computation pattern is parallelized
 without protecting the concurrent memory access, a data race condition is
 introduced. In some cases, the concurrent memory access can not be protected and
 thus the loop can not be parallelized.
-
-### Actions
-
-Protect the recurrence or execute the code sequentially if that is not possible.
 
 ### Code example
 

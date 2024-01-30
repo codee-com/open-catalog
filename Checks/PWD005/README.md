@@ -5,6 +5,10 @@
 Only a part of an array was transferred to the GPU and it does not cover the
 used range.
 
+### Actions
+
+Update the copied array range to match the actual array usage in the code.
+
 ### Relevance
 
 Minimising data transfers is one of the main optimization points when offloading
@@ -14,10 +18,6 @@ of the array may be transferred to or from the GPU. However, the developer must
 ensure that the copied array range includes those array positions accessed in
 the code. Otherwise, the result is undefined behavior, most likely causing
 invalid memory accesses and crashes.
-
-### Actions
-
-Update the copied array range to match the actual array usage in the code.
 
 ### Code example
 

@@ -6,6 +6,10 @@ Disable default
 [OpenMP scoping](/Glossary/Variable-scoping-in-the-context-of-OpenMP.md) to
 force having to declare the scoping of all variables.
 
+### Actions
+
+Add `default(none)` to disable default OpenMP scoping.
+
 ### Relevance
 
 When the scope for a variable is not specified in an
@@ -14,10 +18,6 @@ to it. Even when set explicitly, using a default scope is considered a bad
 practice since it can lead to  wrong data scopes inadvertently being applied to
 variables. Thus, it is recommended to explicitly set the scope for each
 variable.
-
-### Actions
-
-Add `default(none)` to disable default OpenMP scoping.
 
 ### Code example
 

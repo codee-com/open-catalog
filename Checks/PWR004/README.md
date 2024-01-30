@@ -7,6 +7,10 @@ Explicitly declare the scope of each variable used in a
 [default scoping](/Glossary/Variable-scoping-in-the-context-of-OpenMP.md) being
 assigned to it.
 
+### Actions
+
+Declare the scope of each variable through the appropriate OpenMP clause.
+
 ### Relevance
 
 When the scope for a variable is not specified in an OpenMP `parallel` region, a
@@ -14,10 +18,6 @@ default scope is assigned to it. This default scope can be wrong, for instance
 sharing a variable that should be private, which can lead to a race condition.
 Furthermore, it ensures that the scope of each variable has been determined and
 improves code readability.
-
-### Actions
-
-Declare the scope of each variable through the appropriate OpenMP clause.
 
 ### Code example
 

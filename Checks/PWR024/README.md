@@ -6,6 +6,11 @@ The loop is currently not in
 [OpenMP canonical](/Glossary/OpenMP-canonical-form.md) form but it can be made
 OpenMP compliant through refactoring.
 
+### Actions
+
+Rewrite the loop to make it an OpenMP canonical form using single statements
+involving only the iterator variable in the loop header.
+
 ### Relevance
 
 OpenMP requires a loop to fulfill some requirements: it must be a `for` loop,
@@ -13,11 +18,6 @@ have single statements in its loop headers, use only one iterator variable which
 must be an integer and use only integer increments. Failing to fulfill any of
 these requirements inhibits the loop parallelization with OpenMP. In many cases,
 a simple rewrite can fix this.
-
-### Actions
-
-Rewrite the loop to make it an OpenMP canonical form using single statements
-involving only the iterator variable in the loop header.
 
 ### Code example
 

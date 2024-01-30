@@ -5,6 +5,10 @@
 Pass only used fields from derived data types as parameters to promote data
 hiding.
 
+### Actions
+
+Pass the used fields as separate parameters instead of the whole derived type.
+
 ### Relevance
 
 Derived data types (such as structs in C) are convenient constructs to group and
@@ -24,10 +28,6 @@ offloading to the GPU  because they may inhibit compiler analyses and
 optimizations due to [pointer aliasing](/Glossary/Pointer-aliasing.md). Also, it
 can cause unnecessary data movements impacting performance or incorrect data
 movements impacting correctness and even crashes impacting code quality.
-
-### Actions
-
-Pass the used fields as separate parameters instead of the whole derived type.
 
 ### Code example
 

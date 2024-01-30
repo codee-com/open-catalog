@@ -5,6 +5,11 @@
 Loop is a potential parallelization opportunity if it can be confirmed that
 variable `X` is a temporary
 
+### Actions
+
+Analyze the data scoping of the variable `X` to determine whether it is a
+temporary and privatize it when parallelizing if it is.
+
 ### Relevance
 
 Determining the data scoping of all variables in a loop is critical to decide
@@ -18,8 +23,3 @@ when they can successfully do so for scalar temporaries. Therefore, the
 developer should analyze array usages to detect temporaries and ensure that
 their data scoping is private to create the most efficient parallel version of
 the loop.
-
-### Actions
-
-Analyze the data scoping of the variable `X` to determine whether it is a
-temporary and privatize it when parallelizing if it is.

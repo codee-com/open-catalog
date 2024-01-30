@@ -5,16 +5,16 @@
 [Read-only variables should be shared](/Glossary/Variable-scoping-in-the-context-of-OpenMP.md)
 instead of private to reduce memory consumption and unnecessary data copying.
 
+### Actions
+
+Set the scope of the read-only variable to shared.
+
 ### Relevance
 
 Since a read-only variable is never written to, it can be safely shared without
 any risk of race conditions. **Sharing variables is more efficient than
 privatizing** them from a memory perspective so it should be favored whenever
 possible.
-
-### Actions
-
-Set the scope of the read-only variable to shared.
 
 ### Code example
 

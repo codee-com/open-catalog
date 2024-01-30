@@ -6,6 +6,11 @@ Use `restrict` for pointer function parameters to hint the compiler that there
 is no [pointer aliasing](/Glossary/Pointer-aliasing.md) preventing
 [vectorization](/Glossary/Vectorization.md).
 
+### Actions
+
+Verify that there is no aliasing at the call sites and add `restrict` to the
+pointer function parameters.
+
 ### Relevance
 
 Compilers can automatically vectorize only those loops for which they can
@@ -16,11 +21,6 @@ aliased by any other block. Providing this information can help the compiler
 generate more efficient code or vectorize the loop. Therefore it is always
 recommended to use `restrict` whenever possible so that the compiler has as much
 information as possible to perform optimizations such as vectorization.
-
-### Actions
-
-Verify that there is no aliasing at the call sites and add `restrict` to the
-pointer function parameters.
 
 >**Notes**<br>
 >The compilers can emit runtime checks, however, in the presence of too many

@@ -7,6 +7,11 @@ A pointer assignment statement interleaved between
 [loop interchange](/Glossary/Loop-interchange.md) to improve the memory access
 pattern and loop's performance.
 
+### Actions
+
+Remove the pointer assignment instruction between loop headers to make the loops
+perfectly nested.
+
 ### Relevance
 
 Performance optimization best practices recommend writing programs that read and
@@ -22,11 +27,6 @@ perfectly nested loops its implementation is straightforward and consists of
 interchanging the loop headers only. For non perfectly nested loops it may
 require further code rewriting, but it usually pays off the effort because it
 brings high performance gains.
-
-### Actions
-
-Remove the pointer assignment instruction between loop headers to make the loops
-perfectly nested.
 
 ### Code example
 

@@ -5,6 +5,10 @@
 Using separate arrays instead of an Array-of-Structs is recommended to maximize
 [locality of reference](/Glossary/Locality-of-reference.md).
 
+### Actions
+
+Convert the Array-of-Structs (AoS) into separate plain arrays.
+
 ### Relevance
 
 Using an Array-of-Structs (AoS) leads to inefficient use of the memory subsystem
@@ -14,10 +18,6 @@ struct containing the coordinates that are consumed on each iteration. However,
 most structs contain fields that will not be accessed every time: data locality
 can be enhanced by breaking the struct and creating an array for each individual
 field.
-
-### Actions
-
-Convert the Array-of-Structs (AoS) into separate plain arrays.
 
 ### Code example
 

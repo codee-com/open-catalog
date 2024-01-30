@@ -6,6 +6,11 @@ The copy of a non-scalar variable to an accelerator device has been requested
 but none or  only a part of its data will be transferred because it is laid out
 non-contiguously in memory.
 
+### Actions
+
+Use OpenMP 4.5 *enter/exit data* execution statements to ensure that all the
+memory segments are copied to the memory of the accelerator device.
+
 ### Relevance
 
 The data of non-scalar variables might be spread across memory, laid out in non-
@@ -24,11 +29,6 @@ must be explicitly transferred by the programmer.  In OpenMP 4.5, this can be
 achieved through the *enter/exit data* execution statements. Alternatively, the
 code could be refactored so that it uses variables with contiguous data layouts
 (eg. flatten an array of arrays).
-
-### Actions
-
-Use OpenMP 4.5 *enter/exit data* execution statements to ensure that all the
-memory segments are copied to the memory of the accelerator device.
 
 ### Code example
 

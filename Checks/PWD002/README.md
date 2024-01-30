@@ -6,16 +6,16 @@ A variable subject to a reduction operation is not properly handled in a
 multithreading environment. This introduces a race condition making the result
 of the code unpredictable.
 
+### Actions
+
+Protect the reduction operation.
+
 ### Relevance
 
 A reduction operation is a typical computation pattern where multiple
 computations are merged into a single value using a mathematical operation. When
 those computations are executed in parallel, a race condition exists. To prevent
 this, the variable where the reduction is performed must be protected.
-
-### Actions
-
-Protect the reduction operation.
 
 ### Code example
 

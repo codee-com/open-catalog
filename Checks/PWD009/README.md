@@ -4,15 +4,15 @@
 
 A variable is being incorrectly privatized in the OpenMP datascoping clauses.
 
+### Actions
+
+Change the data scope of the variable from private to shared.
+
 ### Relevance
 
 Specifying an invalid scope for a variable may introduce race conditions and
 produce incorrect results. For instance, when a variable must be shared among
 threads but it is privatized instead.
-
-### Actions
-
-Change the data scope of the variable from private to shared.
 
 ### Code example
 

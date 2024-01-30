@@ -6,6 +6,11 @@ A position outside the bounds of the array memory is being accessed which
 results in undefined behavior most likely causing invalid memory accesses and
 crashes.
 
+### Actions
+
+Fix the array access so that only positions within the array memory bounds are
+accessed.
+
 ### Relevance
 
 An array is essentially a collection of items that can be randomly accessed
@@ -15,11 +20,6 @@ index values outside that subset will access a memory position not associated
 with any array element. This is called an out-of-memory-bounds access and has
 undefined behavior in C/C++, most likely causing invalid memory accesses and
 crashes.
-
-### Actions
-
-Fix the array access so that only positions within the array memory bounds are
-accessed.
 
 ### Code example
 

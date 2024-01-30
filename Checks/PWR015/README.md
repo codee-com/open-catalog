@@ -6,16 +6,16 @@ Unused data should never be copied to or from the GPU to prevent unnecessary
 [data movements](/Glossary/Offloading.md) between the CPU and the GPU, which
 impacts performance.
 
+### Actions
+
+Restrict the array range to be copied to the GPU to the range strictly required.
+
 ### Relevance
 
 One of the key challenges when offloading work to the GPU is minimizing the data
 transfers between CPU memory and GPU memory. These transfers can greatly affect
 performance and should be performed only when needed. Thus, only the strictly
 required data should be copied to or from the GPU memory.
-
-### Actions
-
-Restrict the array range to be copied to the GPU to the range strictly required.
 
 ### Code example
 
