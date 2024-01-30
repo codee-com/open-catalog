@@ -3,7 +3,7 @@
 ### Issue
 
 Loop is a potential parallelization opportunity if it can be confirmed that
-variable `X` is a temporary
+variable `X` is a temporary.
 
 ### Actions
 

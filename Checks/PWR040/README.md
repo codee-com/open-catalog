@@ -8,9 +8,7 @@ that can be fixed through loop tiling.
 
 ### Actions
 
-Apply
-[loop tiling](/Glossary/Loop-tiling.md)
-to the loop nest.
+Apply [loop tiling](/Glossary/Loop-tiling.md) to the loop nest.
 
 ### Relevance
 
