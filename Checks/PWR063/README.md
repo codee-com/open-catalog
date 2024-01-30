@@ -224,5 +224,8 @@ stored together within a `module`, clearly stating their relationship.
 
 ### References
 
-* ["Fortran 90/95 Coding Conventions", Jack Carlson and Olaf David, Object Modeling System (OMS) Laboratory, Department of Civil and Environmental Engineering, Colorado State University](https://alm.engr.colostate.edu/cb/wiki/16983)
-[last checked January 2024]
+* ["Fortran 90/95 Coding Conventions"](https://alm.engr.colostate.edu/cb/wiki/16983#section-Fortran+Features+that+are+obsolescent+and_2For+discouraged),
+Jack Carlson and Olaf David, Object Modeling System (OMS) Laboratory, Department
+of Civil and Environmental Engineering, Colorado State University. See section
+"Fortran Features that are obsolescent and/or discouraged". [last checked
+January 2024]
