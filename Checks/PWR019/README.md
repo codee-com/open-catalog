@@ -18,7 +18,7 @@ iterations) as possible. When loops are
 interchanged, making the loop with the highest trip count the innermost should
 increase [vectorization](/Glossary/Vectorization.md) performance.
 
->**Notes**<br>
+>**Notes**  
 >If the loop interchange introduces non-sequential memory accesses, the runtime
 >can get slower because of the inefficient memory access pattern.
 

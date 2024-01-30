@@ -22,7 +22,7 @@ generate more efficient code or vectorize the loop. Therefore it is always
 recommended to use `restrict` whenever possible so that the compiler has as much
 information as possible to perform optimizations such as vectorization.
 
->**Notes**<br>
+>**Notes**  
 >The compilers can emit runtime checks, however, in the presence of too many
 >pointers, this is not possible.
 
