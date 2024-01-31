@@ -3,7 +3,7 @@
 ### Issue
 
 The loop can be partially vectorized by promoting temporary
-[scalar variables to vectors](/Glossary/Scalar-to-vector-promotion.md), moving
+[scalar variables to vectors](../../Glossary/Scalar-to-vector-promotion.md), moving
 the non-vectorizable statements of the loop body to a separate loop.
 
 ### Actions
@@ -15,31 +15,31 @@ first loop and read in the second loop.
 
 ### Relevance
 
-[Vectorization](/Glossary/Vectorization.md) is one of the most important ways to
+[Vectorization](../../Glossary/Vectorization.md) is one of the most important ways to
 speed up the computation of a loop. I practice, loops may contain a mix of
 computations where only a part of the loop body introduces loop-carried
 dependencies that prevent vectorization. Different types of compute patterns
 make explicit the loop-carried dependencies present in the loop. On the one
 hand, the
-[forall compute pattern](/Glossary/Patterns-for-performance-optimization/Forall.md)
+[forall compute pattern](../../Glossary/Patterns-for-performance-optimization/Forall.md)
 is free of loop-carried dependencies and can be vectorized. On the other hand,
 the following compute patterns have loop-carried-dependencies and cannot be
 vectorized:
 
 * The
-[sparse reduction compute pattern](/Glossary/Patterns-for-performance-optimization/Sparse-reduction.md) - e.g.
+[sparse reduction compute pattern](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md) - e.g.
 the reduction variable has an read-write indirect memory access pattern which
 does not allow to determine the dependencies between the loop iterations at
 compile-time.
 
 * The
-[recurrence compute pattern](/Glossary/Patterns-for-performance-optimization/Recurrence.md) - e.g.
+[recurrence compute pattern](../../Glossary/Patterns-for-performance-optimization/Recurrence.md) - e.g.
 typically computes the value of an array element using the value of another
 array element calculated in a previous loop iteration.
 
 >**Note**  
 >The
->[scalar reduction compute pattern](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+>[scalar reduction compute pattern](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
 >is kind of an edge case, it introduces loop-carried dependencies, but
 >processors often support vector instructions for reductions by hardware.
 >However, there are situations where it may be preferable to execute reduction
@@ -50,7 +50,7 @@ array element calculated in a previous loop iteration.
 >fission is a solution that still enables the partial vectorization of part of
 >the loop.
 
-Thus, [loop fission](/Glossary/Loop-fission.md) enables the partial
+Thus, [loop fission](../../Glossary/Loop-fission.md) enables the partial
 vectorization by moving the non-vectorizable statements of the sparse reduction
 and recurrence compute patterns to a separate loop. Frequently, loop fission
 cannot be implemented in a straightforward manner because the loop contains
@@ -166,12 +166,12 @@ end subroutine example
 
 ### Related resources
 
-* [PWR021 examples at GitHub](/Checks/PWR021)
+* [PWR021 examples](../PWR021)
 
 ### References
 
-* [Loop fission](/Glossary/Loop-fission.md)
+* [Loop fission](../../Glossary/Loop-fission.md)
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)
 
-* [Sparse reduction compute pattern](/Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
+* [Sparse reduction compute pattern](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)

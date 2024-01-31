@@ -3,8 +3,8 @@
 ### Issue
 
 The loop containing a
-[forall](/Glossary/Patterns-for-performance-optimization/Forall.md) pattern
-can be sped up using [vectorization](/Glossary/Vectorization.md).
+[forall](../../Glossary/Patterns-for-performance-optimization/Forall.md) pattern
+can be sped up using [vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 
@@ -61,10 +61,10 @@ void example(double *D, double *X, double *Y, int n, double a) {
 
 ### Related resources
 
-* [PWR053 examples at GitHub](/Checks/PWR053)
+* [PWR053 examples](../PWR053)
 
 ### References
 
-* [Forall pattern](/Glossary/Patterns-for-performance-optimization/Forall.md)
+* [Forall pattern](../../Glossary/Patterns-for-performance-optimization/Forall.md)
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)

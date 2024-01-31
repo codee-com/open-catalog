@@ -3,9 +3,9 @@
 ### Issue
 
 The loop containing the
-[scalar reduction](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+[scalar reduction](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
 pattern can be sped up by
-[offloading it to an accelerator](/Glossary/Offloading.md).
+[offloading it to an accelerator](../../Glossary/Offloading.md).
 
 ### Actions
 
@@ -72,10 +72,10 @@ double example(double *A, int n) {
 
 ### Related resources
 
-* [PWR056 examples at GitHub](/Checks/PWR056)
+* [PWR056 examples](../PWR056)
 
 ### References
 
-* [Scalar reduction pattern](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+* [Scalar reduction pattern](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
 
-* [Offloading](/Glossary/Offloading.md)
+* [Offloading](../../Glossary/Offloading.md)

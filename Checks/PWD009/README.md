@@ -46,7 +46,7 @@ void example(int m, double *A, double *B, double *C) {
 
 ### Related resources
 
-* [PWD009 examples at GitHub](/Checks/PWD009)
+* [PWD009 examples](../PWD009)
 
 ### References
 

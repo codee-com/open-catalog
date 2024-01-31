@@ -15,7 +15,7 @@ correspondingly.
 ### Relevance
 
 Performance optimization best practices give recommendations regarding the
-efficient [memory access pattern](/Glossary/Memory-access-pattern.md), but do
+efficient [memory access pattern](../../Glossary/Memory-access-pattern.md), but do
 not give recommendations regarding a coding style that favors performance
 optimizations for the compiler.
 
@@ -58,4 +58,4 @@ for (unsigned i = 0; i < size; i++) {
 
 ### Related resources
 
-* [PWR029 examples at GitHub](/Checks/PWR029)
+* [PWR029 examples](../PWR029)

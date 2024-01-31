@@ -13,5 +13,5 @@ cores, data movements and data synchronization. The model is lightweight and has
 found usage in many domains where multiprocessor programming is important.
 
 Originally, OpenMP was created as an API for shared-memory multiprocessor
-systems. From OpenMP 4.0, it also supports [offloading](/Glossary/Offloading.md)
+systems. From OpenMP 4.0, it also supports [offloading](Offloading.md)
 the computations to accelerators.

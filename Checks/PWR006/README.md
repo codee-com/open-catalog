@@ -2,7 +2,7 @@
 
 ### Issue
 
-[Read-only variables should be shared](/Glossary/Variable-scoping-in-the-context-of-OpenMP.md)
+[Read-only variables should be shared](../../Glossary/Variable-scoping-in-the-context-of-OpenMP.md)
 instead of private to reduce memory consumption and unnecessary data copying.
 
 ### Actions
@@ -58,7 +58,7 @@ void example() {
 
 ### Related resources
 
-* [PWR006 examples at GitHub](/Checks/PWR006)
+* [PWR006 examples](../PWR006)
 
 * [OpenMP 4.5 Complete Specifications](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 November 2015 [last checked May 2019]

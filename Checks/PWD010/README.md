@@ -51,7 +51,7 @@ void example(int **result, unsigned rows, unsigned cols) {
 
 ### Related resources
 
-* [PWD010 examples at GitHub](/Checks/PWD010)
+* [PWD010 examples](../PWD010)
 
 ### References
 

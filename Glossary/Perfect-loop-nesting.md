@@ -32,8 +32,8 @@ In this example, the loops are not perfectly nested because of the statement
 
 Perfect-loop nesting is very important for loop optimizations, since it enables
 other optimization techniques like
-[loop interchange](/Glossary/Loop-interchange.md) or
-[loop tiling](/Glossary/Loop-tiling.md).
+[loop interchange](Loop-interchange.md) or
+[loop tiling](Loop-tiling.md).
 
 ### Converting imperfectly-nested loops to perfectly nested
 
@@ -152,6 +152,6 @@ the potential to enable other optimizations.
 
 ### Related resources
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](Loop-interchange.md)
 
-* [Loop tiling](/Glossary/Loop-tiling.md)
+* [Loop tiling](Loop-tiling.md)

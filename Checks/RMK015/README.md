@@ -25,9 +25,9 @@ a typical flag for reducing the code size is `-Os`.
 Best practices for performance optimization **typically recommend using the
 `-O2` flag**, as it makes the compiler attempt to reduce the runtime through
 well-known programming techniques like loop unrolling,
-[loop interchange](/Glossary/Loop-interchange.md),
-[loop vectorization](/Glossary/Vectorization.md),
-[loop fission](/Glossary/Loop-fission.md), loop fusion, etc. It is important to
+[loop interchange](../../Glossary/Loop-interchange.md),
+[loop vectorization](../../Glossary/Vectorization.md),
+[loop fission](../../Glossary/Loop-fission.md), loop fusion, etc. It is important to
 note that the list of techniques actually used depends on the compiler (e.g.
 GCC, clang) and the compiler version (e.g. GCC 11, GCC 12).
 

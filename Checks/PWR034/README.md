@@ -7,16 +7,16 @@ Strided array access may impact performance.
 ### Actions
 
 Consider using techniques like loop fusion,
-[loop interchange](/Glossary/Loop-interchange.md),
-[loop tiling](/Glossary/Loop-tiling.md) or changing the data layout to avoid
+[loop interchange](../../Glossary/Loop-interchange.md),
+[loop tiling](../../Glossary/Loop-tiling.md) or changing the data layout to avoid
 non-sequential access in hot loops.
 
 ### Relevance
 
 Accessing an array using a non-unit stride is less efficient than accessing
 consecutive positions because the latter improves the
-[locality of reference](/Glossary/Locality-of-reference.md). Note that C/C++
-[column-wise matrix access](/Glossary/Row-major-and-column-major-order.md)
+[locality of reference](../../Glossary/Locality-of-reference.md). Note that C/C++
+[column-wise matrix access](../../Glossary/Row-major-and-column-major-order.md)
 is an example non-unit stride, where the stride is the column width.
 
 ### Code example
@@ -59,10 +59,10 @@ for (int j = 1; j < LEN; ++j) {
 
 ### Related resources
 
-* [PWR034 examples at GitHub](/Checks/PWR034)
+* [PWR034 examples](../PWR034)
 
 ### References
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](../../Glossary/Loop-interchange.md)
 
-* [Memory access pattern](/Glossary/Memory-access-pattern.md) (strided access pattern)
+* [Memory access pattern](../../Glossary/Memory-access-pattern.md) (strided access pattern)

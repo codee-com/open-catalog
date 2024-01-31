@@ -2,7 +2,7 @@
 
 **Loop tiling** (also known as **loop blocking**) is a program optimization
 technique whose aim is to improve
-[locality of reference](/Glossary/Locality-of-reference.md). It modifies the
+[locality of reference](Locality-of-reference.md). It modifies the
 memory access pattern of the loop in order to reuse data already present in the
 data cache before that data gets evicted and needs to be reloaded from the
 memory.
@@ -145,7 +145,7 @@ faster loop.
 ### What are the prerequisites for loop tiling?
 
 To perform loop tiling, the loops have to be
-[perfectly nested](/Glossary/Perfect-loop-nesting.md) and a certain type of
+[perfectly nested](Perfect-loop-nesting.md) and a certain type of
 loops with loop-carried dependencies cannot be tiled. 
 
 Additionally, doing loop tiling only makes sense if there is data reuse or an

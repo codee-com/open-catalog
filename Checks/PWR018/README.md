@@ -3,7 +3,7 @@
 ### Issue
 
 Recursive calls within a loop inhibit
-[vectorization](/Glossary/Vectorization.md).
+[vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 
@@ -65,10 +65,10 @@ double example(unsigned times) {
 
 ### Related resources
 
-* [PWR018 examples at GitHub](/Checks/PWR018)
+* [PWR018 examples](../PWR018)
 
 ### References
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)
 
-* [OpenMP canonical form](/Glossary/OpenMP-canonical-form.md)
+* [OpenMP canonical form](../../Glossary/OpenMP-canonical-form.md)

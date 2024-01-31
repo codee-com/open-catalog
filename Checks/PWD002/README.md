@@ -71,7 +71,7 @@ void foo() {
 
 ### Related resources
 
-* [PWD002 examples at GitHub](/Checks/PWD002)
+* [PWD002 examples](../PWD002)
 
 * [OpenMP 4.5 Complete Specifications](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 November 2015 [last checked May 2019]

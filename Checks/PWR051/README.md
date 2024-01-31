@@ -3,8 +3,8 @@
 ### Issue
 
 A loop containing the
-[scalar reduction](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
-pattern can be sped up using [multithreading](/Glossary/Multithreading.md).
+[scalar reduction](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+pattern can be sped up using [multithreading](../../Glossary/Multithreading.md).
 
 ### Actions
 
@@ -78,10 +78,10 @@ double example(double *A, int n) {
 
 ### Related resources
 
-* [PWR051 examples at GitHub](/Checks/PWR051)
+* [PWR051 examples](../PWR051)
 
 ### References
 
-* [Scalar reduction pattern](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+* [Scalar reduction pattern](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
 
-* [Multithreading](/Glossary/Multithreading.md)
+* [Multithreading](../../Glossary/Multithreading.md)

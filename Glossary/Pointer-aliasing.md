@@ -18,7 +18,7 @@ void foo(double *a, double *b, int n) {
 ```
 
 In case pointers `a` and `b` point to distinct memory blocks, this code is
-perfectly [parallelizable](/Glossary/Parallelization.md). But, consider that
+perfectly [parallelizable](Parallelization.md). But, consider that
 someone called the function with the following arguments:
 
 ```c
@@ -27,4 +27,4 @@ foo(a, a + 1, n - 1);
 
 If this is the case, pointers `a` and `b` alias and the loop cannot be
 parallelized because of the
-[loop-carried dependency](/Glossary/Loop-carried-dependencies.md).
+[loop-carried dependency](Loop-carried-dependencies.md).

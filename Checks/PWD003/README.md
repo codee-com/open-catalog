@@ -74,11 +74,9 @@ void foo(int *a, int *b, int *sum, int size) {
 }
 ```
 
-You can find this and more examples [at GitHub](/Checks/PWD003).
-
 ### Related resources
 
-* [PWD003 examples at GitHub](/Checks/PWD003)
+* [PWD003 examples](../PWD003)
 
 * [OpenMP 4.5 Complete Specifications](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 November 2015 [last checked July 2019]

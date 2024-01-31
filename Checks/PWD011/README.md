@@ -55,7 +55,7 @@ double example(int m, double *A, double *B, double *C) {
 
 ### Related resources
 
-* [PWD011 examples at GitHub](/Checks/PWD011)
+* [PWD011 examples](../PWD011)
 
 ### References
 

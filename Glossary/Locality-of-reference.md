@@ -28,8 +28,8 @@ code to reuse the data while in the data cache and before it gets evicted if
 aiming for optimum performance.
 
 The developers can use techniques such as
-[loop interchange](/Glossary/Loop-interchange.md) or
-[loop tiling](/Glossary/Loop-tiling.md) to increase the loop's locality of
+[loop interchange](Loop-interchange.md) or
+[loop tiling](Loop-tiling.md) to increase the loop's locality of
 reference, which as an effect yields an increase in speed.
 
 ### Better memory efficiency through loop fission

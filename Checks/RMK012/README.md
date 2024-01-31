@@ -12,7 +12,7 @@ unswitching or loop fission.
 
 ### Relevance
 
-The main assumption of [vectorization](/Glossary/Vectorization.md) is that the
+The main assumption of [vectorization](../../Glossary/Vectorization.md) is that the
 same operation is applied to a vector of data instead of to a single piece of
 data. Loops with conditional statements do the opposite: they apply different
 operations to the data depending on some condition.
@@ -34,16 +34,16 @@ vectorization.
 * If the condition in the loop is always evaluated to a  loop-invariant value
 (i.e. its value is either true or false across the execution of the loop), this
 condition can be moved outside of the loop (see
-[loop unswitching](/Glossary/Loop-unswitching.md)).
+[loop unswitching](../../Glossary/Loop-unswitching.md)).
 
 * If the condition in the loop depends on iterator variables only, the conditions
 can be removed by splitting the loop into several loops using
-[loop fission](/Glossary/Loop-fission.md).
+[loop fission](../../Glossary/Loop-fission.md).
 
 ### Related resources
 
-* [PWR020: Consider loop fission to enable vectorization](/Checks/PWR020/README.md)
+* [PWR020: Consider loop fission to enable vectorization](../PWR020/README.md)
 
-* [PWR021: Consider loop fission with scalar to vector promotion to enable vectorization](/Checks/PWR021/README.md)
+* [PWR021: Consider loop fission with scalar to vector promotion to enable vectorization](../PWR021/README.md)
 
-* [PWR022: Move invariant conditional out of the loop to facilitate vectorization](/Checks/PWR022/README.md)
+* [PWR022: Move invariant conditional out of the loop to facilitate vectorization](../PWR022/README.md)

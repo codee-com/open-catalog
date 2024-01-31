@@ -3,8 +3,8 @@
 ### Issue
 
 A loop containing the
-[forall](/Glossary/Patterns-for-performance-optimization/Forall.md) pattern can
-be sped up using [multithreading](/Glossary/Multithreading.md).
+[forall](../../Glossary/Patterns-for-performance-optimization/Forall.md) pattern can
+be sped up using [multithreading](../../Glossary/Multithreading.md).
 
 ### Actions
 
@@ -64,10 +64,10 @@ void example(double *D, double *X, double *Y, int n, double a) {
 
 ### Related resources
 
-* [PWR050 examples at GitHub](/Checks/PWR050)
+* [PWR050 examples](../PWR050)
 
 ### References
 
-* [Forall pattern](/Glossary/Patterns-for-performance-optimization/Forall.md)
+* [Forall pattern](../../Glossary/Patterns-for-performance-optimization/Forall.md)
 
-* [Multithreading](/Glossary/Multithreading.md)
+* [Multithreading](../../Glossary/Multithreading.md)

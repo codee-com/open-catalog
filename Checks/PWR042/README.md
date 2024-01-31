@@ -15,20 +15,20 @@ and the third loop computes the final result of the original loop.
 
 ### Relevance
 
-Inefficient [memory access pattern](/Glossary/Memory-access-pattern.md) and low
-[locality of reference](/Glossary/Locality-of-reference.md) are among the main
+Inefficient [memory access pattern](../../Glossary/Memory-access-pattern.md) and low
+[locality of reference](../../Glossary/Locality-of-reference.md) are among the main
 reasons for low performance on modern computer systems. Matrices are
-[stored in a row-major order in C and column-major order in Fortran](/Glossary/Row-major-and-column-major-order.md).
+[stored in a row-major order in C and column-major order in Fortran](../../Glossary/Row-major-and-column-major-order.md).
 Iterating over them column-wise (in C) and row-wise (in Fortran) is inefficient,
 because it uses the memory subsystem suboptimally.
 
 Nested loops that iterate over matrices inefficiently can be optimized by
-applying [loop interchange](/Glossary/Loop-interchange.md). Using loop
+applying [loop interchange](../../Glossary/Loop-interchange.md). Using loop
 interchange, the inefficient matrix access pattern is replaced with a more
 efficient one.
 
 In order to perform the loop interchange, the loops need to be
-[perfectly nested](/Glossary/Perfect-loop-nesting.md), i.e. all the statements
+[perfectly nested](../../Glossary/Perfect-loop-nesting.md), i.e. all the statements
 need to be inside the innermost loop. However, due to the initialization of a
 reduction variablе, loop interchange is not directly applicable.
 
@@ -57,7 +57,7 @@ for (int i = 0; i < n; i++) {
 
 In order to apply loop interchange, the non-perfectly-nested loops must be
 turned into perfectly nested loops, through several code changes related to
-[scalar to vector promotion](/Glossary/Scalar-to-vector-promotion.md) on
+[scalar to vector promotion](../../Glossary/Scalar-to-vector-promotion.md) on
 variable `s`. What this means is that we replace the scalar variable `s` with an
 array:
 
@@ -112,18 +112,18 @@ for (int i = 0; i < n; i++) {
 
 ### Related resources
 
-* [PWR042 examples at GitHub](/Checks/PWR042)
+* [PWR042 examples](../PWR042)
 
 ### References
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](../../Glossary/Loop-interchange.md)
 
-* [Scalar to vector promotion](/Glossary/Scalar-to-vector-promotion.md)
+* [Scalar to vector promotion](../../Glossary/Scalar-to-vector-promotion.md)
 
-* [Loop fission](/Glossary/Loop-fission.md)
+* [Loop fission](../../Glossary/Loop-fission.md)
 
-* [Locality of reference](/Glossary/Locality-of-reference.md)
+* [Locality of reference](../../Glossary/Locality-of-reference.md)
 
-* [Row-major and column-major order](/Glossary/Row-major-and-column-major-order.md)
+* [Row-major and column-major order](../../Glossary/Row-major-and-column-major-order.md)
 
-* [Memory access pattern](/Glossary/Memory-access-pattern.md)
+* [Memory access pattern](../../Glossary/Memory-access-pattern.md)

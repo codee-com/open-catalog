@@ -26,12 +26,12 @@ parallelization are loop-carried dependencies.
 There are several different types of hardware that can be used to speed up
 computation through parallelization. The most famous are:
 
-* [Vectorization](/Glossary/Vectorization.md): special unit of the CPU core that
+* [Vectorization](Vectorization.md): special unit of the CPU core that
 can process more than one piece of data at a time.
 
-* [Multithreading](/Glossary/Multithreading.md): distributing the parts of the
+* [Multithreading](Multithreading.md): distributing the parts of the
 problem to several CPU cores for individual processing.
 
-* [Offloading](/Glossary/Offloading.md): utilizing special massively-parallel
+* [Offloading](Offloading.md): utilizing special massively-parallel
 hardware architectures to solve the problems. These architectures are
 specialized hardware, the most famous being GPUs.

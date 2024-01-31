@@ -3,9 +3,9 @@
 ### Issue
 
 A loop containing the
-[sparse reduction](/Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
+[sparse reduction](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
 pattern can be sped up by
-[offloading it to an accelerator](/Glossary/Offloading.md). Codee can do this
+[offloading it to an accelerator](../../Glossary/Offloading.md). Codee can do this
 automatically, no source code modification is needed by the developer.
 
 ### Actions
@@ -29,7 +29,7 @@ code using accelerators.
 
 >**Note**  
 >Offloading
->[sparse reduction](/Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
+>[sparse reduction](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
 >loops incurs an overhead due to the synchronization needed to avoid race
 >conditions and ensure the correctness of the code. Note appropriate data
 >scoping of shared and private variables is still a must.
@@ -71,10 +71,10 @@ void example(double *A, int *nodes, int n) {
 
 ### Related resources
 
-* [PWR057 examples at GitHub](/Checks/PWR057)
+* [PWR057 examples](../PWR057)
 
 ### References
 
-* [Sparse reduction pattern](/Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
+* [Sparse reduction pattern](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
 
-* [Offloading](/Glossary/Offloading.md)
+* [Offloading](../../Glossary/Offloading.md)

@@ -15,7 +15,7 @@ correspondingly.
 ### Relevance
 
 Performance optimization best practices give recommendations regarding the
-efficient [memory access pattern](/Glossary/Memory-access-pattern.md), but do
+efficient [memory access pattern](../../Glossary/Memory-access-pattern.md), but do
 not give recommendations regarding a coding style that favors performance
 optimizations for the compiler.
 
@@ -60,4 +60,4 @@ void example(float *a, float *b, float *c, unsigned size, unsigned inc) {
 
 ### Related resources
 
-* [PWR028 examples at GitHub](/Checks/PWR028)
+* [PWR028 examples](../PWR028)

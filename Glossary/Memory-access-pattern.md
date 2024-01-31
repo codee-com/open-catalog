@@ -6,7 +6,7 @@ memory subsystem, and the memory access pattern can have a significant impact on
 loop performance.
 
 It was noticed that programs often exhibit
-[locality of reference](/Glossary/Locality-of-reference.md) when accessing data,
+[locality of reference](Locality-of-reference.md) when accessing data,
 and the memory subsystem is built to exploit this fact. However, not all
 programs are equally efficient regarding the way they use the memory subsystem,
 and there are code transformations that can help improve the memory access
@@ -80,15 +80,15 @@ sectioning, etc. where most of the benefit comes from improving the memory
 access pattern or converting from the more expensive memory access pattern to a
 cheaper one.
 
-When it comes to [vectorization](/Glossary/Vectorization.md), the compilers
+When it comes to [vectorization](Vectorization.md), the compilers
 typically vectorize loops with constant and sequential memory access patterns.
 
 ### Related resources
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](Vectorization.md)
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](Loop-interchange.md)
 
-* [Loop tiling](/Glossary/Loop-tiling.md)
+* [Loop tiling](Loop-tiling.md)
 
-* [Loop sectioning](/Glossary/Loop-sectioning.md)
+* [Loop sectioning](Loop-sectioning.md)

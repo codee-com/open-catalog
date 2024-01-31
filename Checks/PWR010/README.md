@@ -3,7 +3,7 @@
 ### Issue
 
 In the  C and C++ programming languages, matrices are stored in a
-[row-major layout](/Glossary/Row-major-and-column-major-order.md); thus,
+[row-major layout](../../Glossary/Row-major-and-column-major-order.md); thus,
 iterating the matrix column-wise is non-optimal and should be avoided if
 possible.
 
@@ -17,7 +17,7 @@ The most efficient way to process arrays is to iterate over its elements in the
 same order in which they are laid out in memory, so that the program performs a
 sequential access to consecutive data in memory. The C and C++ language
 specifications state that matrices are laid out in memory in a
-[row-major order](/Glossary/Row-major-and-column-major-order.md): the elements
+[row-major order](../../Glossary/Row-major-and-column-major-order.md): the elements
 of the first row are laid out consecutively in memory, followed by the elements
 of the second row, and so on. As a result, in order to maximize performance, the
 C and C++ code should access multi-dimensional arrays in a row-wise manner.
@@ -55,10 +55,10 @@ for (int i = 0; i < n; ++i) {
 
 ### Related resources
 
-* [PWR010 examples at GitHub](/Checks/PWR010)
+* [PWR010 examples](../PWR010)
 
 ### References
 
 * [Row-Major and Column-Major Array Layouts - MATLAB & Simulink](https://www.mathworks.com/help/coder/ug/what-are-column-major-and-row-major-representation-1.html)
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](../../Glossary/Loop-interchange.md)

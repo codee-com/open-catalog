@@ -36,6 +36,6 @@ function to each element of the array, etc.
 
 The two biggest challenges with multithreading are:
 
-1. [Deciding which data should be thread-private and which should be shared](/Glossary/Variable-scoping-in-the-context-of-OpenMP.md),
+1. [Deciding which data should be thread-private and which should be shared](Variable-scoping-in-the-context-of-OpenMP.md),
 
 2. and thread synchronization and possible data races. Without it the parallelization either doesn't pay off in term of performance or gives the wrong results.

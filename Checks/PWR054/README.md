@@ -3,8 +3,8 @@
 ### Issue
 
 The loop containing a
-[scalar reduction](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
-pattern can be sped up using [vectorization](/Glossary/Vectorization.md).
+[scalar reduction](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+pattern can be sped up using [vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 
@@ -66,10 +66,10 @@ double example(double *A, int n) {
 
 ### Related resources
 
-* [PWR054 examples at GitHub](/Checks/PWR054)
+* [PWR054 examples](../PWR054)
 
 ### References
 
-* [Scalar reduction pattern](/Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+* [Scalar reduction pattern](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)

@@ -25,7 +25,7 @@ analyzer code coverage.
 
 In parallel programming, derived data types are often discouraged when
 offloading to the GPU  because they may inhibit compiler analyses and
-optimizations due to [pointer aliasing](/Glossary/Pointer-aliasing.md). Also, it
+optimizations due to [pointer aliasing](../../Glossary/Pointer-aliasing.md). Also, it
 can cause unnecessary data movements impacting performance or incorrect data
 movements impacting correctness and even crashes impacting code quality.
 
@@ -91,15 +91,15 @@ void example() {
 
 ### Related resources
 
-* [PWR012 examples at GitHub](/Checks/PWR012)
+* [PWR012 examples](../PWR012)
 
-* [PWR001: Declare global variables as function parameters](/Checks/PWR001/README.md)
+* [PWR001: Declare global variables as function parameters](../PWR001/README.md)
 
-* [PWR002: Declare scalar variables in the smallest possible scope](/Checks/PWR002/README.md)
+* [PWR002: Declare scalar variables in the smallest possible scope](../PWR002/README.md)
 
-* [PWR008: Declare the intent for each procedure parameter](/Checks/PWR008/README.md)
+* [PWR008: Declare the intent for each procedure parameter](../PWR008/README.md)
 
-* [PWD006: Missing deep copy of non-contiguous data to the GPU](/Checks/PWD006/README.md)
+* [PWD006: Missing deep copy of non-contiguous data to the GPU](../PWD006/README.md)
 
 ### References
 

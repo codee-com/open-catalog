@@ -9,14 +9,14 @@ smaller in size, e.g. `0` to `S`, from `S` to `2S - 1`, etc.
 
 There are two distinct use cases for loop sectioning:
 
-* Enabling [vectorization](/Glossary/Vectorization.md) of `for` loops with
+* Enabling [vectorization](Vectorization.md) of `for` loops with
 `break` and some uncountable loops. These loops typically cannot be vectorized,
 but loop sectioning makes this possible.
 
-* Improving the [locality of reference](/Glossary/Locality-of-reference.md)
-after [loop fission](/Glossary/Loop-fission.md). In this case, loop sectioning
+* Improving the [locality of reference](Locality-of-reference.md)
+after [loop fission](Loop-fission.md). In this case, loop sectioning
 can be considered as a special subtype of
-[loop tiling](/Glossary/Loop-tiling.md), but the goal of optimization is
+[loop tiling](Loop-tiling.md), but the goal of optimization is
 different.
 
 ### Vectorizing loops with `break` statements in the loop body
@@ -77,7 +77,7 @@ trip count, so it doesn't matter.
 ### Mitigating the effect of repeated access to the same data
 
 Take a look at the example loop produced by
-[loop fission](/Glossary/Loop-fission.md):
+[loop fission](Loop-fission.md):
 
 ```c
 double *tmp = malloc(n * sizeof(double));

@@ -3,7 +3,7 @@
 ### Issue
 
 A scalar variable should be declared in the smallest
-[scope](/Glossary/Variable-scope.md) possible. In computer programming, the term
+[scope](../../Glossary/Variable-scope.md) possible. In computer programming, the term
 scope of a variable usually refers to the part of the code where the variable
 can be used (e.g. a function, a loop). During the execution of a program, a
 variable cannot be accessed from outside of its scope. This effectively limits
@@ -97,7 +97,7 @@ void example() {
 
 ### Related resources
 
-* [PWR002 examples at GitHub](/Checks/PWR002)
+* [PWR002 examples](../PWR002)
 
 ### References
 

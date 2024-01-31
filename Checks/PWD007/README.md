@@ -57,7 +57,7 @@ void foo() {
 
 ### Related resources
 
-* [PWD007 examples at GitHub](/Checks/PWD007)
+* [PWD007 examples](../PWD007)
 
 * [scan Directive - OPENMP API Specification: Version 5.0](https://www.openmp.org/spec-html/5.0/openmpsu45.html)
 [last checked October 2020]
@@ -67,7 +67,7 @@ void foo() {
 
 ### References
 
-* [Recurrence pattern](/Glossary/Patterns-for-performance-optimization/Recurrence.md)
+* [Recurrence pattern](../../Glossary/Patterns-for-performance-optimization/Recurrence.md)
 
 * [Race condition](https://en.wikipedia.org/wiki/Race_condition)
 [last checked October 2020]

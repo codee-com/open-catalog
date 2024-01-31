@@ -3,7 +3,7 @@
 ### Issue
 
 Unused data should never be copied to or from the GPU to prevent unnecessary
-[data movements](/Glossary/Offloading.md) between the CPU and the GPU, which
+[data movements](../../Glossary/Offloading.md) between the CPU and the GPU, which
 impacts performance.
 
 ### Actions
@@ -48,6 +48,6 @@ void example() {
 
 ### Related resources
 
-* [PWR015 examples at GitHub](/Checks/PWR015)
+* [PWR015 examples](../PWR015)
 
-* [PWD005: Array range copied to the GPU does not cover the used range](/Checks/PWD005/README.md)
+* [PWD005: Array range copied to the GPU does not cover the used range](../PWD005/README.md)

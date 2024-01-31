@@ -80,7 +80,7 @@ void example() {
 
 ### Related resources
 
-* [PWR003 examples at GitHub](/Checks/PWR003)
+* [PWR003 examples](../PWR003)
 
 ### References
 

@@ -23,7 +23,7 @@ vectorization efficiency.
 >**Notes**  
 >Moving an iterator-dependent condition outside of the loop is a creative
 >process. Depending on the type of condition, it can involve loop peeling,
->[loop fission](/Glossary/Loop-fission.md) or loop unrolling.
+>[loop fission](../../Glossary/Loop-fission.md) or loop unrolling.
 
 ### Code examples
 
@@ -141,10 +141,10 @@ Loop unrolling changes the increment of iterator variable `i`, so now it is 2
 
 ### Related resources
 
-* [PWR049 examples at GitHub](/Checks/PWR049)
+* [PWR049 examples](../PWR049)
 
 ### References
 
-* [Loop unswitching](/Glossary/Loop-unswitching.md)
+* [Loop unswitching](../../Glossary/Loop-unswitching.md)
 
-* [Loop fission](/Glossary/Loop-fission.md)
+* [Loop fission](../../Glossary/Loop-fission.md)

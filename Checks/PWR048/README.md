@@ -57,11 +57,11 @@ double example(double a, double b, double c) {
 
 ### Related resources
 
-* [PWR048 examples at GitHub](/Checks/PWR048)
+* [PWR048 examples](../PWR048)
 
 ### References
 
-* [Strength reduction](/Glossary/Strength-reduction.md)
+* [Strength reduction](../../Glossary/Strength-reduction.md)
 
 * [IEEE Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_math.html#:~:text=IEEE%20754%20specifies%20exactly%20the,defined%20by%20the%20IEEE%20standard)
 

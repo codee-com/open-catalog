@@ -3,8 +3,8 @@
 ### Issue
 
 Conditional evaluates to the same value for all loop iterations and can be
-[moved outside of the loop](/Glossary/Loop-unswitching.md) to favor
-[vectorization](/Glossary/Vectorization.md).
+[moved outside of the loop](../../Glossary/Loop-unswitching.md) to favor
+[vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 
@@ -22,7 +22,7 @@ iterations (i.e. is a loop-invariant) can be safely moved outside the loop since
 it will always be either true or false.
 
 >**Note**  
->This optimization is called [loop unswitching](/Glossary/Loop-unswitching.md)
+>This optimization is called [loop unswitching](../../Glossary/Loop-unswitching.md)
 >and the compilers can do it automatically in simple cases. However, in more
 >complex cases, the compiler will omit this optimization and therefore it is
 >beneficial to do it manually.
@@ -68,10 +68,10 @@ int example(int *A, int n) {
 
 ### Related resources
 
-* [PWR022 examples at GitHub](/Checks/PWR022)
+* [PWR022 examples](../PWR022)
 
 ### References
 
-* [Loop unswitching](/Glossary/Loop-unswitching.md)
+* [Loop unswitching](../../Glossary/Loop-unswitching.md)
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)

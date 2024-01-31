@@ -7,8 +7,8 @@ to a separate loop that stores the values in consecutive memory locations.
 
 ### Actions
 
-Rewrite the loop to enable partial [vectorization](/Glossary/Vectorization.md)
-by moving the gather [memory access pattern](/Glossary/Memory-access-pattern.md)
+Rewrite the loop to enable partial [vectorization](../../Glossary/Vectorization.md)
+by moving the gather [memory access pattern](../../Glossary/Memory-access-pattern.md)
 to a first loop and the rest of the loop body in a second loop. Next, store the
 gathered data in consecutive memory locations using a temporary vector that is
 written in the first loop and read in the second loop.
@@ -19,10 +19,10 @@ Vectorization is one of the most important ways to speed up computation in the
 loop. In practice, loops may contain vectorizable statements, but vectorization
 may be either inhibited or inefficient due to the usage of data stored in non-
 consecutive memory locations. Programs exhibit different types of
-[memory access patterns](/Glossary/Memory-access-pattern.md) that lead to
+[memory access patterns](../../Glossary/Memory-access-pattern.md) that lead to
 non-consecutive memory access, e.g. strided, indirect, random accesses.
 
-Thus, [loop fission](/Glossary/Loop-fission.md) enables the partial
+Thus, [loop fission](../../Glossary/Loop-fission.md) enables the partial
 vectorization by moving the gather memory access pattern to a separate loop. It
 computes a temporary array that stores the used data in consecutive memory
 locations. After loop fission, we end up with two loops. The first loop computes
@@ -97,14 +97,14 @@ end do
 
 ### Related resources
 
-* [PWR060 examples at GitHub](/Checks/PWR060)
+* [PWR060 examples](../PWR060)
 
 ### References
 
-* [Loop fission](/Glossary/Loop-fission.md)
+* [Loop fission](../../Glossary/Loop-fission.md)
 
-* [Locality of reference](/Glossary/Locality-of-reference.md)
+* [Locality of reference](../../Glossary/Locality-of-reference.md)
 
-* [Memory access pattern](/Glossary/Memory-access-pattern.md)
+* [Memory access pattern](../../Glossary/Memory-access-pattern.md)
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)

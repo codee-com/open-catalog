@@ -3,8 +3,8 @@
 ### Issue
 
 A pointer assignment statement interleaved between
-[two nested loops](/Glossary/Perfect-loop-nesting.md) prevents the usage of
-[loop interchange](/Glossary/Loop-interchange.md) to improve the memory access
+[two nested loops](../../Glossary/Perfect-loop-nesting.md) prevents the usage of
+[loop interchange](../../Glossary/Loop-interchange.md) to improve the memory access
 pattern and loop's performance.
 
 ### Actions
@@ -17,7 +17,7 @@ perfectly nested.
 Performance optimization best practices recommend writing programs that read and
 write data laid out consecutively in the memory of the computer. However,
 programmers must use
-[memory access patterns](/Glossary/Memory-access-pattern.md) that matches the
+[memory access patterns](../../Glossary/Memory-access-pattern.md) that matches the
 data layout rules for multi-dimensional arrays (e.g. in C/C++ use a row-wise
 access pattern for multi-dimensional static arrays).
 
@@ -48,8 +48,8 @@ for (int i = 0; i < size; i++) {
 
 This is a classical matrix multiplication algorithm written using a pointer
 based notation. Pointer assignments on lines 3, 4 and 5 prevent
-[perfect nesting of the loops](/Glossary/Perfect-loop-nesting.md) and
-[loop interchange](/Glossary/Loop-interchange.md).
+[perfect nesting of the loops](../../Glossary/Perfect-loop-nesting.md) and
+[loop interchange](../../Glossary/Loop-interchange.md).
 
 By switching to an index based notation, we can convert the loop nest to a
 perfectly nested one and enable loop interchange:
@@ -66,4 +66,4 @@ for (int i = 0; i < size; i++) {
 
 ### References
 
-* [PWR030 examples at GitHub](/Checks/PWR030)
+* [PWR030 examples](../PWR030)

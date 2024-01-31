@@ -3,7 +3,7 @@
 ### Issue
 
 Unused variables should never be copied to or from the GPU to prevent
-unnecessary [data movements](/Glossary/Offloading.md) between the CPU and the
+unnecessary [data movements](../../Glossary/Offloading.md) between the CPU and the
 GPU, which impacts performance.
 
 ### Actions
@@ -46,4 +46,4 @@ void example(double *A, double *B, double *C) {
 
 ### Related resources
 
-* [PWR013 examples at GitHub](/Checks/PWR013)
+* [PWR013 examples](../PWR013)

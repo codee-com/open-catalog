@@ -2,14 +2,14 @@
 
 ### Issue
 
-[Indirect array access](/Glossary/Memory-access-pattern.md) may impact
+[Indirect array access](../../Glossary/Memory-access-pattern.md) may impact
 performance.
 
 ### Actions
 
 Consider using techniques like loop fusion,
-[loop interchange](/Glossary/Loop-interchange.md),
-[loop tiling](/Glossary/Loop-tiling.md) or changing the data layout to avoid
+[loop interchange](../../Glossary/Loop-interchange.md),
+[loop tiling](../../Glossary/Loop-tiling.md) or changing the data layout to avoid
 non-consecutive accesses in hot loops.
 
 ### Relevance
@@ -17,7 +17,7 @@ non-consecutive accesses in hot loops.
 Accessing an array indirectly (e.g. through another array containing the
 positions to be accessed) is generally less efficient than accessing consecutive
 positions because the latter improves
-[locality of reference](/Glossary/Locality-of-reference.md).
+[locality of reference](../../Glossary/Locality-of-reference.md).
 
 ### Code example
 
@@ -64,14 +64,14 @@ for (int j = 1; j < LEN_1D; j++) {
 
 ### Related resources
 
-* [PWR036 examples at GitHub](/Checks/PWR036)
+* [PWR036 examples](../PWR036)
 
 ### References
 
-* [Memory access pattern](/Glossary/Memory-access-pattern.md) (indirect array access)
+* [Memory access pattern](../../Glossary/Memory-access-pattern.md) (indirect array access)
 
-* [Locality of reference](/Glossary/Locality-of-reference.md)
+* [Locality of reference](../../Glossary/Locality-of-reference.md)
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](../../Glossary/Loop-interchange.md)
 
-* [Loop tiling](/Glossary/Loop-tiling.md)
+* [Loop tiling](../../Glossary/Loop-tiling.md)

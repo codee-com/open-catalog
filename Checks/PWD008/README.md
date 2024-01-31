@@ -59,14 +59,14 @@ void foo() {
 
 ### Related resources
 
-* [PWD008 examples at GitHub](/Checks/PWD008)
+* [PWD008 examples](../PWD008)
 
-* [PWD007: Unprotected multithreading recurrence](/Checks/PWD007/README.md)
+* [PWD007: Unprotected multithreading recurrence](../PWD007/README.md)
 
-* [PWR014: Out-of-dimension-bounds array access](/Checks/PWR014/README.md)
+* [PWR014: Out-of-dimension-bounds array access](../PWR014/README.md)
 
 ### References
 
-* [Recurrence pattern](/Glossary/Patterns-for-performance-optimization/Recurrence.md)
+* [Recurrence pattern](../../Glossary/Patterns-for-performance-optimization/Recurrence.md)
 
 * [Race condition](https://en.wikipedia.org/wiki/Race_condition)

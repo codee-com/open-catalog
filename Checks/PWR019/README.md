@@ -3,7 +3,7 @@
 ### Issue
 
 Performance can be increased by using the highest possible trip count in the
-[vectorized loop](/Glossary/Vectorization.md).
+[vectorized loop](../../Glossary/Vectorization.md).
 
 ### Actions
 
@@ -14,9 +14,9 @@ innermost loop.
 
 Vectorization takes advantage of having as high a trip count (ie. number of
 iterations) as possible. When loops are
-[perfectly nested](/Glossary/Perfect-loop-nesting.md) and they can be safely
+[perfectly nested](../../Glossary/Perfect-loop-nesting.md) and they can be safely
 interchanged, making the loop with the highest trip count the innermost should
-increase [vectorization](/Glossary/Vectorization.md) performance.
+increase [vectorization](../../Glossary/Vectorization.md) performance.
 
 >**Notes**  
 >If the loop interchange introduces non-sequential memory accesses, the runtime
@@ -60,10 +60,10 @@ for (int i = 0; i < n; i++) {
 
 ### Related resources
 
-* [PWR019 examples at GitHub](/Checks/PWR019)
+* [PWR019 examples](../PWR019)
 
 ### References
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](../../Glossary/Loop-interchange.md)

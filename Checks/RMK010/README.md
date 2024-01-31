@@ -12,7 +12,7 @@ tiling.
 
 ### Relevance
 
-[Memory access pattern](/Glossary/Memory-access-pattern.md) is very important
+[Memory access pattern](../../Glossary/Memory-access-pattern.md) is very important
 for good software performance. The loop contains strided memory accesses. This
 type of memory access pattern is inefficient from the memory subsystem
 perspective, and these loops are typically not good SIMD opportunities.
@@ -21,7 +21,7 @@ Loops with strided memory accesses can be vectorized if the strided memory
 access is removed. This is typically the case when the strided memory access is
 inside a loop nest. In that case, techniques like loop interchange can help
 convert the inefficient strided memory access pattern into other, more efficient
-access patterns. Techniques like [loop tiling](/Glossary/Loop-tiling.md) can
+access patterns. Techniques like [loop tiling](../../Glossary/Loop-tiling.md) can
 also make the dataset smaller and make vectorization beneficial even in the
 presence of strides.
 

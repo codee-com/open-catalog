@@ -3,28 +3,28 @@
 ### Issue
 
 Inefficient
-[matrix access pattern](/Glossary/Row-major-and-column-major-order.md) detected
+[matrix access pattern](../../Glossary/Row-major-and-column-major-order.md) detected
 that can be fixed through loop tiling.
 
 ### Actions
 
-Apply [loop tiling](/Glossary/Loop-tiling.md) to the loop nest.
+Apply [loop tiling](../../Glossary/Loop-tiling.md) to the loop nest.
 
 ### Relevance
 
-Inefficient [memory access patterns](/Glossary/Memory-access-pattern.md) and low
-[locality of reference](/Glossary/Locality-of-reference.md) are the main reasons
+Inefficient [memory access patterns](../../Glossary/Memory-access-pattern.md) and low
+[locality of reference](../../Glossary/Locality-of-reference.md) are the main reasons
 for low performance on modern computer systems. Matrices are
-[stored in a row-major order in C and column-major order in Fortran](/Glossary/Row-major-and-column-major-order.md).
+[stored in a row-major order in C and column-major order in Fortran](../../Glossary/Row-major-and-column-major-order.md).
 Iterating over them column-wise (in C) and row-wise (in Fortran) is inefficient,
 because it uses the memory subsystem suboptimally.
 
 Nested loops that iterate over matrices in an inefficient manner can be
-optimized by applying [loop tiling](/Glossary/Loop-tiling.md). In contrast to
-[loop interchange](/Glossary/Loop-interchange.md), loop tiling doesn't remove
+optimized by applying [loop tiling](../../Glossary/Loop-tiling.md). In contrast to
+[loop interchange](../../Glossary/Loop-interchange.md), loop tiling doesn't remove
 the inefficient memory access, but instead breaks the problem into smaller
 subproblems. Smaller subproblems have a much better
-[locality of reference](/Glossary/Locality-of-reference.md) and are faster to
+[locality of reference](../../Glossary/Locality-of-reference.md) and are faster to
 solve. Using loop tiling, the pressure on the memory subsystem due to
 inefficient matrix access is decreased which leads to improvement in program
 speed.
@@ -37,8 +37,8 @@ speed.
 ### Code example
 
 The following code shows two nested loops. The matrix `B` is accessed
-[column-wise](/Glossary/Row-major-and-column-major-order.md), which is
-inefficient. [Loop interchange](/Glossary/Loop-interchange.md) doesn't help
+[column-wise](../../Glossary/Row-major-and-column-major-order.md), which is
+inefficient. [Loop interchange](../../Glossary/Loop-interchange.md) doesn't help
 either, because fixing the inefficient memory access pattern for `B` would
 introduce an inefficient memory access pattern for `A`.
 
@@ -69,14 +69,14 @@ for (int ii = 0; ii < n; ii += TILE_SIZE) {
 
 ### Related resources
 
-* [PWR040 examples at GitHub](/Checks/PWR040)
+* [PWR040 examples](../PWR040)
 
 ### References
 
-* [Loop tiling](/Glossary/Loop-tiling.md)
+* [Loop tiling](../../Glossary/Loop-tiling.md)
 
-* [Locality of reference](/Glossary/Locality-of-reference.md)
+* [Locality of reference](../../Glossary/Locality-of-reference.md)
 
-* [Row-major and column-major order](/Glossary/Row-major-and-column-major-order.md)
+* [Row-major and column-major order](../../Glossary/Row-major-and-column-major-order.md)
 
-* [Memory access pattern](/Glossary/Memory-access-pattern.md)
+* [Memory access pattern](../../Glossary/Memory-access-pattern.md)

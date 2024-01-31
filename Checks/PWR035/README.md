@@ -2,21 +2,21 @@
 
 ### Issue
 
-[Non-consecutive array access](/Glossary/Memory-access-pattern.md) may impact
+[Non-consecutive array access](../../Glossary/Memory-access-pattern.md) may impact
 performance.
 
 ### Actions
 
 Consider using techniques like loop fusion,
-[loop interchange](/Glossary/Loop-interchange.md),
-[loop tiling](/Glossary/Loop-tiling.md)
+[loop interchange](../../Glossary/Loop-interchange.md),
+[loop tiling](../../Glossary/Loop-tiling.md)
 or changing the data layout to avoid non-consecutive access in hot loops.
 
 ### Relevance
 
 Accessing an array in a non-consecutive order is less efficient than accessing
 consecutive positions because the latter maximises
-[locality of reference](/Glossary/Locality-of-reference.md).
+[locality of reference](../../Glossary/Locality-of-reference.md).
 
 ### Code example
 
@@ -38,14 +38,14 @@ void example(float **a, unsigned rows, unsigned cols) {
 
 ### Related resources
 
-* [PWR035 examples at GitHub](/Glossary/PWR035)
+* [PWR035 examples](../PWR035)
 
 ### References
 
-* [Memory access pattern](/Glossary/Memory-access-pattern.md) (non-consecutive array access)
+* [Memory access pattern](../../Glossary/Memory-access-pattern.md) (non-consecutive array access)
 
-* [Locality of reference](/Glossary/Locality-of-reference.md)
+* [Locality of reference](../../Glossary/Locality-of-reference.md)
 
-* [Loop interchange](/Glossary/Loop-interchange.md)
+* [Loop interchange](../../Glossary/Loop-interchange.md)
 
-* [Loop tiling](/Glossary/Loop-tiling.md)
+* [Loop tiling](../../Glossary/Loop-tiling.md)

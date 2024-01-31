@@ -10,7 +10,7 @@ vectorization.
 There are several ways to fix this:
 
 * Use techniques like loop interchange to increase the loop trip count of the
-innermost loop (read more [here](/Checks/PWR019/README.md)).
+innermost loop (read more [here](../PWR019/README.md)).
 
 * Disable vectorization of the loop. The portable way to do it is though
 `#pragma omp simd if(simd:0)`, however, this is a recent extension of OpenMP and
@@ -24,7 +24,7 @@ of the different trip counts.
 
 ### Relevance
 
-The main assumption of [vectorization](/Glossary/Vectorization.md) is that the
+The main assumption of [vectorization](../../Glossary/Vectorization.md) is that the
 same operation is applied to a vector of data instead of to a single piece of
 data. The size of the vector is fixed, and it is often the case that the size of
 the data set is not an exact multiple of the vector size. In this case, in
@@ -42,4 +42,4 @@ known at compile time do not have this issue.
 
 ### Related resources
 
-* [PWR019: Consider interchanging loops to favor vectorization by maximizing inner loop's trip count](/Checks/PWR019/README.md)
+* [PWR019: Consider interchanging loops to favor vectorization by maximizing inner loop's trip count](../PWR019/README.md)

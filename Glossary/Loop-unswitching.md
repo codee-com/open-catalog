@@ -47,7 +47,7 @@ false.
 Compilers can do loop unswitching automatically, under following conditions:
 
 * The condition is loop invariant: although seemingly trivial, in the presence of
-[pointer aliasing](/Glossary/Pointer-aliasing.md), the compiler can omit this
+[pointer aliasing](Pointer-aliasing.md), the compiler can omit this
 optimization.
 
 * There is a limited number of conditions to unswitch: for each condition value,

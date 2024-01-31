@@ -3,8 +3,8 @@
 ### Issue
 
 Explicitly declare the scope of each variable used in a
-[OpenMP](/Glossary/OpenMP.md) `parallel` region to prevent an invalid
-[default scoping](/Glossary/Variable-scoping-in-the-context-of-OpenMP.md) being
+[OpenMP](../../Glossary/OpenMP.md) `parallel` region to prevent an invalid
+[default scoping](../../Glossary/Variable-scoping-in-the-context-of-OpenMP.md) being
 assigned to it.
 
 ### Actions
@@ -54,9 +54,9 @@ void example() {
 
 ### Related resources
 
-* [PWR004 examples at GitHub](/Checks/PWR004)
+* [PWR004 examples](../PWR004)
 
-* [PWR005: Disable default OpenMP scoping](/Checks/PWR005/README.md)
+* [PWR005: Disable default OpenMP scoping](../PWR005/README.md)
 
 * [OpenMP 4.5 Complete Specifications](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 November 2015 [last checked May 2019]

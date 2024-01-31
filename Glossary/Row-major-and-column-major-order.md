@@ -3,10 +3,10 @@
 In computing, row-major order and column-major order are methods for storing
 multidimensional arrays in memory.
 
-![Row-major and column-major memory layout diagram](/Glossary/Assets/Row-major-and-column-major-order.png)
+![Row-major and column-major memory layout diagram](Assets/Row-major-and-column-major-order.png)
 
 Memory layout, together with
-[memory access pattern](/Glossary/Memory-access-pattern.md), is very important
+[memory access pattern](Memory-access-pattern.md), is very important
 for program's performance.
 
 Best performance is obtained when the layout matches the memory access pattern,

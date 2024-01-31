@@ -3,7 +3,7 @@
 ### Issue
 
 OpenMP teams should be used to distribute work
-[offloaded to the GPU](/Glossary/Offloading.md).
+[offloaded to the GPU](../../Glossary/Offloading.md).
 
 ### Actions
 
@@ -79,7 +79,7 @@ for (size_t i = 0; i < m; i++) {
 
 ### Related resources
 
-* [PWR009 examples at GitHub](/Checks/PWR009)
+* [PWR009 examples](../PWR009)
 
 * [OpenMP 4.5 Complete Specifications](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 November 2015 [last checked June 2020]

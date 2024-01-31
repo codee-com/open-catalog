@@ -43,11 +43,11 @@ float example(float a, float b, float c) {
 
 ### Related resources
 
-* [PWR046 examples at GitHub](/Checks/PWR046)
+* [PWR046 examples](../PWR046)
 
 ### References
 
-* [Strength reduction](/Glossary/Strength-reduction.md)
+* [Strength reduction](../../Glossary/Strength-reduction.md)
 
 * [IEEE Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_math.html#:~:text=IEEE%20754%20specifies%20exactly%20the,defined%20by%20the%20IEEE%20standard)
 

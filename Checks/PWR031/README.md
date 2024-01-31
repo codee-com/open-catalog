@@ -4,7 +4,7 @@
 
 The `pow` mathematical function is computationally expensive and in many cases
 can be replaced by
-[faster mathematical operations](/Glossary/Strength-reduction.md).
+[faster mathematical operations](../../Glossary/Strength-reduction.md).
 
 ### Actions
 
@@ -52,11 +52,11 @@ void example(float *a, float x) {
 
 ### Related resources
 
-* [PWR031 examples at GitHub](/Checks/PWR031)
+* [PWR031 examples](../PWR031)
 
 ### References
 
-* [Strength reduction](/Glossary/Strength-reduction.md)
+* [Strength reduction](../../Glossary/Strength-reduction.md)
 
 * [IEEE Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_math.html#:~:text=IEEE%20754%20specifies%20exactly%20the,defined%20by%20the%20IEEE%20standard)
 

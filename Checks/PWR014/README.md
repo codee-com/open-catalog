@@ -61,7 +61,7 @@ void example() {
 
 ### Related resources
 
-* [PWR014 examples at GitHub](/Checks/PWR014)
+* [PWR014 examples](../PWR014)
 
 ### References
 

@@ -51,9 +51,9 @@ void foo() {
 
 ### Related resources
 
-* [PWD005 examples at GitHub](/Checks/PWD005)
+* [PWD005 examples](../PWD005)
 
-* [PWR015: Avoid copying unnecessary array elements to the GPU](/Checks/PWR015/README.md)
+* [PWR015: Avoid copying unnecessary array elements to the GPU](../PWR015/README.md)
 
 * [OpenMP 4.5 Complete Specifications](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 November 2015 [last checked May 2019]

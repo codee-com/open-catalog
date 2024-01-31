@@ -3,8 +3,8 @@
 ### Issue
 
 A loop containing the
-[sparse reduction](/Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
-pattern can be sped up using [multithreading](/Glossary/Multithreading.md).
+[sparse reduction](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
+pattern can be sped up using [multithreading](../../Glossary/Multithreading.md).
 
 ### Actions
 
@@ -15,7 +15,7 @@ directives.
 
 ### Relevance
 
-Executing a loop using [multithreading](/Glossary/Multithreading.md) on the CPU
+Executing a loop using [multithreading](../../Glossary/Multithreading.md) on the CPU
 is one of the ways to speed it up. Multicore CPUs are widely used in modern
 computers, but writing multithreaded code is not straightforward. Essentially,
 the programmer must explicitly specify how to execute the loop in vector mode on
@@ -74,10 +74,10 @@ void example(double *A, int *nodes, int n) {
 
 ### Related resources
 
-* [PWR052 examples at GitHub](/Checks/PWR052)
+* [PWR052 examples](../PWR052)
 
 ### References
 
-* [Sparse reduction pattern](/Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
+* [Sparse reduction pattern](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
 
-* [Multithreading](/Glossary/Multithreading.md)
+* [Multithreading](../../Glossary/Multithreading.md)

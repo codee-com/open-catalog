@@ -50,7 +50,7 @@ void foo() {
 
 ### Related resources
 
-* [PWD004 examples at GitHub](/Checks/PWD004)
+* [PWD004 examples](../PWD004)
 
 ### References
 

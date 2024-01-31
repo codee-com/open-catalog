@@ -3,7 +3,7 @@
 ### Issue
 
 Using countable while loops instead of for loops may inhibit
-[vectorization](/Glossary/Vectorization.md).
+[vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 
@@ -12,7 +12,7 @@ Rewrite the loop so that its number of iterations can be counted.
 ### Relevance
 
 Many loops can benefit from automatic compiler
-[vectorization](/Glossary/Vectorization.md). However, `while` loops are more
+[vectorization](../../Glossary/Vectorization.md). However, `while` loops are more
 difficult to vectorize than `for` loops. For a compiler to be able to vectorize
 a loop, certain requirements need to be met. One of them being that the loop is
 countable, i.e. the number of iterations is known before entering the loop so
@@ -52,10 +52,10 @@ int example(int *A) {
 
 ### Related resources
 
-* [PWR017 examples at GitHub](/Checks/PWR017)
+* [PWR017 examples](../PWR017)
 
 ### References
 
-* [Vectorization](/Glossary/Vectorization.md)
+* [Vectorization](../../Glossary/Vectorization.md)
 
-* [OpenMP canonical form](/Glossary/OpenMP-canonical-form.md)
+* [OpenMP canonical form](../../Glossary/OpenMP-canonical-form.md)

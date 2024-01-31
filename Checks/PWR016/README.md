@@ -3,7 +3,7 @@
 ### Issue
 
 Using separate arrays instead of an Array-of-Structs is recommended to maximize
-[locality of reference](/Glossary/Locality-of-reference.md).
+[locality of reference](../../Glossary/Locality-of-reference.md).
 
 ### Actions
 
@@ -59,7 +59,7 @@ void example() {
 
 ### Related resources
 
-* [PWR016 examples at GitHub](/Glossary/PWR016)
+* [PWR016 examples](../PWR016)
 
 ### References
 

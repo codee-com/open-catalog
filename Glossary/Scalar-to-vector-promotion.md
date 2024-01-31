@@ -2,9 +2,9 @@
 
 Scalar to vector promotion is an optimization technique used to enable further
 optimization techniques, notably
-[loop interchange](/Glossary/Loop-interchange.md) and
-[vectorization](/Glossary/Vectorization.md) through
-[loop fission](/Glossary/Loop-fission.md). In this technique, a temporary scalar
+[loop interchange](Loop-interchange.md) and
+[vectorization](Vectorization.md) through
+[loop fission](Loop-fission.md). In this technique, a temporary scalar
 is converted to a vector whose value is preserved between loop iterations, with
 the goal to enable loop fission needed to extract the statements preventing
 optimizations outside of the critical loop.
@@ -13,7 +13,7 @@ optimizations outside of the critical loop.
 
 In the case of loop interchange, scalar to vector promotion is performed to
 extract the statements blocking
-[perfect loop nesting](/Glossary/Perfect-loop-nesting.md). For example:
+[perfect loop nesting](Perfect-loop-nesting.md). For example:
 
 ```c
 for (int i = 0; i < n; i++) {
@@ -77,7 +77,7 @@ for (int i = 0; i < n; i++) {
 ```
 
 The above loop is unvectorizable because of the
-[loop-carried dependencies](/Glossary/Loop-carried-dependencies.md) However, it
+[loop-carried dependencies](Loop-carried-dependencies.md) However, it
 can be split into a vectorizable (line 2) and non-vectorizable (line 3-6) parts.
 
 To perform the split, however, we need to maintain the value of variable `s`

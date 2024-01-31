@@ -3,8 +3,8 @@
 ### Issue
 
 The loop containing the
-[forall pattern](/Glossary/Patterns-for-performance-optimization/Forall.md)
-can be sped up by [offloading it to an accelerator](/Glossary/Offloading.md).
+[forall pattern](../../Glossary/Patterns-for-performance-optimization/Forall.md)
+can be sped up by [offloading it to an accelerator](../../Glossary/Offloading.md).
 
 ### Actions
 
@@ -66,10 +66,10 @@ void example(double *D, double *X, double *Y, int n, double a) {
 
 ### Related resources
 
-* [PWR055 examples at GitHub](/Checks/PWR055)
+* [PWR055 examples](../PWR055)
 
 ### References
 
-* [Forall pattern](/Glossary/Patterns-for-performance-optimization/Forall.md)
+* [Forall pattern](../../Glossary/Patterns-for-performance-optimization/Forall.md)
 
-* [Offloading](/Glossary/Offloading.md)
+* [Offloading](../../Glossary/Offloading.md)

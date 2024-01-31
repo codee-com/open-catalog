@@ -2,7 +2,7 @@
 
 ### Issue
 
-[Loop-invariant conditional](/Glossary/Loop-unswitching.md) can be moved out of
+[Loop-invariant conditional](../../Glossary/Loop-unswitching.md) can be moved out of
 the loop to save computations.
 
 ### Action
@@ -21,7 +21,7 @@ loop for each possible result of the conditional. In these scenarios, the code
 may be larger but it should also become faster.
 
 >**Note**  
->This optimization is called [loop unswitching](/Glossary/Loop-unswitching.md)
+>This optimization is called [loop unswitching](../../Glossary/Loop-unswitching.md)
 >and the compilers can do it automatically in simple cases. However, in more
 >complex cases, the compiler will omit this optimization and therefore it is
 >beneficial to do it manually..
@@ -57,11 +57,11 @@ void example(int addTwo) {
 
 ### Related resources
 
-* [PWR033 examples at GitHub](/Checks/PWR033)
+* [PWR033 examples](../PWR033)
 
 ### References
 
-* [Strength reduction](/Glossary/Strength-reduction.md)
+* [Strength reduction](../../Glossary/Strength-reduction.md)
 
 * [IEEE Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_math.html#:~:text=IEEE%20754%20specifies%20exactly%20the,defined%20by%20the%20IEEE%20standard)
 

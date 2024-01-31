@@ -3,8 +3,8 @@
 ### Issue
 
 Inefficient
-[matrix access pattern](/Glossary/Row-major-and-column-major-order.md) detected
-that can be improved through [loop interchange](/Glossary/Loop-interchange.md).
+[matrix access pattern](../../Glossary/Row-major-and-column-major-order.md) detected
+that can be improved through [loop interchange](../../Glossary/Loop-interchange.md).
 
 ### Actions
 
@@ -12,24 +12,24 @@ Interchange the inner and outer loops in the loop nest.
 
 ### Relevance
 
-Inefficient [memory access pattern](/Glossary/Memory-access-pattern.md) and low
-[locality of reference](/Glossary/Locality-of-reference.md) are among the main
+Inefficient [memory access pattern](../../Glossary/Memory-access-pattern.md) and low
+[locality of reference](../../Glossary/Locality-of-reference.md) are among the main
 reasons for low performance on modern computer systems. Matrices are
-[stored in a row-major order in C and column-major order in Fortran](/Glossary/Row-major-and-column-major-order.md).
+[stored in a row-major order in C and column-major order in Fortran](../../Glossary/Row-major-and-column-major-order.md).
 Iterating over them column-wise (in C) and row-wise (in Fortran) is inefficient,
 because it uses the memory subsystem suboptimally.
 
 Nested loops that iterate over matrices inefficiently can be optimized by
 applying loop interchange. Using loop interchange, the inefficient matrix access
 pattern is replaced with a more efficient one. Often, loop interchange enables
-[vectorization](/Glossary/Vectorization.md) of the innermost loop which
+[vectorization](../../Glossary/Vectorization.md) of the innermost loop which
 additionally improves performance.
 
 >**Note**  
 >Loop interchange can be performed only on perfectly nested loops, i.e. on loops
 >where all the statements are in the body of the innermost loop. If the loops
 >are not perfectly nested, it is often possible to make them
->[perfectly nested through refactoring](/Glossary/Perfect-loop-nesting.md).
+>[perfectly nested through refactoring](../../Glossary/Perfect-loop-nesting.md).
 
 ### Code example
 
@@ -66,4 +66,4 @@ void example(double **A, int n) {
 
 ### Related resources
 
-* [Source code examples and solutions](/Checks/PWR039)
+* [Source code examples and solutions](../PWR039)

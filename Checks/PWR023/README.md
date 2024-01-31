@@ -3,8 +3,8 @@
 ### Issue
 
 Use `restrict` for pointer function parameters to hint the compiler that there
-is no [pointer aliasing](/Glossary/Pointer-aliasing.md) preventing
-[vectorization](/Glossary/Vectorization.md).
+is no [pointer aliasing](../../Glossary/Pointer-aliasing.md) preventing
+[vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 

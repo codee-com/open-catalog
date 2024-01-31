@@ -22,9 +22,9 @@ full advantage of the hardware cache memory and compiler optimizations may be
 disabled.
 
 Loop fission enables more efficient code by taking advantage of
-[memory efficiency](/Glossary/Locality-of-reference.md),
-[vectorization](/Glossary/Vectorization.md) and
-[offloading](/Glossary/Offloading.md) to accelerators.
+[memory efficiency](Locality-of-reference.md),
+[vectorization](Vectorization.md) and
+[offloading](Offloading.md) to accelerators.
 
 >**Note**  
 >Loop fission introduces overheads (e.g. loop control increment and branching),
