@@ -18,14 +18,14 @@ allowed. However, loop invariant conditionals can be extracted outside of the
 loop to facilitate vectorization. Therefore, it is often good to extract
 invariant conditional statements out of vectorizable loops to increase
 performance. A conditional whose expression evaluates to the same value for all
-iterations (i.e. is a loop-invariant) can be safely moved outside the loop since
+iterations (i.e., a loop-invariant) can be safely moved outside the loop since
 it will always be either true or false.
 
 >**Note**  
->This optimization is called [loop unswitching](../../Glossary/Loop-unswitching.md)
->and the compilers can do it automatically in simple cases. However, in more
->complex cases, the compiler will omit this optimization and therefore it is
->beneficial to do it manually.
+>This optimization is called
+>[loop unswitching](../../Glossary/Loop-unswitching.md) and the compilers can do
+>it automatically in simple cases. However, in more complex cases, the compiler
+>will omit this optimization and therefore it is beneficial to do it manually.
 
 ### Code example
 
@@ -36,7 +36,7 @@ may also make the vectorization of the loop more difficult for some compilers.
 ```c
 int example(int *A, int n) {
   int total = 0;
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; ++i) {
     if (n < 10) {
       total++;
     }
@@ -54,11 +54,11 @@ follows:
 int example(int *A, int n) {
   int total = 0;
   if (n < 10) {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
       A[i] = ++total;
     }
   } else {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
       A[i] = total;
     }
   }
