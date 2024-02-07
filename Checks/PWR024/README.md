@@ -33,8 +33,8 @@ void example(int **A, int n, int m) {
 }
 ```
 
-This can be easily fixed by removing the `j` increment and calculating it as a
-function of variable `i`.
+This can be easily fixed by moving the iterator initializer inside the for
+statement:
 
 ```c
 void example(int **A, int n, int m) {
