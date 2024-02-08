@@ -21,6 +21,12 @@ if(NOT CMAKE_Fortran_COMPILER)
 endif()
 option(OCB_ENABLE_Fortran "Enable benchmarking on Fortran codes" ${OCB_ENABLE_Fortran_default})
 
+# For better reporting, save the compiler identifications in the cache
+set(OCB_C_COMPILER_ID ${CMAKE_C_COMPILER_ID} CACHE STRING "" FORCE)
+set(OCB_C_COMPILER_VERSION ${CMAKE_C_COMPILER_VERSION} CACHE STRING "" FORCE)
+set(OCB_Fortran_COMPILER_ID ${CMAKE_Fortran_COMPILER_ID} CACHE STRING "" FORCE)
+set(OCB_Fortran_COMPILER_VERSION ${CMAKE_Fortran_COMPILER_VERSION} CACHE STRING "" FORCE)
+
 # Enable all compiler warning
 if(MSVC)
   add_compiler_flags_if_supported("/W4")
