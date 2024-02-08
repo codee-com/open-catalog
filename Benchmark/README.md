@@ -6,6 +6,7 @@
 - A C++ compiler with C++11 support
 - A Fortran 90 compiler (optional if you want to run the Fortran benchmarks)
 - Google benchmark library version 1.5.3 or above (optional)
+- Python 3 (optional if you want to use the benchmark script)
 
 ## Instructions to run the benchmarks
 
@@ -14,7 +15,7 @@ to run all the available benchmarks, or run-<CHECK ID> to run a specific one.
 
 Or simply run the following command to do it automatically:
 ```
-./run-benchmarks.sh
+./run-benchmarks.py
 ```
 
 ## CMake options
