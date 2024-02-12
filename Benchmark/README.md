@@ -18,6 +18,13 @@ Or simply run the following command to do it automatically:
 ./run-benchmarks.py
 ```
 
+## Benchmarking tips
+
+In order to produce noiseless and more consistent results, you can take
+different actions that vary depending on your OS. For Linux, we recommend the
+[LLVM benchmarking tips](https://llvm.org/docs/Benchmarking.html) and the
+[Google Benchmark tips](https://github.com/google/benchmark/blob/main/docs/reducing_variance.md).
+
 ## CMake options
 
 - **`OCB_ENABLE_C`**:BOOL
