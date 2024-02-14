@@ -1,0 +1,20 @@
+This product includes software developed by third parties under permissive
+licenses that allow for redistribution, either under the terms of the License
+or under their own terms.
+
+We clearly identify all third-party software included within this product by
+either:
+
+  1. Placing it in a separate directory structure, with a `LICENSE` or
+     `LICENSE.txt` file at its root, detailing the applicable licensing
+     conditions.
+
+  2. Including the applicable licensing conditions at the top of each file.
+
+This notice serves to acknowledge the contributions of these third-party
+developers to the open source community and to express our gratitude for their
+work. We are committed to complying with all applicable licenses and respecting
+the intellectual property rights of others. We take this responsibility
+seriously and encourage anyone who believes there has been a lapse in proper
+attribution or a violation of licensing terms to contact us. We are dedicated
+to resolving such issues in a timely and respectful manner.
