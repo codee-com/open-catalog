@@ -90,10 +90,72 @@ void example() {
 
 #### Fortran
 
->**Note**  
->The Fortran programming language does not allow to declare variables inside
->loops, in the statements of the loop body. In modern Fortran there are some
->circumstances where this is allowed, such as `do concurrent` statements.
+Fortran 2008 introduced the `BLOCK` construct. This feature allows to organize
+code within larger programs by grouping sections together. Conveniently,
+`BLOCK` supports new variable declarations within those sections.
+
+In the following code, the subroutine `example` declares a variable `t` used in
+each iteration of the loop to hold a value that is then assigned to the array
+`result`. The variable `t` is not used outside of the loop.
+
+```f90
+subroutine example()
+  implicit none
+  integer :: t
+  integer, dimension(10) :: result
+  integer :: i
+
+  do i = 1, 10
+    t = i + 1
+    result(i) = t
+  end do
+end subroutine example
+```
+
+However, the smallest possible scope for the variable `t` is within the loop
+body. The resulting code with the `BLOCK` construct would be as follows:
+
+```f90
+subroutine example()
+  implicit none
+  integer, dimension(10) :: result
+  integer :: i
+
+  do i = 1, 10
+    block
+      integer :: t
+      t = i + 1
+      result(i) = t
+    end block
+  end do
+end subroutine example
+```
+
+From the perspective of parallel programming, moving the declaration of
+variable `t` to the smallest possible scope helps to prevent potential race
+conditions. For example, in the OpenMP parallel implementation shown below
+there is no need to use the clause `private(t)`, as the declaration scope of
+`t` inherently dictates that it is private to each thread. This avoids
+potential race conditions because each thread modifies its own copy of the
+variable `t`.
+
+```f90
+subroutine example()
+  implicit none
+  integer, dimension(10) :: result
+  integer :: i
+
+  !$omp parallel do default(none) shared(result) private(i)
+  do i = 1, 10
+    block
+      integer :: t
+      t = i + 1
+      result(i) = t
+    end block
+  end do
+  !$omp end parallel do
+end subroutine example
+```
 
 ### Related resources
 
