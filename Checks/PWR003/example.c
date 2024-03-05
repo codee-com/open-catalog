@@ -1,29 +1,22 @@
 // PWR003: Explicitly declare pure functions
 
-#ifdef __GNUC__
-  #define PURE __attribute__((const))
-#else
-  #define PURE
-#endif
-
-/* PURE */ int example_pure(int a, int b) {
+// Depends only on its arguments
+// No side effects
+__attribute__((const)) int example_const(int a, int b) {
   return a + b;
 }
 
-int example_impure(int a, int *b) {
-  *b = a + 1;
-  return a + *b;
+int c = 1;
+
+// Depends on external data (c)
+// No side effects
+__attribute__((pure)) int example_pure(int a) {
+  return a + c;
 }
 
-void example() {
-  int result[10];
-  int b = 1;
-
-  for (int i = 0; i < 10; i++) {
-    result[i] = example_pure(i, b); // No side effects
-  }
-
-  for (int i = 0; i < 10; i++) {
-    result[i] = example_impure(i, &b); // Side effects on variable t
-  }
+// Depends on external data (c)
+// Modifies external data (c)
+int example_impure(int a) {
+  c += 1;
+  return a + c;
 }

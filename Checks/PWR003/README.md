@@ -2,82 +2,137 @@
 
 ### Issue
 
-Mark pure functions as such to allow for optimizations. In computer
-programming, a pure function is a function that has the following properties:
+Mark functions that do not produce side effects as pure to enable compiler
+optimizations.
 
-1. Its only side effect is returning a value. It does not modify any memory
-except for local variables.
-
-2. Its return value is the same for the same arguments. It does not depend on
-any system resource that may change between calls.
-
-Some programming languages provide built-in keywords to declare properties
-about functions, such as Fortran `pure` keyword. Others need extensions
-implemented by compilers/tools, for instance the GNU C compiler `const`
-attribute (note that it also has a `pure` attribute not compliant with the
-definition presented here).
+In computer programming, a function can be considered pure if **its only side
+effect is returning a value, without modifying any memory outside its own local
+scope**. Some programming languages provide built-in keywords to declare these
+properties, whereas others need compiler extensions.
 
 ### Actions
 
-Add the appropriate annotations to your code explicitly. For instance:
+Add the appropriate annotations to the function. For instance:
 
-* In the GCC compiler for the C programming language, use the keyword
-`__attribute__((const))`.
+* The GCC compiler for C provides the extension `__attribute__((pure))`.
+
+> Tip: GCC's `__attribute__((const))` goes a step further by stating that the
+> function's return value depends solely on the values of its input arguments,
+> thus not being affected by any system resource that may change between calls;
+> e.g., depending on global data, receiving a pointer.
+
+* The Clang compiler for C supports both GCC's extensions.
+
+* The ARM compiler for C supports both GCC's extensions.
+
+> Warning: This compiler also provides the `__pure` keyword, but it is
+> equivalent to `__attribute__((const))`!
 
 * In the Fortran programming language, use the built-in keyword `pure`.
 
 ### Relevance
 
-Explicitly declaring properties about functions called in the code provides
-valuable hints that can enable optimizations or simplify analysis. Determining
-whether a function is pure can be costly for a developer and even infeasible
-for automated analysis tools.
+Explicitly declaring properties about the functions called in the code provides
+valuable hints that can ease data flow analysis and optimizations for both the
+compiler and the developer. Determining whether a function is pure can be a
+challenging and time-consuming task, especially in complex codebases.
 
-One of the biggest challenges of parallel programming is to do data scoping
-correctly and decide on how to manage all the variables of the code properly.
-Data flow analysis can be simplified through the identification of pure
-functions, which are free of side effects. Thus, declaring functions as pure
-states that invoking those functions won't introduce race conditions, which
-facilitates analysis both to developers and compilers/tools.
+For that matter, one of the biggest challenges of parallel programming is the
+correct management of data scoping; i.e., how to handle all the variables in
+the code effectively, to avoid common pitfalls like race conditions. Insights
+such as annotating pure functions can be incredibly helpful in this context.
 
 ### Code example
 
-The example C code shown below has a function `example` with calls to two
-functions. On the one hand, `example_pure` is a pure function because it is
-free of side effects other than the returned value. On the other hand,
-`example_impure` is not pure because it performs write operations on the memory
-locations written through a pointer-type argument of the function, which means
-that it has side effects.
+#### C
+
+The C code shown below demonstrates `const`, `pure`, and "normal" functions:
 
 ```c
-#ifdef __GNUC__
-  #define PURE __attribute__((const))
-#else
-  #define PURE
-#endif
-
-PURE int example_pure(int a, int b) {
+// Depends only on its arguments
+// No side effects
+__attribute__((const)) int example_const(int a, int b) {
   return a + b;
 }
 
-int example_impure(int a, int *b) {
-  *b = a + 1;
-  return a + *b;
+int c = 1;
+
+// Depends on external data (c)
+// No side effects
+__attribute__((pure)) int example_pure(int a) {
+  return a + c;
 }
 
-void example() {
-  int result[10];
-  int b = 1;
-
-  for (int i = 0; i < 10; i++) {
-    result[i] = example_pure(i, b); // No side effects
-  }
-
-  for (int i = 0; i < 10; i++) {
-    result[i] = example_impure(i, &b); // Side effects on variable b
-  }
+// Depends on external data (c)
+// Modifies external data (c)
+int example_impure(int a) {
+  c += 1;
+  return a + c;
 }
 ```
+
+* `const` function:
+  * Depends only on `a` and `b`. If successive calls are made with the same `a`
+    and `b` values, the output will not change.
+  * Returns a value without modifying any data outside of the function.
+
+* `pure` function:
+  * Depends on `c`, a global variable whose value can be modified between
+    successive calls to the function by other parts of the program. Even if
+    successive calls are made with the same `a` value, the output can differ
+    depending on the state of `c`.
+  * Returns a value without modifying any data outside of the function.
+
+* "Normal" function:
+  * Depends on `c`, a global variable. This restricts the function to be
+    `pure`, at most.
+  * However, the function also modifies `c`, memory outside of its scope, thus
+    leading to a "normal" function.
+
+In the case of the `pure` and "normal" functions, it is equivalent that they
+access a global variable, or a pointer received as an argument, as it is in
+either case memory outside the scope of the function.
+
+#### Fortran
+
+The Fortran code shown below demonstrates `pure` and "normal" functions:
+
+```f90
+module example_module
+   implicit none
+   integer :: c = 1
+contains
+   ! Depends on external data (c)
+   ! No side effects
+   pure function example_pure(a) result(res)
+      integer, intent(in) :: a
+      integer :: res
+      res = a + c
+   end function example_pure
+
+   ! Depends on external data (c)
+   ! Modifies external data (c)
+   function example_impure(a) result(res)
+      integer, intent(in) :: a
+      integer :: res
+      c = c + 1
+      res = a + c
+   end function example_impure
+end module example_module
+```
+
+* `pure` function:
+  * Depends on `c`, a public variable whose value can be modified between
+    successive calls to the function by other parts of the program. Even if
+    successive calls are made with the same `a` value, the output can be
+    different depending on the state of `c`.
+  * Returns a value without modifying any data outside of the function.
+
+* "Normal" function:
+  * Depends on `c`, a public variable. This restricts the function to be
+    `pure`, at most.
+  * However, the function also modifies `c`, memory outside of its scope, thus
+    leading to a "normal" function.
 
 ### Related resources
 
@@ -90,12 +145,14 @@ void example() {
 * [Side effects of function
   calls](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
 
-* [GNU Manual: 6.30 Declaring Attributes of
-Functions](https://gcc.gnu.org/onlinedocs/gcc-8.1.0/gcc/Common-Function-Attributes.html#Common-Function-Attributes)
-[last checked May 2019]
+* [GCC documentation: pure
+  attribute](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-pure-function-attribute)
 
-* [XL Fortran for Linux, V14.1 - Language Reference: Pure
-  procedures](https://www.ibm.com/support/knowledgecenter/SSAT4T_14.1.0/com.ibm.xlf141.linux.doc/language_ref/pure.html)
+* [Clang documentation: pure
+  attribute](https://clang.llvm.org/docs/AttributeReference.html#pure)
 
-* [PURE | Intel® Fortran Compiler 19.0 Developer Guide and
-  Reference](https://software.intel.com/en-us/fortran-compiler-developer-guide-and-reference-pure)
+* [ARM Compiler toolchain documentation: pure
+  attribute](https://developer.arm.com/documentation/dui0491/i/Compiler-specific-Features/--attribute----pure---function-attribute)
+
+* [Fortran pure
+  procedures](https://en.wikibooks.org/wiki/Fortran/Fortran_procedures_and_functions#Pure_procedures)
