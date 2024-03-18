@@ -1,3 +1,4 @@
+add_benchmark(PWR003)
 add_benchmark(PWR022)
 add_benchmark(PWR032)
 add_benchmark(PWR039)
