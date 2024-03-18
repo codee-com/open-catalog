@@ -35,3 +35,6 @@ OC_BENCHMARK("PWR003 C Example", CExampleBench);
 OC_BENCHMARK("PWR003 C Improved", CImprovedBench);
 
 #endif
+
+// Help needed, we weren't able to find a `pure` benchmark for Fortran that achieved speedup
+// See https://github.com/codee-com/open-catalog/pull/11/ for more details
