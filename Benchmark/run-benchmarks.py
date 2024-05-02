@@ -198,11 +198,16 @@ def main():
                 encoding="UTF-8",
             )
     else:
-        with nullcontext(sys.stdout) if str(args.out_csv) == "-" else open(
-            args.out_csv, "w", newline=""
+        with (
+            nullcontext(sys.stdout)
+            if str(args.out_csv) == "-"
+            else open(args.out_csv, "w", newline="")
         ) as csvfile:
             run_output_csv(
-                csvfile, benchmarks_to_run, args.omit_csv_header, get_compiler_info(args.build)
+                csvfile,
+                benchmarks_to_run,
+                args.omit_csv_header,
+                get_compiler_info(args.build),
             )
 
 
