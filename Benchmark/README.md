@@ -15,7 +15,7 @@ to run all the available benchmarks, or run-<CHECK ID> to run a specific one.
 
 Or simply run the following command to do it automatically:
 ```
-./run-benchmarks.py
+./run-benchmarks.py [--check <id>]
 ```
 
 ### Advanced execution
