@@ -47,7 +47,7 @@ def get_language_from_benchmark(benchmark_name):
     sys.exit("Unexpected benchmark language")
 
 
-def run_output_csv(csvfile, build_dir, omit_header, compiler_info):
+def run_output_csv(csvfile, benchmarks, omit_header, compiler_info):
     csvwriter = csv.DictWriter(
         csvfile,
         [
@@ -67,7 +67,7 @@ def run_output_csv(csvfile, build_dir, omit_header, compiler_info):
     if not omit_header:
         csvwriter.writeheader()
     context_info = None
-    for benchmark in (build_dir / Path("bin")).iterdir():
+    for benchmark in benchmarks:
         result = json.loads(
             subprocess.run(
                 [benchmark, "--benchmark_format=json"],
@@ -160,6 +160,7 @@ def parse_args():
         type=Path,
         help="the build directory for the benchmark artifacts",
     )
+    parser.add_argument("--check", help="execute only the given check's benchmark")
     parser.add_argument("--out-csv", type=Path, help="output the results to a CSV")
     parser.add_argument(
         "--omit-csv-header",
@@ -178,16 +179,30 @@ def main():
         args.build.mkdir()
     # CMake 3.10 doesn't support the -B flag
     echorun(["cmake", f"{SCRIPT_DIR}", *args.cmake_args], cwd=args.build)
+    echorun(["cmake", "--build", f"{args.build}", "--", "all"], check=True)
+
+    benchmarks_to_run = list((args.build / Path("bin")).iterdir())
+    if args.check:
+        benchmarks_to_run = [
+            benchmark for benchmark in benchmarks_to_run if benchmark.name == args.check
+        ]
+        if not benchmarks_to_run:
+            print(f"error: no benchmarks matching {args.check}", file=sys.stderr)
+            exit(1)
 
     if not args.out_csv:
-        echorun(["cmake", "--build", f"{args.build}", "--", "run"], check=True)
+        for benchmark in benchmarks_to_run:
+            subprocess.run(
+                [benchmark],
+                check=True,
+                encoding="UTF-8",
+            )
     else:
-        echorun(["cmake", "--build", f"{args.build}", "--", "all"], check=True)
         with nullcontext(sys.stdout) if str(args.out_csv) == "-" else open(
             args.out_csv, "w", newline=""
         ) as csvfile:
             run_output_csv(
-                csvfile, args.build, args.omit_csv_header, get_compiler_info(args.build)
+                csvfile, benchmarks_to_run, args.omit_csv_header, get_compiler_info(args.build)
             )
 
 
