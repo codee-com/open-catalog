@@ -4,6 +4,8 @@
 extern "C" {
 void example(const int N, const double *masses, double *weights);
 void solution(const int N, const double *masses, double *weights);
+void example_f(int N, double *masses, double *weights);
+void solution_f(int N, double *masses, double *weights);
 }
 
 // Size adjusted to fit execution on micro-seconds
@@ -36,5 +38,31 @@ OC_BENCHMARK("PWR003 C Improved", CImprovedBench);
 
 #endif
 
-// Help needed, we weren't able to find a `pure` benchmark for Fortran that achieved speedup
-// See https://github.com/codee-com/open-catalog/pull/11/ for more details
+#if OCB_ENABLE_Fortran
+
+static void FortranExampleBench(benchmark::State &state) {
+  auto masses = OpenCatalog::CreateRandomVector<double>(N);
+  auto weights = OpenCatalog::CreateZeroVector<double>(N);
+
+  for (auto _ : state) {
+    example_f(N, masses.data(), weights.data());
+    benchmark::DoNotOptimize(weights);
+  }
+}
+
+static void FortranImprovedBench(benchmark::State &state) {
+  auto masses = OpenCatalog::CreateRandomVector<double>(N);
+  auto weights = OpenCatalog::CreateZeroVector<double>(N);
+
+  for (auto _ : state) {
+    solution_f(N, masses.data(), weights.data());
+    benchmark::DoNotOptimize(weights);
+  }
+}
+
+// The goal of these benchmarks is to demonstrate that the suggested code
+// modernization does not incur any performance penalty
+OC_BENCHMARK("PWR003 Fortran Example", FortranExampleBench);
+OC_BENCHMARK("PWR003 Fortran Improved", FortranImprovedBench);
+
+#endif
