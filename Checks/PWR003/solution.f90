@@ -13,26 +13,25 @@ contains
     real(kind=c_double) :: gravityOf
     integer(kind=c_int), intent(in) :: planet
 
-    select case (planet) 
-      case (mercury)
-        gravityOf = 3.7
-      case (venus)
-        gravityOf = 8.9
-      case (earth)
-        gravityOf = 9.8
-      case (mars)
-        gravityOf = 3.7
-      case (jupiter)
-        gravityOf = 23.1
-      case (saturn)
-        gravityOf = 9.0
-      case (uranus)
-        gravityOf = 8.7
-      case (neptune)
-        gravityOf = 11.0
-      case default
-        gravityOf = 0.0
-    end select
+    if (planet .eq. mercury) then
+      gravityOf = 3.7
+    else if (planet .eq. venus) then
+      gravityOf = 8.9
+    else if (planet .eq. earth) then
+      gravityOf = 9.8
+    else if (planet .eq. mars) then
+      gravityOf = 3.7
+    else if (planet .eq. jupiter) then
+      gravityOf = 23.1
+    else if (planet .eq. saturn) then
+      gravityOf = 9.0
+    else if (planet .eq. uranus) then
+      gravityOf = 8.7
+    else if (planet .eq. neptune) then
+      gravityOf = 11.0
+    else
+      gravityOf = 0.0
+    endif
   end function gravityOf
 end module gravitySolution
 
