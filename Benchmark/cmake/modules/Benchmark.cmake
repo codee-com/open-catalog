@@ -7,13 +7,22 @@ add_custom_target(run
 macro(add_benchmark CHECKID)
   set(files)
 
-  # Auto-compile all the codes in the check directory
+  # Auto-compile all the codes in the check directory; in particular:
+  #
+  #   - Prioritize benchmark-specific codes for the check, if available
+  #   - Otherwise, compile the usual code examples created for the README
   if (OCB_ENABLE_C)
-    file(GLOB c_files "${OCB_CHECKS_DIR}/${CHECKID}/*.c")
+    file(GLOB c_files "${OCB_CHECKS_DIR}/${CHECKID}/${OCB_CHECKS_BENCH_CODES_DIR}/*.c")
+    if(NOT c_files)
+      file(GLOB c_files "${OCB_CHECKS_DIR}/${CHECKID}/*.c")
+    endif()
     list(APPEND files ${c_files})
   endif()
   if (OCB_ENABLE_Fortran)
-    file(GLOB fortran_files "${OCB_CHECKS_DIR}/${CHECKID}/*.f90")
+    file(GLOB fortran_files "${OCB_CHECKS_DIR}/${CHECKID}/${OCB_CHECKS_BENCH_CODES_DIR}/*.f90")
+    if(NOT fortran_files)
+      file(GLOB fortran_files "${OCB_CHECKS_DIR}/${CHECKID}/*.f90")
+    endif()
     list(APPEND files ${fortran_files})
   endif()
 

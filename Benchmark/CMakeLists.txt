@@ -10,9 +10,11 @@ project(OpenCatalogBenchmark # OCB for short
 )
 
 # Define some useful variables
-set(OCB_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(OCB_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}")
-set(OCB_CHECKS_DIR "${OCB_SOURCE_DIR}/../Checks")
+set(OCB_SOURCE_DIR             "${CMAKE_CURRENT_SOURCE_DIR}")
+set(OCB_BINARY_DIR             "${CMAKE_CURRENT_BINARY_DIR}")
+set(OCB_CHECKS_DIR             "${OCB_SOURCE_DIR}/../Checks")
+# Each check may contain a directory for benchmark-specific codes
+set(OCB_CHECKS_BENCH_CODES_DIR "benchmark/")
 
 # Configure the project
 include(Config)
