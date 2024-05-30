@@ -1,6 +1,6 @@
 // PWR003: Explicitly declare pure functions
 
-extern double gravity(const int planetIdx);
+#include "gravity_impure.h"
 
 // Computes the weight of each object in a vector
 void example(const int N, const double *masses, double *weights) {
