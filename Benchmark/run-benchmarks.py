@@ -178,7 +178,7 @@ def main():
     if not args.build.exists():
         args.build.mkdir()
     # CMake 3.10 doesn't support the -B flag
-    echorun(["cmake", f"{SCRIPT_DIR}", *args.cmake_args], cwd=args.build)
+    echorun(["cmake", f"{SCRIPT_DIR}", *args.cmake_args], cwd=args.build, check=True)
     echorun(["cmake", "--build", f"{args.build}", "--", "all"], check=True)
 
     benchmarks_to_run = list((args.build / Path("bin")).iterdir())
