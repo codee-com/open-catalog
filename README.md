@@ -1,16 +1,23 @@
-# Open Catalog on best practices for performance
+# Open Catalog of Best Practices for Modernization and Optimization
 
 ## About
 
-This catalog is a collaborative effort to consolidate the collective wisdom of
-performance experts on the best practices for performance. It consist of a
-glossary and a list of checks for the C, C++ and Fortran programming languages.
+This Open Catalog is a collaborative effort to consolidate expert knowledge on
+best practices for modernizing and optimizing code written in C, C++, and
+Fortran programming languages. The Catalog consists of a comprehensive set of
+checks (rules) that describe specific issues in the source code and provide
+guidance on corrective actions, along with extensive documentation, example
+codes and references to additional reading resources.
 
 ## Benchmarks
 
-This catalog includes [a suite of microbenchmarks](Benchmark/README.md) that
-demonstrate the potential performance improvement that can be attained by
-applying the fixes that are suggested for each check.
+The Open Catalog includes [a suite of microbenchmarks](Benchmark/README.md)
+designed to demonstrate:
+
+- No performance degradation when implementing the modernization
+  recommendations.
+- Potential performance enhancements achievable through the optimization
+  recommendations.
 
 ## Checks
 
@@ -101,10 +108,11 @@ applying the fixes that are suggested for each check.
 | [RMK015](Checks/RMK015/) | Tune compiler optimization flags to increase the speed of the code                                                                                                 | x | x       | x   |         |
 | [RMK016](Checks/RMK016/) | Tune compiler optimization flags to avoid potential changes in floating point precision                                                                            | x | x       | x   |         |
 
-**AutoFix**: denotes which tools support automatically fixing the
-corresponding check. It is encouraged to report any other tools that provide
-autofixes for these checks, so they can be added to this column. They are
-tagged as follows in the table:
+**AutoFix**: Denotes tools that support automatic correction of the
+corresponding check. Readers are encouraged to report additional tools with
+autofix capabilities for these checks. The tools are tagged in the table as
+follows:
+
   - **1**: [Codee](https://www.codee.com)
 
 ## Contributing
