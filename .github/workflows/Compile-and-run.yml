@@ -19,3 +19,13 @@ jobs:
       - name: Run build and benchmark script
         run: python Benchmark/run-benchmarks.py -- -G"Unix Makefiles"
         working-directory: ${{ github.workspace }}
+  # Let us run this job on Ubuntu only as it is the only image that has gcc,
+  # gfortran, and clang available out of the box
+  Multiple-compilers:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Run multiple compilers script
+        run: bash Benchmark/multiple-compilers.sh
+        working-directory: ${{ github.workspace }}
