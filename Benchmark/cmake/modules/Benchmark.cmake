@@ -4,7 +4,7 @@ add_custom_target(run
 )
 
 # Utility function to automatically create the build target for the given check 
-macro(add_benchmark CHECKID)
+function(add_benchmark CHECKID)
   set(files)
 
   # Auto-compile all the codes in the check directory; in particular:
@@ -55,7 +55,7 @@ macro(add_benchmark CHECKID)
   )
 
   add_dependencies(run run-${CHECKID})
-endmacro()
+endfunction()
 
 # Find a systems google benchmark library or build it from source
 # We require version 1.5.3 or above because we change the name of the benchmarks
