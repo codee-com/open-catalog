@@ -178,6 +178,14 @@ $ ./a.out
 >
 >Check the PWR070 benchmark for a demonstration!
 
+>**Note:**  
+>Beware that any procedures involving assumed-shape array arguments must have
+>explicit interfaces at the point of call. If not, the updated code won't
+>compile.
+>
+>Check the [PWR068 entry](../PWR068) for more details on implicit and explicit
+>interfaces!
+
 ### Related resources
 
 - [PWR070 source code examples](../PWR070)
