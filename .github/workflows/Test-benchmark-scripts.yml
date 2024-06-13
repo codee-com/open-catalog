@@ -2,9 +2,6 @@
 # is simply a smoke test to check everything compiles and runs.
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
 
 jobs:
