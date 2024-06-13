@@ -26,6 +26,11 @@ function(add_benchmark CHECKID)
     list(APPEND files ${fortran_files})
   endif()
 
+  # Skip empty benchmarks
+  if (NOT files)
+    return()
+  endif()
+
   # Create the benchmarking binary with all the files
   add_executable(${CHECKID}
     ${CHECKID}.cpp
