@@ -22,6 +22,8 @@ thus the loop can not be parallelized.
 
 ### Code example
 
+#### C
+
 The following code performs an exclusive scan, naively parallelized using
 multithreading:
 
@@ -36,9 +38,12 @@ void foo(int *x, int *y, int size) {
 }
 ```
 
-This is incorrect due to the recurrence pattern present in the code, in the form
-dependencies between two consecutive loop iterations. For instance, it can be
-safely implemented in OpenMP 5.0 using the `scan` directive:
+This approach is incorrect due to the dependence between two consecutive
+iterations of the loop. Note how the value `y(i)` is calculated based on the
+previous `y(i - 1)`.
+
+Since OpenMP 5.0, this type of computation can be conveniently parallelized
+using the `scan` directive:
 
 ```c
 void foo(int *x, int *y, int size) {
@@ -51,6 +56,54 @@ void foo(int *x, int *y, int size) {
     scan_x += x[i];
   }
 }
+```
+
+#### Fortran
+
+The following code performs an exclusive scan, naively parallelized using
+multithreading:
+
+```f90
+subroutine foo(x, y)
+  implicit none
+  integer, intent(in) :: x(:)
+  integer, intent(inout) :: y(:)
+  integer :: i
+
+  y(1) = 0
+
+  !$omp parallel do
+  do i = 2, size(y, 1)
+    y(i) = y(i - 1) + x(i - 1)
+  end do
+  !$omp end parallel do
+end subroutine foo
+```
+
+This approach is incorrect due to the dependence between two consecutive
+iterations of the loop. Note how the value `y(i)` is calculated based on the
+previous `y(i - 1)`.
+
+Since OpenMP 5.0, this type of computation can be conveniently parallelized
+using the `scan` directive:
+
+```f90
+subroutine foo(x, y)
+  implicit none
+  integer, intent(in) :: x(:)
+  integer, intent(out) :: y(:)
+  integer :: scan_x, i
+
+  scan_x = 0
+
+  !$omp parallel do reduction(inscan, +:scan_x)
+  do i = 1, size(y, 1)
+    y(i) = scan_x
+    !$omp scan exclusive(scan_x)
+    scan_x = scan_x + x(i)
+  end do
+  !$omp end parallel do
+end subroutine foo
 ```
 
 ### Related resources
