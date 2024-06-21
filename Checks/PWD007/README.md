@@ -26,12 +26,11 @@ The following code performs an exclusive scan, naively parallelized using
 multithreading:
 
 ```c
-void foo() {
-  int x[10], y[10];
-
+void foo(int *x, int *y, int size) {
   y[0] = 0;
+
   #pragma omp parallel for
-  for (int i = 1; i < 10; i++) {
+  for (int i = 1; i < size; i++) {
     y[i] = y[i - 1] + x[i - 1];
   }
 }
@@ -42,12 +41,11 @@ dependencies between two consecutive loop iterations. For instance, it can be
 safely implemented in OpenMP 5.0 using the `scan` directive:
 
 ```c
-void foo() {
-  int x[10], y[10];
-
+void foo(int *x, int *y, int size) {
   int scan_x = 0;
+
   #pragma omp parallel for reduction(inscan, +:scan_x)
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < size; i++) {
     y[i] = scan_x;
     #pragma omp scan exclusive(scan_x)
     scan_x += x[i];

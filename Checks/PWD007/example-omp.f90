@@ -1,12 +1,16 @@
 ! PWD007: Unprotected multithreading recurrence
 
-subroutine example()
+subroutine example(x, y)
   implicit none
-  integer :: i, x(5), y(5)
+  integer, intent(in) :: x(:)
+  integer, intent(inout) :: y(:)
+  integer :: i
 
   y(1) = 0
+
   !$omp parallel do
-  do i = 2, 5
+  do i = 2, size(y, 1)
     y(i) = y(i - 1) + x(i - 1)
   end do
-end subroutine
+  !$omp end parallel do
+end subroutine example
