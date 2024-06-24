@@ -10,10 +10,10 @@ subroutine matmul_f(n, A, B, C) bind(c)
   real(kind=c_double), dimension(1:n, 1:n), intent(inout) :: C
   integer(kind=c_int) :: i, j, k
 
-  do i = 1, n
-    do j = 1, n
+  do j = 1, n
+    do i = 1, n
       do k = 1, n
-        C(j, i) = C(j, i) + A(j, k) * B(k, i)
+        C(i, j) = C(i, j) + A(i, k) * B(k, j)
       end do
     end do
   end do
