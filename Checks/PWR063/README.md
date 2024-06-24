@@ -165,7 +165,7 @@ construct and are initialized out of line using the `data` construct:
       subroutine UpdateValues(X)
         implicit none
         integer A, B, C, X
-        common /commonblock/ A, B, C
+        common /MyCommonBlock/ A, B, C
 
         A = A + X
         B = B * X
@@ -184,34 +184,34 @@ The code above may be improved if we use the `module` construct and declare and
 initialize variables simultaneously:
 
 ```f90
-      module MyModule
-        implicit none
-        integer :: A = 10, B = 20, C = 30
+module MyModule
+  implicit none
+  integer :: A = 10, B = 20, C = 30
 
-      contains
-        subroutine UpdateValues(X)
-          implicit none
-          integer :: X
+contains
+  subroutine UpdateValues(X)
+    implicit none
+    integer :: X
 
-          A = A + X
-          B = B * X
-          C = C + A + B
-        end subroutine UpdateValues
-      end module MyModule
+    A = A + X
+    B = B * X
+    C = C + A + B
+  end subroutine UpdateValues
+end module MyModule
 
-      program ModernExample
-        use MyModule
+program ModernExample
+  use MyModule, only : A, B, C, UpdateValues
 
-        implicit none
-        integer :: I
+  implicit none
+  integer :: I
 
-        do I = 1, 5
-          call UpdateValues(I)
-          write(*,*) "Update A, B, and C", A, B, C
-        end do
+  do I = 1, 5
+    call UpdateValues(I)
+    write(*,*) "Update A, B, and C", A, B, C
+  end do
 
-        write(*,*) "Final A, B, and C", A, B, C
-      end program ModernExample
+  write(*,*) "Final A, B, and C", A, B, C
+end program ModernExample
 ```
 
 This alternative program is clearer and benefits from the encapsulation provided
