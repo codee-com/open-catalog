@@ -103,7 +103,7 @@ arithmetic `if` statement:
 
 10      continue
         X(I) = I * 10
-        write(*,*) "Update X =", X
+        write(*,*) "Update X =", X(:I)
         I = I + 1
         if (I - 11) 10, 20, 30
 
@@ -125,17 +125,17 @@ We may improve the readability, intent, and maintainability of the code if we
 use a modern `do` loop construct:
 
 ```f90
-      program DoLoop
-        implicit none
-        integer I, X(10)
+program DoLoop
+  implicit none
+  integer :: I, X(10)
 
-        do I = 1, 10
-          X(I) = I * 10
-          write(*,*) "Update X =", X
-        end do
+  do I = 1, 10
+    X(I) = I * 10
+    write(*,*) "Update X =", X(:I)
+  end do
 
-        write(*, *) "Final X =", X
-      end program DoLoop
+  write(*, *) "Final X =", X
+end program DoLoop
 ```
 
 This construct provides a straightforward and safer iteration control mechanism,
