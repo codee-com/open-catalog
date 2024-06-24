@@ -6,7 +6,7 @@ subroutine matmul_f(n, A, B, C) bind(c)
   implicit none
   integer(kind=c_int), intent(in), value :: n
   real(kind=c_double), dimension(1:n, 1:n), intent(in) :: A, B
-  real(kind=c_double), dimension(1:n, 1:n), intent(out) :: C
+  real(kind=c_double), dimension(1:n, 1:n), intent(inout) :: C
   integer(kind=c_int) :: i, j, k
 
   do j = 1, n
