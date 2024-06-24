@@ -4,9 +4,10 @@
 subroutine example()
   implicit none
   integer :: a(200, 10), i, j
+
   do i = 1, 200
     do j = 1, 10
-      a(j, i) = 0
+      a(i, j) = 0
     end do
   end do
 end subroutine example
