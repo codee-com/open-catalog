@@ -3,11 +3,13 @@
 program example
   implicit none
   integer :: i
-  integer :: sum(10)
-  integer :: a(10), b(10)
+  integer :: a(5) = [1, 2, 3, 4, 5]
+  integer :: b(5) = [6, 7, 8, 9, 10]
+  integer :: sum(5)
 
-  !$omp parallel do firstprivate(i, a, b) shared(sum)
-  do i = 1, 10
+  !$omp parallel do default(none) firstprivate(a, b) shared(sum)
+  do i = 1, 5
     sum(i) = a(i) + b(i);
   end do
+  !$omp end parallel do
 end program example
