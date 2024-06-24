@@ -11,13 +11,13 @@ subroutine matmul_f(n, A, B, C) bind(c)
   integer(kind=c_int) :: i, j, k
   real(kind=c_double) :: c_aux
 
-  do i = 1, n
-    do j = 1, n
+  do j = 1, n
+    do i = 1, n
       c_aux = 0.0
       do k = 1, n
-        c_aux = c_aux + A(j, k) * B(k, i)
+        c_aux = c_aux + A(i, k) * B(k, j)
       end do
-      C(j, i) = c_aux
+      C(i, j) = c_aux
     end do
   end do
 end subroutine matmul_f
