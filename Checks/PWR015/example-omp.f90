@@ -1,12 +1,15 @@
 ! PWR015: Avoid copying unnecessary array elements to the GPU
 
-subroutine example(a, c)
+subroutine example(A, B, sum)
   implicit none
-  integer, intent(inout) :: a(100), c(100)
+  integer, intent(in) :: A(:), B(:)
+  integer, intent(out) :: sum(:)
   integer :: i
-  !$omp target teams distribute parallel do schedule(auto) shared(a, b) &
-  !$omp map(to: a(0:100)) map(tofrom: c(0:100))
-  do i = 1, 50
-    c(i) = c(i) + a(i)
+
+  !$omp target parallel do default(none) shared(A, B, sum) &
+  !$omp& map(to: a, b) map(from: sum)
+  do i = 1, size(sum, 1) / 2
+    sum(i) = A(i) + B(i)
   end do
+  !$omp end target parallel do
 end subroutine example
