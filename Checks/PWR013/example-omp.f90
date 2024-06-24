@@ -1,12 +1,15 @@
 ! PWR013: Avoid copying unused variables to the GPU
 
-subroutine example(a, b, c)
+subroutine example(A, B, C)
   implicit none
-  integer, intent(inout) :: a(100), b(100), c(100)
+  integer, intent(in) :: A(:), B(:)
+  integer, intent(inout) :: C(:)
   integer :: i
-  !$omp target teams distribute parallel do schedule(auto) shared(a, b) &
-  !$omp map(to: a(1:100), b(1:100)) map(tofrom: c(1:100))
-  do i = 1, 100
-    c(i) = c(i) + a(i)
+
+  !$omp target teams distribute parallel do schedule(auto) default(none) &
+  !$omp& shared(A, B, C) map(to: A, B) map(tofrom: C)
+  do i = 1, size(C, 1)
+    C(i) = C(i) + A(i)
   end do
+  !$omp end target teams distribute parallel do
 end subroutine example
