@@ -1,16 +1,17 @@
 ! PWR049: Move iterator-dependent condition outside of the loop
 
-subroutine example(n)
+subroutine example(a, b)
   implicit none
-  integer, intent(in) :: n
-  integer :: i, j, a(n, n), b(n, n)
+  integer, intent(inout) :: a(:, :)
+  integer, intent(in) :: b(:, :)
+  integer :: i, j
 
-  do i = 1, n
-    do j = 1, n
-      if (j .eq. 1) then
-        a(j, i) = 0
+  do j = 1, size(a, 2)
+    do i = 1, size(a, 1)
+      if (j == 1) then
+        a(i, j) = 0
       else
-        a(j, i) = a(j - 1, i) + b(j, i)
+        a(i, j) = a(i, j - 1) + b(i, j)
       end if
     end do
   end do
