@@ -10,3 +10,8 @@ add_benchmark(PWR070)
 add_benchmark(PWR071)
 add_benchmark(PWR072)
 add_benchmark(PWR073)
+if (OCB_Fortran_COMPILER_ID STREQUAL "GNU")
+  # Depends on GNU Fortran extensions, so the benchmark may fail with other
+  # compilers
+  add_benchmark(PWR075)
+endif()
