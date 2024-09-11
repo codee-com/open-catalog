@@ -118,6 +118,24 @@ follows:
 
 ## Contributing
 
-Contributions are welcomed! Feel free to send pull requests to amend, improve
-or include new content on the catalog. Issues are also open for any question or
-suggestion.
+We welcome and encourage contributions to the Open Catalog! Here's how you can
+get involved:
+
+1. **Join the discussion:**
+
+    Got ideas, questions, or suggestions? Head over to our [GitHub
+    Discussions](https://github.com/codee-com/open-catalog/discussions). It's
+    the perfect place for open-ended conversations and brainstorming!
+
+2. **Report issues:**
+
+    Found inaccuracies, unclear explanations, or other problems? Please open an
+    [Issue](https://github.com/codee-com/open-catalog/issues). Detailed reports
+    help us quickly improve the quality of the project!
+
+3. **Submit pull requests:**
+
+    Interested in solving any issues? Feel free to fork the repository, make
+    your changes, and submit a [Pull
+    Request](https://github.com/codee-com/open-catalog/pulls). We'd love to see
+    your contributions!
