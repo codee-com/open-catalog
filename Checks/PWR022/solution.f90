@@ -11,15 +11,15 @@ subroutine solution_f(n, A, B, C, D) bind(c)
   real(kind=c_double), dimension(1:n, 1:n), intent(inout) :: D
   integer(kind=c_int) :: i, j, k
 
-  do k = 1, n
-    do j = 1, n
-      D(j, k) = B(j, k) + A(1) * C(j, k, 1)
+  do j = 1, n
+    do i = 1, n
+      D(i, j) = B(i, j) + A(1) * C(i, j, 1)
     end do
   end do
-  do k = 1, n
+  do k = 2, n
     do j = 1, n
-      do i = 2, n
-        D(j, k) = D(j, k) + A(i) * C(i, j, k)
+      do i = 1, n
+        D(i, j) = D(i, j) + A(k) * C(i, j, k)
       end do
     end do
   end do

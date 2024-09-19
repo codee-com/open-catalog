@@ -15,12 +15,12 @@ subroutine example_f(n, A, B, C, D) bind(c)
   do k = 1, n
     do j = 1, n
       do i = 1, n
-        if (i == 1) then
-          val = B(j, k)
+        if (k == 1) then
+          val = B(i, j)
         else
-          val = D(j, k)
+          val = D(i, j)
         end if
-        D(j, k) = val + A(i) * C(i, j, k)
+        D(i, j) = val + A(k) * C(i, j, k)
       end do
     end do
   end do
