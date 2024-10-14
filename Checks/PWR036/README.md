@@ -21,10 +21,12 @@ positions because the latter improves
 
 ### Code example
 
+#### C
+
 Consider the example code below to illustrate the presence of indirect access
 patterns. The elements of array `a` are accessed in an indirect manner through
-the array b. Thus, the code exhibits random accesses that cannot be predicted
-before the actual execution of the code.
+the array `b`. Thus, the code exhibits random accesses that cannot be predicted
+before the actual execution of the code:
 
 ```c
 void example(float *a, unsigned *b, unsigned size) {
@@ -34,11 +36,11 @@ void example(float *a, unsigned *b, unsigned size) {
 }
 ```
 
-Next, consider another example code where memory access patterns are optimized
-in order to improve locality of reference. More specifically, the elements of
-array `a` are accessed indirectly, through array `index`. What this means is
-that the program is accessing random elements of the array `a`, which leads to a
-low performance because of the poor usage of the memory subsystem.
+Next, consider another example code where memory access patterns can be
+optimized to improve locality of reference. The elements of the array `a` are
+accessed indirectly through the array `index`. Consequently, the program
+accesses random elements of the array `a`, which leads to a low performance due
+to a poor usage of the memory subsystem:
 
 ```c
 for (int i = 0; i < LEN_1D; ++i) {
@@ -49,10 +51,12 @@ for (int i = 0; i < LEN_1D; ++i) {
 ```
 
 The alternative implementation shown below takes advantage of loop interchange
-to improve locality of reference. Now, the loop over `j` becomes the outer loop,
-and the loop over `i` becomes the inner loop. By doing this, the access to
-`a[index[j]]` is an access to a constant memory location, since the value of `j`
-doesn't change inside the loop. This leads to performance improvement.
+to improve locality of reference. Now, the loop over `j` becomes the outer
+loop, and the loop over `i` becomes the inner loop. As a result, the access to
+`a[index[j]]` is repeated across the iterations of the inner loop since the
+value of `j` doesn't change, resulting in accesses to a constant memory
+location. This leads to a better usage of the memory subsystem, and thus, to a
+performance improvement:
 
 ```c
 for (int j = 1; j < LEN_1D; j++) {
@@ -60,6 +64,56 @@ for (int j = 1; j < LEN_1D; j++) {
     c[i] += a[index[j]];
   }
 }
+```
+
+#### Fortran
+
+Consider the example code below to illustrate the presence of indirect access
+patterns. The elements of array `a` are accessed in an indirect manner through
+the array `b`. Thus, the code exhibits random accesses that cannot be predicted
+before the actual execution of the code:
+
+```f90
+subroutine example()
+  implicit none
+  integer, intent(out) :: a
+  integer, intent(in) :: b
+  integer :: i
+
+  do i = 1, size(a, 1)
+    a(b(i)) = 0
+  end do
+end subroutine example
+```
+
+Next, consider another example code where memory access patterns can be
+optimized to improve locality of reference. The elements of the array `a` are
+accessed indirectly through the array `index`. Consequently, the program
+accesses random elements of the array `a`, which leads to a low performance due
+to a poor usage of the memory subsystem:
+
+```f90
+do i = 1, size(c, 1)
+  do j = 2, size(index, 1)
+    c(i) = c(i) + a(index(j))
+  end do
+end do
+```
+
+The alternative implementation shown below takes advantage of loop interchange
+to improve locality of reference. Now, the loop over `j` becomes the outer
+loop, and the loop over `i` becomes the inner loop. As a result, the access to
+`a(index(j))` is repeated across the iterations of the inner loop since the
+value of `j` doesn't change, resulting in accesses to a constant memory
+location. This leads to a better usage of the memory subsystem, and thus, to a
+performance improvement:
+
+```f90
+do j = 2, size(index, 1)
+  do i = 1, size(c, 1)
+    c(i) = c(i) + a(index(j))
+  end do
+end do
 ```
 
 ### Related resources
