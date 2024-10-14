@@ -24,6 +24,8 @@ increase [vectorization](../../Glossary/Vectorization.md) performance.
 
 ### Code example
 
+#### C
+
 The following code shows two nested loops, where the outer one has a larger trip
 count than the inner one:
 
@@ -42,7 +44,7 @@ The value of `margin` is not known at compile time, but it is typically low. We
 can increase the loop trip count of the innermost loop by performing loop
 interchange. To do loop interchange, the loop over `j` and the loop over `k`
 need to be perfectly nested. We can make them perfectly nested by moving the
-initialization `bb[i][j] = 0.0` into a separate loop.
+initialization `bb[i][j] = 0.0` into a separate loop:
 
 ```c
 for (int i = 0; i < n; i++) {
@@ -56,6 +58,43 @@ for (int i = 0; i < n; i++) {
     }
   }
 }
+```
+
+#### Fortran
+
+The following code shows two nested loops, where the outer one has a larger
+trip count than the inner one:
+
+```f90
+do i = 1, n
+  do j = margin, n - margin
+    bb(i, j) = 0.0
+
+    do k = -margin, margin
+      bb(i, j) = bb(i, j) + aa(i, j + k)
+    end do
+  end do
+end do
+```
+
+The value of `margin` is not known at compile time, but it is typically low. We
+can increase the loop trip count of the innermost loop by performing loop
+interchange. To do loop interchange, the loop over `j` and the loop over `k`
+need to be perfectly nested. We can make them perfectly nested by moving the
+initialization `bb(i, j) = 0.0` into a separate loop:
+
+```f90
+do i = 1, n
+  do j = margin, n - margin
+    bb(i, j) = 0.0
+  end do
+
+  do k = -margin, margin
+    do j = margin, n - margin
+      bb(i, j) = bb(i, j) + aa(i, j + k)
+    end do
+  end do
+end do
 ```
 
 ### Related resources
