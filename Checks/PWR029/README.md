@@ -34,8 +34,10 @@ alternative ways of coding that are more hardware-friendly.
 
 ### Code example
 
+#### C
+
 In this example, the access to array `a` using the variable `k` can be
-problematic for some compilers to optimize.
+challenging to optimize for some compilers:
 
 ```c
 void example(float *a, float *b, unsigned size) {
@@ -47,13 +49,47 @@ void example(float *a, float *b, unsigned size) {
 }
 ```
 
-We can fix it by removing the variable `k` and the corresponding increment
-statement:
+Since `k == i` in this context, we can fix the issue by removing the variable
+`k` altogether and the corresponding increment statement:
 
 ```c
 for (unsigned i = 0; i < size; i++) {
   b[i] = a[i] + 1;
 }
+```
+
+#### Fortran
+
+In this example, the access to array `a` using the variable `k` can be
+challenging to optimize for some compilers:
+
+```f90
+subroutine example(a, b)
+  real, intent(in) :: a
+  real, intent(out) :: b
+  integer :: i, k
+
+  k = 1
+  do i = 1, size(b, 1)
+    b(i) = a(k) + 1
+    k = k + 1
+  end do
+end subroutine example
+```
+
+Since `k == i` in this context, we can fix the issue by removing the variable
+`k` altogether and the corresponding increment statement:
+
+```f90
+subroutine example(a, b)
+  real, intent(in) :: a
+  real, intent(out) :: b
+  integer :: i
+
+  do i = 1, size(b, 1)
+    b(i) = a(i) + 1
+  end do
+end subroutine example
 ```
 
 ### Related resources
