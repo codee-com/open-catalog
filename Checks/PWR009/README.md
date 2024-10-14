@@ -38,6 +38,8 @@ is used.
 
 ### Code example
 
+#### C
+
 The following code offloads a matrix multiplication computation through the
 `target` construct and then creates a parallel region and distributes the work
 through `for` construct (note that the matrices are statically sized arrays):
@@ -60,9 +62,9 @@ through `for` construct (note that the matrices are statically sized arrays):
 } // end target
 ```
 
-When offloading to the GPU it is recommended to use an additional level of
+When offloading to the GPU, it is recommended to use an additional level of
 parallelism. This can be achieved by using the `teams` and `distribute`
-constructs, in this case in combination with `parallel for`:
+constructs; in this case, in combination with `parallel for`:
 
 ```c
 #pragma omp target teams distribute parallel for \
@@ -75,6 +77,48 @@ for (size_t i = 0; i < m; i++) {
     }
   }
 }
+```
+
+#### Fortran
+
+The following code offloads a matrix multiplication computation through the
+`target` construct and then creates a parallel region and distributes the work
+through the `do` construct:
+
+```f90
+!$omp target map(to: A, B) map(tofrom: C)
+!$omp parallel default(none) private(i, j, k) shared(A, B, C)
+!$omp do
+do j = 1, size(C, 2)
+  do k = 1, size(C, 2)
+    do i = 1, size(C, 1)
+      C(i, j) = C(i, j) + A(i, k) * B(k, j)
+    end do
+  end do
+end do
+!$omp end do
+!$omp end parallel
+!$omp end target
+```
+
+When offloading to the GPU, it is recommended to use an additional level of
+parallelism. This can be achieved by using the `teams` and `distribute`
+constructs; in this case, in combination with `parallel do`:
+
+```f90
+!$omp target teams distribute map(to: A, B) map(tofrom: C)
+!$omp parallel default(none) private(i, j, k) shared(A, B, C)
+!$omp do
+do j = 1, size(C, 2)
+  do k = 1, size(C, 2)
+    do i = 1, size(C, 1)
+      C(i, j) = C(i, j) + A(i, k) * B(k, j)
+    end do
+  end do
+end do
+!$omp end do
+!$omp end parallel
+!$omp end target
 ```
 
 ### Related resources
