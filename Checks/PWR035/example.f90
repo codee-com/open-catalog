@@ -7,7 +7,7 @@ subroutine example(a)
 
   do j = 1, size(a, 2)
     do i = 1, size(a, 1)
-      a(1, j) = 0
+      a(i, 1) = 0
     end do
   end do
 end subroutine example

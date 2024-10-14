@@ -20,11 +20,13 @@ consecutive positions because the latter maximises
 
 ### Code example
 
+#### C
+
 Consider the example code below to illustrate the presence of non-consecutive
 access patterns. The elements of array `a` are accessed in a non-consecutive
-manner. In the scope of the outer loop `for_i`, all the iterations access the
-first row of the array. Thus, the code exhibits repeated accesses to all the
-elements of the first row, a total number of times equal to `rows`.
+manner. In the scope of the outer loop, `for (i)`, all the iterations access
+the first row of the array. Thus, the code exhibits repeated accesses to all
+the elements of the first row, a total number of times equal to `rows`:
 
 ```c
 void example(float **a, unsigned rows, unsigned cols) {
@@ -34,6 +36,28 @@ void example(float **a, unsigned rows, unsigned cols) {
     }
   }
 }
+```
+
+#### Fortran
+
+Consider the example code below to illustrate the presence of non-consecutive
+access patterns. The elements of array `a` are accessed in a non-consecutive
+manner. In the scope of the outer loop, `do j`, all the iterations access the
+first column of the array. Thus, the code exhibits repeated accesses to all the
+elements of the first column, a total number of times equal to `size(a, 2)`:
+
+```f90
+subroutine example(a)
+  implicit none
+  integer, intent(out) :: a(:, :)
+  integer :: i, j
+
+  do j = 1, size(a, 2)
+    do i = 1, size(a, 1)
+      a(i, 1) = 0
+    end do
+  end do
+end subroutine example
 ```
 
 ### Related resources
