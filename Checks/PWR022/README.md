@@ -29,19 +29,23 @@ it will always be either true or false.
 
 ### Code example
 
+#### C
+
 The following loop contains a condition that is invariant for all its
 iterations. Not only may this introduce an unnecessary redundant comparison, it
-may also make the vectorization of the loop more difficult for some compilers.
+may also make the vectorization of the loop more difficult for some compilers:
 
 ```c
 int example(int *A, int n) {
   int total = 0;
+
   for (int i = 0; i < n; ++i) {
     if (n < 10) {
       total++;
     }
     A[i] = total;
   }
+
   return total;
 }
 ```
@@ -53,6 +57,7 @@ follows:
 ```c
 int example(int *A, int n) {
   int total = 0;
+
   if (n < 10) {
     for (int i = 0; i < n; ++i) {
       A[i] = ++total;
@@ -62,8 +67,55 @@ int example(int *A, int n) {
       A[i] = total;
     }
   }
+
   return total;
 }
+```
+
+#### Fortran
+
+The following loop contains a condition that is invariant for all its
+iterations. Not only may this introduce an unnecessary redundant comparison, it
+may also make the vectorization of the loop more difficult for some compilers:
+
+```f90
+subroutine example(array)
+  integer, intent(out) :: array(:)
+  integer :: i, total
+
+  total = 0
+
+  do i = 1, size(array, 1)
+    if (size(array, 1) < 10) then
+      total = total + 1
+    end if
+    array(i) = total
+  end do
+end subroutine example
+```
+
+The loop invariant can be extracted out of the loop in a simple way, by
+duplicating the loop body and removing the condition. The resulting code is as
+follows:
+
+```f90
+subroutine example(array)
+  integer, intent(out) :: array(:)
+  integer :: i, total
+
+  total = 0
+
+  if (size(array, 1) < 10) then
+    do i = 1, size(array, 1)
+      total = total + 1
+      array(i) = total
+    end do
+  else
+    do i = 1, size(array, 1)
+      array(i) = total
+    end do
+  end if
+end subroutine example
 ```
 
 ### Related resources
