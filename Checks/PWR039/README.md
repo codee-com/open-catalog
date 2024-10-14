@@ -33,36 +33,79 @@ additionally improves performance.
 
 ### Code example
 
+#### C
+
 The following code shows two nested loops:
-
-```c
-void example(double **A, int n) {
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
-      A[j][i] = 0.0;
-    }
-  }
-}
-```
-
-The matrix `A` is accessed column-wise, which is inefficient. To fix it, we
-perform the loop interchange of loops over `i` and `j`. After the interchange,
-the loop over `j` becomes the outer loop and loop over `i` becomes the inner
-loop.
-
-After this modification, the access to matrix `A` is no longer column-wise, but
-row-wise, which is much faster and more efficient. Additionally, the compiler
-can vectorize the inner loop.
 
 ```c
 void example(double **A, int n) {
   for (int j = 0; j < n; j++) {
     for (int i = 0; i < n; i++) {
-      A[j][i] = 0.0;
+      A[i][j] = 0.0;
     }
   }
 }
 ```
+
+The matrix `A` is accessed column-wise, which is inefficient since C stores
+arrays using row-major order. To fix this issue, a loop interchange can be
+applied on loops `i` and `j`. As a result, the loop over `i` becomes the outer
+loop, and the loop over `j` becomes the inner one:
+
+```c
+void example(double **A, int n) {
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      A[i][j] = 0.0;
+    }
+  }
+}
+```
+
+After this modification, the access to matrix `A` is no longer column-wise, but
+row-wise, resulting in a more efficient usage of the memory subsystem, and
+thus, faster execution. Additionally, this optimization can help the compiler
+vectorize the inner loop.
+
+#### Fortran
+
+The following code shows two nested loops:
+
+```f90
+subroutine example(A)
+  real, intent(out) :: A(:, :)
+  integer :: i, j
+
+  do i = 1, size(A, 1)
+    do j = 1, size(A, 2)
+      A(i, j) = 0.0
+    end do
+  end do
+end subroutine example
+```
+
+The matrix `A` is accessed row-wise, which is inefficient since Fortran stores
+arrays using column-major order. To fix this issue, a loop interchange can be
+applied on loops `i` and `j`. As a result, the loop over `j` becomes the outer
+loop, and the loop over `i` becomes the inner one:
+
+```f90
+subroutine example(A)
+  real, intent(out) :: A(:, :)
+  integer :: i, j
+
+  do j = 1, size(A, 2)
+    do i = 1, size(A, 1)
+      A(i, j) = 0.0
+    end do
+  end do
+end subroutine example
+```
+
+After this modification, the access to matrix `A` is no longer row-wise, but
+column-wise, resulting in a more efficient usage of the memory subsystem, and
+thus, faster execution. Additionally, this optimization can help the compiler
+vectorize the inner loop.
 
 ### Related resources
 
