@@ -23,8 +23,10 @@ control flow logic which the compilers cannot vectorize automatically.
 
 ### Code example
 
+#### C
+
 In the following example, the loop is invoking a recursive function computing
-the Fibonacci number. This recursion inhibits the vectorization of the loop.
+the Fibonacci number. This recursion inhibits the vectorization of the loop:
 
 ```c
 double fib(unsigned n) {
@@ -46,7 +48,7 @@ double example(unsigned times) {
 }
 ```
 
-Fibonacci's sequence can be calculated non-recursively:
+As an alternative, Fibonacci's sequence can be calculated non-recursively:
 
 ```c
 double example(unsigned times) {
@@ -61,6 +63,66 @@ double example(unsigned times) {
   }
   return sum;
 }
+```
+
+#### Fortran
+
+In the following example, the loop is invoking a recursive function computing
+the Fibonacci number. This recursion inhibits the vectorization of the loop:
+
+```f90
+module mod_fibonacci
+  contains
+  recursive function fibonacci(n) result(fibo)
+    implicit none
+    integer, intent(in) :: n
+    integer :: fibo
+
+    if (n == 0) then
+      fibo = 0
+    else if (n == 1) then
+      fibo = 1
+    else
+      fibo = fibonacci(n - 1) + fibonacci(n - 2)
+    end if
+  end function fibonacci
+end module mod_fibonacci
+
+subroutine example(times)
+  use mod_fibonacci, only : fibonacci
+
+  implicit none
+  integer, intent(in) :: times
+  integer :: i, sum
+
+  sum = 0
+
+  do i = 0, times - 1
+    sum = sum + fibonacci(i)
+  end do
+end subroutine example
+```
+
+As an alternative, Fibonacci's sequence can be calculated non-recursively:
+
+```f90
+subroutine example(times)
+  implicit none
+  integer, intent(in) :: times
+  integer :: i, sum
+  integer :: fib_0, fib_1, fib
+
+  sum = 0
+  fib_0 = 0
+  fib_1 = 1
+
+  do i = 2, times - 1
+    fib = fib_0 + fib_1
+    sum = sum + fib
+    fib_0 = fib_1
+    fib_1 = fib
+  end do
+end subroutine example
 ```
 
 ### Related resources

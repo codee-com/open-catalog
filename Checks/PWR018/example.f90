@@ -24,7 +24,9 @@ subroutine example(times)
   integer, intent(in) :: times
   integer :: i, sum
 
-  do i = 1, times
+  sum = 0
+
+  do i = 0, times - 1
     sum = sum + fibonacci(i)
   end do
 end subroutine example
