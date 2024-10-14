@@ -6,7 +6,7 @@ subroutine example(A, B, sum)
   integer, intent(out) :: sum(:)
   integer :: i
 
-  !$omp target parallel do default(none) shared(A, B, sum) &
+  !$omp target parallel do default(none) shared(A, B, sum) private(i) &
   !$omp& map(to: a, b) map(from: sum)
   do i = 1, size(sum, 1) / 2
     sum(i) = A(i) + B(i)

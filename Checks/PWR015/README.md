@@ -19,13 +19,15 @@ required data should be copied to or from the GPU memory.
 
 ### Code example
 
+#### C
+
 The following code performs the sum of two arrays:
 
 ```c
 void example() {
   int A[100], B[100], sum[100];
   #pragma omp target map(to: A[0:100], B[0:100]) map(from: sum[0:100])
-  #pragma omp parallel for
+  #pragma omp parallel for private(i)
   for (int i = 0; i < 50; i++) {
     sum[i] = A[i] + B[i];
   }
@@ -39,11 +41,52 @@ there is no need to transfer the entire arrays:
 void example() {
   int A[100], B[100], sum[100];
   #pragma omp target map(to: A[0:50], B[0:50]) map(from: sum[0:50])
-  #pragma omp parallel for
+  #pragma omp parallel for private(i)
   for (int i = 0; i < 50; i++) {
     sum[i] = A[i] + B[i];
   }
 }
+```
+
+#### Fortran
+
+The following code performs the sum of two arrays:
+
+```f90
+subroutine example(A, B, sum)
+  implicit none
+  integer, intent(in) :: A(:), B(:)
+  integer, intent(out) :: sum(:)
+  integer :: i
+
+  !$omp target parallel do default(none) shared(A, B, sum) private(i) &
+  !$omp& map(to: a, b) map(from: sum)
+  do i = 1, size(sum, 1) / 2
+    sum(i) = A(i) + B(i)
+  end do
+  !$omp end target parallel do
+end subroutine example
+```
+
+However, only half of the total array elements are actually being used. Thus,
+there is no need to transfer the entire arrays:
+
+```f90
+subroutine example(A, B, sum)
+  implicit none
+  integer, intent(in) :: A(:), B(:)
+  integer, intent(out) :: sum(:)
+  integer :: i, half_size
+
+  half_size = size(sum, 1) / 2
+
+  !$omp target parallel do default(none) shared(A, B, sum) private(i) &
+  !$omp& map(to: a(1:half_size), b(1:half_size)) map(from: sum(1:half_size))
+  do i = 1, half_size
+    sum(i) = A(i) + B(i)
+  end do
+  !$omp end target parallel do
+end subroutine example
 ```
 
 ### Related resources
