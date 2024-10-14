@@ -21,8 +21,10 @@ improves code readability.
 
 ### Code example
 
-In the following code, a variable `factor` is used in each iteration of the loop
-to initialize the array `result`.
+#### C
+
+In the following code, a variable `factor` is used in each iteration of the
+loop to initialize the array `result`:
 
 ```c
 void example() {
@@ -36,20 +38,53 @@ void example() {
 }
 ```
 
-Having the scope declared explicitly for each variable improves readability
+Having the scope declared explicitly for each variable improves readability,
 since it makes explicit the scope of all the variables within the parallel
-region.
+region:
 
 ```c
 void example() {
   int factor = 42;
   int result[10];
 
-  #pragma omp parallel for shared(result, factor)
+  #pragma omp parallel for default(none) shared(result, factor) private(i)
   for (int i = 0; i < 10; i++) {
     result[i] = factor * i;
   }
 }
+```
+
+#### Fortran
+
+In the following code, a variable `factor` is used in each iteration of the
+loop to initialize the array `result`:
+
+```f90
+subroutine example()
+  integer :: factor = 42
+  integer :: result(10)
+
+  !$omp parallel do
+  do i = 1, 10
+    result(i) = factor * i
+  end do
+end subroutine example
+```
+
+Having the scope declared explicitly for each variable improves readability,
+since it makes explicit the scope of all the variables within the parallel
+region:
+
+```f90
+subroutine example()
+  integer :: factor = 42
+  integer :: result(10)
+
+  !$omp parallel do default(none) shared(factor, result) private(i)
+  do i = 1, 10
+    result(i) = factor * i
+  end do
+end subroutine example
 ```
 
 ### Related resources
