@@ -21,10 +21,12 @@ variable.
 
 ### Code example
 
+#### C
+
 In the following code, a variable `t` is used in each iteration of the loop to
 hold a value that is then assigned to the array `result`. Since no data scoping
-is declared for those variables the default will be used. This makes the
-variable `t` shared which is incorrect since it introduces a race condition.
+is declared for those variables, the default will be used. This makes the
+variable `t` shared, which is incorrect since it introduces a race condition:
 
 ```c
 void example() {
@@ -39,8 +41,8 @@ void example() {
 }
 ```
 
-The following code disables the default scoping which will make the compiler
-raise an error due to unspecified scopes.
+The following code disables the default scoping, which will make the compiler
+raise an error due to unspecified scopes:
 
 ```c
 void example() {
@@ -55,20 +57,72 @@ void example() {
 }
 ```
 
-To fix the code the scope of each variable must be specified. The variable `t`
-must be made private to prevent the race condition.
+To fix the code, the scope of each variable must be specified. The variable `t`
+must be made private to prevent the race condition:
 
 ```c
 void example() {
   int t;
   int result[10];
 
-  #pragma omp parallel for default(none) shared(result) private(t)
+  #pragma omp parallel for default(none) shared(result) private(i, t)
   for (int i = 0; i < 10; i++) {
     t = i + 1;
     result[i] = t;
   }
 }
+```
+
+#### Fortran
+
+In the following code, a variable `t` is used in each iteration of the loop to
+hold a value that is then assigned to the array `result`. Since no data scoping
+is declared for those variables, the default will be used. This makes the
+variable `t` shared, which is incorrect since it introduces a race condition:
+
+```f90
+subroutine example()
+  integer :: i, t
+  integer :: result(10)
+
+  !$omp parallel do
+  do i = 1, 10
+    t = i + 1;
+    result(i) = t;
+  end do
+end subroutine example
+```
+
+The following code disables the default scoping, which will make the compiler
+raise an error due to unspecified scopes:
+
+```f90
+subroutine example()
+  integer :: i, t
+  integer :: result(10)
+
+  !$omp parallel do default(none)
+  do i = 1, 10
+    t = i + 1;
+    result(i) = t;
+  end do
+end subroutine example
+```
+
+To fix the code, the scope of each variable must be specified. The variable `t`
+must be made private to prevent the race condition:
+
+```f90
+subroutine example()
+  integer :: i, t
+  integer :: result(10)
+
+  !$omp parallel do default(none) shared(result) private(i, t)
+  do i = 1, 10
+    t = i + 1;
+    result(i) = t;
+  end do
+end subroutine example
 ```
 
 ### Related resources
