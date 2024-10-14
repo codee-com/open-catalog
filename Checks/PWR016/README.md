@@ -21,6 +21,8 @@ field.
 
 ### Code example
 
+#### C
+
 The following example shows a loop processing the `x` and `y` coordinates for an
 array of points:
 
@@ -41,8 +43,8 @@ void example() {
 ```
 
 This could seem like an example where using an Array-of-Structs is justified.
-However, since the `z` coordinate is never accessed, the memory subsystem is not
-used optimally.  This could be avoided by creating one array for each
+However, since the `z` coordinate is never accessed, the memory subsystem is
+not used optimally. This could be avoided by creating one array for each
 coordinate:
 
 ```c
@@ -55,6 +57,55 @@ void example() {
     points_y[i] = 1;
   }
 }
+```
+
+#### Fortran
+
+The following example shows a loop processing the `x` and `y` coordinates for
+an array of points:
+
+```f90
+program main
+  implicit none
+
+  type point
+    integer :: x
+    integer :: y
+    integer :: z
+  end type point
+
+contains
+
+  subroutine foo()
+    implicit none
+    type(point) :: points(1000)
+    integer :: i
+
+    do i = 1, 1000
+      points(i)%x = 1
+      points(i)%y = 1
+    end do
+  end subroutine foo
+
+end program main
+```
+
+This could seem like an example where using an Array-of-Structs is justified.
+However, since the `z` coordinate is never accessed, the memory subsystem is
+not used optimally. This could be avoided by creating one array for each
+coordinate:
+
+```f90
+subroutine foo()
+  implicit none
+  integer :: points_x(1000), points_y(1000), points_z(1000)
+  integer :: i
+
+  do i = 1, 1000
+    points_x(i) = 1
+    points_y(i) = 1
+  end do
+end subroutine foo
 ```
 
 ### Related resources
