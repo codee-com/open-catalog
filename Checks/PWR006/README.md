@@ -18,9 +18,11 @@ possible.
 
 ### Code example
 
+#### C
+
 In the following code, arrays `A` and `B` are never written to. However, they
 are privatized and thus each thread will hold a copy of each array, effectively
-using more memory and taking more time to create private copies.
+using more memory and taking more time to create private copies:
 
 ```c
 #define SIZE 5
@@ -30,7 +32,7 @@ void example() {
   int B[SIZE] = {5, 4, 3, 2, 1};
   int sum[SIZE];
 
-  #pragma omp parallel for shared(sum) firstprivate(A, B)
+  #pragma omp parallel for shared(sum) firstprivate(A, B) private(i)
   for (int i = 0; i < SIZE; i++) {
     sum[i] = A[i] + B[i];
   }
@@ -39,7 +41,7 @@ void example() {
 
 To save memory, change their scope to shared. This may also prevent memory
 issues when using arrays, as codes may easily run out of memory for a high
-number of threads.
+number of threads:
 
 ```c
 #define SIZE 5
@@ -49,11 +51,53 @@ void example() {
   int B[SIZE] = {5, 4, 3, 2, 1};
   int sum[SIZE];
 
-  #pragma omp parallel for shared(sum, A, B)
+  #pragma omp parallel for shared(sum, A, B) private(i)
   for (int i = 0; i < SIZE; i++) {
     sum[i] = A[i] + B[i];
   }
 }
+```
+
+#### Fortran
+
+In the following code, arrays `A` and `B` are never written to. However, they
+are privatized and thus each thread will hold a copy of each array, effectively
+using more memory and taking more time to create private copies:
+
+```f90
+subroutine example()
+  implicit none
+  integer :: i
+  integer :: a(5) = [1, 2, 3, 4, 5]
+  integer :: b(5) = [6, 7, 8, 9, 10]
+  integer :: sum(5)
+
+  !$omp parallel do default(none) firstprivate(a, b) shared(sum) private(i)
+  do i = 1, 5
+    sum(i) = a(i) + b(i)
+  end do
+  !$omp end parallel do
+end subroutine example
+```
+
+To save memory, change their scope to shared. This may also prevent memory
+issues when using arrays, as codes may easily run out of memory for a high
+number of threads:
+
+```f90
+subroutine example()
+  implicit none
+  integer :: i
+  integer :: a(5) = [1, 2, 3, 4, 5]
+  integer :: b(5) = [6, 7, 8, 9, 10]
+  integer :: sum(5)
+
+  !$omp parallel do default(none) shared(a, b, sum) private(i)
+  do i = 1, 5
+    sum(i) = a(i) + b(i)
+  end do
+  !$omp end parallel do
+end subroutine example
 ```
 
 ### Related resources

@@ -7,7 +7,7 @@ void example() {
   int B[SIZE] = {5, 4, 3, 2, 1};
   int sum[SIZE];
 
-  #pragma omp parallel for shared(sum) firstprivate(A, B)
+  #pragma omp parallel for shared(sum) firstprivate(A, B) private(i)
   for (int i = 0; i < SIZE; i++) {
     sum[i] = A[i] + B[i];
   }
