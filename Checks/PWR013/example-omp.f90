@@ -7,7 +7,7 @@ subroutine example(A, B, C)
   integer :: i
 
   !$omp target teams distribute parallel do schedule(auto) default(none) &
-  !$omp& shared(A, B, C) map(to: A, B) map(tofrom: C)
+  !$omp& shared(A, B, C) private(i) map(to: A, B) map(tofrom: C)
   do i = 1, size(C, 1)
     C(i) = C(i) + A(i)
   end do
