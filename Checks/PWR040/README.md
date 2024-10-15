@@ -36,11 +36,13 @@ speed.
 
 ### Code example
 
+#### C
+
 The following code shows two nested loops. The matrix `B` is accessed
 [column-wise](../../Glossary/Row-major-and-column-major-order.md), which is
 inefficient. [Loop interchange](../../Glossary/Loop-interchange.md) doesn't help
 either, because fixing the inefficient memory access pattern for `B` would
-introduce an inefficient memory access pattern for `A`.
+introduce an inefficient memory access pattern for `A`:
 
 ```c
 void example(double **A, double **B, int n) {
@@ -65,6 +67,44 @@ for (int ii = 0; ii < n; ii += TILE_SIZE) {
     }
   }
 }
+```
+
+#### Fortran
+
+The following code shows two nested loops. The matrix `B` is accessed
+[row-wise](../../Glossary/Row-major-and-column-major-order.md), which is
+inefficient. [Loop interchange](../../Glossary/Loop-interchange.md) doesn't
+help either, because fixing the inefficient memory access pattern for `B` would
+introduce an inefficient memory access pattern for `A`:
+
+```f90
+subroutine example(a, b)
+  implicit none
+  real, dimension(:, :), intent(out) :: a
+  real, dimension(:, :), intent(in) :: b
+  integer :: i, j
+
+  do j = 1, size(a, 2)
+    do i = 1, size(a, 1)
+      a(i, j) = b(j, i)
+    end do
+  end do
+end subroutine example
+```
+
+After applying loop tiling, the locality of reference is improved and the
+performance is better. The tiled version of this loop nest is as follows:
+
+```f90
+do jj = 1, size(a, 2), TILE_SIZE
+  do ii = 1, size(a, 1), TILE_SIZE
+    do j = jj, MIN(jj + TILE_SIZE, size(a, 2))
+      do i = ii, MIN(ii + TILE_SIZE, size(a, 1))
+        a(i, j) = b(j, i)
+      end do
+    end do
+  end do
+end do
 ```
 
 ### Related resources
