@@ -36,7 +36,7 @@ code using accelerators.
 
 ### Code example
 
-Have a look at the following code snippet:
+#### C
 
 ```c
 void example(double *A, int *nodes, int n) {
@@ -46,16 +46,17 @@ void example(double *A, int *nodes, int n) {
 }
 ```
 
-The loop body has a `sparse reduction`  pattern, meaning that each iteration of
+The loop body has a `sparse reduction` pattern, meaning that each iteration of
 the loop *reduces* its computational result to a value, but the place where the
-value is stored is known at runtime only. Thus, two different iterations can
-potentially update the same element of the array `A`, which creates a potential
-race condition that must be handled through appropriate synchronization.
+value is stored is known at runtime only. Thus, any two iterations of the loop
+executing concurrently can potentially update the same element of the array `A`
+at the same time. This creates a potential race condition that must be handled
+through appropriate synchronization.
 
 The code snippet below shows an implementation that uses the OpenACC compiler
-directives to offload the loop to an accelerator. Note the synchronization added
-to avoid race conditions and the data transfer clauses that manage the data
-movement between the host memory and the accelerator memory.
+directives to offload the loop to an accelerator. Note the synchronization
+added to avoid race conditions, while the data transfer clauses manage the data
+movement between the host memory and the accelerator memory:
 
 ```c
 void example(double *A, int *nodes, int n) {
@@ -67,6 +68,52 @@ void example(double *A, int *nodes, int n) {
     A[nodes[nel]] += nel * 1;
   }
 }
+```
+
+#### Fortran
+
+```f90
+subroutine example(A, nodes)
+  implicit none
+  real(kind=8), intent(inout) :: A(:)
+  integer, intent(in) :: nodes(:)
+  integer :: nel
+
+  do nel = 1, size(nodes, 1)
+    A(nodes(nel)) = A(nodes(nel)) + (nel * 1)
+  end do
+end subroutine example
+```
+
+The loop body has a `sparse reduction` pattern, meaning that each iteration of
+the loop *reduces* its computational result to a value, but the place where the
+value is stored is known at runtime only. Thus, any two iterations of the loop
+executing concurrently can potentially update the same element of the array `A`
+at the same time. This creates a potential race condition that must be handled
+through appropriate synchronization.
+
+The code snippet below shows an implementation that uses the OpenACC compiler
+directives to offload the loop to an accelerator. Note the synchronization
+added to avoid race conditions, while the data transfer clauses manage the data
+movement between the host memory and the accelerator memory:
+
+```f90
+subroutine example(A, nodes)
+  implicit none
+  real(kind=8), intent(inout) :: A(:)
+  integer, intent(in) :: nodes(:)
+  integer :: nel
+
+  !$acc data copyin(nodes) copy(A)
+  !$acc parallel
+  !$acc loop
+  do nel = 1, size(nodes, 1)
+    !$acc atomic update
+    A(nodes(nel)) = A(nodes(nel)) + (nel * 1)
+  end do
+  !$acc end parallel
+  !$acc end data
+end subroutine example
 ```
 
 ### Related resources
