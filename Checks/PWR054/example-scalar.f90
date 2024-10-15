@@ -1,14 +1,13 @@
 ! PWR054: consider applying vectorization to scalar reduction loop
 
-subroutine example(A, n, sum)
+function example(A) result(sum)
   implicit none
-  integer, intent(in) :: n
-  real(kind=8), dimension(1:n), intent(in) :: A
-  real(kind=8), intent(out) :: sum
+  real(kind=8), intent(in) :: A(:)
+  real(kind=8) :: sum
   integer :: i
 
-  sum = 0
-  do i = 1, n
+  sum = 0.0
+  do i = 1, size(A, 1)
     sum = sum + A(i)
   end do
-end subroutine example
+end function example
