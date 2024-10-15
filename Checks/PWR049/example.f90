@@ -8,10 +8,10 @@ subroutine example(a, b)
 
   do j = 1, size(a, 2)
     do i = 1, size(a, 1)
-      if (j == 1) then
+      if (i == 1) then
         a(i, j) = 0
       else
-        a(i, j) = a(i, j - 1) + b(i, j)
+        a(i, j) = a(i - 1, j) + b(i, j)
       end if
     end do
   end do
