@@ -40,29 +40,31 @@ reduction variable, loop interchange is not directly applicable.
 
 ### Code example
 
-Have a look at the following code:
+#### C
 
 ```c
 for (int i = 0; i < n; i++) {
   double s = 0.0;
+
   for (int j = 0; j < n; j++) {
     s += a[j][i];
   }
+
   b[i] = s;
 }
 ```
 
 With regards to the innermost loop, the memory access pattern of the matrix `a`
-is strided, and this loop can profit from loop interchange, but reduction
-variable initialization on line 2 and reduction variable usage on line 6 prevent
-it.
+is strided, and this loop can benefit from loop interchange. However, the
+reduction variable initialization (line 2) and usage (line 8) prevent it.
 
-To make the loop vectorizable, we remove the temporary scalar value `s` and
+To make the loop vectorizable, we can remove the temporary scalar value `s` and
 replace it with direct writes to `b[i]`:
 
 ```c
 for (int i = 0; i < n; i++) {
   b[i] = 0.0;
+
   for (int j = 0; j < n; j++) {
     b[i] += a[j][i];
   }
@@ -76,6 +78,7 @@ separate loop. The result looks like this:
 for (int i = 0; i < n; i++) {
   b[i] = 0.0;
 }
+
 for (int i = 0; i < n; i++) {
   for (int j = 0; j < n; j++) {
     b[i] += a[j][i];
@@ -84,22 +87,89 @@ for (int i = 0; i < n; i++) {
 ```
 
 The first loop (line 1) is not performance critical, since it is not nested. On
-the other hand, the second loop (line 4) is performance critical, since it
+the other hand, the second loop (line 5) is performance critical, since it
 contains the loop nest.
 
-Fortunately, the loop nest is now perfectly nested, so that loop interchange is
-applicable. The final result looks like this (note the order of the nested loops
-is now `ji` instead of the original order `ij`):
+Fortunately, the loop nest is now perfectly nested, making loop interchange
+applicable. The final result has the nested loops in `ji` order instead of the
+original `ij` order:
 
 ```c
 for (int i = 0; i < n; i++) {
   b[i] = 0.0;
 }
+
 for (int j = 0; j < n; j++) {
   for (int i = 0; i < n; i++) {
     b[i] += a[j][i];
   }
 }
+```
+
+#### Fortran
+
+```f90
+do i = 1, size(b, 1)
+  s = 0.0
+
+  do j = 1, size(a, 2)
+    s = s + a(i, j)
+  end do
+
+  b(i) = s
+end do
+```
+
+With regards to the innermost loop, the memory access pattern of the matrix `a`
+is strided, and this loop can benefit from loop interchange. However, the
+reduction variable initialization (line 2) and usage (line 8) prevent it.
+
+To make the loop vectorizable, we can remove the temporary scalar value `s` and
+replace it with direct writes to `b(i)`:
+
+```f90
+do i = 1, size(b, 1)
+  b(i) = 0.0
+
+  do j = 1, size(a, 2)
+    b(i) = b(i) + a(i, j)
+  end do
+end do
+```
+
+After doing this, we can use loop fission to move the statement on line 2 to a
+separate loop. The result looks like this:
+
+```f90
+do i = 1, size(b, 1)
+  b(i) = 0.0
+end do
+
+do i = 1, size(b, 1)
+  do j = 1, size(a, 2)
+    b(i) = b(i) + a(i, j)
+  end do
+end do
+```
+
+The first loop (line 1) is not performance critical, since it is not nested. On
+the other hand, the second loop (line 5) is performance critical, since it
+contains the loop nest.
+
+Fortunately, the loop nest is now perfectly nested, making loop interchange
+applicable. The final result has the nested loops in `ji` order instead of the
+original `ij` order:
+
+```f90
+do i = 1, size(b, 1)
+  b(i) = 0.0
+end do
+
+do j = 1, size(a, 2)
+  do i = 1, size(b, 1)
+    b(i) = b(i) + a(i, j)
+  end do
+end do
 ```
 
 ### Related resources
