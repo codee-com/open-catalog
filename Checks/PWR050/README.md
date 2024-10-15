@@ -31,7 +31,7 @@ biggest challenge to speedup the code.
 
 ### Code example
 
-Have a look at the following code snippet:
+#### C
 
 ```c
 void example(double *D, double *X, double *Y, int n, double a) {
@@ -47,8 +47,8 @@ independent memory location. Thus, no race conditions can appear at runtime
 related to array `D`, so no specific synchronization is needed.
 
 The code snippet below shows an implementation that uses the OpenMP compiler
-directives for multithreading. Note no synchronization is required to avoid race
-conditions.
+directives for multithreading. Note how no synchronization is required to avoid
+race conditions:
 
 ```c
 void example(double *D, double *X, double *Y, int n, double a) {
@@ -60,6 +60,46 @@ void example(double *D, double *X, double *Y, int n, double a) {
     }
   } // end parallel
 }
+```
+
+#### Fortran
+
+```f90
+subroutine example(D, X, Y, a)
+  implicit none
+  real(kind=8), intent(out) :: D(:)
+  real(kind=8), intent(in) :: X(:), Y(:)
+  real(kind=8), intent(in) :: a
+  integer :: i
+
+  do i = 1, size(D, 1)
+    D(i) = a * X(i) + Y(i)
+  end do
+end subroutine example
+```
+
+The loop body has a `forall` pattern, meaning that each iteration of the loop
+can be executed independently and the result in each iteration is written to an
+independent memory location. Thus, no race conditions can appear at runtime
+related to array `D`, so no specific synchronization is needed.
+
+The code snippet below shows an implementation that uses the OpenMP compiler
+directives for multithreading. Note how no synchronization is required to avoid
+race conditions:
+
+```f90
+subroutine example(D, X, Y, a)
+  implicit none
+  real(kind=8), intent(out) :: D(:)
+  real(kind=8), intent(in) :: X(:), Y(:)
+  real(kind=8), intent(in) :: a
+  integer :: i
+
+  !$omp parallel do default(none) shared(D, X, Y, a) schedule(auto)
+  do i = 1, size(D, 1)
+    D(i) = a * X(i) + Y(i)
+  end do
+end subroutine example
 ```
 
 ### Related resources
