@@ -34,40 +34,93 @@ challenge to speedup the code using accelerators**.
 
 ### Code example
 
-Have a look at the following code snippet:
+#### C
 
 ```c
 double example(double *A, int n) {
   double sum = 0;
+
   for (int i = 0; i < n; ++i) {
     sum += A[i];
   }
+
   return sum;
 }
 ```
 
-The loop body has a `scalar reduction`  pattern, meaning that each iteration of
-the loop *reduces* its computational result to a single value, in this case
-`sum`. Thus, two different iterations can potentially update the value of the
-scalar `sum`, which creates a potential race condition that must be handled
-through appropriate synchronization.
+The loop body has a `scalar reduction` pattern, meaning that each iteration of
+the loop *reduces* its computational result to a single value; in this case,
+`sum`. Thus, any two iterations of the loop executing concurrently can
+potentially update the value of the scalar `sum` at the same time. This creates
+a potential race condition that must be handled through appropriate
+synchronization.
 
 The code snippet below shows an implementation that uses the OpenACC compiler
-directives to offload the loop to an accelerator. Note the synchronization added
-to avoid race conditions and the data transfer clauses that manage the data
-movement between the host memory and the accelerator memory.
+directives to offload the loop to an accelerator. Note the synchronization
+added to avoid race conditions, while the data transfer clauses manage the data
+movement between the host memory and the accelerator memory:
 
 ```c
 double example(double *A, int n) {
   double sum = 0;
+
   #pragma acc data copyin(A[0:n], n) copy(sum)
   #pragma acc parallel
   #pragma acc loop reduction(+: sum)
   for (int i = 0; i < n; ++i) {
     sum += A[i];
   }
+
   return sum;
 }
+```
+
+#### Fortran
+
+```f90
+function example(A) result(sum)
+  implicit none
+  real(kind=8), intent(in) :: A(:)
+  real(kind=8) :: sum
+  integer :: i
+
+  sum = 0.0
+  do i = 1, size(A, 1)
+    sum = sum + A(i)
+  end do
+end function example
+```
+
+The loop body has a `scalar reduction` pattern, meaning that each iteration of
+the loop *reduces* its computational result to a single value; in this case,
+`sum`. Thus, any two iterations of the loop executing concurrently can
+potentially update the value of the scalar `sum` at the same time. This creates
+a potential race condition that must be handled through appropriate
+synchronization.
+
+The code snippet below shows an implementation that uses the OpenACC compiler
+directives to offload the loop to an accelerator. Note the synchronization
+added to avoid race conditions, while the data transfer clauses manage the data
+movement between the host memory and the accelerator memory:
+
+```f90
+function example(A) result(sum)
+  implicit none
+  real(kind=8), intent(in) :: A(:)
+  real(kind=8) :: sum
+  integer :: i
+
+  sum = 0.0
+
+  !$acc data copyin(A) copy(sum)
+  !$acc parallel
+  !$acc loop reduction(+: sum)
+  do i = 1, size(A, 1)
+    sum = sum + A(i)
+  end do
+  !$acc end parallel
+  !$acc end data
+end function example
 ```
 
 ### Related resources
