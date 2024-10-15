@@ -1,14 +1,13 @@
 ! PWR055: consider applying offloading parallelism to forall loop
 
-subroutine example(D, X, Y, n, a)
+subroutine example(D, X, Y, a)
   implicit none
-  integer, intent(in) :: n
+  real(kind=8), intent(out) :: D(:)
+  real(kind=8), intent(in) :: X(:), Y(:)
   real(kind=8), intent(in) :: a
-  real(kind=8), dimension(1:n), intent(in) :: X, Y
-  real(kind=8), dimension(1:n), intent(out) :: D
   integer :: i
 
-  do i = 1, n
+  do i = 1, size(D, 1)
     D(i) = a * X(i) + Y(i)
   end do
 end subroutine example

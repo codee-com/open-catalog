@@ -33,7 +33,7 @@ code using accelerators.
 
 ### Code example
 
-Have a look at the following code snippet:
+#### C
 
 ```c
 void example(double *D, double *X, double *Y, int n, double a) {
@@ -46,12 +46,12 @@ void example(double *D, double *X, double *Y, int n, double a) {
 The loop body has a `forall` pattern, meaning that each iteration of the loop
 can be executed independently and the result in each iteration is written to an
 independent memory location. Thus, no race conditions can appear at runtime
-related to array D, so no specific synchronization is needed.
+related to array `D`, so no specific synchronization is needed.
 
 The code snippet below shows an implementation that uses the OpenACC compiler
-directives to offload the loop to an accelerator. Note no synchronization is
-required to avoid race conditions and the data transfer clauses that manage the
-data movement between the host memory and the accelerator memory.
+directives to offload the loop to an accelerator. Note how no synchronization
+is required to avoid race conditions, while the data transfer clauses manage
+the data movement between the host memory and the accelerator memory:
 
 ```c
 void example(double *D, double *X, double *Y, int n, double a) {
@@ -62,6 +62,51 @@ void example(double *D, double *X, double *Y, int n, double a) {
     D[i] = a * X[i] + Y[i];
   }
 }
+```
+
+#### Fortran
+
+```f90
+subroutine example(D, X, Y, a)
+  implicit none
+  real(kind=8), intent(out) :: D(:)
+  real(kind=8), intent(in) :: X(:), Y(:)
+  real(kind=8), intent(in) :: a
+  integer :: i
+
+  do i = 1, size(D, 1)
+    D(i) = a * X(i) + Y(i)
+  end do
+end subroutine example
+```
+
+The loop body has a `forall` pattern, meaning that each iteration of the loop
+can be executed independently and the result in each iteration is written to an
+independent memory location. Thus, no race conditions can appear at runtime
+related to array `D`, so no specific synchronization is needed.
+
+The code snippet below shows an implementation that uses the OpenACC compiler
+directives to offload the loop to an accelerator. Note how no synchronization
+is required to avoid race conditions, while the data transfer clauses manage
+the data movement between the host memory and the accelerator memory:
+
+```f90
+subroutine example(D, X, Y, a)
+  implicit none
+  real(kind=8), intent(out) :: D(:)
+  real(kind=8), intent(in) :: X(:), Y(:)
+  real(kind=8), intent(in) :: a
+  integer :: i
+
+  !$acc data copyin(X, Y, a) copyout(D)
+  !$acc parallel
+  !$acc loop
+  do i = 1, size(D, 1)
+    D(i) = a * X(i) + Y(i)
+  end do
+  !$acc end parallel
+  !$acc end data
+end subroutine example
 ```
 
 ### Related resources
