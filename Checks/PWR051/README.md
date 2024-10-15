@@ -31,50 +31,101 @@ biggest challenge to speedup the code.
 
 ### Code example
 
-Have a look at the following code snippet:
+#### C
 
 ```c
 double example(double *A, int n) {
   double sum = 0.0;
+
   for (int i = 0; i < n; ++i) {
     sum += A[i];
   }
+
   return sum;
 }
 ```
 
 The loop body has a `scalar reduction` pattern, meaning that each iteration of
-the loop *reduces* its computational result to a single value, in this case
-`sum`.
-
-Thus, two different iterations can potentially update the value of the scalar
-`sum`, which creates a potential race condition that must be handled through
-appropriate synchronization.
+the loop *reduces* its computational result to a single value; in this case,
+`sum`. Thus, any two iterations of the loop executing concurrently can
+potentially update the value of the scalar `sum` at the same time. This creates
+a potential race condition that must be handled through appropriate
+synchronization.
 
 The code snippet below shows an implementation that uses the OpenMP compiler
 directives for multithreading. Note the synchronization added to avoid race
-conditions.
+conditions:
 
 ```c
 double example(double *A, int n) {
   double sum = 0.0;
-  #pragma omp parallel default(none) shared(A, n, sum)
+
+  #pragma omp parallel default(none) shared(A, n, sum) private(i)
   {
     #pragma omp for reduction(+: sum) schedule(auto)
     for (int i = 0; i < n; ++i) {
       sum += A[i];
     }
   } // end parallel
+
   return sum;
 }
 ```
 
 >**Note**  
 >Executing scalar reduction loops using multithreading incurs a synchronization
->overhead. The example above shows an implementation that uses an efficient
->implementation that balances synchronization and memory overheads, by taking
->advantage of a reduction mechanism typically supported by the APIs for
->multithreading.
+>overhead. The example above shows a code that uses an efficient implementation
+>balancing synchronization and memory overheads, by taking advantage of a
+>reduction mechanism typically supported by the APIs for multithreading.
+
+#### Fortran
+
+```f90
+function example(A) result(sum)
+  implicit none
+  real(kind=8), intent(in) :: A(:)
+  real(kind=8) :: sum
+  integer :: i
+
+  sum = 0.0
+  do i = 1, size(A, 1)
+    sum = sum + A(i)
+  end do
+end function example
+```
+
+The loop body has a `scalar reduction` pattern, meaning that each iteration of
+the loop *reduces* its computational result to a single value; in this case,
+`sum`. Thus, any two iterations of the loop executing concurrently can
+potentially update the value of the scalar `sum` at the same time. This creates
+a potential race condition that must be handled through appropriate
+synchronization.
+
+The code snippet below shows an implementation that uses the OpenMP compiler
+directives for multithreading. Note the synchronization added to avoid race
+conditions:
+
+```f90
+function example(A) result(sum)
+  implicit none
+  real(kind=8), intent(in) :: A(:)
+  real(kind=8) :: sum
+  integer :: i
+
+  sum = 0.0
+  !$omp parallel do default(none) shared(A) private(i) reduction(+: sum) &
+  !$omp& schedule(auto)
+  do i = 1, size(A, 1)
+    sum = sum + A(i)
+  end do
+end function example
+```
+
+>**Note**  
+>Executing scalar reduction loops using multithreading incurs a synchronization
+>overhead. The example above shows a code that uses an efficient implementation
+>balancing synchronization and memory overheads, by taking advantage of a
+>reduction mechanism typically supported by the APIs for multithreading.
 
 ### Related resources
 
