@@ -26,6 +26,8 @@ switches (typically `-fopenmp-simd` or `-fopenmp`).
 
 ### Code example
 
+#### C
+
 The following loop invokes a pure function `foo`:
 
 ```c
@@ -40,8 +42,8 @@ void example(int *A, int n) {
 }
 ```
 
-By adding the `#pragma omp declare simd` the compiler will create a vectorizable
-version of `foo`:
+By adding the `#pragma omp declare simd` clause, the compiler will create a
+vectorizable version of `foo`:
 
 ```c
 #pragma omp declare simd
@@ -54,6 +56,48 @@ void example(int *A, int n) {
     A[i] = foo(i);
   }
 }
+```
+
+#### Fortran
+
+The following loop invokes a pure function `foo`:
+
+```f90
+integer function foo(a)
+  integer, intent(in) :: a
+  foo = 2 * a
+end function foo
+
+subroutine example(A)
+  integer, external :: foo
+  integer, intent(out) :: A(:)
+  integer :: i
+
+  do i = 1, size(A, 1)
+    A(i) = foo(i)
+  end do
+end subroutine example
+```
+
+By adding the `!$omp declare simd` clause, the compiler will create a
+vectorizable version of `foo`:
+
+```f90
+integer function foo(a)
+  !$omp declare simd
+  integer, intent(in) :: a
+  foo = 2 * a
+end function foo
+
+subroutine example(A)
+  integer, external :: foo
+  integer, intent(out) :: A(:)
+  integer :: i
+
+  do i = 1, size(A, 1)
+    A(i) = foo(i)
+  end do
+end subroutine example
 ```
 
 ### References
