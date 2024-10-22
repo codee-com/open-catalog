@@ -38,63 +38,74 @@ reduction variablе, loop interchange is not directly applicable.
 
 ### Code example
 
-Have a look at the following code. With regards to the innermost loop `for_j`,
-the memory access pattern of the matrix `A` is strided. This loop can profit
-from loop interchange, but this optimization technique cannot be applied because
-the loops are not perfectly nested. Note the presence of the reduction variable
-initialization between the loop headers as well as the presence of accesses to
-array `B` between the loop ends.
+#### C
+
+Take a look at the following code. Since C stores the elements of the matrix
+`A` in row-major order, the memory access pattern of the innermost loop,
+`for(j)`, is strided:
 
 ```c
 for (int i = 0; i < n; i++) {
   double s = 0.0;
+
   for (int j = 0; j < n; j++) {
     s += A[j][i];
   }
+
   B[i] = 0.1 * s;
 }
 ```
 
-In order to apply loop interchange, the non-perfectly-nested loops must be
-turned into perfectly nested loops, through several code changes related to
-[scalar to vector promotion](../../Glossary/Scalar-to-vector-promotion.md) on
-variable `s`. What this means is that we replace the scalar variable `s` with an
-array:
+The loops could benefit from loop interchange, but this optimization can't be
+applied because the loops are not perfectly nested. Note the presence of the
+reduction variable initialization (`s = 0.0`) between the loop headers, in
+addition to the accesses to array `B` between the loop ends:
+
+To apply loop interchange, the non-perfectly-nested loops must be turned into
+perfectly nested loops. This will be achieved by applying several code changes
+related to [scalar to vector
+promotion](../../Glossary/Scalar-to-vector-promotion.md) on the variable `s`.
+
+First, let's replace the scalar variable `s` with an array:
 
 ```c
 for (int i = 0; i < n; i++) {
   s[i] = 0.0;
+
   for (int j = 0; j < n; j++) {
     s[i] += a[j][i];
   }
-  b[i] = 0.1 * s[i];
+
+  B[i] = 0.1 * s[i];
 }
 ```
 
-After doing this, we use loop fission to move the statements between the loop
-headers into a separate loop as well as the statements between the loop ends to
-another separate loop. The result looks like this:
+Next, we apply loop fission to move the statements between the loop headers and
+ends into separate loops. The resulting code looks is as follows:
 
 ```c
 for (int i = 0; i < n; i++) {
   s[i] = 0.0;
 }
+
 for (int i = 0; i < n; i++) {
   for (int j = 0; j < n; j++) {
     s[i] += a[j][i];
   }
 }
+
 for (int i = 0; i < n; i++) {
-  b[i] = 0.1 * s[i];
+  B[i] = 0.1 * s[i];
 }
 ```
 
-Now, the original loop nest is rewritten as three separate loop nests. The first
-and the third loops are single non-nested loops, so let's focus on the second
-loop nest as it has a higher impact on performance. Note this loop nest is
-perfectly nested, so loop interchange is applicable and the `ij`  order can be
-turned into the `ji` order to improve locality of reference. The final result
-looks like this:
+Note how the original loop nest is rewritten as three separate sections. The
+first and the third loops are single non-nested loops, so let's focus on the
+second loop nest as it will have a higher impact on performance.
+
+Note that this loop nest is perfectly nested, making loop interchange
+applicable. This optimization will turn the `ij`  order into `ji`, improving
+the locality of reference:
 
 ```c
 for (int i = 0; i < n; i++) {
@@ -108,6 +119,91 @@ for (int j = 0; j < n; j++) {
 for (int i = 0; i < n; i++) {
   b[i] = 0.1 * s[i];
 }
+```
+
+#### Fortran
+
+Take a look at the following code. Since Fortran stores the elements of the
+matrix `A` in column-major order, the memory access pattern of the innermost
+loop, `do(j)`, is strided:
+
+```f90
+do i = 1, size(A, 1)
+  s = 0.0
+
+  do j = 1, size(A, 2)
+    s = s + A(i, j)
+  end do
+
+  B(i) = 0.1 * s
+end do
+```
+
+The loops could benefit from loop interchange, but this optimization can't be
+applied because the loops are not perfectly nested. Note the presence of the
+reduction variable initialization (`s = 0.0`) between the loop headers, in
+addition to the accesses to array `B` between the loop ends:
+
+To apply loop interchange, the non-perfectly-nested loops must be turned into
+perfectly nested loops. This will be achieved by applying several code changes
+related to [scalar to vector
+promotion](../../Glossary/Scalar-to-vector-promotion.md) on the variable `s`.
+
+First, let's replace the scalar variable `s` with an array:
+
+```f90
+do i = 1, size(A, 1)
+  s(i) = 0.0
+
+  do j = 1, size(A, 2)
+    s(i) = s(i) + A(i, j)
+  end do
+
+  B(i) = 0.1 * s(i)
+end do
+```
+
+Next, we apply loop fission to move the statements between the loop headers and
+ends into separate loops. The resulting code looks is as follows:
+
+```f90
+do i = 1, size(A, 1)
+  s(i) = 0.0
+end do
+
+do i = 1, size(A, 1)
+  do j = 1, size(A, 2)
+    s(i) = s(i) + A(i, j)
+  end do
+end do
+
+do i = 1, size(A, 1)
+  B(i) = 0.1 * s(i)
+end do
+```
+
+Note how the original loop nest is rewritten as three separate sections. The
+first and the third loops are single non-nested loops, so let's focus on the
+second loop nest as it will have a higher impact on performance.
+
+Note that this loop nest is perfectly nested, making loop interchange
+applicable. This optimization will turn the `ij`  order into `ji`, improving
+the locality of reference:
+
+```f90
+do i = 1, size(A, 1)
+  s(i) = 0.0
+end do
+
+do j = 1, size(A, 2)
+  do i = 1, size(A, 1)
+    s(i) = s(i) + A(i, j)
+  end do
+end do
+
+do i = 1, size(A, 1)
+  B(i) = 0.1 * s(i)
+end do
 ```
 
 ### Related resources
