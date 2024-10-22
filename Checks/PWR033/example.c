@@ -1,4 +1,4 @@
-// PWR033: move invariant conditional out of the loop to avoid redundant
+// PWR033: Move invariant conditional out of the loop to avoid redundant
 // computations
 
 void example(int addTwo) {

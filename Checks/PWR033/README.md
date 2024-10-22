@@ -28,6 +28,8 @@ may be larger but it should also become faster.
 
 ### Code example
 
+#### C
+
 The following loop increments a variable by 1 or 2 depending on the function
 argument:
 
@@ -53,6 +55,48 @@ void example(int addTwo) {
     sum += add;
   }
 }
+```
+
+#### Fortran
+
+The following loop increments a variable by 1 or 2 depending on the function
+argument:
+
+```f90
+subroutine example(addTwo)
+  logical, intent(in) :: addTwo
+  integer :: i, sum
+
+  do i = 1, 1000
+    if (addTwo .eqv. .true.) then
+      sum = sum + 2
+    else
+      sum = sum + 1
+    end if
+  end do
+end subroutine
+```
+
+In each iteration, the increment statement evaluates the argument to decide how
+much to increment. However, this value is fixed for the whole execution of the
+function and thus, the conditional can be moved outside of the loop. The
+resulting code is as follows:
+
+```f90
+subroutine example(addTwo)
+  logical, intent(in) :: addTwo
+  integer :: add, i, sum
+
+  if (addTwo .eqv. .true.) then
+    add = 2
+  else
+    add = 1
+  end if
+
+  do i = 1, 1000
+    sum = sum + add
+  end do
+end subroutine
 ```
 
 ### Related resources
