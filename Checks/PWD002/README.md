@@ -19,8 +19,11 @@ this, the variable where the reduction is performed must be protected.
 
 ### Code example
 
-In the following code, there is a race condition for the `sum` variable since
-its read/write operations are not properly protected.
+#### C
+
+In the following code, the variable `sum` is subjected to a shared data
+scoping. This introduces a race condition on the variable, since its read/write
+operations are not properly protected:
 
 ```c
 void foo() {
@@ -34,9 +37,9 @@ void foo() {
 }
 ```
 
-Shared data scoping should not be used in this case without protecting the
-reduction operation. To do so, add an atomic directive, which ensures that only
-one thread performs the read/write operation at the same time.
+To protect the reduction operation, we can add an `atomic` directive from
+OpenMP, which ensures that only one thread performs the read/write operation at
+a given time:
 
 ```c
 void foo() {
@@ -49,13 +52,13 @@ void foo() {
     sum += array[i];
   }
 }
-
 ```
 
-Alternatively, the scalar reduction OpenMP clause can be used. This will
-automatically privatize the specified variable so that each thread performs the
-computation safely. Once all threads have finished, their results are reduced
-into the variable using the specified reduction operator.
+Alternatively, we can also use the scalar `reduction` directive from OpenMP.
+This will automatically create a copy of the variable for each thread, ensuring
+they can perform their computations safely. Once all threads have finished,
+their results are combined into the original variable using the specified
+reduction operator:
 
 ```c
 void foo() {
@@ -67,6 +70,65 @@ void foo() {
     sum += array[i];
   }
 }
+```
+
+#### Fortran
+
+In the following code, the variable `sum` is subjected to a shared data
+scoping. This introduces a race condition on the variable, since its read/write
+operations are not properly protected:
+
+```f90
+subroutine example(array)
+  integer, intent(in) :: array(:)
+  integer :: i, sum
+
+  sum = 0
+
+  !$omp parallel do default(none) shared(array, sum)
+  do i = 1, size(array, 1)
+    sum = sum + array(i)
+  end do
+end subroutine example
+```
+
+To protect the reduction operation, we can add an `atomic` directive from
+OpenMP, which ensures that only one thread performs the read/write operation at
+a given time:
+
+```f90
+subroutine example(array)
+  integer, intent(in) :: array(:)
+  integer :: i, sum
+
+  sum = 0
+
+  !$omp parallel do default(none) shared(array, sum)
+  do i = 1, size(array, 1)
+    !$omp atomic update
+    sum = sum + array(i)
+  end do
+end subroutine example
+```
+
+Alternatively, we can also use the scalar `reduction` directive from OpenMP.
+This will automatically create a copy of the variable for each thread, ensuring
+they can perform their computations safely. Once all threads have finished,
+their results are reduced into the original variable using the specified
+reduction operator:
+
+```f90
+subroutine example(array)
+  integer, intent(in) :: array(:)
+  integer :: i, sum
+
+  sum = 0
+
+  !$omp parallel do default(none) shared(array) reduction(+: sum)
+  do i = 1, size(array, 1)
+    sum = sum + array(i)
+  end do
+end subroutine example
 ```
 
 ### Related resources
