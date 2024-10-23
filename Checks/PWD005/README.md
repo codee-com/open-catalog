@@ -21,6 +21,8 @@ invalid memory accesses and crashes.
 
 ### Code example
 
+#### C
+
 The following code performs the sum of two arrays:
 
 ```c
@@ -48,6 +50,46 @@ void foo() {
   }
 }
 ```
+
+#### Fortran
+
+The following code performs the sum of two arrays:
+
+```f90
+subroutine example()
+  integer, dimension(100) :: A, B, sum
+  integer :: i
+
+  !$omp target map(to: A(1:50), B(1:50)) map(from: sum(1:50))
+  !$omp parallel do
+  do i = 1, size(sum, 1)
+    sum(i) = A(i) + B(i)
+  end do
+  !$omp end target
+end subroutine example
+```
+
+However, only half of the array elements have been copied to the GPU. This must
+be fixed by matching the transferred range with array range actually used in
+the loop:
+
+```f90
+subroutine example()
+  integer, dimension(100) :: A, B, sum
+  integer :: i
+
+  !$omp target map(to: A, B) map(from: sum)
+  !$omp parallel do
+  do i = 1, size(sum, 1)
+    sum(i) = A(i) + B(i)
+  end do
+  !$omp end target
+end subroutine example
+```
+
+When explicit ranges are not provided, the compiler automatically determines
+the full size of the arrays based on their declarations.
+
 
 ### Related resources
 
