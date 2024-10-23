@@ -13,20 +13,28 @@ executed correctly in parallel.
 
 ### Relevance
 
-C/C++ array access syntax allows the use of indices outside the ranges array
-dimensions of even the array itself. Using indices corresponding to positions
-outside the array constitutes an out-of-memory-bounds error. Using an index
-outside the dimension bounds that results in accessing a valid array position in
-a different dimension is technically correct; however, it produces obscure code
-which is difficult to understand and reason about. Moreover, doing this in
-parallel code can introduce a data race when there is a recurrence pattern.
+The array access syntax in C, C++ and Fortran allows using indices that fall
+outside the defined dimensions of the array.
+
+It's technically possible to access valid positions in different dimensions by
+specifying indices beyond the bounds of the array. For instance, in C, the
+element before the start of a row corresponds to the last element of the
+previous row, since data is stored in row-major order. In contrast, Fortran
+stores data in column-major order.
+
+In any case, code that uses indices exceeding the array bounds is obscure and
+hard to understand, and can also easily lead to runtime errors. Additionally,
+in parallel programming, this practice can also create data races when there is
+a recurrence pattern in the computation.
 
 ### Code example
 
-The following code iterates over the rows in parallel and each thread iterates
-sequentially over the columns. However, there is an out-of-dimension-bounds
-access causing that a thread access an array element of a different row, which
-results in a data race between the corresponding threads:
+#### C
+
+The following code iterates over the rows of a 2D array in parallel, with each
+thread processing sequentially the columns of its rows. However, there is
+an issue with out-of-dimension-bounds access that causes a thread to access an
+element from a different row. This leads to a data race between the threads:
 
 ```c
 void foo() {
@@ -41,8 +49,9 @@ void foo() {
 }
 ```
 
-Assuming that each thread is responsible for processing a row, this can be fixed
-by starting the iterations over the second dimension in 1:
+Assuming that the original intention is for each thread to process a row, the
+issue can be resolved by starting the column iterations from index `1` instead
+of `0`:
 
 ```c
 void foo() {
@@ -55,6 +64,45 @@ void foo() {
     }
   }
 }
+```
+
+#### Fortran
+
+The following code iterates over the columns of a 2D array in parallel, with
+each thread processing sequentially the rows of its columns. However, there is
+an issue with out-of-dimension-bounds access that causes a thread to access an
+element from a different column. This leads to a data race between the threads:
+
+```f90
+subroutine example(A)
+  integer, intent(inout) :: A(:, :)
+  integer :: i, j
+
+  !$omp parallel do
+  do j = 2, size(A, 2)
+    do i = 1, size(A, 1)
+      A(i, j) = A(i, j) + A(i - 1, j)
+    end do
+  end do 
+end subroutine example
+```
+
+Assuming that the original intention is for each thread to process a column,
+the issue can be resolved by starting the row iterations from index `2`
+instead of `1`:
+
+```f90
+subroutine example(A)
+  integer, intent(inout) :: A(:, :)
+  integer :: i, j
+
+  !$omp parallel do
+  do j = 2, size(A, 2)
+    do i = 2, size(A, 1)
+      A(i, j) = A(i, j) + A(i - 1, j)
+    end do
+  end do 
+end subroutine example
 ```
 
 ### Related resources
