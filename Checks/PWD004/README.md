@@ -23,8 +23,10 @@ crashes.
 
 ### Code example
 
-The following code uses an integer index ranging from 1 to 100 to access the
-array `A`:
+#### C
+
+The following code uses an integer index ranging from `1` to `100` to access
+the array `A`:
 
 ```c
 void foo() {
@@ -35,9 +37,10 @@ void foo() {
 }
 ```
 
-This is incorrect since the array positions range from 0 to 99. Thus, the array
-access must be fixed, for instance by changing the array reference from
-`A[i + 1]` to `A[i]`:
+This is incorrect since the array positions in C range from `0` to `99`. Thus,
+the array accesses must be fixed to prevent invalid memory accesses during
+runtime. For instance, we can modify the array reference from `A[i + 1]` to
+`A[i]`:
 
 ```c
 void foo() {
@@ -46,6 +49,38 @@ void foo() {
     A[i] = 1;
   }
 }
+```
+
+#### Fortran
+
+The following code uses an integer index ranging from `2` to `101` to access
+the array `A`:
+
+```f90
+subroutine example()
+  integer :: A(100)
+  integer :: i
+
+  do i = 1, size(A, 1)
+    A(i + 1) = 1
+  end do
+end subroutine example
+```
+
+This is incorrect since the array positions in Fortran range from `1` to `100`.
+Thus, the array accesses must be fixed to prevent invalid memory accesses
+during runtime. For instance, we can modify the array reference from `A(i + 1)`
+to `A(i)`:
+
+```f90
+subroutine example()
+  integer :: A(100)
+  integer :: i
+
+  do i = 1, size(A, 1)
+    A(i) = 1
+  end do
+end subroutine example
 ```
 
 ### Related resources
