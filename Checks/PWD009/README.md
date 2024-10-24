@@ -16,13 +16,16 @@ threads but it is privatized instead.
 
 ### Code example
 
-In the following code, `C` is incorrectly privatized:
+#### C
+
+In the following code, `C` is incorrectly privatized since the threads operate
+on non-overlapping positions of the array:
 
 ```c
 void example(int m, double *A, double *B, double *C) {
   double temp;
 
-  #pragma omp parallel for default(none) private(temp, C) shared(A, B, m)
+  #pragma omp parallel for default(none) private(i, temp, C) shared(A, B, m)
   for (int i = 0; i < m; i++) {
     temp = A[i] * B[i];
     C[i] = C[i] + temp;
@@ -30,18 +33,55 @@ void example(int m, double *A, double *B, double *C) {
 }
 ```
 
-To fix this, it should be moved to the `shared` clause:
+To fix this, `C` should be moved to a `shared` clause:
 
 ```c
 void example(int m, double *A, double *B, double *C) {
   double temp;
 
-  #pragma omp parallel for default(none) private(temp) shared(A, B, C, m)
+  #pragma omp parallel for default(none) private(i, temp) shared(A, B, C, m)
   for (int i = 0; i < m; i++) {
     temp = A[i] * B[i];
     C[i] = C[i] + temp;
   }
 }
+```
+
+#### Fortran
+
+In the following code, `C` is incorrectly privatized since the threads operate
+on non-overlapping positions of the array:
+
+```f90
+subroutine example(A, B, C)
+  real, intent(in) :: A(:), B(:)
+  real, intent(inout) :: C(:)
+  real :: temp
+  integer :: i
+
+  !$omp parallel do default(none) private(i, temp, C) shared(A, B)
+  do i = 1, size(C, 1)
+    temp = A(i) * B(i)
+    C(i) = C(i) + temp
+  end do
+end subroutine example
+```
+
+To fix this, `C` should be moved to a `shared` clause:
+
+```f90
+subroutine example(A, B, C)
+  real, intent(in) :: A(:), B(:)
+  real, intent(inout) :: C(:)
+  real :: temp
+  integer :: i
+
+  !$omp parallel do default(none) private(i, temp) shared(A, B, C)
+  do i = 1, size(C, 1)
+    temp = A(i) * B(i)
+    C(i) = C(i) + temp
+  end do
+end subroutine example
 ```
 
 ### Related resources
