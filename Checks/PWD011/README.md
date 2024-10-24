@@ -17,13 +17,19 @@ instead.
 
 ### Code example
 
-In the following example, `liveOut` has an incorrect `private` clause:
+#### C
+
+In the following example, `liveOut` is incorrectly marked as `private`. When a
+variable is marked as `private`, each thread is instructed to make its own copy
+and the original variable is not updated during parallel execution. As a
+result, once the loop is completed, the original `liveOut` won't retain the
+value from the last iteration:
 
 ```c
 double example(int m, double *A, double *B, double *C) {
   double liveOut;
 
-  // liveOut is private but used after the loop, should be lastprivate
+  // liveOut is private but used after the loop, so it should be lastprivate
   #pragma omp parallel for private(liveOut)
   for (int i = 0; i < m; i++) {
     liveOut = A[i] * B[i];
@@ -35,8 +41,8 @@ double example(int m, double *A, double *B, double *C) {
 }
 ```
 
-The clause needs to be updated to `lastprivate` so that the value computed in
-the last loop iteration survives the loop:
+To achieve this behavior, we can use the `lastprivate` clause. This allows
+subsequent operations on `liveOut` to work correctly:
 
 ```c
 double example(int m, double *A, double *B, double *C) {
@@ -51,6 +57,53 @@ double example(int m, double *A, double *B, double *C) {
   liveOut += 5;
   return liveOut;
 }
+```
+
+#### Fortran
+
+In the following example, `liveOut` is incorrectly marked as `private`. When a
+variable is marked as `private`, each thread is instructed to make its own copy
+and the original variable is not updated during parallel execution. As a
+result, once the loop is completed, the original `liveOut` won't retain the
+value from the last iteration:
+
+```f90
+real function example(A, B, C)
+  real, intent(in) :: A(:), B(:)
+  real, intent(inout) :: C(:)
+  real :: liveOut
+  integer :: i
+
+  !$omp parallel do private(liveOut)
+  do i = 1, size(C, 1)
+    liveOut = A(i) * B(i)
+    C(i) = C(i) + liveOut
+  end do
+
+  liveOut = liveOut + 5
+  example = liveOut
+end function example
+```
+
+To achieve this behavior, we can use the `lastprivate` clause. This allows
+subsequent operations on `liveOut` to work correctly:
+
+```f90
+real function example(A, B, C)
+  real, intent(in) :: A(:), B(:)
+  real, intent(inout) :: C(:)
+  real :: liveOut
+  integer :: i
+
+  !$omp parallel do lastprivate(liveOut)
+  do i = 1, size(C, 1)
+    liveOut = A(i) * B(i)
+    C(i) = C(i) + liveOut
+  end do
+
+  liveOut = liveOut + 5
+  example = liveOut
+end function example
 ```
 
 ### Related resources
