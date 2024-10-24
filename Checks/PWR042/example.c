@@ -4,9 +4,11 @@
 void example(double **A, double *B, int n) {
   for (int i = 0; i < n; i++) {
     double s = 0.0;
+
     for (int j = 0; j < n; j++) {
       s += A[j][i];
     }
+
     B[i] = 0.1 * s;
   }
 }
