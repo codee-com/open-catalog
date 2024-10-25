@@ -1,15 +1,22 @@
-# PWR072: Add an explicit save attribute when initializing variables in their declaration
+# PWR072: Split the variable initialization from the declaration to prevent the implicit 'save' behavior
 
 ### Issue
 
 In Fortran, when a variable is initialized at its declaration, it implicitly
-acquires the `save` attribute. This behavior can lead to unintended
-consequences if the programmer is unaware of it.
+acquires the `save` attribute. This behavior is often unintended by the
+programmer and can break the program logic.
 
 ### Actions
 
-To improve code clarity, explicitly write the `save` attribute when
-initializing variables at their declaration.
+Split the initialization of the variable from its declaration to remove the
+implicit `save` behavior and enhance code clarity.
+
+>If the `save` behavior is intentional, explicitly add the attribute in the
+>variable declaration to clarify the intent:
+>
+>```f90
+>integer, save :: count = 0
+>```
 
 ### Relevance
 
@@ -21,67 +28,90 @@ multiple times during execution.
 
 ### Code example
 
-Consider the subroutine below, where a variable `count` is initialized at its
-declaration, but without an explicit `save` attribute:
+Consider the code below, which computes the sum of the elements of various
+arrays using the `sum_array()` function. Note how the variable `result` is set
+to `0` at its declaration, implicitly acquiring the `save` behavior:
 
 ```f90
 ! example.f90
 program test_implicit_save
-  call counter
-  call counter
+  implicit none
+  integer, dimension(3) :: A = [1, 1, 1], B = [2, 2, 2]
+  integer :: result
+
+  result = sum_array(A)
+  print *, "Sum of A:", result ! Expected: 3
+
+  result = sum_array(B)
+  print *, "Sum of B:", result ! Expected: 6
 
 contains
 
-subroutine counter()
-  integer :: count = 0
-  count = count + 1
-  print *, count
-end subroutine
+  integer function sum_array(array)
+    implicit none
+    integer, intent(in) :: array(:)
+    integer :: result = 0
+    integer :: i
+
+    do i = 1, size(array)
+      result = result + array(i)
+    end do
+
+    sum_array = result
+  end function sum_array
+
 end program test_implicit_save
 ```
 
-Each time `counter()` is called, one might expect `count` to be set to `0` and
-then incremented to `1`. However, due to the implicit `save` attribute, `count`
-retains its value between calls:
+Each time `sum_array()` is called, one might expect `result` to be set to `0`
+and then add the elements of the target array. However, `result` retains its
+value between calls, breaking the intended logic for the program:
 
 ```txt
 $ gfortran --version
 GNU Fortran (Debian 12.2.0-14) 12.2.0
 $ gfortran example.f90
 $ ./a.out
-           1
-           2
+ Sum of A:           3
+ Sum of B:           9
 ```
 
-A clearer and more intentional approach would be:
+While resolving the issue is as simple as splitting the initialization of
+`result` to a separate line, this type of bug can be particularly challenging
+to diagnose in complex codebases:
 
 ```f90
 ! solution.f90
-program test_explicit_save
-  call counter
-  call counter
+program test_implicit_save
+  implicit none
+  integer, dimension(3) :: A = [1, 1, 1], B = [2, 2, 2]
+  integer :: result
+
+  result = sum_array(A)
+  print *, "Sum of A:", result ! Expected: 3
+
+  result = sum_array(B)
+  print *, "Sum of B:", result ! Expected: 6
 
 contains
 
-subroutine counter()
-  integer, save :: count = 0
-  count = count + 1
-  print *, count
-end subroutine
-end program test_explicit_save
+  integer function sum_array(array)
+    implicit none
+    integer, intent(in) :: array(:)
+    integer :: result
+    integer :: i
+
+    result = 0
+
+    do i = 1, size(array)
+      result = result + array(i)
+    end do
+
+    sum_array = result
+  end function sum_array
+
+end program test_implicit_save
 ```
-
-Here, the `save` attribute is explicitly declared, making it clear that `count`
-is intended to accumulate its value between calls.
-
->**Note:**  
->If you simply want to initialize a variable when declaring it, while avoiding
->the `save` behavior, put the initialization in a separate line:
->
->```f90
->integer :: count
->count = 0
->```
 
 ### Related resources
 
