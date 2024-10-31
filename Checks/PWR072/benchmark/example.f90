@@ -1,5 +1,5 @@
-! PWR072: Add an explicit save attribute when initializing variables in their
-!         declaration
+! PWR072: Split the variable initialization from the declaration to prevent the
+!         implicit 'save' behavior
 
 module utils
   implicit none
