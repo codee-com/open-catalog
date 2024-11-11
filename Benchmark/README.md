@@ -1,4 +1,4 @@
-# Benchmarks for the Open Catalog on best practices for performance
+# Benchmarks
 
 ## Requirements
 
