@@ -127,7 +127,7 @@ Take a look at the following code. Since Fortran stores the elements of the
 matrix `A` in column-major order, the memory access pattern of the innermost
 loop, `do(j)`, is strided:
 
-```f90
+```fortran
 do i = 1, size(A, 1)
   s = 0.0
 
@@ -151,7 +151,7 @@ promotion](../../Glossary/Scalar-to-vector-promotion.md) on the variable `s`.
 
 First, let's replace the scalar variable `s` with an array:
 
-```f90
+```fortran
 do i = 1, size(A, 1)
   s(i) = 0.0
 
@@ -166,7 +166,7 @@ end do
 Next, we apply loop fission to move the statements between the loop headers and
 ends into separate loops. The resulting code looks is as follows:
 
-```f90
+```fortran
 do i = 1, size(A, 1)
   s(i) = 0.0
 end do
@@ -190,7 +190,7 @@ Note that this loop nest is perfectly nested, making loop interchange
 applicable. This optimization will turn the `ij`  order into `ji`, improving
 the locality of reference:
 
-```f90
+```fortran
 do i = 1, size(A, 1)
   s(i) = 0.0
 end do

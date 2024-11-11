@@ -70,7 +70,7 @@ double example(unsigned times) {
 In the following example, the loop is invoking a recursive function computing
 the Fibonacci number. This recursion inhibits the vectorization of the loop:
 
-```f90
+```fortran
 module mod_fibonacci
   contains
   recursive function fibonacci(n) result(fibo)
@@ -105,7 +105,7 @@ end subroutine example
 
 As an alternative, Fibonacci's sequence can be calculated non-recursively:
 
-```f90
+```fortran
 subroutine example(times)
   implicit none
   integer, intent(in) :: times

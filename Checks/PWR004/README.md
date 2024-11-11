@@ -59,7 +59,7 @@ void example() {
 In the following code, a variable `factor` is used in each iteration of the
 loop to initialize the array `result`:
 
-```f90
+```fortran
 subroutine example()
   integer :: factor = 42
   integer :: result(10)
@@ -75,7 +75,7 @@ Having the scope declared explicitly for each variable improves readability,
 since it makes explicit the scope of all the variables within the parallel
 region:
 
-```f90
+```fortran
 subroutine example()
   integer :: factor = 42
   integer :: result(10)

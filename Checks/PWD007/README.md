@@ -63,7 +63,7 @@ void foo(int *x, int *y, int size) {
 The following code performs an exclusive scan, naively parallelized using
 multithreading:
 
-```f90
+```fortran
 subroutine foo(x, y)
   implicit none
   integer, intent(in) :: x(:)
@@ -87,7 +87,7 @@ previous `y(i - 1)`.
 Since OpenMP 5.0, this type of computation can be conveniently parallelized
 using the `scan` directive:
 
-```f90
+```fortran
 subroutine foo(x, y)
   implicit none
   integer, intent(in) :: x(:)

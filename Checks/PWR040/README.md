@@ -77,7 +77,7 @@ inefficient. [Loop interchange](../../Glossary/Loop-interchange.md) doesn't
 help either, because fixing the inefficient memory access pattern for `B` would
 introduce an inefficient memory access pattern for `A`:
 
-```f90
+```fortran
 subroutine example(a, b)
   implicit none
   real, dimension(:, :), intent(out) :: a
@@ -95,7 +95,7 @@ end subroutine example
 After applying loop tiling, the locality of reference is improved and the
 performance is better. The tiled version of this loop nest is as follows:
 
-```f90
+```fortran
 do jj = 1, size(a, 2), TILE_SIZE
   do ii = 1, size(a, 1), TILE_SIZE
     do j = jj, MIN(jj + TILE_SIZE, size(a, 2))

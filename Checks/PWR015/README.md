@@ -52,7 +52,7 @@ void example() {
 
 The following code performs the sum of two arrays:
 
-```f90
+```fortran
 subroutine example(A, B, sum)
   implicit none
   integer, intent(in) :: A(:), B(:)
@@ -71,7 +71,7 @@ end subroutine example
 However, only half of the total array elements are actually being used. Thus,
 there is no need to transfer the entire arrays:
 
-```f90
+```fortran
 subroutine example(A, B, sum)
   implicit none
   integer, intent(in) :: A(:), B(:)

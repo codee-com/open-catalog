@@ -67,7 +67,7 @@ and the original variable is not updated during parallel execution. As a
 result, once the loop is completed, the original `liveOut` won't retain the
 value from the last iteration:
 
-```f90
+```fortran
 real function example(A, B, C)
   real, intent(in) :: A(:), B(:)
   real, intent(inout) :: C(:)
@@ -88,7 +88,7 @@ end function example
 To achieve this behavior, we can use the `lastprivate` clause. This allows
 subsequent operations on `liveOut` to work correctly:
 
-```f90
+```fortran
 real function example(A, B, C)
   real, intent(in) :: A(:), B(:)
   real, intent(inout) :: C(:)

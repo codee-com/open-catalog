@@ -72,7 +72,7 @@ benefit from vectorization, but the loop will not be vectorized because the
 gather memory access pattern to array `X` is reading non-consecutive memory
 locations.
 
-```f90
+```fortran
 do i = 1, n
   D(i) = a * X(index(i)) + Y(i)
 end do
@@ -84,7 +84,7 @@ storage using the array `X_index_i`. The second loop uses the data from that
 array, and the compiler will be able to vectorize the second loop. Overall, the
 original loop is partially vectorized through loop fission.
 
-```f90
+```fortran
 real(kind=8), dimension(n) :: X_index_i
 
 do i = 1, n

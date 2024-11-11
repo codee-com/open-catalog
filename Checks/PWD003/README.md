@@ -81,7 +81,7 @@ void foo(int *a, int *b, int *sum, int size) {
 The following OpenMP code copies multiple assumed-size arrays to the offloading
 target:
 
-```f90
+```fortran
 subroutine foo(a, b, sum, size)
   implicit none
   integer, dimension(*), intent(in) :: a, b
@@ -127,7 +127,7 @@ Error: Assumed size array ‘sum’ in MAP clause at (1)
 Specifying the array bounds is as simple as updating the OpenMP map clauses as
 follows:
 
-```f90
+```fortran
 subroutine foo(a, b, sum, size)
   implicit none
   integer, dimension(*), intent(in) :: a, b

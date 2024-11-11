@@ -85,7 +85,7 @@ The following code offloads a matrix multiplication computation through the
 `target` construct and then creates a parallel region and distributes the work
 through the `do` construct:
 
-```f90
+```fortran
 !$omp target map(to: A, B) map(tofrom: C)
 !$omp parallel default(none) private(i, j, k) shared(A, B, C)
 !$omp do
@@ -105,7 +105,7 @@ When offloading to the GPU, it is recommended to use an additional level of
 parallelism. This can be achieved by using the `teams` and `distribute`
 constructs; in this case, in combination with `parallel do`:
 
-```f90
+```fortran
 !$omp target teams distribute map(to: A, B) map(tofrom: C)
 !$omp parallel default(none) private(i, j, k) shared(A, B, C)
 !$omp do

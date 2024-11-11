@@ -118,7 +118,7 @@ Have a look at the loop shown below. This computationally-intensive loop may
 benefit from vectorization, but it is prevented by the indirect memory accesses
 `a(c(i))` of the sparse reduction pattern.
 
-```f90
+```fortran
 integer function expensive_computation(c, i)
   implicit none
   integer, intent(in) :: i, c(1000)
@@ -143,7 +143,7 @@ loop computes the sparse reduction in scalar mode. Note that a new auxiliary
 array `t` is created to store all the results of the first loop, so that those
 values can be used as inputs in the second loop.
 
-```f90
+```fortran
 integer function expensive_computation(c, i)
   implicit none
   integer, intent(in) :: i, c(1000)

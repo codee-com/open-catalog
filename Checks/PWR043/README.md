@@ -108,7 +108,7 @@ for (int j = 0; j < n; j++) {
 
 #### Fortran
 
-```f90
+```fortran
 do i = 1, size(b, 1)
   s = 0.0
 
@@ -127,7 +127,7 @@ reduction variable initialization (line 2) and usage (line 8) prevent it.
 To make the loop vectorizable, we can remove the temporary scalar value `s` and
 replace it with direct writes to `b(i)`:
 
-```f90
+```fortran
 do i = 1, size(b, 1)
   b(i) = 0.0
 
@@ -140,7 +140,7 @@ end do
 After doing this, we can use loop fission to move the statement on line 2 to a
 separate loop. The result looks like this:
 
-```f90
+```fortran
 do i = 1, size(b, 1)
   b(i) = 0.0
 end do
@@ -160,7 +160,7 @@ Fortunately, the loop nest is now perfectly nested, making loop interchange
 applicable. The final result has the nested loops in `ji` order instead of the
 original `ij` order:
 
-```f90
+```fortran
 do i = 1, size(b, 1)
   b(i) = 0.0
 end do

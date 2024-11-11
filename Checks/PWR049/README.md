@@ -144,7 +144,7 @@ Loop unrolling changes the increment of iterator variable `i`, so now it is 2
 
 ##### Example 1
 
-```f90
+```fortran
 do i = 1, size(a, 1)
   if (i == 1) then
     a(i) = 0
@@ -159,7 +159,7 @@ computing the first array element `a(1)` outside the loop. Thus, the loop
 iterator starts in 2 and the loop initializes the remaining array elements
 without computing any conditional statement:
 
-```f90
+```fortran
 a(1) = 0
 
 do i = 2, size(a, 1)
@@ -170,7 +170,7 @@ end do
 The iterator-dependent condition can appear in more complicated loops as well.
 For illustrative purposes, an example code with a loop nest is shown below:
 
-```f90
+```fortran
 do j = 1, size(a, 2)
   do i = 1, size(a, 1)
     if (i == 1) then
@@ -185,7 +185,7 @@ end do
 The condition on line 3 depends on the iterator `i` of the inner loop and can
 be removed as follows:
 
-```f90
+```fortran
 do j = 1, size(a, 2)
   a(1, j) = 0
 
@@ -200,7 +200,7 @@ redundant computations of predictable conditional instructions.
 
 ##### Example 2: Loop fission
 
-```f90
+```fortran
 do i = 1, size(a, 1)
   if (i < 10) then
     a(i) = 0
@@ -212,7 +212,7 @@ end do
 The condition on line 2 depends on the iterator `i` and can be removed by
 splitting the loop over `i` into two loops:
 
-```f90
+```fortran
 do i = 1, 9
   a(i) = 0
 end do
@@ -229,7 +229,7 @@ until `size(a, 1)`. The condition is removed from the loop.
 
 Here is another example of a iterator-dependent condition in the loop body:
 
-```f90
+```fortran
 do i = 1, size(a, 1)
   if (modulo(i, 2) == 0) then
     a(i) = 1
@@ -242,7 +242,7 @@ end do
 The iterator-dependent condition is on line 2, and can be removed through loop
 unrolling:
 
-```f90
+```fortran
 do i = 1, size(a, 1), 2
     a(i) = 0
     a(i + 1) = 1

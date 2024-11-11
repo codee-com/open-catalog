@@ -96,7 +96,7 @@ void example() {
 In the following example, a derived type containing two arrays is passed to the
 `foo` function, which only uses one of the arrays:
 
-```f90
+```fortran
 program example
 
   implicit none
@@ -137,7 +137,7 @@ end program example
 This can be easily addressed by only passing the required array and rewriting
 the procedure body accordingly:
 
-```f90
+```fortran
 program example
 
   implicit none

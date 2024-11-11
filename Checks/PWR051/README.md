@@ -80,7 +80,7 @@ double example(double *A, int n) {
 
 #### Fortran
 
-```f90
+```fortran
 function example(A) result(sum)
   implicit none
   real(kind=8), intent(in) :: A(:)
@@ -105,7 +105,7 @@ The code snippet below shows an implementation that uses the OpenMP compiler
 directives for multithreading. Note the synchronization added to avoid race
 conditions:
 
-```f90
+```fortran
 function example(A) result(sum)
   implicit none
   real(kind=8), intent(in) :: A(:)

@@ -37,7 +37,7 @@ Therefore, avoid commonly used floating point declarations such as:
 Consider the following floating-point declarations, which are poor in
 portability, flexibility, and explicitness in precision:
 
-```f90
+```fortran
 ! example.f90
 program test_discouraged_real_types
   implicit none
@@ -62,7 +62,7 @@ defined, either using `selected_real_kind()`, or the `iso_fortran_env` module.
 Let's start with an example using `selected_real_kind()`, which allows to
 specify a minimum amount of significant digits and exponent range:
 
-```f90
+```fortran
 ! solution_selected_real_kind.f90
 module my_kinds
   implicit none
@@ -102,7 +102,7 @@ Another option, depending on your preferences, is using the `iso_fortran_env`
 module. It results in a "lower-level" approach that allows to select the byte
 size of the variables (from Fortran 2008 onwards):
 
-```f90
+```fortran
 ! solution_iso_fortran_env.f90
 module my_kinds
   use iso_fortran_env, only: real32, real64

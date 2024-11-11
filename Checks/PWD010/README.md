@@ -60,7 +60,7 @@ behavior, the iterator variable `j` of the outermost loop (where the OpenMP
 directive is positioned) is automatically privatized for each thread, but the
 variable `i` of the innermost loop is incorrectly left as shared among threads:
 
-```f90
+```fortran
 subroutine example(result)
   integer, intent(out) :: result(:, :)
   integer :: i, j
@@ -77,7 +77,7 @@ end subroutine example
 This introduces a data race among threads on the variable `i`. It should be
 explicitly privatized with a `private` clause:
 
-```f90
+```fortran
 subroutine example(result)
   integer, intent(out) :: result(:, :)
   integer :: i, j

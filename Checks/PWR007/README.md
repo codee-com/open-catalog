@@ -30,7 +30,7 @@ statement.
 In the following example, the data type of all the variables is determined
 implicitly:
 
-```f90
+```fortran
 program example
   num1 = 7
   num2 = 2.5
@@ -42,7 +42,7 @@ By disabling implicit data typing with the `implicit none` statement, the
 compiler raises an error if the data types of all the variables is not declared
 explicitly as follows:
 
-```f90
+```fortran
 program example
   implicit none
   integer :: num1 = 7

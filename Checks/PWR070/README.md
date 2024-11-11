@@ -49,7 +49,7 @@ calculates the sum of each row in a matrix.
 
 Let's start with the assumed-size example:
 
-```f90
+```fortran
 ! example-assumed-size.f90
 program test_assumed_size
   implicit none
@@ -98,7 +98,7 @@ $ ./a.out
 The same error goes undetected by the compiler when using an explicit-shape
 array:
 
-```f90
+```fortran
 ! example-explicit-shape.f90
 program test_explicit_shape
   ...
@@ -136,7 +136,7 @@ $ ./a.out
 As the assumed-shape automatically inherits the size of each dimension from the
 call, these errors are prevented altogether:
 
-```f90
+```fortran
 ! solution.f90
 program test_assumed_shape
   ...

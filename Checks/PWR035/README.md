@@ -46,7 +46,7 @@ manner. In the scope of the outer loop, `do j`, all the iterations access the
 first column of the array. Thus, the code exhibits repeated accesses to all the
 elements of the first column, a total number of times equal to `size(a, 2)`:
 
-```f90
+```fortran
 subroutine example(a)
   implicit none
   integer, intent(out) :: a(:, :)

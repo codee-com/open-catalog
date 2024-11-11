@@ -99,7 +99,7 @@ either case memory outside the scope of the function.
 
 The Fortran code shown below demonstrates `pure` and "normal" functions:
 
-```f90
+```fortran
 module example_module
    implicit none
    integer :: c = 1

@@ -95,7 +95,7 @@ optimizations more effectively.
 The following example demonstrates a loop that iterates from 1 to 10 using an
 arithmetic `if` statement:
 
-```f90
+```fortran
       program ArithmeticIf
         implicit none
         integer I, X(10)
@@ -124,7 +124,7 @@ construct.
 We may improve the readability, intent, and maintainability of the code if we
 use a modern `do` loop construct:
 
-```f90
+```fortran
 program DoLoop
   implicit none
   integer :: I, X(10)
@@ -147,7 +147,7 @@ The following program demonstrates three global variables (i.e., `A`, `B`, `C`)
 that are shared between the main program and a subroutine using the `common`
 construct and are initialized out of line using the `data` construct:
 
-```f90
+```fortran
       program CommonDataConstructs
         implicit none
         integer A, B, C, I
@@ -183,7 +183,7 @@ intent and clarity.
 The code above may be improved if we use the `module` construct and declare and
 initialize variables simultaneously:
 
-```f90
+```fortran
 module MyModule
   implicit none
   integer :: A = 10, B = 20, C = 30

@@ -65,7 +65,7 @@ for (int i = 0; i < n; i++) {
 The following code shows two nested loops, where the outer one has a larger
 trip count than the inner one:
 
-```f90
+```fortran
 do i = 1, n
   do j = margin, n - margin
     bb(i, j) = 0.0
@@ -83,7 +83,7 @@ interchange. To do loop interchange, the loop over `j` and the loop over `k`
 need to be perfectly nested. We can make them perfectly nested by moving the
 initialization `bb(i, j) = 0.0` into a separate loop:
 
-```f90
+```fortran
 do i = 1, n
   do j = margin, n - margin
     bb(i, j) = 0.0

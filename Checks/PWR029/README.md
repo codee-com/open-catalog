@@ -63,7 +63,7 @@ for (unsigned i = 0; i < size; i++) {
 In this example, the access to array `a` using the variable `k` can be
 challenging to optimize for some compilers:
 
-```f90
+```fortran
 subroutine example(a, b)
   real, intent(in) :: a
   real, intent(out) :: b
@@ -80,7 +80,7 @@ end subroutine example
 Since `k == i` in this context, we can fix the issue by removing the variable
 `k` altogether and the corresponding increment statement:
 
-```f90
+```fortran
 subroutine example(a, b)
   real, intent(in) :: a
   real, intent(out) :: b

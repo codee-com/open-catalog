@@ -105,7 +105,7 @@ The second loop in the following example exhibits a forall and a sparse
 reduction compute pattern for arrays `a` and `b`, respectively. The sparse
 reduction introduces loop-carried dependencies that inhibit loop vectorization.
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer :: a(100), b(100), c(100), i
@@ -128,7 +128,7 @@ loop computes the vectorizable part of the loop body (the forall pattern), and
 second loop computes the non-vectorizable part in scalar mode (the sparse
 reduction).
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer :: a(100), b(100), c(100), i

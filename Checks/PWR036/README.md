@@ -73,7 +73,7 @@ patterns. The elements of array `a` are accessed in an indirect manner through
 the array `b`. Thus, the code exhibits random accesses that cannot be predicted
 before the actual execution of the code:
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer, intent(out) :: a
@@ -92,7 +92,7 @@ accessed indirectly through the array `index`. Consequently, the program
 accesses random elements of the array `a`, which leads to a low performance due
 to a poor usage of the memory subsystem:
 
-```f90
+```fortran
 do i = 1, size(c, 1)
   do j = 2, size(index, 1)
     c(i) = c(i) + a(index(j))
@@ -108,7 +108,7 @@ value of `j` doesn't change, resulting in accesses to a constant memory
 location. This leads to a better usage of the memory subsystem, and thus, to a
 performance improvement:
 
-```f90
+```fortran
 do j = 2, size(index, 1)
   do i = 1, size(c, 1)
     c(i) = c(i) + a(index(j))

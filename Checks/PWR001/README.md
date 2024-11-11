@@ -110,7 +110,7 @@ of the module variables actually used in the function body. Thus, it is
 necessary to keep track of the read and write operations to the variables
 declared in the module (and in real codes even across multiple files).
 
-```f90
+```fortran
 module globalsMod
   implicit none
   real :: global_a
@@ -128,7 +128,7 @@ the code you notice which are the variables actually used in the function body.
 Thus, it is easier to determine the flow of data at runtime, and thus to
 determine the function's side effects.
 
-```f90
+```fortran
 module globalsMod
   implicit none
   real :: global_a

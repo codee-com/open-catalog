@@ -62,7 +62,7 @@ void example(int *A, int n) {
 
 The following loop invokes a pure function `foo`:
 
-```f90
+```fortran
 integer function foo(a)
   integer, intent(in) :: a
   foo = 2 * a
@@ -82,7 +82,7 @@ end subroutine example
 By adding the `!$omp declare simd` clause, the compiler will create a
 vectorizable version of `foo`:
 
-```f90
+```fortran
 integer function foo(a)
   !$omp declare simd
   integer, intent(in) :: a

@@ -73,7 +73,7 @@ each thread processing sequentially the rows of its columns. However, there is
 an issue with out-of-dimension-bounds access that causes a thread to access an
 element from a different column. This leads to a data race between the threads:
 
-```f90
+```fortran
 subroutine example(A)
   integer, intent(inout) :: A(:, :)
   integer :: i, j
@@ -91,7 +91,7 @@ Assuming that the original intention is for each thread to process a column,
 the issue can be resolved by starting the row iterations from index `2`
 instead of `1`:
 
-```f90
+```fortran
 subroutine example(A)
   integer, intent(inout) :: A(:, :)
   integer :: i, j

@@ -61,7 +61,7 @@ void example(double *D, double *X, double *Y, int n, double a) {
 
 #### Fortran
 
-```f90
+```fortran
 subroutine example(D, X, Y, a)
   implicit none
   real(kind=8), intent(out) :: D(:)
@@ -84,7 +84,7 @@ The code snippet below shows an implementation that uses the OpenMP compiler
 directives to vectorize the loop explicitly. Note how no synchronization is
 required to avoid race conditions:
 
-```f90
+```fortran
 subroutine example(D, X, Y, a)
   implicit none
   real(kind=8), intent(out) :: D(:)

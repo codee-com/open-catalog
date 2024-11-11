@@ -64,7 +64,7 @@ void example() {
 The following example shows a loop processing the `x` and `y` coordinates for
 an array of points:
 
-```f90
+```fortran
 program main
   implicit none
 
@@ -95,7 +95,7 @@ However, since the `z` coordinate is never accessed, the memory subsystem is
 not used optimally. This could be avoided by creating one array for each
 coordinate:
 
-```f90
+```fortran
 subroutine foo()
   implicit none
   integer :: points_x(1000), points_y(1000), points_z(1000)

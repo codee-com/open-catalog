@@ -72,7 +72,7 @@ void example(double *A, int *nodes, int n) {
 
 #### Fortran
 
-```f90
+```fortran
 subroutine example(A, nodes)
   implicit none
   real(kind=8), intent(inout) :: A(:)
@@ -97,7 +97,7 @@ directives to offload the loop to an accelerator. Note the synchronization
 added to avoid race conditions, while the data transfer clauses manage the data
 movement between the host memory and the accelerator memory:
 
-```f90
+```fortran
 subroutine example(A, nodes)
   implicit none
   real(kind=8), intent(inout) :: A(:)

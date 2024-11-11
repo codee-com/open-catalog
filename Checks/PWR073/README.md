@@ -48,7 +48,7 @@ source files. Therefore, an incremental approach is recommended:
 
 Let's start with an old-style program that relies on common blocks:
 
-```f90
+```fortran
 ! example.f90
 program test_common_block
   implicit none
@@ -106,7 +106,7 @@ In contrast, modules prevent such issues by design. Let's refactor the program
 to encapsulate the variables inside a module (Step 1). Due to the simplicity of
 this example, the `only` keyword (Step 2) is already leveraged:
 
-```f90
+```fortran
 ! solution.f90
 module my_module
   implicit none

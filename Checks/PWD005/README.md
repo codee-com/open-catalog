@@ -55,7 +55,7 @@ void foo() {
 
 The following code performs the sum of two arrays:
 
-```f90
+```fortran
 subroutine example()
   integer, dimension(100) :: A, B, sum
   integer :: i
@@ -73,7 +73,7 @@ However, only half of the array elements have been copied to the GPU. This must
 be fixed by matching the transferred range with array range actually used in
 the loop:
 
-```f90
+```fortran
 subroutine example()
   integer, dimension(100) :: A, B, sum
   integer :: i

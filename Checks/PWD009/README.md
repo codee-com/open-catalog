@@ -52,7 +52,7 @@ void example(int m, double *A, double *B, double *C) {
 In the following code, `C` is incorrectly privatized since the threads operate
 on non-overlapping positions of the array:
 
-```f90
+```fortran
 subroutine example(A, B, C)
   real, intent(in) :: A(:), B(:)
   real, intent(inout) :: C(:)
@@ -69,7 +69,7 @@ end subroutine example
 
 To fix this, `C` should be moved to a `shared` clause:
 
-```f90
+```fortran
 subroutine example(A, B, C)
   real, intent(in) :: A(:), B(:)
   real, intent(inout) :: C(:)

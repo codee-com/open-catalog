@@ -62,7 +62,7 @@ void example(int addTwo) {
 The following loop increments a variable by 1 or 2 depending on the function
 argument:
 
-```f90
+```fortran
 subroutine example(addTwo)
   logical, intent(in) :: addTwo
   integer :: i, sum
@@ -82,7 +82,7 @@ much to increment. However, this value is fixed for the whole execution of the
 function and thus, the conditional can be moved outside of the loop. The
 resulting code is as follows:
 
-```f90
+```fortran
 subroutine example(addTwo)
   logical, intent(in) :: addTwo
   integer :: add, i, sum

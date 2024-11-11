@@ -78,7 +78,7 @@ The following loop contains a condition that is invariant for all its
 iterations. Not only may this introduce an unnecessary redundant comparison, it
 may also make the vectorization of the loop more difficult for some compilers:
 
-```f90
+```fortran
 subroutine example(array)
   integer, intent(out) :: array(:)
   integer :: i, total
@@ -98,7 +98,7 @@ The loop invariant can be extracted out of the loop in a simple way, by
 duplicating the loop body and removing the condition. The resulting code is as
 follows:
 
-```f90
+```fortran
 subroutine example(array)
   integer, intent(out) :: array(:)
   integer :: i, total

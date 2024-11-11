@@ -75,7 +75,7 @@ void example(double *A, int *nodes, int n) {
 
 #### Fortran
 
-```f90
+```fortran
 subroutine example(A, nodes)
   implicit none
   real(kind=8), intent(inout) :: A(:)
@@ -99,7 +99,7 @@ The code snippet below shows an implementation that uses the OpenMP compiler
 directives for multithreading. Note the synchronization added to avoid race
 conditions:
 
-```f90
+```fortran
 subroutine example(A, nodes)
   implicit none
   real(kind=8), intent(inout) :: A(:)

@@ -98,7 +98,7 @@ In the following code, the subroutine `example` declares a variable `t` used in
 each iteration of the loop to hold a value that is then assigned to the array
 `result`. The variable `t` is not used outside of the loop.
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer :: t
@@ -115,7 +115,7 @@ end subroutine example
 However, the smallest possible scope for the variable `t` is within the loop
 body. The resulting code with the `BLOCK` construct would be as follows:
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer, dimension(10) :: result
@@ -139,7 +139,7 @@ there is no need to use the clause `private(t)`, as the declaration scope of
 potential race conditions because each thread modifies its own copy of the
 variable `t`.
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer, dimension(10) :: result

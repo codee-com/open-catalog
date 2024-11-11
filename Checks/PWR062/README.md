@@ -105,7 +105,7 @@ void matmul(int n, const double *A, const double *B, double *C) {
 
 Have a look at the following matrix multiplication code:
 
-```f90
+```fortran
 subroutine matmul(n, A, B, C)
   implicit none
   integer, intent(in) :: n
@@ -132,7 +132,7 @@ prevents it.
 To make the loop interchangeable, loop fission can be applied to move the
 initialization to a separate loop:
 
-```f90
+```fortran
 subroutine matmul(n, A, B, C)
   implicit none
   integer, intent(in) :: n
@@ -157,7 +157,7 @@ Now that the performance critical loop (the second one) is perfectly nested,
 the loop interchange can be applied to leverage an efficient memory access
 pattern:
 
-```f90
+```fortran
 subroutine matmul(n, A, B, C)
   implicit none
   integer, intent(in) :: n

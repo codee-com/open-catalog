@@ -64,7 +64,7 @@ In the following code, arrays `A` and `B` are never written to. However, they
 are privatized and thus each thread will hold a copy of each array, effectively
 using more memory and taking more time to create private copies:
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer :: i
@@ -84,7 +84,7 @@ To save memory, change their scope to shared. This may also prevent memory
 issues when using arrays, as codes may easily run out of memory for a high
 number of threads:
 
-```f90
+```fortran
 subroutine example()
   implicit none
   integer :: i

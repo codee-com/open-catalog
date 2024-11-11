@@ -31,7 +31,7 @@ programming best practices.
 In the following example, the intent of all the parameters of the function is
 not explicit in the code:
 
-```f90
+```fortran
 program example
   implicit none
   integer :: s = 2
@@ -50,7 +50,7 @@ end program example
 By enforcing the explicit declaration of the intent of the parameters of the
 function, the source code looks as follows:
 
-```f90
+```fortran
 program example
   implicit none
   integer :: s = 2

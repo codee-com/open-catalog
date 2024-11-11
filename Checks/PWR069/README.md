@@ -25,7 +25,7 @@ mentioned elements, effectively addressing these problems.
 First, let's define a module `Areas` that contains logic for calculating the
 areas of various shapes:
 
-```f90
+```fortran
 module Areas
   implicit none
   public :: constant_pi, area_circle, area_rectangle, area_square
@@ -54,7 +54,7 @@ end module Areas
 The first version of the program omits the `only` keyword, making all `public`
 elements of the module available:
 
-```f90
+```fortran
 ! example.f90
 module Areas
   ...
@@ -74,7 +74,7 @@ end program test_without_only
 Using the `only` keyword is as simple as listing the elements that are actually
 needed from the module:
 
-```f90
+```fortran
 ! solution.f90
 module Areas
   ...
@@ -99,7 +99,7 @@ This approach makes it immediately clear to the reader that `constant_pi` and
 > `only` keyword, you can easily rename the conflicting elements to avoid the
 > issue:
 >
-> ```f90
+> ```fortran
 > use Mod1, only : element => element_from_Mod1
 > use Mod2, only : element => element_from_Mod2
 > ```

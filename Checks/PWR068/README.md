@@ -40,7 +40,7 @@ The following program calculates the factorial of a number. To simulate a real
 project with multiple source files, the main program and the factorial
 procedure are in different files:
 
-```f90
+```fortran
 ! example_factorial.f90
 subroutine factorial(number, result)
   implicit none
@@ -55,7 +55,7 @@ subroutine factorial(number, result)
 end subroutine factorial
 ```
 
-```f90
+```fortran
 ! example.f90
 program test_implicit_interface
   implicit none
@@ -91,7 +91,7 @@ arguments.
 
 Moving the `factorial` subroutine to a module is as simple as:
 
-```f90
+```fortran
 ! solution_mod_factorial.f90
 module mod_factorial
   implicit none
@@ -110,7 +110,7 @@ contains
 end module mod_factorial
 ```
 
-```f90
+```fortran
 ! solution_with_type_mismatch.f90
 program test_explicit_interface
   use mod_factorial, only: factorial

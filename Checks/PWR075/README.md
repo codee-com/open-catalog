@@ -44,7 +44,7 @@ refer to the following resources:
 
 Consider the following code, which checks if the file itself exists:
 
-```f90
+```fortran
 ! example.f90
 program example
   implicit none
@@ -85,7 +85,7 @@ functionality of the GNU extension. Fortunately, the Fortran standard provides
 the built-in
 [`inquire`](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2024-2/inquire.html#GUID-D0115A20-D0BD-4B0F-92A5-F6CB6D2E985C):
 
-```f90
+```fortran
 ! solution.f90
 program solution
   implicit none

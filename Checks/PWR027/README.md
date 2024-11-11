@@ -71,7 +71,7 @@ isn't marked for GPU execution. Consequently, the compiler will only create a
 CPU version of `foo()`. This means every time `foo()` is called, the data must
 be transferred between the GPU and the CPU, negatively impacting performance:
 
-```f90
+```fortran
 integer function foo(a)
   integer, intent(in) :: a
   foo = 2 * a
@@ -94,7 +94,7 @@ To prevent the performance loss caused by constant data transfers, add the
 `!$acc routine` directive to `foo()`. This will instruct the compiler to create
 a GPU version of the function, allowing the loop to run entirely on the device:
 
-```f90
+```fortran
 integer function foo(a)
   !$acc routine
   integer, intent(in) :: a

@@ -15,7 +15,7 @@ implicit `save` behavior and enhance code clarity.
 > If the `save` behavior is intentional, explicitly add the attribute in the
 > variable declaration to clarify the intent:
 >
-> ```f90
+> ```fortran
 > integer, save :: count = 0
 > ```
 
@@ -33,7 +33,7 @@ Consider the code below, which computes the sum of the elements of various
 arrays using the `sum_array()` function. Note how the variable `result` is set
 to `0` at its declaration, implicitly acquiring the `save` behavior:
 
-```f90
+```fortran
 ! example.f90
 program test_implicit_save
   implicit none
@@ -81,7 +81,7 @@ While resolving the issue is as simple as splitting the initialization of
 `result` to a separate line, this type of bug can be particularly challenging
 to diagnose in complex codebases:
 
-```f90
+```fortran
 ! solution.f90
 program test_implicit_save
   implicit none

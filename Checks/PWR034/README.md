@@ -64,7 +64,7 @@ for (int j = 1; j < LEN; ++j) {
 The following code shows a loop with a strided access to array `a` with stride
 `2`. Avoiding it would require changing the data layout of the program:
 
-```f90
+```fortran
 subroutine example(a)
   real, intent(out) :: a(:)
   integer :: i
@@ -79,7 +79,7 @@ Another code with strided accesses is show below. In this case, both variables
 `a` and `b` have dimensions `(LEN, LEN)`, and thus are implicitly accessed with
 a stride of `LEN` elements as Fortran uses column-major order:
 
-```f90
+```fortran
 do i = 1, size(a, 1)
   do j = 2, size(a, 2)
     a(i, j) = a(i, j - 1) + b(i, j)
@@ -92,7 +92,7 @@ The resulting code shown below has sequential accesses (i.e., stride `1`) in the
 scope of the innermost loop. As a result, a simple code change solves the issue
 in this scenario, without requiring disruptive changes in data layout:
 
-```f90
+```fortran
 do j = 2, size(a, 2)
   do i = 1, size(a, 1)
     a(i, j) = a(i, j - 1) + b(i, j)

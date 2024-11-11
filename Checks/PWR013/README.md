@@ -51,7 +51,7 @@ void example(double *A, double *B, double *C) {
 In the following example, matrix `B` is copied to the GPU even when it is not
 used:
 
-```f90
+```fortran
 subroutine example(A, B, C)
   implicit none
   integer, intent(in) :: A(:), B(:)
@@ -69,7 +69,7 @@ end subroutine example
 
 This can be easily corrected by removing references to B from all the clauses:
 
-```f90
+```fortran
 subroutine example(A, B, C)
   implicit none
   integer, intent(in) :: A(:), B(:)

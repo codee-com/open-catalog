@@ -56,7 +56,7 @@ void foo() {
 The following code uses an integer index ranging from `2` to `101` to access
 the array `A`:
 
-```f90
+```fortran
 subroutine example()
   integer :: A(100)
   integer :: i
@@ -72,7 +72,7 @@ Thus, the array accesses must be fixed to prevent invalid memory accesses
 during runtime. For instance, we can modify the array reference from `A(i + 1)`
 to `A(i)`:
 
-```f90
+```fortran
 subroutine example()
   integer :: A(100)
   integer :: i

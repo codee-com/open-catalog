@@ -71,7 +71,7 @@ vectorize the inner loop.
 
 The following code shows two nested loops:
 
-```f90
+```fortran
 subroutine example(A)
   real, intent(out) :: A(:, :)
   integer :: i, j
@@ -89,7 +89,7 @@ arrays using column-major order. To fix this issue, a loop interchange can be
 applied on loops `i` and `j`. As a result, the loop over `j` becomes the outer
 loop, and the loop over `i` becomes the inner one:
 
-```f90
+```fortran
 subroutine example(A)
   real, intent(out) :: A(:, :)
   integer :: i, j

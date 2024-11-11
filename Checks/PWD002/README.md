@@ -78,7 +78,7 @@ In the following code, the variable `sum` is subjected to a shared data
 scoping. This introduces a race condition on the variable, since its read/write
 operations are not properly protected:
 
-```f90
+```fortran
 subroutine example(array)
   integer, intent(in) :: array(:)
   integer :: i, sum
@@ -96,7 +96,7 @@ To protect the reduction operation, we can add an `atomic` directive from
 OpenMP, which ensures that only one thread performs the read/write operation at
 a given time:
 
-```f90
+```fortran
 subroutine example(array)
   integer, intent(in) :: array(:)
   integer :: i, sum
@@ -117,7 +117,7 @@ they can perform their computations safely. Once all threads have finished,
 their results are reduced into the original variable using the specified
 reduction operator:
 
-```f90
+```fortran
 subroutine example(array)
   integer, intent(in) :: array(:)
   integer :: i, sum

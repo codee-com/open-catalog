@@ -80,7 +80,7 @@ hold a value that is then assigned to the array `result`. Since no data scoping
 is declared for those variables, the default will be used. This makes the
 variable `t` shared, which is incorrect since it introduces a race condition:
 
-```f90
+```fortran
 subroutine example()
   integer :: i, t
   integer :: result(10)
@@ -96,7 +96,7 @@ end subroutine example
 The following code disables the default scoping, which will make the compiler
 raise an error due to unspecified scopes:
 
-```f90
+```fortran
 subroutine example()
   integer :: i, t
   integer :: result(10)
@@ -112,7 +112,7 @@ end subroutine example
 To fix the code, the scope of each variable must be specified. The variable `t`
 must be made private to prevent the race condition:
 
-```f90
+```fortran
 subroutine example()
   integer :: i, t
   integer :: result(10)
