@@ -11,7 +11,7 @@
 ## Instructions to run the benchmarks
 
 Use CMake to configure and build as a normal project. Execute the `run` target
-to run all the available benchmarks, or run-<CHECK ID> to run a specific one.
+to run all the available benchmarks, or `run-<CHECK ID>` to run a specific one.
 
 Or simply run the following command to do it automatically:
 ```
