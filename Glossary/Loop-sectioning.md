@@ -23,7 +23,7 @@ different.
 
 To illustrate loop sectioning, let's have a look at the following example:
 
-```c
+```c showLineNumbers
 int index;
 for (int i = 0; i < n; i++) {
   if (a[i] == 0) {
@@ -38,7 +38,7 @@ value 0. These loops typically cannot be vectorized.
 
 By applying loop sectioning, we get the following loop:
 
-```c
+```c {6-10,12} showLineNumbers
 #define SECTION_SIZE 8
 
 int index;
@@ -66,10 +66,10 @@ exit:
 
 In the original loop, we process values in batches of 1: one batch equals one
 element. After loop sectioning, we process values in batches of `SECTION_SIZE`.
-The loop on lines 7-11 just notes that there is an element which has the desired
+The loop on lines 6-10 just notes that there is an element which has the desired
 property (is 0), but doesn't break out of the loop. This loop is vectorizable.
 
-When the element with a desired property is found (line 13), we rerun the loop
+When the element with a desired property is found (line 12), we rerun the loop
 again to find the exact element. This loop cannot be vectorized because of the
 `goto` statement in the loop body, but it is executed only once and has a short
 trip count, so it doesn't matter.
@@ -79,7 +79,7 @@ trip count, so it doesn't matter.
 Take a look at the example loop produced by
 [loop fission](Loop-fission.md):
 
-```c
+```c showLineNumbers
 double *tmp = malloc(n * sizeof(double));
 
 for (int i = 0; i < n; i++) {
@@ -109,7 +109,7 @@ caches, when the first loop has finished, all the data that the second loop
 needs has already been evicted from the cache. To remedy this, we can perform
 loop sectioning. The loop sectioning looks like this:
 
-```c
+```c showLineNumbers
 #define SECTION_SIZE 512
 
 double *tmp = malloc(n * sizeof(double));

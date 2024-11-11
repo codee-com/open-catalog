@@ -31,7 +31,7 @@ vectorization efficiency.
 
 ##### Example 1
 
-```c
+```c {2} showLineNumbers
 for (int i = 0; i < n; ++i) {
   if (i = 0) {
     a[i] = 0;
@@ -57,7 +57,7 @@ for (int i = 1; i < n; ++i) {
 The iterator-dependent condition can appear in more complicated loops as well.
 For illustrative purposes, an example code with a loop nest is shown below:
 
-```c
+```c {3} showLineNumbers
 for (int i = 0; i < n; ++i) {
   for (int j = 0; j < n; ++j) {
     if (j == 0) {
@@ -87,7 +87,7 @@ redundant computations of predictable conditional instructions.
 
 ##### Example 2: Loop fission
 
-```c
+```c {2} showLineNumbers
 for (int i = 0; i < n; ++i) {
   if (i < 10) {
     a[i] = 0;
@@ -117,7 +117,7 @@ until `n - 1`. The condition is removed from the loop.
 
 Here is another example of a iterator-dependent condition in the loop body:
 
-```c
+```c {2} showLineNumbers
 for (int i = 0; i < n; ++i) {
   if (i % 2 == 0) {
     a[i] = 1;
@@ -144,7 +144,7 @@ Loop unrolling changes the increment of iterator variable `i`, so now it is 2
 
 ##### Example 1
 
-```fortran
+```fortran {2} showLineNumbers
 do i = 1, size(a, 1)
   if (i == 1) then
     a(i) = 0
@@ -170,7 +170,7 @@ end do
 The iterator-dependent condition can appear in more complicated loops as well.
 For illustrative purposes, an example code with a loop nest is shown below:
 
-```fortran
+```fortran {3} showLineNumbers
 do j = 1, size(a, 2)
   do i = 1, size(a, 1)
     if (i == 1) then
@@ -200,7 +200,7 @@ redundant computations of predictable conditional instructions.
 
 ##### Example 2: Loop fission
 
-```fortran
+```fortran {2} showLineNumbers
 do i = 1, size(a, 1)
   if (i < 10) then
     a(i) = 0
@@ -229,7 +229,7 @@ until `size(a, 1)`. The condition is removed from the loop.
 
 Here is another example of a iterator-dependent condition in the loop body:
 
-```fortran
+```fortran {2} showLineNumbers
 do i = 1, size(a, 1)
   if (modulo(i, 2) == 0) then
     a(i) = 1

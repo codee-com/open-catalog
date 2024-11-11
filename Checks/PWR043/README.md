@@ -42,7 +42,7 @@ reduction variable, loop interchange is not directly applicable.
 
 #### C
 
-```c
+```c {2,8} showLineNumbers
 for (int i = 0; i < n; i++) {
   double s = 0.0;
 
@@ -61,7 +61,7 @@ reduction variable initialization (line 2) and usage (line 8) prevent it.
 To make the loop vectorizable, we can remove the temporary scalar value `s` and
 replace it with direct writes to `b[i]`:
 
-```c
+```c {2} showLineNumbers
 for (int i = 0; i < n; i++) {
   b[i] = 0.0;
 
@@ -74,7 +74,7 @@ for (int i = 0; i < n; i++) {
 After doing this, we can use loop fission to move the statement on line 2 to a
 separate loop. The result looks like this:
 
-```c
+```c {1,5} showLineNumbers
 for (int i = 0; i < n; i++) {
   b[i] = 0.0;
 }
@@ -108,7 +108,7 @@ for (int j = 0; j < n; j++) {
 
 #### Fortran
 
-```fortran
+```fortran {2,8} showLineNumbers
 do i = 1, size(b, 1)
   s = 0.0
 
@@ -127,7 +127,7 @@ reduction variable initialization (line 2) and usage (line 8) prevent it.
 To make the loop vectorizable, we can remove the temporary scalar value `s` and
 replace it with direct writes to `b(i)`:
 
-```fortran
+```fortran {2} showLineNumbers
 do i = 1, size(b, 1)
   b(i) = 0.0
 
@@ -140,7 +140,7 @@ end do
 After doing this, we can use loop fission to move the statement on line 2 to a
 separate loop. The result looks like this:
 
-```fortran
+```fortran {1,5} showLineNumbers
 do i = 1, size(b, 1)
   b(i) = 0.0
 end do

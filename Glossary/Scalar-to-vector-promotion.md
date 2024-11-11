@@ -15,7 +15,7 @@ In the case of loop interchange, scalar to vector promotion is performed to
 extract the statements blocking
 [perfect loop nesting](Perfect-loop-nesting.md). For example:
 
-```c
+```c {2,6} showLineNumbers
 for (int i = 0; i < n; i++) {
   double sum = 0.0;
   for (int j = 0; j < n; j++) {
@@ -30,7 +30,7 @@ prevent loop interchange. To enable loop interchange, we need to get rid of
 those two statements. We can do this by promoting scalar `sum` to a vector, like
 this:
 
-```c
+```c {2,6} showLineNumbers
 for (int i = 0; i < n; i++) {
   s[i] = 0.0;
   for (int j = 0; j < n; j++) {
@@ -43,7 +43,7 @@ for (int i = 0; i < n; i++) {
 Then it is relatively easy to extract the statements on line 2 and line 6 to a
 dedicated loop and enable loop interchange:
 
-```c
+```c {4,5} showLineNumbers
 for (int i = 0; i < n; i++) {
   s[i] = 0.0;
 }
@@ -66,7 +66,7 @@ Scalar to vector promotion can be used to enable vectorization by fissioning
 (splitting) the loop into vectorizable and non-vectorizable parts. Consider the
 following example:
 
-```c
+```c {2,3-6} showLineNumbers
 for (int i = 0; i < n; i++) {
   double s = sqrt(a[i]);
   if (s > 1.0) {
@@ -84,7 +84,7 @@ To perform the split, however, we need to maintain the value of variable `s`
 across loop iterations. We can do this by promoting the scalar variable `s` to a
 vector:
 
-```c
+```c showLineNumbers
 for (int i = 0; i < n; i++) {
   s[i] = sqrt(a[i]);
 }

@@ -32,7 +32,7 @@ brings high performance gains.
 
 Consider the following example:
 
-```c
+```c {3,4,5} showLineNumbers
 for (int i = 0; i < size; i++) {
   for (int j = 0; j < size; j++) {
     float *a = aa[i];

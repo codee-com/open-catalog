@@ -6,7 +6,7 @@ loop.
 
 Consider following example:
 
-```c
+```c showLineNumbers
 for (int i = 0; i < n; i++) {
   for (int j = 0; i < n; i++) {
     c[i] += a[j] + b[j][i];
@@ -18,7 +18,7 @@ In the above example of two nested loops, all the statements are in the
 innermost loop. We say that the loops are perfectly nested. Contrast this with
 the following example:
 
-```c
+```c {2} showLineNumbers
 for (int i = 0; i < n; i++) {
   c[i] = 0.0;
   for (int j = 0; i < n; i++) {
@@ -43,7 +43,7 @@ perfectly nested. Here are three examples:
 
 #### Example 1: Isolating statements that prevent perfect loop nesting into a separate loop
 
-```c
+```c {2} showLineNumbers
 for (int i = 0; i < n; i++) {
   c[i] = 0.0;
   for (int j = 0; i < n; i++) {
@@ -55,10 +55,10 @@ for (int i = 0; i < n; i++) {
 This loop can be made perfectly nested by extracting the statement `c[i] = 0.0`
 on line 2 into a separate loop, like this:
 
-```c
-  for (int i = 0; i < n; i++) {
-    c[i] = 0.0;
-  }
+```c {5-9} showLineNumbers
+for (int i = 0; i < n; i++) {
+  c[i] = 0.0;
+}
 
 for (int i = 0; i < n; i++) {
   for (int j = 0; i < n; i++) {
@@ -67,14 +67,14 @@ for (int i = 0; i < n; i++) {
 }
 ```
 
-The loop nest on lines 5-10 is perfectly nested and can profit from other
+The loop nest on lines 5-9 is perfectly nested and can profit from other
 optimizations.
 
 #### Example 2: Promoting temporary scalars to vectors to enable perfect loop nesting
 
 A second example of imperfectly nested loops:
 
-```c
+```c {2,3,8} showLineNumbers
 for (int i = 0; i < n; i++) {
   double sum = 0.0;
   double dot = 0.0;
@@ -91,7 +91,7 @@ nesting. Conversion to perfect loop nesting is possible by promoting scalar
 variables `sum` and `dot` to arrays and splitting the loop into three smaller
 loops:
 
-```c
+```c {9-14} showLineNumbers
 double *sum_arr = malloc(sizeof(double) * n);
 double *dot_arr = malloc(sizeof(double) * n);
 
@@ -122,7 +122,7 @@ further.
 
 The last example looks like this:
 
-```c
+```c {2,3} showLineNumbers
 for (int i = 0; i < n; i++) {
   double *a_ptr = a + n * i;
   double *b_ptr = b + i;
@@ -139,7 +139,7 @@ This example uses pointer-based notation to access the elements of the array. By
 converting the index-based notation, we can eliminate the statements on lines 2
 and 3 preventing perfect loop nesting:
 
-```c
+```c showLineNumbers
 for (int i = 0; i < n; i++) {
   for (int j = 0; j < n; j++) {
     a[j + i * n] = b[i + j * n];
