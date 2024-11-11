@@ -20,11 +20,11 @@ inspecting the procedure call sites. Compilers and other code analysis tools
 take advantage of this information to enforce correctness, performance and
 programming best practices.
 
->**Note**  
->Implicit intent of variables may lead to unexpected runtime errors. For
->example, it may avoid the detection of errors in the code by the compiler. Note
->the example code below shows issues with incorrect assignment of variables and
->incorrect mapping of variables in the call site of the function.
+> [!NOTE]
+> Implicit intent of variables may lead to unexpected runtime errors. For
+> example, it may avoid the detection of errors in the code by the compiler. Note
+> the example code below shows issues with incorrect assignment of variables and
+> incorrect mapping of variables in the call site of the function.
 
 ### Code example
 

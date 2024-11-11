@@ -22,12 +22,12 @@ well as add the appropriate synchronization to avoid race conditions at runtime.
 Typically, minimizing the computational overhead of multithreading is the
 biggest challenge to speedup the code.
 
->**Note**  
->Executing forall loops using multithreading incurs less overhead than in the
->case of scalar reduction loops and sparse reduction loops. The main reason is
->that no synchronization is needed to avoid race conditions and ensure the
->correctness of the code. Note appropriate data scoping of shared and private
->variables is still a must.
+> [!NOTE]
+> Executing forall loops using multithreading incurs less overhead than in the
+> case of scalar reduction loops and sparse reduction loops. The main reason is
+> that no synchronization is needed to avoid race conditions and ensure the
+> correctness of the code. Note appropriate data scoping of shared and private
+> variables is still a must.
 
 ### Code example
 

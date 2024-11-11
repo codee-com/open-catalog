@@ -37,9 +37,9 @@ float example(float a, float b, float c) {
 }
 ```
 
->**Note**  
->The compiler does this optimization automatically when
->`-funsafe-math-optimizations` compilation flag is provided.
+> [!NOTE]
+> The compiler does this optimization automatically when
+> `-funsafe-math-optimizations` compilation flag is provided.
 
 ### Related resources
 

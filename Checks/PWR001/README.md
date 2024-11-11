@@ -24,18 +24,18 @@ facilitates reasoning about the flow of data in and out of the function, which
 helps from the point of view of maintainability, testing and compiler
 optimization.
 
->**Note**  
->Enforcing this recommendation in large projects can be difficult and
->time-consuming because a large number of code changes can be needed, even
->leading to deep code refactorizations. In some situations, an alternative
->approach would be to outline the critical loop into a separate function. In
->case there is a single output variable, the function return value may be used
->instead of a parameter.
+> [!NOTE]
+> Enforcing this recommendation in large projects can be difficult and
+> time-consuming because a large number of code changes can be needed, even
+> leading to deep code refactorizations. In some situations, an alternative
+> approach would be to outline the critical loop into a separate function. In
+> case there is a single output variable, the function return value may be used
+> instead of a parameter.
 
->**Note**  
->Enforcing this recommendation may be critical in the case the functions to be
->executed in parallel, since hidden race conditions may be difficult to detect,
->making the result of the code unpredictable.
+> [!NOTE]
+> Enforcing this recommendation may be critical in the case the functions to be
+> executed in parallel, since hidden race conditions may be difficult to detect,
+> making the result of the code unpredictable.
 
 ### Code examples
 

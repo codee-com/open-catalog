@@ -27,10 +27,10 @@ synchronization to avoid race conditions at runtime.
 Typically, **minimizing the computational overhead of offloading is the biggest
 challenge to speedup the code using accelerators**.
 
->**Note**  
->Offloading scalar reduction loops incurs an overhead due to the synchronization
->needed to avoid race conditions and ensure the correctness of the code. Note
->appropriate data scoping of shared and private variables is still a must.
+> [!NOTE]
+> Offloading scalar reduction loops incurs an overhead due to the synchronization
+> needed to avoid race conditions and ensure the correctness of the code. Note
+> appropriate data scoping of shared and private variables is still a must.
 
 ### Code example
 

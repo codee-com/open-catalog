@@ -16,10 +16,10 @@ vectorized. Calls to a pure function (function whose return value depends only
 on function parameters) can be vectorized if the compiler is instructed to do so
 with a compiler pragma.
 
->**Notes**  
->If the compiler manages to inline the function, then vectorization pragma is
->not needed. To see the performance benefit of this approach, the caller loop
->and called functions must reside in different compilation units.
+> [!NOTE]
+> If the compiler manages to inline the function, then vectorization pragma is
+> not needed. To see the performance benefit of this approach, the caller loop
+> and called functions must reside in different compilation units.
 
 Also, make sure OpenMP support in your compiler is enabled using compiler
 switches (typically `-fopenmp-simd` or `-fopenmp`).

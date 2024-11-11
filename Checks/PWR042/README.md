@@ -32,9 +32,9 @@ In order to perform the loop interchange, the loops need to be
 need to be inside the innermost loop. However, due to the initialization of a
 reduction variablе, loop interchange is not directly applicable.
 
->**Note**  
->Often, loop interchange enables vectorization of the innermost loop which
->additionally improves performance.
+> [!NOTE]
+> Often, loop interchange enables vectorization of the innermost loop which
+> additionally improves performance.
 
 ### Code example
 

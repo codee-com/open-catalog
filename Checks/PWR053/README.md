@@ -23,11 +23,11 @@ avoid race conditions at runtime. Typically, the compiler does a good job in
 vectorization, so the biggest challenge is to vectorize loops manually beyond
 the capabilities of the compiler.
 
->**Note**  
->Vectorizing forall loops typically incurs less overhead than vectorizing scalar
->reduction loops. The main reason is that no synchronization is needed to avoid
->race conditions and ensure the correctness of the code. Note appropriate data
->scoping of shared and private variables is still a must.
+> [!NOTE]
+> Vectorizing forall loops typically incurs less overhead than vectorizing scalar
+> reduction loops. The main reason is that no synchronization is needed to avoid
+> race conditions and ensure the correctness of the code. Note appropriate data
+> scoping of shared and private variables is still a must.
 
 ### Code example
 

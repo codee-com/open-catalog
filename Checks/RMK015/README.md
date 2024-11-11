@@ -31,13 +31,13 @@ well-known programming techniques like loop unrolling,
 note that the list of techniques actually used depends on the compiler (e.g.
 GCC, clang) and the compiler version (e.g. GCC 11, GCC 12).
 
->**Note**  
->In GCC compilers, most optimizations are completely disabled by default, which
->is equivalent to setting the `-O0` flag. Invoking GCC with the
->`-Q --help=optimizers` flags makes it list the exact set of optimizations that
->are enabled at the optimization level chosen by the user. Note that from GCC
->version 12, the optimization level `-O2` includes loop vectorization, which was
->originally only available with -O3 (in previous versions of the compiler).
+> [!NOTE]
+> In GCC compilers, most optimizations are completely disabled by default, which
+> is equivalent to setting the `-O0` flag. Invoking GCC with the
+> `-Q --help=optimizers` flags makes it list the exact set of optimizations that
+> are enabled at the optimization level chosen by the user. Note that from GCC
+> version 12, the optimization level `-O2` includes loop vectorization, which was
+> originally only available with -O3 (in previous versions of the compiler).
 
 ### References
 

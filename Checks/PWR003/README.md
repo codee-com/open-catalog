@@ -16,7 +16,8 @@ Add the appropriate annotations to the function. For instance:
 
 * The GCC compiler for C provides the extension `__attribute__((pure))`.
 
-> Tip: GCC's `__attribute__((const))` goes a step further by stating that the
+> [!TIP]
+> GCC's `__attribute__((const))` goes a step further by stating that the
 > function's return value depends solely on the values of its input arguments,
 > thus not being affected by any system resource that may change between calls;
 > e.g., depending on global data, receiving a pointer.
@@ -25,8 +26,9 @@ Add the appropriate annotations to the function. For instance:
 
 * The ARM compiler for C supports both GCC's extensions.
 
-> Warning: This compiler also provides the `__pure` keyword, but it is
-> equivalent to `__attribute__((const))`!
+> [!WARNING]
+> This compiler also provides the `__pure` keyword, but it is equivalent to
+> `__attribute__((const))`!
 
 * In the Fortran programming language, use the built-in keyword `pure`.
 

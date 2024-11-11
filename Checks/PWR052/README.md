@@ -23,11 +23,11 @@ the hardware, as well as add the appropriate synchronization to avoid race
 conditions at runtime. Typically, minimizing the computational overhead of
 multithreading is the biggest challenge to speedup the code.
 
->**Note**  
->Executing sparse reduction loops using multithreading incurs an overhead due to
->the synchronization needed to avoid race conditions and ensure the correctness
->of the code. Note appropriate data scoping of shared and private variables is
->still a must.
+> [!NOTE]
+> Executing sparse reduction loops using multithreading incurs an overhead due to
+> the synchronization needed to avoid race conditions and ensure the correctness
+> of the code. Note appropriate data scoping of shared and private variables is
+> still a must.
 
 ### Code example
 
@@ -65,13 +65,13 @@ void example(double *A, int *nodes, int n) {
 }
 ```
 
->**Note**  
->Executing sparse reduction loops using multithreading incurs a synchronization
->overhead. The example above shows an implementation that uses atomic
->protection. Other implementations reduce this high overhead taking advantage of
->privatization, which increases the memory requirements of the code. An
->efficient implementation that balances synchronization and memory overheads
->must be explored for each particular code.
+> [!NOTE]
+> Executing sparse reduction loops using multithreading incurs a synchronization
+> overhead. The example above shows an implementation that uses atomic
+> protection. Other implementations reduce this high overhead taking advantage of
+> privatization, which increases the memory requirements of the code. An
+> efficient implementation that balances synchronization and memory overheads
+> must be explored for each particular code.
 
 #### Fortran
 
@@ -114,13 +114,13 @@ subroutine example(A, nodes)
 end subroutine example
 ```
 
->**Note**  
->Executing sparse reduction loops using multithreading incurs a synchronization
->overhead. The example above shows an implementation that uses atomic
->protection. Other implementations reduce this high overhead taking advantage
->of privatization, which increases the memory requirements of the code. An
->efficient implementation that balances synchronization and memory overheads
->must be explored for each particular code.
+> [!NOTE]
+> Executing sparse reduction loops using multithreading incurs a synchronization
+> overhead. The example above shows an implementation that uses atomic
+> protection. Other implementations reduce this high overhead taking advantage
+> of privatization, which increases the memory requirements of the code. An
+> efficient implementation that balances synchronization and memory overheads
+> must be explored for each particular code.
 
 ### Related resources
 

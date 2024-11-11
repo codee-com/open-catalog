@@ -25,14 +25,14 @@ modified, it is easier to diagnose why a variable is taking an erroneous value.
 Additionally, it reduces the likelihood of reusing variables for multiple,
 incompatible purposes, making code testing significantly easier.
 
->**Note**  
->In the context of parallel programming, one of the biggest challenges is to do
->data scoping correctly and decide on how to manage all the variables of the
->code properly. For example, it is very important to determine if a variable
->needs to be declared as private to the threads or if it needs to be shared
->among all the threads. Not doing so may introduce race conditions during the
->parallel execution, which makes the result of the code wrong in unpredictable
->ways.
+> [!NOTE]
+> In the context of parallel programming, one of the biggest challenges is to do
+> data scoping correctly and decide on how to manage all the variables of the
+> code properly. For example, it is very important to determine if a variable
+> needs to be declared as private to the threads or if it needs to be shared
+> among all the threads. Not doing so may introduce race conditions during the
+> parallel execution, which makes the result of the code wrong in unpredictable
+> ways.
 
 ### Code examples
 

@@ -34,18 +34,18 @@ compile-time.
 typically computes the value of an array element using the value of another
 array element calculated in a previous loop iteration.
 
->**Note**  
->The
->[scalar reduction compute pattern](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
->is kind of an edge case, it introduces loop-carried dependencies, but
->processors often support vector instructions for reductions by hardware.
->However, there are situations where it may be preferable to execute reduction
->operations with scalar instructions. An example is a hardware processor that
->lacks vector instructions for specific reduction operations. Another example is
->a code where it is key to find a trade-off between performance and precision
->control, avoiding round-off errors in floating point operations. Note loop
->fission is a solution that still enables the partial vectorization of part of
->the loop.
+> [!NOTE]
+> The
+> [scalar reduction compute pattern](../../Glossary/Patterns-for-performance-optimization/Scalar-reduction.md)
+> is kind of an edge case, it introduces loop-carried dependencies, but
+> processors often support vector instructions for reductions by hardware.
+> However, there are situations where it may be preferable to execute reduction
+> operations with scalar instructions. An example is a hardware processor that
+> lacks vector instructions for specific reduction operations. Another example is
+> a code where it is key to find a trade-off between performance and precision
+> control, avoiding round-off errors in floating point operations. Note loop
+> fission is a solution that still enables the partial vectorization of part of
+> the loop.
 
 Thus, [loop fission](../../Glossary/Loop-fission.md) enables the partial
 vectorization by moving the non-vectorizable statements of the sparse reduction

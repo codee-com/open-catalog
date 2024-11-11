@@ -131,17 +131,17 @@ program test_iso_fortran_env
 end program test_iso_fortran_env
 ```
 
->**Note:**
->Avoid specifying `kind` with hard-coded values. While many compilers interpret
->these as the number of bytes required by the variable, other compilers might
->not, leading to potential bugs. For instance, NAG's compiler uses sequential
->values for `kind` (`kind=1` = 4 bytes, `kind=2` = 8 bytes), unless
->`-kind=byte` is also specified in the compilation flags.
+> [!WARNING]
+> Avoid specifying `kind` with hard-coded values. While many compilers interpret
+> these as the number of bytes required by the variable, other compilers might
+> not, leading to potential bugs. For instance, NAG's compiler uses sequential
+> values for `kind` (`kind=1` = 4 bytes, `kind=2` = 8 bytes), unless
+> `-kind=byte` is also specified in the compilation flags.
 
->**Note:**  
->Check out the `kind` values provided by the `iso_c_binding` module to ensure
->proper floating-point interoperability when working with both C and Fortran
->codes.
+> [!TIP]
+> Check out the `kind` values provided by the `iso_c_binding` module to ensure
+> proper floating-point interoperability when working with both C and Fortran
+> codes.
 
 ### Related resources
 

@@ -145,11 +145,11 @@ subroutine foo(a, b, sum, size)
 end subroutine foo
 ```
 
->**Note:**  
->Another option would be to use assumed-shape arrays instead, which
->automatically provide the compiler with all the necessary information.
+> [!NOTE]
+> Another option would be to use assumed-shape arrays instead, which
+> automatically provide the compiler with all the necessary information.
 >
->Check the [PWR070 entry](../PWR070/) for more details on them!
+> Check the [PWR070 entry](../PWR070/) for more details on them!
 
 ### Related resources
 

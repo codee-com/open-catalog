@@ -20,11 +20,11 @@ conditional out of the loop. In some cases this will result in duplicating the
 loop for each possible result of the conditional. In these scenarios, the code
 may be larger but it should also become faster.
 
->**Note**  
->This optimization is called [loop unswitching](../../Glossary/Loop-unswitching.md)
->and the compilers can do it automatically in simple cases. However, in more
->complex cases, the compiler will omit this optimization and therefore it is
->beneficial to do it manually..
+> [!NOTE]
+> This optimization is called [loop unswitching](../../Glossary/Loop-unswitching.md)
+> and the compilers can do it automatically in simple cases. However, in more
+> complex cases, the compiler will omit this optimization and therefore it is
+> beneficial to do it manually..
 
 ### Code example
 

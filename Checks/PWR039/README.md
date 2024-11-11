@@ -25,11 +25,11 @@ pattern is replaced with a more efficient one. Often, loop interchange enables
 [vectorization](../../Glossary/Vectorization.md) of the innermost loop which
 additionally improves performance.
 
->**Note**  
->Loop interchange can be performed only on perfectly nested loops, i.e. on loops
->where all the statements are in the body of the innermost loop. If the loops
->are not perfectly nested, it is often possible to make them
->[perfectly nested through refactoring](../../Glossary/Perfect-loop-nesting.md).
+> [!NOTE]
+> Loop interchange can be performed only on perfectly nested loops, i.e. on loops
+> where all the statements are in the body of the innermost loop. If the loops
+> are not perfectly nested, it is often possible to make them
+> [perfectly nested through refactoring](../../Glossary/Perfect-loop-nesting.md).
 
 ### Code example
 

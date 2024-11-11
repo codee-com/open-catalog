@@ -11,12 +11,13 @@ programmer and can break the program logic.
 Split the initialization of the variable from its declaration to remove the
 implicit `save` behavior and enhance code clarity.
 
->If the `save` behavior is intentional, explicitly add the attribute in the
->variable declaration to clarify the intent:
+> [!NOTE]
+> If the `save` behavior is intentional, explicitly add the attribute in the
+> variable declaration to clarify the intent:
 >
->```f90
->integer, save :: count = 0
->```
+> ```f90
+> integer, save :: count = 0
+> ```
 
 ### Relevance
 

@@ -149,14 +149,14 @@ $ ./a.out
 Factorial of           5 is         120
 ```
 
->**Note:**  
->While you can manually define explicit interfaces using the `interface`
->construct at the call site, this approach requires duplicating the procedure's
->definition, increasing the likelihood of errors.
+> [!NOTE]
+> While you can manually define explicit interfaces using the `interface`
+> construct at the call site, this approach requires duplicating the procedure's
+> definition, increasing the likelihood of errors.
 
->**Note:**  
->If modifying legacy code is not feasible, create a module procedure that wraps
->the legacy procedure as an indirect approach to ensure argument compatibility.
+> [!NOTE]
+> If modifying legacy code is not feasible, create a module procedure that wraps
+> the legacy procedure as an indirect approach to ensure argument compatibility.
 
 ### Related resources
 

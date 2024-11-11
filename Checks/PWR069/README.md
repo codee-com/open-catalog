@@ -94,15 +94,15 @@ end program test_with_only
 This approach makes it immediately clear to the reader that `constant_pi` and
 `area_circle` are being provided by the `Areas` module.
 
->**Note:**  
->If you encounter name conflicts between different modules even when using the
->`only` keyword, you can easily rename the conflicting elements to avoid the
->issue:
+> [!NOTE]
+> If you encounter name conflicts between different modules even when using the
+> `only` keyword, you can easily rename the conflicting elements to avoid the
+> issue:
 >
->```f90
->use Mod1, only : element => element_from_Mod1
->use Mod2, only : element => element_from_Mod2
->```
+> ```f90
+> use Mod1, only : element => element_from_Mod1
+> use Mod2, only : element => element_from_Mod2
+> ```
 
 ### Related resources
 

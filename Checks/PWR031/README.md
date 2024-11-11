@@ -18,10 +18,10 @@ expensive function. However, in some cases when the value of exponent is known
 at compile time, its runtime can be greatly reduced by replacing it with a
 combination of multiplications, divisions and square roots.
 
->**Note**  
->Some compilers under some circumstances (e.g. relaxed IEEE 754 semantics) can
->do this optimization automatically. However, doing it manually will guarantee
->best performance across all the compilers.
+> [!NOTE]
+> Some compilers under some circumstances (e.g. relaxed IEEE 754 semantics) can
+> do this optimization automatically. However, doing it manually will guarantee
+> best performance across all the compilers.
 
 ### Code example
 

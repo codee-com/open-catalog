@@ -48,13 +48,13 @@ float calc_div_recip(float *out, float *in, int n, float b) {
 }
 ```
 
->**Note**  
->This optimization can result in a small change of the result compared to
->original code. Many compilers support relaxed IEEE 754 floating point
->optimization (e.g. `-ffast-math`). If relaxed IEEE 754 mode is enabled with the
->compiler, the compiler might do this optimization automatically. Implementing
->it in the source code might not bring the expected speedup, but it makes the
->optimization explicit in the code.
+> [!NOTE]
+> This optimization can result in a small change of the result compared to
+> original code. Many compilers support relaxed IEEE 754 floating point
+> optimization (e.g. `-ffast-math`). If relaxed IEEE 754 mode is enabled with the
+> compiler, the compiler might do this optimization automatically. Implementing
+> it in the source code might not bring the expected speedup, but it makes the
+> optimization explicit in the code.
 
 ### Related resources
 

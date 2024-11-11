@@ -45,15 +45,15 @@ double example(double a, double b, double c) {
 }
 ```
 
->**Note**  
->The above optimization makes sense under the following conditions:
+> [!NOTE]
+> The above optimization makes sense under the following conditions:
 >
->1. The compiler is configured with strict IEEE 754 compliance
->(`-ffp-contract=off` or `-ffp-contract=on` on GCC and clang);
+> 1. The compiler is configured with strict IEEE 754 compliance
+> (`-ffp-contract=off` or `-ffp-contract=on` on GCC and clang);
 >
->2. and the underlying ISA supports FMA and the compiler is allowed to use
->FMA instruction either using `-mfma` or `-march=ARCH`, where `ARCH` supports
->FMA instruction.
+> 2. and the underlying ISA supports FMA and the compiler is allowed to use
+> FMA instruction either using `-mfma` or `-march=ARCH`, where `ARCH` supports
+> FMA instruction.
 
 ### Related resources
 

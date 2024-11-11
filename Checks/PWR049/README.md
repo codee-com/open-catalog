@@ -20,10 +20,10 @@ instructions executed in the loop. This transformation can occasionally enable
 vectorization, and for the loops that are already vectorized, it can increase
 vectorization efficiency.
 
->**Notes**  
->Moving an iterator-dependent condition outside of the loop is a creative
->process. Depending on the type of condition, it can involve loop peeling,
->[loop fission](../../Glossary/Loop-fission.md) or loop unrolling.
+> [!NOTE]
+> Moving an iterator-dependent condition outside of the loop is a creative
+> process. Depending on the type of condition, it can involve loop peeling,
+> [loop fission](../../Glossary/Loop-fission.md) or loop unrolling.
 
 ### Code examples
 

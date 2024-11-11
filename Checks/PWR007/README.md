@@ -19,11 +19,11 @@ This implicit behavior is discouraged since it is error prone and reduces the
 legibility of the code. It can be disabled by adding an `implicit none`
 statement.
 
->**Note**  
->Implicit data typing may lead to unexpected runtime errors. For example, it may
->change the results of the program due to implicit data typing determining the
->type of operation used in computations. Note the example code below shows
->issues with integer/real division operations due to implicit data typing.
+> [!NOTE]
+> Implicit data typing may lead to unexpected runtime errors. For example, it may
+> change the results of the program due to implicit data typing determining the
+> type of operation used in computations. Note the example code below shows
+> issues with integer/real division operations due to implicit data typing.
 
 ### Code example
 

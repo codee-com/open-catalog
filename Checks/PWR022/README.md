@@ -21,11 +21,11 @@ performance. A conditional whose expression evaluates to the same value for all
 iterations (i.e., a loop-invariant) can be safely moved outside the loop since
 it will always be either true or false.
 
->**Note**  
->This optimization is called
->[loop unswitching](../../Glossary/Loop-unswitching.md) and the compilers can do
->it automatically in simple cases. However, in more complex cases, the compiler
->will omit this optimization and therefore it is beneficial to do it manually.
+> [!NOTE]
+> This optimization is called
+> [loop unswitching](../../Glossary/Loop-unswitching.md) and the compilers can do
+> it automatically in simple cases. However, in more complex cases, the compiler
+> will omit this optimization and therefore it is beneficial to do it manually.
 
 ### Code example
 

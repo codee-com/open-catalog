@@ -29,11 +29,11 @@ locations. After loop fission, we end up with two loops. The first loop computes
 the gathers and will not be vectorized. The second loop computes the remainder
 of the original loop and will be vectorized.
 
->**Note**  
->Loop fission introduces additional memory overheads, which is needed to
->allocate, read/write and deallocate the memory of the temporary vector that
->stores the used data in consecutive memory locations. The implementation of
->loop fission must take this into consideration to produce performant code.
+> [!NOTE]
+> Loop fission introduces additional memory overheads, which is needed to
+> allocate, read/write and deallocate the memory of the temporary vector that
+> stores the used data in consecutive memory locations. The implementation of
+> loop fission must take this into consideration to produce performant code.
 
 ### Code examples
 

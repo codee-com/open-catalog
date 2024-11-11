@@ -15,11 +15,11 @@ Many loops can benefit from vectorization. However, loops with calls to
 recursive functions cannot be vectorized. Recursive functions introduce complex
 control flow logic which the compilers cannot vectorize automatically.
 
->**Note**  
->Whether the loop with a recursive function call is vectorizable or not after
->de-recursion depends on the property of the original recursive function itself.
->If the complex control flow logic remains after de-recursion, the loop will
->remain not vectorizable.
+> [!NOTE]
+> Whether the loop with a recursive function call is vectorizable or not after
+> de-recursion depends on the property of the original recursive function itself.
+> If the complex control flow logic remains after de-recursion, the loop will
+> remain not vectorizable.
 
 ### Code example
 

@@ -29,10 +29,10 @@ solve. Using loop tiling, the pressure on the memory subsystem due to
 inefficient matrix access is decreased which leads to improvement in program
 speed.
 
->**Note**  
->The benefit of loop tiling directly depends on the size of the dataset. Large
->datasets profit from loop tiling a lot, in contrast to small datasets that
->don't profit that much.
+> [!NOTE]
+> The benefit of loop tiling directly depends on the size of the dataset. Large
+> datasets profit from loop tiling a lot, in contrast to small datasets that
+> don't profit that much.
 
 ### Code example
 

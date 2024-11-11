@@ -171,20 +171,20 @@ $ ./a.out
  Row           2 Sum:   6.00000000
 ```
 
->**Note:**  
->As explained previously, if the subroutines operate on a slice of the matrix,
->assumed-shape arrays can manage the slice directly, potentially improving
->performance.
+> [!TIP]
+> As explained previously, if the subroutines operate on a slice of the matrix,
+> assumed-shape arrays can manage the slice directly, potentially improving
+> performance.
 >
->Check the PWR070 benchmark for a demonstration!
+> Check the PWR070 benchmark for a demonstration!
 
->**Note:**  
->Beware that any procedures involving assumed-shape array arguments must have
->explicit interfaces at the point of call. If not, the updated code won't
->compile.
+> [!WARNING]
+> Beware that any procedures involving assumed-shape array arguments must have
+> explicit interfaces at the point of call. If not, the updated code won't
+> compile.
 >
->Check the [PWR068 entry](../PWR068/) for more details on implicit and explicit
->interfaces!
+> Check the [PWR068 entry](../PWR068/) for more details on implicit and explicit
+> interfaces!
 
 ### Related resources
 

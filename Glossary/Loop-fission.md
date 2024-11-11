@@ -26,7 +26,7 @@ Loop fission enables more efficient code by taking advantage of
 [vectorization](Vectorization.md) and
 [offloading](Offloading.md) to accelerators.
 
->**Note**  
->Loop fission introduces overheads (e.g. loop control increment and branching),
->so in general it is necessary to run and benchmark the code to determine if
->loop fission brings performance gain.
+> [!NOTE]
+> Loop fission introduces overheads (e.g. loop control increment and branching),
+> so in general it is necessary to run and benchmark the code to determine if
+> loop fission brings performance gain.

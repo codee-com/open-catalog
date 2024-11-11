@@ -23,11 +23,11 @@ well as add the appropriate synchronization to avoid race conditions at runtime.
 Typically, minimizing the computational overhead of multithreading is the
 biggest challenge to speedup the code.
 
->**Note**  
->Executing scalar reduction loops using multithreading incurs an overhead due to
->the synchronization needed to avoid race conditions and ensure the correctness
->of the code. Note appropriate data scoping of shared and private variables is
->still a must.
+> [!NOTE]
+> Executing scalar reduction loops using multithreading incurs an overhead due to
+> the synchronization needed to avoid race conditions and ensure the correctness
+> of the code. Note appropriate data scoping of shared and private variables is
+> still a must.
 
 ### Code example
 
@@ -72,11 +72,11 @@ double example(double *A, int n) {
 }
 ```
 
->**Note**  
->Executing scalar reduction loops using multithreading incurs a synchronization
->overhead. The example above shows a code that uses an efficient implementation
->balancing synchronization and memory overheads, by taking advantage of a
->reduction mechanism typically supported by the APIs for multithreading.
+> [!NOTE]
+> Executing scalar reduction loops using multithreading incurs a synchronization
+> overhead. The example above shows a code that uses an efficient implementation
+> balancing synchronization and memory overheads, by taking advantage of a
+> reduction mechanism typically supported by the APIs for multithreading.
 
 #### Fortran
 
@@ -121,11 +121,11 @@ function example(A) result(sum)
 end function example
 ```
 
->**Note**  
->Executing scalar reduction loops using multithreading incurs a synchronization
->overhead. The example above shows a code that uses an efficient implementation
->balancing synchronization and memory overheads, by taking advantage of a
->reduction mechanism typically supported by the APIs for multithreading.
+> [!NOTE]
+> Executing scalar reduction loops using multithreading incurs a synchronization
+> overhead. The example above shows a code that uses an efficient implementation
+> balancing synchronization and memory overheads, by taking advantage of a
+> reduction mechanism typically supported by the APIs for multithreading.
 
 ### Related resources
 
