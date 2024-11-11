@@ -22,13 +22,13 @@ Solutions to efficiently implement them in parallel can be developed.
 
 ### Computation patterns
 
-* 📄 [Forall](Patterns-for-performance-optimization/Forall.md)
-* 📄 [Scalar reduction](Patterns-for-performance-optimization/Scalar-reduction.md)
-* 📄 [Sparse reduction](Patterns-for-performance-optimization/Sparse-reduction.md)
-* 📄 [Recurrence](Patterns-for-performance-optimization/Recurrence.md)
+* 📄 [Forall](Forall.md)
+* 📄 [Scalar reduction](Scalar-reduction.md)
+* 📄 [Sparse reduction](Sparse-reduction.md)
+* 📄 [Recurrence](Recurrence.md)
 
 ### Memory patterns
 
-* 📄 [Linear](Patterns-for-performance-optimization/Linear.md)
-* 📄 [Column-major](Patterns-for-performance-optimization/Column-major.md)
-* 📄 [Row-major](Patterns-for-performance-optimization/Row-major.md)
+* 📄 [Linear](Linear.md)
+* 📄 [Column-major](Column-major.md)
+* 📄 [Row-major](Row-major.md)
