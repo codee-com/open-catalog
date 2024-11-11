@@ -125,7 +125,7 @@ program test_iso_fortran_env
   ! Note the `_sp` and `_dp` suffixes, indicating the precision of the value
   single_precision_variable = 0.123456_sp
   double_precision_variable = 0.123456789012345_dp
-  
+
   print *, 'Single precision variable:', single_precision_variable
   print *, 'Double precision variable:', double_precision_variable
 end program test_iso_fortran_env

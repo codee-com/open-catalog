@@ -140,7 +140,7 @@ subroutine matmul(n, A, B, C)
   real, dimension(:, :), intent(out) :: C
   integer :: i, j, k
 
-  ! No need to write an explicit loop to zero the whole matrix 
+  ! No need to write an explicit loop to zero the whole matrix
   C = 0
 
   do j = 1, n

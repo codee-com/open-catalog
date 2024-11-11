@@ -73,7 +73,7 @@ You may have already noticed that the main program incorrectly assumes that the
 running the program produces an incorrect result:
 
 ```txt
-$ gfortran --version          
+$ gfortran --version
 GNU Fortran (Debian 12.2.0-14) 12.2.0
 $ gfortran example_factorial.f90 example.f90
 $ ./a.out

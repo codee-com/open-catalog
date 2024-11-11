@@ -83,7 +83,7 @@ of the memory subsystem.
 
 Picking the values for tile size is typically done experimentally. Start off
 with some value, e.g. 16, and then change the value until the best performance
-is achieved. 
+is achieved.
 
 ### When should loop tiling be applied?
 
@@ -140,13 +140,13 @@ for (int ii = 0; ii < n; ii += TILE_SIZE) {
 Instead of accessing data inside one large tile with dimensions `n * n`, the
 program is accessing data inside many smaller tiles with dimensions
 `TILE_SIZE * TILE_SIZE`. This improves the loop's data locality and makes for a
-faster loop. 
+faster loop.
 
 ### What are the prerequisites for loop tiling?
 
 To perform loop tiling, the loops have to be
 [perfectly nested](Perfect-loop-nesting.md) and a certain type of
-loops with loop-carried dependencies cannot be tiled. 
+loops with loop-carried dependencies cannot be tiled.
 
 Additionally, doing loop tiling only makes sense if there is data reuse or an
 inefficient memory access pattern that cannot be fixed with loop interchange.

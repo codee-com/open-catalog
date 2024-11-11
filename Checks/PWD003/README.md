@@ -104,7 +104,7 @@ as expected (e.g., copying only the array descriptors instead of the actual
 data), or even raise an error during compilation:
 
 ```txt
-$ gfortran --version  
+$ gfortran --version
 GNU Fortran (Debian 12.2.0-14) 12.2.0
 $ gfortran foo.f90 -fopenmp
 foo.f90:8:23:

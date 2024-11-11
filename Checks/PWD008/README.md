@@ -83,7 +83,7 @@ subroutine example(A)
     do i = 1, size(A, 1)
       A(i, j) = A(i, j) + A(i - 1, j)
     end do
-  end do 
+  end do
 end subroutine example
 ```
 
@@ -101,7 +101,7 @@ subroutine example(A)
     do i = 2, size(A, 1)
       A(i, j) = A(i, j) + A(i - 1, j)
     end do
-  end do 
+  end do
 end subroutine example
 ```
 

@@ -59,7 +59,7 @@ program test_assumed_size
 
   ! Should print "6" (1 + 2 + 3) for each row
   call sum_rows_assumed_size(matrix, cols, rows)
-  
+
 contains
 
 subroutine sum_rows_assumed_size(arr, m, n)
@@ -89,9 +89,9 @@ following result:
 $ gfortran --version
 GNU Fortran (Debian 12.2.0-14) 12.2.0
 $ gfortran example-assumed-size.f90
-$ ./a.out  
- Row           1 Sum:   2.00000000    
- Row           2 Sum:   4.00000000    
+$ ./a.out
+ Row           1 Sum:   2.00000000
+ Row           2 Sum:   4.00000000
  Row           3 Sum:   6.00000000
 ```
 
@@ -105,7 +105,7 @@ program test_explicit_shape
 
   ! Should print "6" (1 + 2 + 3) for each row
   call sum_rows_explicit_shape(matrix, cols, rows)
-  
+
 contains
 
 subroutine sum_rows_explicit_shape(arr, m, n)
@@ -127,9 +127,9 @@ end program test_explicit_shape
 
 ```txt
 $ gfortran example-explicit-shape.f90
-$ ./a.out  
- Row           1 Sum:   2.00000000    
- Row           2 Sum:   4.00000000    
+$ ./a.out
+ Row           1 Sum:   2.00000000
+ Row           2 Sum:   4.00000000
  Row           3 Sum:   6.00000000
 ```
 
@@ -143,7 +143,7 @@ program test_assumed_shape
 
   ! Should print "6" (1 + 2 + 3) for each row
   call sum_rows_assumed_shape(matrix)
-  
+
 contains
 
 subroutine sum_rows_assumed_shape(arr)
@@ -167,7 +167,7 @@ And the program gives the correct result:
 ```txt
 $ gfortran solution.f90
 $ ./a.out
- Row           1 Sum:   6.00000000    
+ Row           1 Sum:   6.00000000
  Row           2 Sum:   6.00000000
 ```
 

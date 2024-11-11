@@ -80,7 +80,7 @@ subroutine printVar2
   print *, "Var2: ", var2
 
   ! Did you spot the bug?
-  ! 
+  !
   ! In the common block re-definition, `var1` is missing. As a result, `var2`
   ! unintentionally references the memory location of `var1`.
   !
@@ -98,7 +98,7 @@ $ gfortran --version
 GNU Fortran (Debian 12.2.0-14) 12.2.0
 $ gfortran example.f90
 $ ./a.out
-Var1:    3.14000010    
+Var1:    3.14000010
 Var2:   1078523331
 ```
 
@@ -148,7 +148,7 @@ And now the program gives the correct results:
 ```txt
 $ gfortran solution.f90
 $ ./a.out
-Var1:    3.14000010    
+Var1:    3.14000010
 Var2:           20
 ```
 
