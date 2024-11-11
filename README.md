@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+sidebar_label: Index
+---
+
 # Open Catalog of Best Practices for Modernization and Optimization
 
 ## About
