@@ -110,7 +110,7 @@ end subroutine foo
 
 ### Related resources
 
-* [PWR016 examples](../PWR016)
+* [PWR016 examples](../PWR016/)
 
 ### References
 

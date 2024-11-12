@@ -99,7 +99,7 @@ end do
 
 ### Related resources
 
-* [PWR019 examples](../PWR019)
+* [PWR019 examples](../PWR019/)
 
 ### References
 

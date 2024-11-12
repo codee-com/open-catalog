@@ -87,4 +87,4 @@ end subroutine example
 
 ### Related resources
 
-* [PWR013 examples](../PWR013)
+* [PWR013 examples](../PWR013/)

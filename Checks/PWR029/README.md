@@ -94,4 +94,4 @@ end subroutine example
 
 ### Related resources
 
-* [PWR029 examples](../PWR029)
+* [PWR029 examples](../PWR029/)

@@ -120,7 +120,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR022 examples](../PWR022)
+* [PWR022 examples](../PWR022/)
 
 ### References
 

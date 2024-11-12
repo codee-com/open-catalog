@@ -220,7 +220,7 @@ stored together within a `module`, clearly stating their relationship.
 
 ### Related resources
 
-* [PWR063 source code examples](../PWR063)
+* [PWR063 source code examples](../PWR063/)
 
 ### References
 

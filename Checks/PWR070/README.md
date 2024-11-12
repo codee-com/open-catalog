@@ -183,12 +183,12 @@ $ ./a.out
 >explicit interfaces at the point of call. If not, the updated code won't
 >compile.
 >
->Check the [PWR068 entry](../PWR068) for more details on implicit and explicit
+>Check the [PWR068 entry](../PWR068/) for more details on implicit and explicit
 >interfaces!
 
 ### Related resources
 
-- [PWR070 source code examples](../PWR070)
+- [PWR070 source code examples](../PWR070/)
 
 ### References
 

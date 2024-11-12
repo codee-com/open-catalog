@@ -52,7 +52,7 @@ int example(int *A) {
 
 ### Related resources
 
-* [PWR017 examples](../PWR017)
+* [PWR017 examples](../PWR017/)
 
 ### References
 

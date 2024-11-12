@@ -106,7 +106,7 @@ This approach makes it immediately clear to the reader that `constant_pi` and
 
 ### Related resources
 
-- [PWR069 source code examples](../PWR069)
+- [PWR069 source code examples](../PWR069/)
 
 ### References
 

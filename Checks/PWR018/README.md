@@ -127,7 +127,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR018 examples](../PWR018)
+* [PWR018 examples](../PWR018/)
 
 ### References
 

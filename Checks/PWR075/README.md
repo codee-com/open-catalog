@@ -110,7 +110,7 @@ $ ./solution
 
 ### Related resources
 
-- [PWR075 source code examples](../PWR075)
+- [PWR075 source code examples](../PWR075/)
 
 ### References
 

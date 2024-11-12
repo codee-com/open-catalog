@@ -85,7 +85,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWD004 examples](../PWD004)
+* [PWD004 examples](../PWD004/)
 
 ### References
 

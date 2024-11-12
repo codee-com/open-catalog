@@ -109,7 +109,7 @@ end do
 
 ### Related resources
 
-* [PWR040 examples](../PWR040)
+* [PWR040 examples](../PWR040/)
 
 ### References
 

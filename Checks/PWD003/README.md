@@ -149,11 +149,11 @@ end subroutine foo
 >Another option would be to use assumed-shape arrays instead, which
 >automatically provide the compiler with all the necessary information.
 >
->Check the [PWR070 entry](../PWR070) for more details on them!
+>Check the [PWR070 entry](../PWR070/) for more details on them!
 
 ### Related resources
 
-* [PWD003 examples](../PWD003)
+* [PWD003 examples](../PWD003/)
 
 * [OpenMP 4.5 Complete Specifications](https://www.openmp.org/wp-content/uploads/openmp-4.5.pdf),
 November 2015 [last checked July 2019]

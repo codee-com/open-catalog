@@ -55,7 +55,7 @@ for (int i = 0; i < n; ++i) {
 
 ### Related resources
 
-* [PWR010 examples](../PWR010)
+* [PWR010 examples](../PWR010/)
 
 ### References
 

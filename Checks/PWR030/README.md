@@ -66,4 +66,4 @@ for (int i = 0; i < size; i++) {
 
 ### References
 
-* [PWR030 examples](../PWR030)
+* [PWR030 examples](../PWR030/)

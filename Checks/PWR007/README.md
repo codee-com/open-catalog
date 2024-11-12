@@ -60,7 +60,7 @@ equals `3.0`), instead of the probably intended real division operation (the
 
 ### Related resources
 
-* [PWR007 examples](../PWR007)
+* [PWR007 examples](../PWR007/)
 
 ### References
 

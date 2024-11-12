@@ -104,7 +104,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR050 examples](../PWR050)
+* [PWR050 examples](../PWR050/)
 
 ### References
 

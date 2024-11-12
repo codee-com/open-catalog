@@ -113,7 +113,7 @@ end function example
 
 ### Related resources
 
-* [PWR054 examples](../PWR054)
+* [PWR054 examples](../PWR054/)
 
 ### References
 

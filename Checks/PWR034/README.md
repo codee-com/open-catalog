@@ -102,7 +102,7 @@ end do
 
 ### Related resources
 
-* [PWR034 examples](../PWR034)
+* [PWR034 examples](../PWR034/)
 
 ### References
 

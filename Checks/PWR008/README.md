@@ -74,7 +74,7 @@ function call site `call foo(s, 2)`.
 
 ### Related resources
 
-* [PWR008 examples](../PWR008)
+* [PWR008 examples](../PWR008/)
 
 ### References
 

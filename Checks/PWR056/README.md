@@ -125,7 +125,7 @@ end function example
 
 ### Related resources
 
-* [PWR056 examples](../PWR056)
+* [PWR056 examples](../PWR056/)
 
 ### References
 

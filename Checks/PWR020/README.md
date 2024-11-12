@@ -151,7 +151,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR020 examples](../PWR020)
+* [PWR020 examples](../PWR020/)
 
 ### References
 

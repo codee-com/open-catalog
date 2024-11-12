@@ -62,7 +62,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR035 examples](../PWR035)
+* [PWR035 examples](../PWR035/)
 
 ### References
 

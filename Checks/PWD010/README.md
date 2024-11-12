@@ -93,7 +93,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWD010 examples](../PWD010)
+* [PWD010 examples](../PWD010/)
 
 ### References
 

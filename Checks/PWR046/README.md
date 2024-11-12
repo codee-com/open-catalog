@@ -43,7 +43,7 @@ float example(float a, float b, float c) {
 
 ### Related resources
 
-* [PWR046 examples](../PWR046)
+* [PWR046 examples](../PWR046/)
 
 ### References
 

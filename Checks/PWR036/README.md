@@ -118,7 +118,7 @@ end do
 
 ### Related resources
 
-* [PWR036 examples](../PWR036)
+* [PWR036 examples](../PWR036/)
 
 ### References
 

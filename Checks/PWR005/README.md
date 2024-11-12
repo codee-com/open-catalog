@@ -127,7 +127,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR005 examples](../PWR005)
+* [PWR005 examples](../PWR005/)
 
 * [PWR004: Declare variable OpenMP scoping](../PWR004/README.md)
 

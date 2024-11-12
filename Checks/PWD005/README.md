@@ -93,7 +93,7 @@ the full size of the arrays based on their declarations.
 
 ### Related resources
 
-* [PWD005 examples](../PWD005)
+* [PWD005 examples](../PWD005/)
 
 * [PWR015: Avoid copying unnecessary array elements to the GPU](../PWR015/README.md)
 

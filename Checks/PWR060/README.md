@@ -97,7 +97,7 @@ end do
 
 ### Related resources
 
-* [PWR060 examples](../PWR060)
+* [PWR060 examples](../PWR060/)
 
 ### References
 
