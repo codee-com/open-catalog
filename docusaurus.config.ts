@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives';
 
 const config: Config = {
   title: 'Code Guidelines for Correctness, Modernization, and Optimization',
@@ -43,6 +44,9 @@ const config: Config = {
           exclude: ['**/external/**'],
           editUrl:
             'https://github.com/codee-com/open-catalog/edit/main/',
+          beforeDefaultRemarkPlugins: [
+            remarkGithubAdmonitionsToDirectives,
+          ],
         },
         theme: {
           customCss: './static/css/custom.css',
