@@ -188,7 +188,7 @@ $ ./a.out
 
 ### Related resources
 
-- [PWR070 source code examples](../PWR070/)
+- [PWR070 examples](../PWR070/)
 
 ### References
 

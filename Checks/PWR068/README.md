@@ -160,7 +160,7 @@ Factorial of           5 is         120
 
 ### Related resources
 
-- [PWR068 source code examples](../PWR068/)
+- [PWR068 examples](../PWR068/)
 
 ### References
 

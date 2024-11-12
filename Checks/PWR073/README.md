@@ -158,7 +158,7 @@ getters and setters).
 
 ### Related resources
 
-- [PWR073 source code examples](../PWR073/)
+- [PWR073 examples](../PWR073/)
 
 ### References
 

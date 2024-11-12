@@ -109,4 +109,4 @@ vectorize the inner loop.
 
 ### Related resources
 
-* [Source code examples and solutions](../PWR039/)
+* [PWR039 examples](../PWR039/)

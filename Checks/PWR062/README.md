@@ -179,7 +179,7 @@ end subroutine matmul
 
 ### Related resources
 
-* [Source code examples and solutions](../PWR062/)
+* [PWR062 examples](../PWR062/)
 
 * [PWR010: Avoid column-major array access in C/C++](../PWR010/README.md)
 

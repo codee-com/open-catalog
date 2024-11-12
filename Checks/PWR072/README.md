@@ -115,7 +115,7 @@ end program test_implicit_save
 
 ### Related resources
 
-* [PWR072 source code examples](../PWR072/)
+* [PWR072 examples](../PWR072/)
 
 ### References
 
