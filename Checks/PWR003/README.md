@@ -136,7 +136,7 @@ end module example_module
 
 ### Related resources
 
-* [PWR003 examples](../PWR003/)
+* [PWR003 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR003/)
 
 ### References
 

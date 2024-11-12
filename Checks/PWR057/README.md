@@ -118,7 +118,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR057 examples](../PWR057/)
+* [PWR057 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR057/)
 
 ### References
 

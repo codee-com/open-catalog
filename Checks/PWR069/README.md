@@ -106,7 +106,7 @@ This approach makes it immediately clear to the reader that `constant_pi` and
 
 ### Related resources
 
-- [PWR069 examples](../PWR069/)
+- [PWR069 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR069/)
 
 ### References
 

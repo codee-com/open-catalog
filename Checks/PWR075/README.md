@@ -110,7 +110,7 @@ $ ./solution
 
 ### Related resources
 
-- [PWR075 examples](../PWR075/)
+- [PWR075 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR075/)
 
 ### References
 

@@ -208,7 +208,7 @@ end do
 
 ### Related resources
 
-* [PWR042 examples](../PWR042/)
+* [PWR042 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR042/)
 
 ### References
 

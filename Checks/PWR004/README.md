@@ -89,7 +89,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR004 examples](../PWR004/)
+* [PWR004 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR004/)
 
 * [PWR005: Disable default OpenMP scoping](../PWR005/README.md)
 

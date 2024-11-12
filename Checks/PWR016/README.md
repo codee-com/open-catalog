@@ -110,7 +110,7 @@ end subroutine foo
 
 ### Related resources
 
-* [PWR016 examples](../PWR016/)
+* [PWR016 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR016/)
 
 ### References
 

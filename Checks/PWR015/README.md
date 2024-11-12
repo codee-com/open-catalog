@@ -91,6 +91,6 @@ end subroutine example
 
 ### Related resources
 
-* [PWR015 examples](../PWR015/)
+* [PWR015 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR015/)
 
 * [PWD005: Array range copied to the GPU does not cover the used range](../PWD005/README.md)

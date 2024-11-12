@@ -107,7 +107,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWD008 examples](../PWD008/)
+* [PWD008 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWD008/)
 
 * [PWD007: Unprotected multithreading recurrence](../PWD007/README.md)
 

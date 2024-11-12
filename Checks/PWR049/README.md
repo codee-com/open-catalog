@@ -254,7 +254,7 @@ Loop unrolling changes the increment of iterator variable `i`, so now it is 2
 
 ### Related resources
 
-* [PWR049 examples](../PWR049/)
+* [PWR049 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR049/)
 
 ### References
 

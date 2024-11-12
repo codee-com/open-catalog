@@ -87,4 +87,4 @@ end subroutine example
 
 ### Related resources
 
-* [PWR013 examples](../PWR013/)
+* [PWR013 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR013/)

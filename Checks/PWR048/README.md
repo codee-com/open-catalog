@@ -57,7 +57,7 @@ double example(double a, double b, double c) {
 
 ### Related resources
 
-* [PWR048 examples](../PWR048/)
+* [PWR048 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR048/)
 
 ### References
 

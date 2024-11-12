@@ -125,7 +125,7 @@ end function example
 
 ### Related resources
 
-* [PWR056 examples](../PWR056/)
+* [PWR056 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR056/)
 
 ### References
 

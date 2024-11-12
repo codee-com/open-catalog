@@ -102,7 +102,7 @@ end do
 
 ### Related resources
 
-* [PWR034 examples](../PWR034/)
+* [PWR034 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR034/)
 
 ### References
 

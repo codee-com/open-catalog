@@ -11,7 +11,8 @@ codes and references to additional reading resources.
 
 ## Benchmarks
 
-The Open Catalog includes [a suite of microbenchmarks](Benchmark/README.md)
+The Open Catalog includes
+[a suite of microbenchmarks](https://github.com/codee-com/open-catalog/tree/main/Benchmark/)
 designed to demonstrate:
 
 - No performance degradation when implementing the modernization

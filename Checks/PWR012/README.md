@@ -177,7 +177,7 @@ end program example
 
 ### Related resources
 
-* [PWR012 examples](../PWR012/)
+* [PWR012 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR012/)
 
 * [PWR001: Declare global variables as function parameters](../PWR001/README.md)
 

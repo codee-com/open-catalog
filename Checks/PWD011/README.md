@@ -108,7 +108,7 @@ end function example
 
 ### Related resources
 
-* [PWD011 examples](../PWD011/)
+* [PWD011 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWD011/)
 
 ### References
 

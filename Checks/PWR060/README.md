@@ -97,7 +97,7 @@ end do
 
 ### Related resources
 
-* [PWR060 examples](../PWR060/)
+* [PWR060 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR060/)
 
 ### References
 

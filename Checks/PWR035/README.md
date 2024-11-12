@@ -62,7 +62,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR035 examples](../PWR035/)
+* [PWR035 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR035/)
 
 ### References
 

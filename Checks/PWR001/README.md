@@ -143,7 +143,7 @@ end function example
 
 ### Related resources
 
-* [PWR001 examples](../PWR001/)
+* [PWR001 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR001/)
 
 ### References
 

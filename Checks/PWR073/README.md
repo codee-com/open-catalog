@@ -158,7 +158,7 @@ getters and setters).
 
 ### Related resources
 
-- [PWR073 examples](../PWR073/)
+- [PWR073 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR073/)
 
 ### References
 

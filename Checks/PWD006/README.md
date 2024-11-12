@@ -94,7 +94,7 @@ order and the same happens with the *exit *data statements.
 
 ### Related resources
 
-* [PWD006 examples](../PWD006/)
+* [PWD006 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWD006/)
 
 * [PWD003: Missing array range in data copy to accelerator device](../PWD003/README.md)
 

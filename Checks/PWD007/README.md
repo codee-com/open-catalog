@@ -108,7 +108,7 @@ end subroutine foo
 
 ### Related resources
 
-* [PWD007 examples](../PWD007/)
+* [PWD007 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWD007/)
 
 * [scan Directive - OPENMP API Specification: Version 5.0](https://www.openmp.org/spec-html/5.0/openmpsu45.html)
 [last checked October 2020]

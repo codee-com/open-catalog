@@ -174,7 +174,7 @@ end do
 
 ### Related resources
 
-* [PWR043 examples](../PWR043/)
+* [PWR043 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR043/)
 
 * [PWR010: Avoid column-major array access in C/C++](../PWR010/README.md)
 

@@ -145,7 +145,7 @@ end program test_iso_fortran_env
 
 ### Related resources
 
-- [PWR071 examples](../PWR071/)
+- [PWR071 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR071/)
 
 ### References
 

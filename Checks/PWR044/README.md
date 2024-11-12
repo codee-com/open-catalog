@@ -49,7 +49,7 @@ float example(float a) {
 
 ### Related resources
 
-* [PWR044 examples](../PWR044/)
+* [PWR044 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR044/)
 
 ### References
 

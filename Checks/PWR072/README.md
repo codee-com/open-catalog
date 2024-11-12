@@ -115,7 +115,7 @@ end program test_implicit_save
 
 ### Related resources
 
-* [PWR072 examples](../PWR072/)
+* [PWR072 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR072/)
 
 ### References
 

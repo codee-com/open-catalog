@@ -118,7 +118,7 @@ end do
 
 ### Related resources
 
-* [PWR036 examples](../PWR036/)
+* [PWR036 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR036/)
 
 ### References
 

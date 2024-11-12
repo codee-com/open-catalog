@@ -109,7 +109,7 @@ end do
 
 ### Related resources
 
-* [PWR040 examples](../PWR040/)
+* [PWR040 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR040/)
 
 ### References
 

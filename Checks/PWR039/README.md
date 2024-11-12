@@ -109,4 +109,4 @@ vectorize the inner loop.
 
 ### Related resources
 
-* [PWR039 examples](../PWR039/)
+* [PWR039 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR039/)

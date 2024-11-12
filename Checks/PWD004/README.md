@@ -85,7 +85,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWD004 examples](../PWD004/)
+* [PWD004 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWD004/)
 
 ### References
 

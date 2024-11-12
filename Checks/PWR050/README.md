@@ -104,7 +104,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR050 examples](../PWR050/)
+* [PWR050 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR050/)
 
 ### References
 

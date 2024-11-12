@@ -151,7 +151,7 @@ end subroutine example
 
 ### Related resources
 
-* [PWR020 examples](../PWR020/)
+* [PWR020 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR020/)
 
 ### References
 

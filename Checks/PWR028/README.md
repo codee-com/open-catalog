@@ -60,4 +60,4 @@ void example(float *a, float *b, float *c, unsigned size, unsigned inc) {
 
 ### Related resources
 
-* [PWR028 examples](../PWR028/)
+* [PWR028 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR028/)

@@ -55,7 +55,7 @@ for (int i = 0; i < n; ++i) {
 
 ### Related resources
 
-* [PWR010 examples](../PWR010/)
+* [PWR010 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR010/)
 
 ### References
 

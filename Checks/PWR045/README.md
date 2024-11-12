@@ -58,7 +58,7 @@ float calc_div_recip(float *out, float *in, int n, float b) {
 
 ### Related resources
 
-* [PWR045 examples](../PWR045/)
+* [PWR045 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR045/)
 
 ### References
 

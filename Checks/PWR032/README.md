@@ -53,7 +53,7 @@ void example(float x) {
 
 ### Related resources
 
-* [PWR032 examples](../PWR032/)
+* [PWR032 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR032/)
 
 ### References
 

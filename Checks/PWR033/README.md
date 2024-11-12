@@ -101,7 +101,7 @@ end subroutine
 
 ### Related resources
 
-* [PWR033 examples](../PWR033/)
+* [PWR033 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR033/)
 
 ### References
 

@@ -188,7 +188,7 @@ $ ./a.out
 
 ### Related resources
 
-- [PWR070 examples](../PWR070/)
+- [PWR070 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR070/)
 
 ### References
 

@@ -61,7 +61,7 @@ void example() {
 
 ### Related resources
 
-* [PWR014 examples](../PWR014/)
+* [PWR014 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR014/)
 
 ### References
 
