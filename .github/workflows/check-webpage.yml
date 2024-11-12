@@ -1,0 +1,21 @@
+name: Check Open Catalog Web
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Build Docusaurus website
+        run: |
+          npm install
+          npm run build
