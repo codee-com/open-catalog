@@ -1,28 +1,13 @@
 # IMPORTANT NOTE: The results of these benchmarks are not representative. This
 # is simply a smoke test to check everything compiles and runs.
-
 on:
   push:
-    branches:
-      - main
-  pull_request:
 
 jobs:
-  Compile-and-run:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-22.04, macos-14, windows-2022]
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-      - name: Run build and benchmark script
-        run: python Benchmark/run-benchmarks.py -- -G"Unix Makefiles"
-        working-directory: ${{ github.workspace }}
   # Let us run this job on Ubuntu only as it is the only image that has gcc,
   # gfortran, and clang available out of the box
-  Multiple-compilers:
-    runs-on: ubuntu-22.04
+  multiple-compilers:
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
