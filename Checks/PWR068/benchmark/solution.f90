@@ -1,5 +1,5 @@
-! PWR068: Encapsulate external procedures within modules to avoid the risks of
-!         calling implicit interfaces
+! PWR068: Encapsulate procedures within modules to avoid the risks of calling
+!         implicit interfaces
 
 module vector_utils
   implicit none

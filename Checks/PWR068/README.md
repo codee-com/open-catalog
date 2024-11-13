@@ -1,4 +1,4 @@
-# PWR068: Encapsulate external procedures within modules to avoid the risks of calling implicit interfaces
+# PWR068: Encapsulate procedures within modules to avoid the risks of calling implicit interfaces
 
 ### Issue
 
@@ -9,7 +9,7 @@ runtime bugs.
 ### Actions
 
 To enhance code safety and reliability, encapsulate procedures within modules
-to provide an explicit interface at the point of the call.
+to automatically provide an explicit interface at the point of the call.
 
 ### Relevance
 
@@ -30,9 +30,9 @@ type (e.g., `integer`) causes errors due to different internal representations.
 
 In contrast, a procedure with an explicit interface informs the compiler about
 the expected arguments, allowing it to perform the necessary checks at the
-point of the call during compile-time. Fortran provides various methods to
-ensure a procedure has an explicit interface. The preferred approach is to
-encapsulate it within a module, as illustrated below.
+point of the call during compile-time. The preferred approach to ensure a
+procedure has an explicit interface is to encapsulate it within a module, as
+illustrated below.
 
 ### Code examples
 
@@ -40,7 +40,7 @@ The following program calculates the factorial of a number. To simulate a real
 project with multiple source files, the main program and the factorial
 procedure are in different files:
 
-```fortran
+```fortran {4,5} showLineNumbers
 ! example_factorial.f90
 subroutine factorial(number, result)
   implicit none
@@ -55,7 +55,7 @@ subroutine factorial(number, result)
 end subroutine factorial
 ```
 
-```fortran
+```fortran {5} showLineNumbers
 ! example.f90
 program test_implicit_interface
   implicit none
@@ -91,7 +91,7 @@ arguments.
 
 Moving the `factorial` subroutine to a module is as simple as:
 
-```fortran
+```fortran showLineNumbers
 ! solution_mod_factorial.f90
 module mod_factorial
   implicit none
@@ -110,7 +110,7 @@ contains
 end module mod_factorial
 ```
 
-```fortran
+```fortran showLineNumbers
 ! solution_with_type_mismatch.f90
 program test_explicit_interface
   use mod_factorial, only: factorial
@@ -150,11 +150,65 @@ Factorial of           5 is         120
 ```
 
 > [!NOTE]
-> While you can manually define explicit interfaces using the `interface`
-> construct at the call site, this approach requires duplicating the procedure's
-> definition, increasing the likelihood of errors.
+> The previous example demonstrates how calls to `external` procedures are
+> performed through implicit interfaces. The same problem would occur if
+> `factorial` were an implicitly declared procedure, as shown in the following
+> example:
+> 
+> ```fortran {5} showLineNumbers
+> program test_implicit_interface
+>   real :: number, result
+> 
+>   number = 5
+>   call factorial(number, result)
+>   print *, "Factorial of", number, "is", result
+> end program test_implicit_interface
+> ```
+>
+> Note the absence of `implicit none`, allowing the symbol `factorial` to be
+> interpreted as an implicitly declared entity.
 
-> [!NOTE]
+> [!WARNING]
+> It's possible to manually define explicit interfaces using the `interface`
+> construct at the call site. However, this approach introduces risks. The
+> procedure's definition must be duplicated, but there's no mechanism to ensure
+> this replica matches the actual definition of the original procedure, which
+> can easily lead to errors:
+>
+> ```fortran {6,7} showLineNumbers
+> program test_implicit_interface
+>   implicit none
+> 
+>   interface 
+>     subroutine factorial(number, result)
+>       real, intent(in) :: number
+>       real, intent(out) :: result
+>     end subroutine factorial
+>   end interface
+> 
+>   real :: number, result
+> 
+>   number = 5
+>   call factorial(number, result)
+>   print *, "Factorial of", number, "is", result
+> end program test_implicit_interface
+> ```
+>
+> In this example, the manually declared interface for `factorial` is
+> incorrect; the dummy arguments are declared as `real` instead of `integer`.
+> This error won't be caught at compile time, and will still result in an
+> unexpected output during execution.
+
+> [!TIP]
+> When interoperating between Fortran and C/C++, it's necessary to manually
+> define explicit interfaces for the C/C++ procedures to call. Although this is
+> not a perfect solution, since the are no guarantees that these interfaces
+> will match the actual C/C++ procedures, it's still best to make the
+> interfaces as explicit as possible. This includes specifying details such as
+> argument intents, to help the Fortran compiler catch early as many issues as
+> possible.
+
+> [!TIP]
 > If modifying legacy code is not feasible, create a module procedure that wraps
 > the legacy procedure as an indirect approach to ensure argument compatibility.
 
