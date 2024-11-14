@@ -66,6 +66,11 @@
   font-size: x-large;
 }
 
+/* Custom menu format */
+.menu {
+  font-weight: var(--ifm-font-weight-regular);
+}
+
 /* Style ordered list markers */
 ol>li::marker {
   color: var(--ifm-color-primary);
