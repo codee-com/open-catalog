@@ -49,7 +49,7 @@ const config: Config = {
           ],
         },
         theme: {
-          customCss: './static/css/custom.css',
+          customCss: './src/css/custom.css',
         },
         gtag: {
           trackingID: 'G-178ZNT1Z63',
