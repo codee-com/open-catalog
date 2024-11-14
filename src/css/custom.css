@@ -80,3 +80,8 @@ th {
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
 }
+
+/* Align copyright message to the left */
+.footer__copyright {
+  text-align: left;
+}
