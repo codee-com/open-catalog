@@ -83,22 +83,36 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
+        {},
         {
           title: 'Community',
           items: [
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/codee_com',
-            },
             {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/codee-com/',
             },
             {
+              label: 'Twitter',
+              href: 'https://x.com/codee_com/',
+            },
+            {
+              label: 'Youtube',
+              href: 'https://www.youtube.com/@codee_com/',
+            },
+            {
               label: 'GitHub',
-              href: 'https://github.com/codee-com',
+              href: 'https://github.com/codee-com/',
             },
           ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'Codee Website',
+              href: 'https://www.codee.com/',
+            },
+          ]
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Appentra Solutions, S.L.`,
