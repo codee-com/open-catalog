@@ -90,18 +90,22 @@ const config: Config = {
             {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/codee-com/',
+              icon: 'mdi:linkedin'
             },
             {
               label: 'Twitter',
               href: 'https://x.com/codee_com/',
+              icon: 'prime:twitter',
             },
             {
               label: 'Youtube',
               href: 'https://www.youtube.com/@codee_com/',
+              icon: 'mdi:youtube',
             },
             {
               label: 'GitHub',
               href: 'https://github.com/codee-com/',
+              icon: 'mdi:github'
             },
           ],
         },

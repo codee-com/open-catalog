@@ -65,11 +65,6 @@ ol>li::marker {
   font-weight: bold;
 }
 
-/* Center the footer links as we only have one column */
-.footer__links {
-  text-align: center;
-}
-
 /* Hack to avoid "C++" to be broken by CSS rules */
 th {
   white-space: nowrap;
@@ -84,4 +79,16 @@ th {
 /* Align copyright message to the left */
 .footer__copyright {
   text-align: left;
+}
+
+/* Collapse all icons on the second col (community) */
+.footer__col:nth-child(2) ul {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Resize footer icons */
+.footer__col:nth-child(2) svg {
+  width: 1.5em;
+  height: 1.5em;
 }
