@@ -3,16 +3,16 @@ sidebar_position: 1
 sidebar_label: Index
 ---
 
-# Open Catalog of Best Practices for Modernization and Optimization
+# Open Catalog of Code Guidelines for Correctness, Modernization, and Optimization
 
 ## About
 
 This Open Catalog is a collaborative effort to consolidate expert knowledge on
-best practices for modernizing and optimizing code written in C, C++, and
-Fortran programming languages. The Catalog consists of a comprehensive set of
-checks (rules) that describe specific issues in the source code and provide
-guidance on corrective actions, along with extensive documentation, example
-codes and references to additional reading resources.
+code guidelines for the correctness, modernization, and optimization of code
+written in C, C++, and Fortran programming languages. The Catalog consists of a
+comprehensive set of checks (rules) that describe specific issues in the source
+code and provide guidance on corrective actions, along with extensive
+documentation, example codes and references to additional reading resources.
 
 ## Benchmarks
 
@@ -20,8 +20,8 @@ The Open Catalog includes
 [a suite of microbenchmarks](https://github.com/codee-com/open-catalog/tree/main/Benchmark/)
 designed to demonstrate:
 
-- No performance degradation when implementing the modernization
-  recommendations.
+- No performance degradation when implementing the correctness and
+  modernization recommendations.
 - Potential performance enhancements achievable through the optimization
   recommendations.
 
