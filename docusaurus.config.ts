@@ -47,6 +47,7 @@ const config: Config = {
           beforeDefaultRemarkPlugins: [
             remarkGithubAdmonitionsToDirectives,
           ],
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: './src/css/custom.css',
