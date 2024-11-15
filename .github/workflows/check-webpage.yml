@@ -1,7 +1,8 @@
 name: Check Open Catalog Web
 
 on:
-  push
+  push:
+  pull-request:
 
 jobs:
   build:

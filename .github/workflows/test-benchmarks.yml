@@ -3,6 +3,7 @@
 
 on:
   push:
+  pull-request:
 
 jobs:
   compile-and-run:

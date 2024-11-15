@@ -2,6 +2,7 @@
 # is simply a smoke test to check everything compiles and runs.
 on:
   push:
+  pull-request:
 
 jobs:
   # Let us run this job on Ubuntu only as it is the only image that has gcc,
