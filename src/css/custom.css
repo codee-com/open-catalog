@@ -22,26 +22,33 @@
   --ifm-heading-font-weight: bold;
   --ifm-line-height-base: 1.5;
   --ifm-color-primary: #5e33ff;
-  --ifm-color-primary-dark: #552ed9;
-  --ifm-color-primary-darker: #4c29b3;
-  --ifm-color-primary-darkest: #3d2194;
-  --ifm-color-primary-light: #7e5bff;
-  --ifm-color-primary-lighter: #9e83ff;
-  --ifm-color-primary-lightest: #beaaff;
+  --ifm-color-primary-dark: #4614ff;
+  --ifm-color-primary-darker: #3a05ff;
+  --ifm-color-primary-darkest: #2d00d6;
+  --ifm-color-primary-light: #7652ff;
+  --ifm-color-primary-lighter: #8261ff;
+  --ifm-color-primary-lightest: #a68fff;
+  --ifm-background-color: #ffffff;
   --ifm-code-font-size: 85%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #5e33ff;
-  --ifm-color-primary-dark: #552ed9;
-  --ifm-color-primary-darker: #4c29b3;
-  --ifm-color-primary-darkest: #3d2194;
-  --ifm-color-primary-light: #7e5bff;
-  --ifm-color-primary-lighter: #9e83ff;
-  --ifm-color-primary-lightest: #beaaff;
+  --ifm-color-primary: #a384ff;
+  --ifm-color-primary-dark: #865dff;
+  --ifm-color-primary-darker: #784aff;
+  --ifm-color-primary-darkest: #4c10ff;
+  --ifm-color-primary-light: #c0abff;
+  --ifm-color-primary-lighter: #cebeff;
+  --ifm-color-primary-lightest: #faf8ff;
+  --ifm-background-color: #1b1725 !important; /* Otherwise they are overwritten by html[data-theme='dark'] */
+  --ifm-background-surface-color: #32324a !important; /* Otherwise they are overwritten by html[data-theme='dark'] */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #32324a;
 }
 
 .markdown h1:first-child {
@@ -59,15 +66,15 @@
   font-size: x-large;
 }
 
+/* Custom menu format */
+.menu {
+  font-weight: var(--ifm-font-weight-regular);
+}
+
 /* Style ordered list markers */
 ol>li::marker {
   color: var(--ifm-color-primary);
   font-weight: bold;
-}
-
-/* Center the footer links as we only have one column */
-.footer__links {
-  text-align: center;
 }
 
 /* Hack to avoid "C++" to be broken by CSS rules */
@@ -79,4 +86,21 @@ th {
 [data-theme='light'] img[src$='#gh-dark-mode-only'],
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
+}
+
+/* Align copyright message to the left */
+.footer__copyright {
+  text-align: left;
+}
+
+/* Collapse all icons on the second col (community) */
+.footer__col:nth-child(2) ul {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Resize footer icons */
+.footer__col:nth-child(2) svg {
+  width: 1.5em;
+  height: 1.5em;
 }

@@ -47,12 +47,10 @@ const config: Config = {
           beforeDefaultRemarkPlugins: [
             remarkGithubAdmonitionsToDirectives,
           ],
+          showLastUpdateTime: true,
         },
         theme: {
-          customCss: './static/css/custom.css',
-        },
-        gtag: {
-          trackingID: 'G-178ZNT1Z63',
+          customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
     ],
@@ -82,22 +80,40 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
+        {},
         {
           title: 'Community',
           items: [
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/codee_com',
-            },
-            {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/codee-com/',
+              icon: 'mdi:linkedin'
+            },
+            {
+              label: 'Twitter',
+              href: 'https://x.com/codee_com/',
+              icon: 'prime:twitter',
+            },
+            {
+              label: 'Youtube',
+              href: 'https://www.youtube.com/@codee_com/',
+              icon: 'mdi:youtube',
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/codee-com',
+              href: 'https://github.com/codee-com/',
+              icon: 'mdi:github'
             },
           ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'Codee Website',
+              href: 'https://www.codee.com/',
+            },
+          ]
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Appentra Solutions, S.L.`,
