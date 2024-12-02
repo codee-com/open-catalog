@@ -25,6 +25,13 @@ statement.
 > type of operation used in computations. Note the example code below shows
 > issues with integer/real division operations due to implicit data typing.
 
+> [!TIP]
+> Starting with Fortran 2018, it is possible to use the extended form
+> `implicit none (type, external)` to disable both implicit variables and
+> implicit procedures, which are called through implicit interfaces. This
+> approach mitigates the risks associated with such procedures, as outlined in
+> [PWR068](/Checks/PWR068/).
+
 ### Code example
 
 In the following example, the data type of all the variables is determined
