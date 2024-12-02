@@ -3,6 +3,16 @@
 
 on:
   push:
+    paths:
+      - '.github/workflows/**'
+      - 'Benchmark/**'
+      - '**/*.c'
+      - '**/*.cpp'
+      - '**/*.h'
+      - '**/*.f'
+      - '**/*.F'
+      - '**/*.f90'
+      - '**/*.F90'
 
 jobs:
   compile-and-run:

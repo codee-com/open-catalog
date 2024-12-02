@@ -1,7 +1,18 @@
 # IMPORTANT NOTE: The results of these benchmarks are not representative. This
 # is simply a smoke test to check everything compiles and runs.
+
 on:
   push:
+    paths:
+      - '.github/workflows/**'
+      - 'Benchmark/**'
+      - '**/*.c'
+      - '**/*.cpp'
+      - '**/*.h'
+      - '**/*.f'
+      - '**/*.F'
+      - '**/*.f90'
+      - '**/*.F90'
 
 jobs:
   # Let us run this job on Ubuntu only as it is the only image that has gcc,
