@@ -20,9 +20,9 @@ legibility of the code. It can be disabled by adding an `implicit none`
 statement.
 
 > [!NOTE]
-> Implicit data typing may lead to unexpected runtime errors. For example, it may
-> change the results of the program due to implicit data typing determining the
-> type of operation used in computations. Note the example code below shows
+> Implicit data typing may lead to unexpected runtime errors. For example, it
+> may change the results of the program due to implicit data typing determining
+> the type of operation used in computations. Note the example code below shows
 > issues with integer/real division operations due to implicit data typing.
 
 > [!TIP]
