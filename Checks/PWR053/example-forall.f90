@@ -1,6 +1,6 @@
 ! PWR053: consider applying vectorization to forall loop
 
-subroutine example(D, X, Y, a)
+pure subroutine example(D, X, Y, a)
   implicit none
   real(kind=8), intent(out) :: D(:)
   real(kind=8), intent(in) :: X(:), Y(:)

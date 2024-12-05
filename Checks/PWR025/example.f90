@@ -1,6 +1,6 @@
 ! PWR025: Consider annotating pure function with OpenMP `declare simd`
 
-integer function foo(a)
+pure integer function foo(a)
   integer, intent(in) :: a
   foo = 2 * a
 end function foo

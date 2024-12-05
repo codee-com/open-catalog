@@ -1,7 +1,7 @@
 ! PWR039: Consider loop interchange to improve the locality of reference and
 ! enable vectorization
 
-subroutine matmul_f(n, A, B, C) bind(c)
+pure subroutine matmul_f(n, A, B, C) bind(c)
   use iso_c_binding, only : c_int, c_double
 
   implicit none

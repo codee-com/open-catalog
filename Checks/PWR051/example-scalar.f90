@@ -1,5 +1,6 @@
 ! PWR051: Consider applying multithreading parallelism to scalar reduction loop
 
+! NOT-PWR003: `pure` prevents OpenMP parallelization
 function example(A) result(sum)
   implicit none
   real(kind=8), intent(in) :: A(:)

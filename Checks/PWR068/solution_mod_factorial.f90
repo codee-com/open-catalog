@@ -4,7 +4,7 @@
 module mod_factorial
   implicit none
 contains
-  subroutine factorial(number, result)
+  pure subroutine factorial(number, result)
     implicit none
     integer, intent(in) :: number
     integer, intent(out) :: result

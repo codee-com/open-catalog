@@ -31,7 +31,7 @@ switches (typically `-fopenmp-simd` or `-fopenmp`).
 The following loop invokes a pure function `foo`:
 
 ```c
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 
@@ -47,7 +47,7 @@ vectorizable version of `foo`:
 
 ```c
 #pragma omp declare simd
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 
@@ -63,7 +63,7 @@ void example(int *A, int n) {
 The following loop invokes a pure function `foo`:
 
 ```fortran
-integer function foo(a)
+pure integer function foo(a)
   integer, intent(in) :: a
   foo = 2 * a
 end function foo
@@ -83,7 +83,7 @@ By adding the `!$omp declare simd` clause, the compiler will create a
 vectorizable version of `foo`:
 
 ```fortran
-integer function foo(a)
+pure integer function foo(a)
   !$omp declare simd
   integer, intent(in) :: a
   foo = 2 * a

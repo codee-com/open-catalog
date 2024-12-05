@@ -5,7 +5,7 @@ module globalsMod
   real :: global_a
 end module globalsMod
 
-real function example()
+pure real function example()
   use globalsMod
   implicit none
   example = global_a

@@ -42,7 +42,7 @@ procedure are in different files:
 
 ```fortran {4,5} showLineNumbers
 ! example_factorial.f90
-subroutine factorial(number, result)
+pure subroutine factorial(number, result)
   implicit none
   integer, intent(in) :: number
   integer, intent(out) :: result
@@ -96,7 +96,7 @@ Moving the `factorial` subroutine to a module is as simple as:
 module mod_factorial
   implicit none
 contains
-  subroutine factorial(number, result)
+  pure subroutine factorial(number, result)
     implicit none
     integer, intent(in) :: number
     integer, intent(out) :: result

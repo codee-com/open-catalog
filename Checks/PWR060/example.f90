@@ -1,6 +1,6 @@
 ! PWR060 : consider loop fission to separate gather memory access pattern
 
-subroutine example(a, D, X, Y, index, n)
+pure subroutine example(a, D, X, Y, index, n)
   implicit none
   real(kind=8), intent(in) :: a
   real(kind=8), dimension(n), intent(out) :: D

@@ -72,7 +72,7 @@ vectorize the inner loop.
 The following code shows two nested loops:
 
 ```fortran
-subroutine example(A)
+pure subroutine example(A)
   real, intent(out) :: A(:, :)
   integer :: i, j
 
@@ -90,7 +90,7 @@ applied on loops `i` and `j`. As a result, the loop over `j` becomes the outer
 loop, and the loop over `i` becomes the inner one:
 
 ```fortran
-subroutine example(A)
+pure subroutine example(A)
   real, intent(out) :: A(:, :)
   integer :: i, j
 

@@ -1,5 +1,6 @@
 ! PWR057: consider applying offloading parallelism to sparse reduction loop
 
+! NOT-PWR003: `pure` prevents OpenMP/OpenACC offloading
 subroutine example(A, nodes)
   implicit none
   real(kind=8), intent(inout) :: A(:)

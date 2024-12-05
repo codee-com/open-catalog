@@ -29,7 +29,7 @@ function `fma` available in `math.h` (or `std::fma` available in `cmath`).
 Have a look at the following code:
 
 ```c
-double example(double a, double b, double c) {
+__attribute__((const)) double example(double a, double b, double c) {
   return a + b * c;
 }
 ```
@@ -40,7 +40,7 @@ and it can be replaced with a call to `fma`:
 ```c
 #include <math.h>
 
-double example(double a, double b, double c) {
+__attribute__((const)) double example(double a, double b, double c) {
   return fma(b, c, a);
 }
 ```

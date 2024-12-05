@@ -77,7 +77,7 @@ benefit from vectorization, but it is prevented by the indirect memory accesses
 `A[C[i]]` of the sparse reduction compute pattern.
 
 ```c
-int expensive_computation(int *C, int i) {
+__attribute__((pure)) int expensive_computation(int *C, int i) {
     return C[i] * 2;
 }
 
@@ -96,7 +96,7 @@ array `t` is created to store all the results of the first loop, so that those
 values can be used as inputs in the second loop.
 
 ```c
-int expensive_computation(int *C, int i) {
+__attribute__((pure)) int expensive_computation(int *C, int i) {
   return C[i] * 2;
 }
 
@@ -119,7 +119,7 @@ benefit from vectorization, but it is prevented by the indirect memory accesses
 `a(c(i))` of the sparse reduction pattern.
 
 ```fortran
-integer function expensive_computation(c, i)
+pure integer function expensive_computation(c, i)
   implicit none
   integer, intent(in) :: i, c(1000)
 
@@ -144,7 +144,7 @@ array `t` is created to store all the results of the first loop, so that those
 values can be used as inputs in the second loop.
 
 ```fortran
-integer function expensive_computation(c, i)
+pure integer function expensive_computation(c, i)
   implicit none
   integer, intent(in) :: i, c(1000)
 

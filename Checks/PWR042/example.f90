@@ -1,7 +1,7 @@
 ! PWR042: Loop nest can benefit from loop interchange, but reduction variable
 ! initialization prevents loop interchange
 
-subroutine example(A, B)
+pure subroutine example(A, B)
   real, intent(in) :: A(:, :)
   real, intent(out) :: B(:)
   real :: s

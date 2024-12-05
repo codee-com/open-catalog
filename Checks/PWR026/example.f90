@@ -1,6 +1,6 @@
 ! PWR026: Annotate function for OpenMP offload
 
-integer function foo(a)
+pure integer function foo(a)
   integer, intent(in) :: a
   foo = 2 * a
 end function foo

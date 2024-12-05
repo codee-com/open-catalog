@@ -34,17 +34,17 @@ module Areas
 
 contains
 
-  real function area_circle(radius)
+  pure real function area_circle(radius)
     real, intent(in) :: radius
     area_circle = constant_pi * radius * radius
   end function area_circle
 
-  real function area_rectangle(length, width)
+  pure real function area_rectangle(length, width)
     real, intent(in) :: length, width
     area_rectangle = length * width
   end function area_rectangle
 
-  real function area_square(side)
+  pure real function area_square(side)
     real, intent(in) :: side
     area_square = side * side
   end function area_square

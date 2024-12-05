@@ -1,6 +1,6 @@
 ! PWR040: Consider loop tiling to improve the locality of reference
 
-subroutine example(a, b)
+pure subroutine example(a, b)
   implicit none
   real, dimension(:, :), intent(out) :: a
   real, dimension(:, :), intent(in) :: b

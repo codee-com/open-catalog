@@ -1,5 +1,6 @@
 ! PWR050: Consider applying multithreading parallelism to forall loop
 
+! NOT-PWR003: `pure` prevents OpenMP parallelization
 subroutine example(D, X, Y, a)
   implicit none
   real(kind=8), intent(out) :: D(:)

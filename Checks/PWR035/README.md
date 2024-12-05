@@ -47,7 +47,7 @@ first column of the array. Thus, the code exhibits repeated accesses to all the
 elements of the first column, a total number of times equal to `size(a, 2)`:
 
 ```fortran
-subroutine example(a)
+pure subroutine example(a)
   implicit none
   integer, intent(out) :: a(:, :)
   integer :: i, j

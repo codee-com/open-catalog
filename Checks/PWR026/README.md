@@ -33,7 +33,7 @@ CPU version of `foo()`. This means every time `foo()` is called, the data must
 be transferred between the GPU and the CPU, negatively impacting performance:
 
 ```c
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 
@@ -52,7 +52,7 @@ entirely on the device:
 
 ```c
 #pragma omp declare target
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 #pragma omp end declare target
@@ -73,7 +73,7 @@ CPU version of `foo()`. This means every time `foo()` is called, the data must
 be transferred between the GPU and the CPU, negatively impacting performance:
 
 ```fortran
-integer function foo(a)
+pure integer function foo(a)
   integer, intent(in) :: a
   foo = 2 * a
 end function foo
@@ -96,7 +96,7 @@ create a GPU version of the function, allowing the loop to run entirely on the
 device:
 
 ```fortran
-integer function foo(a)
+pure integer function foo(a)
   !$omp declare target
   integer, intent(in) :: a
   foo = 2 * a

@@ -1,6 +1,6 @@
 ! PWR021: temporary computation can be extracted to a vectorizable loop
 
-integer function expensive_computation(c, i)
+pure integer function expensive_computation(c, i)
   implicit none
   integer, intent(in) :: i, c(1000)
 

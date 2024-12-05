@@ -23,7 +23,7 @@ the intended behavior.
 Have a look at the following code:
 
 ```c
-float example(float a) {
+__attribute__((const)) float example(float a) {
   return a * 2.2;
 }
 ```
@@ -42,7 +42,7 @@ promoting `a` to double, and the other is promoting the result of multiplication
 of the double constant `2.2`.
 
 ```c
-float example(float a) {
+__attribute__((const)) float example(float a) {
   return a * 2.2f;
 }
 ```

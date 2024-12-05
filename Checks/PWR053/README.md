@@ -62,7 +62,7 @@ void example(double *D, double *X, double *Y, int n, double a) {
 #### Fortran
 
 ```fortran
-subroutine example(D, X, Y, a)
+pure subroutine example(D, X, Y, a)
   implicit none
   real(kind=8), intent(out) :: D(:)
   real(kind=8), intent(in) :: X(:), Y(:)
@@ -85,7 +85,7 @@ directives to vectorize the loop explicitly. Note how no synchronization is
 required to avoid race conditions:
 
 ```fortran
-subroutine example(D, X, Y, a)
+pure subroutine example(D, X, Y, a)
   implicit none
   real(kind=8), intent(out) :: D(:)
   real(kind=8), intent(in) :: X(:), Y(:)

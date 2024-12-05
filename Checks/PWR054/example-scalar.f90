@@ -1,6 +1,6 @@
 ! PWR054: consider applying vectorization to scalar reduction loop
 
-function example(A) result(sum)
+pure function example(A) result(sum)
   implicit none
   real(kind=8), intent(in) :: A(:)
   real(kind=8) :: sum

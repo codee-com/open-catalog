@@ -1,6 +1,6 @@
 ! PWR062: Consider loop interchange by removing accumulation on array value
 
-subroutine matmul_f(n, A, B, C) bind(c)
+pure subroutine matmul_f(n, A, B, C) bind(c)
   use iso_c_binding, only : c_int, c_double
 
   implicit none

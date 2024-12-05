@@ -34,7 +34,7 @@ the capabilities of the compiler.
 #### C
 
 ```c
-double example(double *A, int n) {
+__attribute__((pure)) double example(double *A, int n) {
   double sum = 0.0;
 
   for (int i = 0; i < n; ++i) {
@@ -57,7 +57,7 @@ directives to explicitly vectorize the loop. Note the synchronization added to
 avoid race conditions:
 
 ```c
-double example(double *A, int n) {
+__attribute__((pure)) double example(double *A, int n) {
   double sum = 0.0;
 
   #pragma omp simd reduction(+: sum)
@@ -72,7 +72,7 @@ double example(double *A, int n) {
 #### Fortran
 
 ```fortran
-function example(A) result(sum)
+pure function example(A) result(sum)
   implicit none
   real(kind=8), intent(in) :: A(:)
   real(kind=8) :: sum
@@ -97,7 +97,7 @@ directives to explicitly vectorize the loop. Note the synchronization added to
 avoid race conditions:
 
 ```fortran
-function example(A) result(sum)
+pure function example(A) result(sum)
   implicit none
   real(kind=8), intent(in) :: A(:)
   real(kind=8) :: sum

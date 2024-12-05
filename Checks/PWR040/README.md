@@ -78,7 +78,7 @@ help either, because fixing the inefficient memory access pattern for `B` would
 introduce an inefficient memory access pattern for `A`:
 
 ```fortran
-subroutine example(a, b)
+pure subroutine example(a, b)
   implicit none
   real, dimension(:, :), intent(out) :: a
   real, dimension(:, :), intent(in) :: b

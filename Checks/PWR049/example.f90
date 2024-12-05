@@ -1,6 +1,6 @@
 ! PWR049: Move iterator-dependent condition outside of the loop
 
-subroutine example(a, b)
+pure subroutine example(a, b)
   implicit none
   integer, intent(inout) :: a(:, :)
   integer, intent(in) :: b(:, :)

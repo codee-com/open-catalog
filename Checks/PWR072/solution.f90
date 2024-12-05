@@ -14,7 +14,7 @@ program test_implicit_save
 
 contains
 
-  integer function sum_array(array)
+  pure integer function sum_array(array)
     implicit none
     integer, intent(in) :: array(:)
     integer :: result

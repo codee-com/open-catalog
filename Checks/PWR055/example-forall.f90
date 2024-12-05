@@ -1,5 +1,6 @@
 ! PWR055: consider applying offloading parallelism to forall loop
 
+! NOT-PWR003: `pure` prevents OpenMP/OpenACC offloading
 subroutine example(D, X, Y, a)
   implicit none
   real(kind=8), intent(out) :: D(:)

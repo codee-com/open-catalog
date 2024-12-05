@@ -1,5 +1,6 @@
 ! PWR056: consider applying offloading parallelism to scalar reduction loop
 
+! NOT-PWR003: `pure` prevents OpenMP/OpenACC offloading
 function example(A) result(sum)
   implicit none
   real(kind=8), intent(in) :: A(:)
