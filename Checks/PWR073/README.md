@@ -107,7 +107,7 @@ to encapsulate the variables inside a module (Step 1). Due to the simplicity of
 this example, the `only` keyword (Step 2) is already leveraged:
 
 ```fortran
-! solution.f90
+! solution_without_private.f90
 module my_module
   implicit none
   public
@@ -146,7 +146,7 @@ end program test_module
 And now the program gives the correct results:
 
 ```txt
-$ gfortran solution.f90
+$ gfortran solution_without_private.f90
 $ ./a.out
 Var1:    3.14000010
 Var2:           20
@@ -154,7 +154,65 @@ Var2:           20
 
 Depending on your preferences, you might also set the module variables as
 `private` and create procedures to manage access to the contained data (e.g.,
-getters and setters).
+getters and setters):
+
+```fortran
+! solution.f90
+module my_module
+  implicit none
+  private
+  real    :: var1
+  integer :: var2
+  public :: getVar1, setVar1, getVar2, setVar2
+
+contains
+
+  real function getVar1()
+    getVar1 = var1
+  end function getVar1
+
+  subroutine setVar1(value)
+    real, intent(in) :: value
+    var1 = value
+  end subroutine setVar1
+
+  integer function getVar2()
+    getVar2 = var2
+  end function getVar2
+
+  subroutine setVar2(value)
+    integer, intent(in) :: value
+    var2 = value
+  end subroutine setVar2
+end module my_module
+
+program test_module
+  use my_module
+  implicit none
+
+  call setVar1(3.14)
+  call setVar2(20)
+
+  call printVar1
+  call printVar2
+
+contains
+
+subroutine printVar1
+  use my_module, only: getVar1
+  implicit none
+
+  print *, "Var1: ", getVar1()
+end subroutine printVar1
+
+subroutine printVar2
+  use my_module, only: getVar2
+  implicit none
+
+  print *, "Var2: ", getVar2()
+end subroutine printVar2
+end program test_module
+```
 
 ### Related resources
 
