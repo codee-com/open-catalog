@@ -1,6 +1,7 @@
 // PWR005: Disable default OpenMP scoping
 
 void example(int *result, unsigned size) {
+  // NOT-PWR002: Declaration outside loop to trigger PWR005
   int t;
 
   // Default data scoping is used, making `t` shared instead of private

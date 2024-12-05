@@ -23,11 +23,9 @@ on non-overlapping positions of the array:
 
 ```c
 void example(int m, double *A, double *B, double *C) {
-  double temp;
-
-  #pragma omp parallel for default(none) private(temp, C) shared(A, B, m)
+  #pragma omp parallel for default(none) private(C) shared(A, B, m)
   for (int i = 0; i < m; i++) {
-    temp = A[i] * B[i];
+    double temp = A[i] * B[i];
     C[i] = C[i] + temp;
   }
 }
@@ -37,11 +35,9 @@ To fix this, `C` should be moved to a `shared` clause:
 
 ```c
 void example(int m, double *A, double *B, double *C) {
-  double temp;
-
-  #pragma omp parallel for default(none) private(temp) shared(A, B, C, m)
+  #pragma omp parallel for default(none) shared(A, B, C, m)
   for (int i = 0; i < m; i++) {
-    temp = A[i] * B[i];
+    double temp = A[i] * B[i];
     C[i] = C[i] + temp;
   }
 }
