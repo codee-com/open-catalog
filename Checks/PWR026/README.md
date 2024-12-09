@@ -73,15 +73,8 @@ CPU version of `foo()`. This means every time `foo()` is called, the data must
 be transferred between the GPU and the CPU, negatively impacting performance:
 
 ```fortran
-pure integer function foo(a)
-  implicit none
-  integer, intent(in) :: a
-  foo = 2 * a
-end function foo
-
 subroutine example(A)
   implicit none
-  integer, external :: foo
   integer, intent(out) :: A(:)
   integer :: i
 
@@ -89,6 +82,14 @@ subroutine example(A)
   do i = 1, size(A, 1)
     A(i) = foo(i)
   end do
+
+contains
+
+  pure integer function foo(a)
+    implicit none
+    integer, intent(in) :: a
+    foo = 2 * a
+  end function foo
 end subroutine example
 ```
 
@@ -98,16 +99,8 @@ create a GPU version of the function, allowing the loop to run entirely on the
 device:
 
 ```fortran
-pure integer function foo(a)
-  !$omp declare target
-  implicit none
-  integer, intent(in) :: a
-  foo = 2 * a
-end function foo
-
 subroutine example(A)
   implicit none
-  integer, external :: foo
   integer, intent(out) :: A(:)
   integer :: i
 
@@ -115,6 +108,15 @@ subroutine example(A)
   do i = 1, size(A, 1)
     A(i) = foo(i)
   end do
+
+contains
+
+  pure integer function foo(a)
+    !$omp declare target
+    implicit none
+    integer, intent(in) :: a
+    foo = 2 * a
+  end function foo
 end subroutine example
 ```
 
