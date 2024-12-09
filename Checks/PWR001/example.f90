@@ -6,6 +6,7 @@ module globalsMod
 end module globalsMod
 
 pure real function example()
+  ! NOT-PWR069: The `only` is ommited to trigger PWR001
   use globalsMod
   implicit none
   example = global_a

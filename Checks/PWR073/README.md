@@ -116,7 +116,7 @@ module my_module
 end module my_module
 
 program test_module
-  use my_module
+  use my_module, only: var1, var2
   implicit none
 
   var1 = 3.14
@@ -187,7 +187,7 @@ contains
 end module my_module
 
 program test_module
-  use my_module
+  use my_module, only: setVar1, setVar2
   implicit none
 
   call setVar1(3.14)
