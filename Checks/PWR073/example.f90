@@ -1,8 +1,9 @@
 ! PWR073: Transform common block into a module for better data encapsulation
 
 program test_common_block
+  use iso_fortran_env, only: real32
   implicit none
-  real    :: var1
+  real(kind=real32) :: var1
   integer :: var2
   common /my_common/ var1, var2
 
@@ -16,7 +17,7 @@ contains
 
 subroutine printVar1
   implicit none
-  real :: var1
+  real(kind=real32) :: var1
   common /my_common/ var1
 
   print *, "Var1: ", var1

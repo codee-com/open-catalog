@@ -50,10 +50,11 @@ on non-overlapping positions of the array:
 
 ```fortran
 subroutine example(A, B, C)
+  use iso_fortran_env, only: real32
   implicit none
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: temp
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: temp
   integer :: i
 
   !$omp parallel do default(none) private(i, temp, C) shared(A, B)
@@ -68,10 +69,11 @@ To fix this, `C` should be moved to a `shared` clause:
 
 ```fortran
 subroutine example(A, B, C)
+  use iso_fortran_env, only: real32
   implicit none
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: temp
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: temp
   integer :: i
 
   !$omp parallel do default(none) private(i, temp) shared(A, B, C)

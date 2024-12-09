@@ -1,9 +1,10 @@
 ! PWR009: Use OpenMP teams to offload work to GPU
 
 subroutine example(A, B, C)
+  use iso_fortran_env, only: real32
   implicit none
-  real, dimension(:, :), intent(in) :: A, B
-  real, dimension(:, :), intent(inout) :: C
+  real(kind=real32), dimension(:, :), intent(in) :: A, B
+  real(kind=real32), dimension(:, :), intent(inout) :: C
   integer :: i, j, k
 
   !$omp target map(to: A, B) map(tofrom: C)

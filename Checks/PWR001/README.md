@@ -112,13 +112,16 @@ declared in the module (and in real codes even across multiple files).
 
 ```fortran
 module globalsMod
+  use iso_fortran_env, only: real32
   implicit none
-  real :: global_a
+  real(kind=real32) :: global_a
 end module globalsMod
 
-pure real function example()
+pure function example()
+  use iso_fortran_env, only: real32
   use globalsMod
   implicit none
+  real(kind=32) :: example
   example = global_a
 end function
 ```

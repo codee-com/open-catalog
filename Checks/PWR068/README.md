@@ -58,9 +58,10 @@ end subroutine factorial
 ```fortran {5} showLineNumbers
 ! example.f90
 program test_implicit_interface
+  use iso_fortran_env, only: real32
   implicit none
   external :: factorial
-  real :: number, result
+  real(kind=real32) :: number, result
 
   number = 5
   call factorial(number, result)
@@ -113,9 +114,10 @@ end module mod_factorial
 ```fortran showLineNumbers
 ! solution_with_type_mismatch.f90
 program test_explicit_interface
+  use iso_fortran_env, only: real32
   use mod_factorial, only: factorial
   implicit none
-  real :: number, result
+  real(kind=real32) :: number, result
 
   number = 5
   call factorial(number, result)
@@ -157,7 +159,8 @@ Factorial of           5 is         120
 > 
 > ```fortran {5} showLineNumbers
 > program test_implicit_interface
->   real :: number, result
+>   use iso_fortran_env, only: real32
+>   real(kind=real32) :: number, result
 > 
 >   number = 5
 >   call factorial(number, result)
@@ -177,16 +180,17 @@ Factorial of           5 is         120
 >
 > ```fortran {6,7} showLineNumbers
 > program test_implicit_interface
+>   use iso_fortran_env, only: real32
 >   implicit none
 > 
 >   interface 
 >     subroutine factorial(number, result)
->       real, intent(in) :: number
->       real, intent(out) :: result
+>       real(kind=real32), intent(in) :: number
+>       real(kind=real32), intent(out) :: result
 >     end subroutine factorial
 >   end interface
 > 
->   real :: number, result
+>   real(kind=real32) :: number, result
 > 
 >   number = 5
 >   call factorial(number, result)

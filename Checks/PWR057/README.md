@@ -74,8 +74,9 @@ void example(double *A, int *nodes, int n) {
 
 ```fortran
 subroutine example(A, nodes)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(inout) :: A(:)
+  real(kind=real32), intent(inout) :: A(:)
   integer, intent(in) :: nodes(:)
   integer :: nel
 
@@ -99,8 +100,9 @@ movement between the host memory and the accelerator memory:
 
 ```fortran
 subroutine example(A, nodes)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(inout) :: A(:)
+  real(kind=real32), intent(inout) :: A(:)
   integer, intent(in) :: nodes(:)
   integer :: nel
 

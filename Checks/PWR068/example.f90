@@ -2,9 +2,10 @@
 !         implicit interfaces
 
 program test_implicit_interface
+  use iso_fortran_env, only: real32
   implicit none
   external :: factorial
-  real :: number, result
+  real(kind=real32) :: number, result
 
   number = 5
   call factorial(number, result)

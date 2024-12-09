@@ -79,9 +79,10 @@ introduce an inefficient memory access pattern for `A`:
 
 ```fortran
 pure subroutine example(a, b)
+  use iso_fortran_env, only: real32
   implicit none
-  real, dimension(:, :), intent(out) :: a
-  real, dimension(:, :), intent(in) :: b
+  real(kind=real32), dimension(:, :), intent(out) :: a
+  real(kind=real32), dimension(:, :), intent(in) :: b
   integer :: i, j
 
   do j = 1, size(a, 2)
