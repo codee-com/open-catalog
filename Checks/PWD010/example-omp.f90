@@ -1,6 +1,7 @@
 ! PWD010: Incorrect sharing in parallel region
 
 subroutine example(result)
+  implicit none
   integer, intent(out) :: result(:, :)
   integer :: i, j
 

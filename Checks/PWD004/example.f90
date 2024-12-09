@@ -1,6 +1,7 @@
 ! PWD004: Out-of-memory-bounds array access
 
 subroutine example()
+  implicit none
   integer :: A(100)
   integer :: i
 

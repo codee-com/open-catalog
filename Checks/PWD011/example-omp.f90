@@ -1,6 +1,7 @@
 ! PWD011: Missing OpenMP lastprivate clause
 
 real function example(A, B, C)
+  implicit none
   real, intent(in) :: A(:), B(:)
   real, intent(inout) :: C(:)
   real :: liveOut

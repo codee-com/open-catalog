@@ -62,6 +62,7 @@ variable `i` of the innermost loop is incorrectly left as shared among threads:
 
 ```fortran
 subroutine example(result)
+  implicit none
   integer, intent(out) :: result(:, :)
   integer :: i, j
 
@@ -79,6 +80,7 @@ explicitly privatized with a `private` clause:
 
 ```fortran
 subroutine example(result)
+  implicit none
   integer, intent(out) :: result(:, :)
   integer :: i, j
 

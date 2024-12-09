@@ -57,6 +57,7 @@ The following code performs the sum of two arrays:
 
 ```fortran
 subroutine example()
+  implicit none
   integer, dimension(100) :: A, B, sum
   integer :: i
 
@@ -75,6 +76,7 @@ the loop:
 
 ```fortran
 subroutine example()
+  implicit none
   integer, dimension(100) :: A, B, sum
   integer :: i
 

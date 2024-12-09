@@ -64,6 +64,7 @@ argument:
 
 ```fortran
 subroutine example(addTwo)
+  implicit none
   logical, intent(in) :: addTwo
   integer :: i, sum
 
@@ -84,6 +85,7 @@ resulting code is as follows:
 
 ```fortran
 subroutine example(addTwo)
+  implicit none
   logical, intent(in) :: addTwo
   integer :: add, i, sum
 

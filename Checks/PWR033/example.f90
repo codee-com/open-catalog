@@ -2,6 +2,7 @@
 ! computations
 
 subroutine example(addTwo)
+  implicit none
   logical, intent(in) :: addTwo
   integer :: i, sum
 

@@ -73,11 +73,13 @@ be transferred between the GPU and the CPU, negatively impacting performance:
 
 ```fortran
 pure integer function foo(a)
+  implicit none
   integer, intent(in) :: a
   foo = 2 * a
 end function foo
 
 subroutine example(A)
+  implicit none
   integer, external :: foo
   integer, intent(out) :: A(:)
   integer :: i
@@ -97,11 +99,13 @@ a GPU version of the function, allowing the loop to run entirely on the device:
 ```fortran
 pure integer function foo(a)
   !$acc routine
+  implicit none
   integer, intent(in) :: a
   foo = 2 * a
 end function foo
 
 subroutine example(A)
+  implicit none
   integer, external :: foo
   integer, intent(out) :: A(:)
   integer :: i

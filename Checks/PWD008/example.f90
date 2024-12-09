@@ -2,6 +2,7 @@
 ! array access
 
 subroutine example(A)
+  implicit none
   integer, intent(inout) :: A(:, :)
   integer :: i, j
 

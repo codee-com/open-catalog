@@ -58,6 +58,7 @@ the array `A`:
 
 ```fortran
 subroutine example()
+  implicit none
   integer :: A(100)
   integer :: i
 
@@ -74,6 +75,7 @@ to `A(i)`:
 
 ```fortran
 subroutine example()
+  implicit none
   integer :: A(100)
   integer :: i
 
