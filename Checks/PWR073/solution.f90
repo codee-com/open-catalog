@@ -1,20 +1,21 @@
 ! PWR073: Transform common block into a module for better data encapsulation
 
 module my_module
+  use iso_fortran_env, only: real32
   implicit none
   private
-  real    :: var1
+  real(kind=real32) :: var1
   integer :: var2
   public :: getVar1, setVar1, getVar2, setVar2
 
 contains
 
-  real function getVar1()
+  real(kind=real32) function getVar1()
     getVar1 = var1
   end function getVar1
 
   subroutine setVar1(value)
-    real, intent(in) :: value
+    real(kind=real32), intent(in) :: value
     var1 = value
   end subroutine setVar1
 

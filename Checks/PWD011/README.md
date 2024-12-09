@@ -69,10 +69,11 @@ value from the last iteration:
 
 ```fortran
 real function example(A, B, C)
+  use iso_fortran_env, only: real32
   implicit none
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: liveOut
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: liveOut
   integer :: i
 
   !$omp parallel do private(i, liveOut) shared(A, B, C)
@@ -91,10 +92,11 @@ subsequent operations on `liveOut` to work correctly:
 
 ```fortran
 real function example(A, B, C)
+  use iso_fortran_env, only: real32
   implicit none
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: liveOut
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: liveOut
   integer :: i
 
   !$omp parallel do lastprivate(liveOut) private(i) shared(A, B, C)

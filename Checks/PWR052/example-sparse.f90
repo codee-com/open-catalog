@@ -2,8 +2,9 @@
 
 ! NOT-PWR003: `pure` prevents OpenMP parallelization
 subroutine example(A, nodes)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(inout) :: A(:)
+  real(kind=real32), intent(inout) :: A(:)
   integer, intent(in) :: nodes(:)
   integer :: nel
 

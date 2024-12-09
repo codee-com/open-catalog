@@ -51,8 +51,9 @@ Let's start with an old-style program that relies on common blocks:
 ```fortran
 ! example.f90
 program test_common_block
+  use iso_fortran_env, only: real32
   implicit none
-  real    :: var1
+  real(kind=real32) :: var1
   integer :: var2
   common /my_common/ var1, var2
 
@@ -66,7 +67,7 @@ contains
 
 subroutine printVar1
   implicit none
-  real :: var1
+  real(kind=real32) :: var1
   common /my_common/ var1
 
   print *, "Var1: ", var1
@@ -109,9 +110,10 @@ this example, the `only` keyword (Step 2) is already leveraged:
 ```fortran
 ! solution_without_private.f90
 module my_module
+  use iso_fortran_env, only: real32
   implicit none
   public
-  real    :: var1
+  real(kind=real32) :: var1
   integer :: var2
 end module my_module
 
@@ -159,20 +161,21 @@ getters and setters):
 ```fortran
 ! solution.f90
 module my_module
+  use iso_fortran_env, only: real32
   implicit none
   private
-  real    :: var1
+  real(kind=real32) :: var1
   integer :: var2
   public :: getVar1, setVar1, getVar2, setVar2
 
 contains
 
-  real function getVar1()
+  real(kind=real32) function getVar1()
     getVar1 = var1
   end function getVar1
 
   subroutine setVar1(value)
-    real, intent(in) :: value
+    real(kind=real32), intent(in) :: value
     var1 = value
   end subroutine setVar1
 

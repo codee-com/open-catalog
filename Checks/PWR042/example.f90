@@ -2,10 +2,11 @@
 ! initialization prevents loop interchange
 
 pure subroutine example(A, B)
+  use iso_fortran_env, only: real32
   implicit none
-  real, intent(in) :: A(:, :)
-  real, intent(out) :: B(:)
-  real :: s
+  real(kind=real32), intent(in) :: A(:, :)
+  real(kind=real32), intent(out) :: B(:)
+  real(kind=real32) :: s
   integer :: i, j
 
   do i = 1, size(A, 1)
