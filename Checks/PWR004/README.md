@@ -61,8 +61,10 @@ loop to initialize the array `result`:
 
 ```fortran
 subroutine example()
-  integer :: factor = 42
+  integer :: factor
   integer :: result(10)
+
+  factor = 42
 
   !$omp parallel do
   do i = 1, 10
@@ -77,8 +79,10 @@ region:
 
 ```fortran
 subroutine example()
-  integer :: factor = 42
+  integer :: factor
   integer :: result(10)
+
+  factor = 42
 
   !$omp parallel do default(none) shared(factor, result) private(i)
   do i = 1, 10

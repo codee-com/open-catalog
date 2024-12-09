@@ -3,7 +3,9 @@
 subroutine example(result)
   implicit none
   integer, intent(out) :: result(:)
-  integer :: i, factor = 42
+  integer :: i, factor
+  
+  factor = 42
 
   ! No data scoping is specified
   !$omp parallel do

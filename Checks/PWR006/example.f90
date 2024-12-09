@@ -3,9 +3,12 @@
 subroutine example()
   implicit none
   integer :: i
-  integer :: a(5) = [1, 2, 3, 4, 5]
-  integer :: b(5) = [6, 7, 8, 9, 10]
+  integer :: a(5)
+  integer :: b(5) 
   integer :: sum(5)
+
+  a = [1, 2, 3, 4, 5]
+  b = [6, 7, 8, 9, 10]
 
   !$omp parallel do default(none) firstprivate(a, b) shared(sum) private(i)
   do i = 1, 5
