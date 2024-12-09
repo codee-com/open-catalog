@@ -164,7 +164,8 @@ construct and are initialized out of line using the `data` construct:
 
       subroutine UpdateValues(X)
         implicit none
-        integer A, B, C, X
+        integer A, B, C
+        integer, intent(in) :: X
         common /MyCommonBlock/ A, B, C
 
         A = A + X
@@ -191,7 +192,7 @@ module MyModule
 contains
   subroutine UpdateValues(X)
     implicit none
-    integer :: X
+    integer, intent(in) :: X
 
     A = A + X
     B = B * X
