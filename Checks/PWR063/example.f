@@ -3,6 +3,7 @@
       program LegacyFortran
         implicit none
         integer A, B, C, X, I
+        ! NOT-PWR073: We're using the `common block` as a legacy construct
         common /MyCommonBlock/ A, B, C
         data A /10/, B /20/, C /30/, X /0/, I /1/
 
