@@ -73,7 +73,7 @@ gather memory access pattern to array `X` is reading non-consecutive memory
 locations.
 
 ```fortran
-do i = 1, n
+do i = 1, size(D, 1)
   D(i) = a * X(index(i)) + Y(i)
 end do
 ```
@@ -85,12 +85,13 @@ array, and the compiler will be able to vectorize the second loop. Overall, the
 original loop is partially vectorized through loop fission.
 
 ```fortran
-real(kind=8), dimension(n) :: X_index_i
+real(kind=8), allocatable :: X_index_i(:)
+allocate(X_index_i(size(X, 1)))
 
-do i = 1, n
+do i = 1, size(X, 1)
   X_index_i(i) = X(index(i))
 end do
-do i = 1, n
+do i = 1, size(D, 1)
   D(i) = a * X_index_i(i) + Y(i)
 end do
 ```

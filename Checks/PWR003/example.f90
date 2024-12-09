@@ -36,6 +36,7 @@ contains
 end module gravityExample
 
 ! Computes the weight of each object in a vector
+! NOT-PWR070: Explicit-shape arrays used for C-interoperability
 subroutine example_f(n, M, W) bind(c)
   use iso_c_binding, only : c_int, c_double
   use gravityExample, only : mars, gravityOf
