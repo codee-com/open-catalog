@@ -1,0 +1,19 @@
+name: Compile Check examples
+
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - '.github/utils/CheckExamples/**'
+      - 'Checks/**'
+
+jobs:
+  # Let us run this job on Ubuntu only, so we can check at the moment that
+  # examples compile at least on GCC && GFortran
+  compile-check-examples:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check that all check examples compile
+        run: cmake -B build -DCMAKE_C_COMPILER=gcc -DCMAKE_Fortran_COMPILER=gfortran -S .github/utils/CheckExamples/
