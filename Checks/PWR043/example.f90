@@ -1,6 +1,7 @@
 ! PWR043: Loop nest can benefit from loop interchange, but reduction variable
 ! initialization prevents loop interchange
 
+! NOT-PWR070: Explicit-shape arrays used for C-interoperability
 pure subroutine matmul_f(n, A, B, C) bind(c)
   use iso_c_binding, only : c_int, c_double
 

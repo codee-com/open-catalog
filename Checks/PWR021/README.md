@@ -119,21 +119,23 @@ benefit from vectorization, but it is prevented by the indirect memory accesses
 `a(c(i))` of the sparse reduction pattern.
 
 ```fortran
-pure integer function expensive_computation(c, i)
-  implicit none
-  integer, intent(in) :: i, c(1000)
-
-  expensive_computation = c(i) * 2
-end function expensive_computation
-
 subroutine example()
   implicit none
-  integer :: a(1000), c(1000), i, t, expensive_computation
+  integer :: a(1000), c(1000), i, t
 
   do i = 1, 1000
     t = expensive_computation(c, i)
     a(c(i)) = a(c(i)) + t
   end do
+
+contains
+
+  pure integer function expensive_computation(c, i)
+    implicit none
+    integer, intent(in) :: i, c(:)
+
+    expensive_computation = c(i) * 2
+  end function expensive_computation
 end subroutine example
 ```
 
@@ -144,16 +146,9 @@ array `t` is created to store all the results of the first loop, so that those
 values can be used as inputs in the second loop.
 
 ```fortran
-pure integer function expensive_computation(c, i)
-  implicit none
-  integer, intent(in) :: i, c(1000)
-
-  expensive_computation = c(i) * 2
-end function expensive_computation
-
 subroutine example()
   implicit none
-  integer :: a(1000), c(1000), t(1000), i, b, expensive_computation
+  integer :: a(1000), c(1000), t(1000), i, b
 
   do i = 1, 1000
     t(i) = expensive_computation(c, i)
@@ -161,6 +156,15 @@ subroutine example()
   do i = 1, 1000
     a(c(i)) = a(c(i)) + t(i)
   end do
+
+contains
+
+  pure integer function expensive_computation(c, i)
+    implicit none
+    integer, intent(in) :: i, c(:)
+
+    expensive_computation = c(i) * 2
+  end function expensive_computation
 end subroutine example
 ```
 

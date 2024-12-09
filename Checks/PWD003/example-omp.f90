@@ -1,6 +1,7 @@
 ! PWD003: Copy of pointer value instead of pointed-to data to an accelerator
 ! device
 
+! NOT-PWR070: We're using assumed-size arrays on purpose
 subroutine example(a, b, sum, size)
   implicit none
   integer, dimension(*), intent(in) :: a, b
