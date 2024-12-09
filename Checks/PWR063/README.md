@@ -160,18 +160,20 @@ construct and are initialized out of line using the `data` construct:
         end do
 
         write(*,*) "Final A, B, and C", A, B, C
+
+      contains
+
+        subroutine UpdateValues(X)
+          implicit none
+          integer A, B, C
+          integer, intent(in) :: X
+          common /MyCommonBlock/ A, B, C
+
+          A = A + X
+          B = B * X
+          C = C + A + B
+        end subroutine UpdateValues
       end program CommonDataConstructs
-
-      subroutine UpdateValues(X)
-        implicit none
-        integer A, B, C
-        integer, intent(in) :: X
-        common /MyCommonBlock/ A, B, C
-
-        A = A + X
-        B = B * X
-        C = C + A + B
-      end subroutine UpdateValues
 ```
 
 Again, although the program is simple, the `common` construct makes it harder to

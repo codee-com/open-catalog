@@ -20,12 +20,14 @@
 30      continue
         write(*,*) "Error: loop exceeded 10 iterations"
         stop
-      end program LegacyFortran
 
-      subroutine UpdateValue(X)
-        implicit none
-        integer A, B, C
-        integer, intent(inout) :: X
-        common /MyCommonBlock/ A, B, C
-        X = X + A + B + C
-      end subroutine UpdateValue
+        contains
+
+        subroutine UpdateValue(X)
+          implicit none
+          integer A, B, C
+          integer, intent(inout) :: X
+          common /MyCommonBlock/ A, B, C
+          X = X + A + B + C
+        end subroutine UpdateValue
+      end program LegacyFortran
