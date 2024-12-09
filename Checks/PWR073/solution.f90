@@ -29,7 +29,7 @@ contains
 end module my_module
 
 program test_module
-  use my_module
+  use my_module, only: setVar1, setVar2
   implicit none
 
   call setVar1(3.14)
