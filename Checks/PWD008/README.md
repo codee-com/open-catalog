@@ -40,7 +40,7 @@ element from a different row. This leads to a data race between the threads:
 void foo() {
   int A[5][5];
 
-  #pragma omp parallel for
+  #pragma omp parallel for shared(A)
   for (int i = 1; i < 5; ++i) {
     for (int j = 0; j < 5; ++j) {
       A[i][j] += A[i][j - 1];
@@ -57,7 +57,7 @@ of `0`:
 void foo() {
   int A[5][5];
 
-  #pragma omp parallel for
+  #pragma omp parallel for shared(A)
   for (int i = 1; i < 5; ++i) {
     for (int j = 1; j < 5; ++j) {
       A[i][j] += A[i][j-1];
@@ -78,7 +78,7 @@ subroutine example(A)
   integer, intent(inout) :: A(:, :)
   integer :: i, j
 
-  !$omp parallel do
+  !$omp parallel do private(i, j) shared(A)
   do j = 2, size(A, 2)
     do i = 1, size(A, 1)
       A(i, j) = A(i, j) + A(i - 1, j)
@@ -96,7 +96,7 @@ subroutine example(A)
   integer, intent(inout) :: A(:, :)
   integer :: i, j
 
-  !$omp parallel do
+  !$omp parallel do private(i, j) shared(A)
   do j = 2, size(A, 2)
     do i = 2, size(A, 1)
       A(i, j) = A(i, j) + A(i - 1, j)

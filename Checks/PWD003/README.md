@@ -33,7 +33,7 @@ device instead of the dynamic array data pointed by it.
 ```c
 void foo(int *a, int *b, int *sum, int size) {
   #pragma omp target map(to: a, b) map(from: sum)
-  #pragma omp parallel for
+  #pragma omp parallel for default(none) shared(a, b, sum, size)
   for (int i = 0; i < size; i++) {
     sum[i] = a[i] + b[i];
   }
@@ -45,7 +45,7 @@ In this case, it suffices to specify the array bounds in the OpenMP map clauses:
 ```c
 void foo(int *a, int *b, int *sum, int size) {
   #pragma omp target map(to: a[0:size], b[0:size]) map(from: sum[0:size])
-  #pragma omp parallel for
+  #pragma omp parallel for default(none) shared(a, b, sum, size)
   for (int i = 0; i < size; i++) {
     sum[i] = a[i] + b[i];
   }
@@ -90,7 +90,7 @@ subroutine foo(a, b, sum, size)
   integer :: i
 
   !$omp target map(to: a, b) map(from: sum)
-  !$omp parallel do default(none) shared(a, b, sum)
+  !$omp parallel do default(none) private(i) shared(a, b, sum, size)
   do i = 1, size
     sum(i) = a(i) + b(i)
   end do
@@ -136,7 +136,7 @@ subroutine foo(a, b, sum, size)
   integer :: i
 
   !$omp target map(to: a(1:size), b(1:size)) map(from: sum(1:size))
-  !$omp parallel do default(none) shared(a, b, sum)
+  !$omp parallel do default(none) private(i) shared(a, b, sum, size)
   do i = 1, size
     sum(i) = a(i) + b(i)
   end do

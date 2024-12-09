@@ -5,7 +5,7 @@ subroutine example()
   integer :: i
 
   !$omp target map(to: A(1:50), B(1:50)) map(from: sum(1:50))
-  !$omp parallel do
+  !$omp parallel do private(i) shared(A, B, sum)
   do i = 1, size(sum, 1)
     sum(i) = A(i) + B(i)
   end do

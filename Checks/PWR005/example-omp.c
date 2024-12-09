@@ -5,6 +5,7 @@ void example(int *result, unsigned size) {
   int t;
 
   // Default data scoping is used, making `t` shared instead of private
+  // NOT-PWR004: omitting scoping specifiers to highlight dangers of PWR005
   #pragma omp parallel for
   for (int i = 0; i < size; i++) {
     t = i + 1;

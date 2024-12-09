@@ -8,7 +8,7 @@ subroutine example(x, y)
 
   y(1) = 0
 
-  !$omp parallel do
+  !$omp parallel do private(i) shared(x, y)
   do i = 2, 10
     y(i) = y(i - 1) + x(i - 1)
   end do

@@ -3,7 +3,7 @@
 void example(int *x, int *y) {
   y[0] = 0;
 
-  #pragma omp parallel for
+  #pragma omp parallel for shared(x, y)
   for (int i = 1; i < 100; i++) {
     y[i] = y[i - 1] + x[i - 1];
   }

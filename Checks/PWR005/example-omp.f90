@@ -6,6 +6,7 @@ subroutine example(result)
   integer :: i, t
 
   ! Default data scoping is used, making `t` shared instead of private
+  ! NOT-PWR004: omitting scoping specifiers to highlight dangers of PWR005
   !$omp parallel do
   do i = 1, size(result, 1)
     t = i + 1
