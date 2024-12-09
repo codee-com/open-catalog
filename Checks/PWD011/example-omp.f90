@@ -6,7 +6,7 @@ real function example(A, B, C)
   real :: liveOut
   integer :: i
 
-  !$omp parallel do private(liveOut)
+  !$omp parallel do private(i, liveOut) shared(A, B, C)
   do i = 1, size(C, 1)
     liveOut = A(i) * B(i)
     C(i) = C(i) + liveOut

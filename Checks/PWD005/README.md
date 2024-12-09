@@ -29,7 +29,7 @@ The following code performs the sum of two arrays:
 void foo() {
   int A[100], B[100], sum[100];
   #pragma omp target map(to: A[0:50], B[0:50]) map(from: sum[0:50])
-  #pragma omp parallel for
+  #pragma omp parallel for shared(A, B, sum)
   for (int i = 0; i < 100; i++) {
     sum[i] = A[i] + B[i];
   }
@@ -44,7 +44,7 @@ loop:
 void foo() {
   int A[100], B[100], sum[100];
   #pragma omp target map(to: A[0:100], B[0:100]) map(from: sum[0:100])
-  #pragma omp parallel for
+  #pragma omp parallel for shared(A, B, sum)
   for (int i = 0; i < 100; i++) {
     sum[i] = A[i] + B[i];
   }
@@ -61,7 +61,7 @@ subroutine example()
   integer :: i
 
   !$omp target map(to: A(1:50), B(1:50)) map(from: sum(1:50))
-  !$omp parallel do
+  !$omp parallel do private(i) shared(A, B, sum)
   do i = 1, size(sum, 1)
     sum(i) = A(i) + B(i)
   end do
@@ -79,7 +79,7 @@ subroutine example()
   integer :: i
 
   !$omp target map(to: A, B) map(from: sum)
-  !$omp parallel do
+  !$omp parallel do private(i) shared(A, B, sum)
   do i = 1, size(sum, 1)
     sum(i) = A(i) + B(i)
   end do
