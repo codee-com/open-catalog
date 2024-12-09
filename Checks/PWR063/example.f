@@ -21,9 +21,10 @@
         stop
       end program LegacyFortran
 
-      subroutine UpdateValue(x)
+      subroutine UpdateValue(X)
         implicit none
-        integer A, B, C, X
+        integer A, B, C
+        integer, intent(inout) :: X
         common /MyCommonBlock/ A, B, C
         X = X + A + B + C
       end subroutine UpdateValue
