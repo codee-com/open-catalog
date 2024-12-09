@@ -1,0 +1,64 @@
+:root {
+  --cookie-consent-banner-container-background-color: #000000ff;
+  --cookie-consent-banner-heading-color: #eeeeeeff;
+  --cookie-consent-banner-text-color: #94a1b2;
+  --cookie-consent-banner-button-accept-color: #0be0a6ff;
+  --cookie-consent-banner-button-accept-text-color: #000000;
+  --cookie-consent-banner-button-decline-color: #eeeeeeff;
+  --cookie-consent-banner-button-decline-text-color: #000000;
+}
+
+.cookie-consent-banner-container {
+  font-family: inherit;
+  background: var(--cookie-consent-banner-container-background-color);
+  color: var(--cookie-consent-banner-text-color);
+  padding: 25px;
+  width: calc(100% - 60px);
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.45);
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+.cookie-consent-banner-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .cookie-consent-banner-buttons {
+    flex-direction: column;
+  }
+}
+
+.cookie-consent-banner-button {
+  font-family: inherit;
+  font-weight: bold;
+  text-align: center;
+  user-select: text;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.cookie-consent-banner-button:hover {
+  cursor: pointer;
+}
+
+.cookie-consent-banner-button-accept {
+  background: var(--cookie-consent-banner-button-accept-color);
+  color: var(--cookie-consent-banner-button-accept-text-color);
+}
+
+.cookie-consent-banner-button-decline {
+  background: var(--cookie-consent-banner-button-decline-color);
+  color: var(--cookie-consent-banner-button-decline-text-color);
+}

@@ -136,6 +136,10 @@ const config: Config = {
               label: 'Privacy policy',
               href: '/privacy-policy',
             },
+            {
+              label: 'Manage cookies',
+              href: '#',
+            },
           ],
         },
       ],
