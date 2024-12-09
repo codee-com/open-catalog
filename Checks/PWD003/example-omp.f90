@@ -10,7 +10,7 @@ subroutine example(a, b, sum, size)
 
   ! Array bounds should be specified
   !$omp target map(to: a, b) map(from: sum)
-  !$omp parallel do default(none) shared(a, b, sum)
+  !$omp parallel do default(none) shared(a, b, sum, size)
   do i = 1, size
     sum(i) = a(i) + b(i)
   end do
