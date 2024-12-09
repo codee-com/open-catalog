@@ -1,11 +1,13 @@
 ! PWR026: Annotate function for OpenMP offload
 
 pure integer function foo(a)
+  implicit none
   integer, intent(in) :: a
   foo = 2 * a
 end function foo
 
 subroutine example(A)
+  implicit none
   integer, external :: foo
   integer, intent(out) :: A(:)
   integer :: i

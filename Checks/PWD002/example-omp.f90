@@ -1,6 +1,7 @@
 ! PWD002: Unprotected multithreading reduction operation
 
 subroutine example(array)
+  implicit none
   integer, intent(in) :: array(:)
   integer :: i, sum
 

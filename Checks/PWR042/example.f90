@@ -2,6 +2,7 @@
 ! initialization prevents loop interchange
 
 pure subroutine example(A, B)
+  implicit none
   real, intent(in) :: A(:, :)
   real, intent(out) :: B(:)
   real :: s

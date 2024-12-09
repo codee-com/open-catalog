@@ -75,6 +75,7 @@ element from a different column. This leads to a data race between the threads:
 
 ```fortran
 subroutine example(A)
+  implicit none
   integer, intent(inout) :: A(:, :)
   integer :: i, j
 
@@ -93,6 +94,7 @@ instead of `1`:
 
 ```fortran
 subroutine example(A)
+  implicit none
   integer, intent(inout) :: A(:, :)
   integer :: i, j
 

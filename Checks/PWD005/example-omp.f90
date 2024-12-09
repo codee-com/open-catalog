@@ -1,6 +1,7 @@
 ! PWD005: Array range copied to the GPU does not cover the used range
 
 subroutine example()
+  implicit none
   integer, dimension(100) :: A, B, sum
   integer :: i
 

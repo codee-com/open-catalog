@@ -98,6 +98,7 @@ a given time:
 
 ```fortran
 subroutine example(array)
+  implicit none
   integer, intent(in) :: array(:)
   integer :: i, sum
 
@@ -119,6 +120,7 @@ reduction operator:
 
 ```fortran
 subroutine example(array)
+  implicit none
   integer, intent(in) :: array(:)
   integer :: i, sum
 

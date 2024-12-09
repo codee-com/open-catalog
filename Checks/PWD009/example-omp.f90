@@ -1,6 +1,7 @@
 ! PWD009: Incorrect privatization in parallel region
 
 subroutine example(A, B, C)
+  implicit none
   real, intent(in) :: A(:), B(:)
   real, intent(inout) :: C(:)
   real :: temp

@@ -1,6 +1,7 @@
 ! PWR063: avoid using legacy Fortran constructs
 
       program LegacyFortran
+        implicit none
         integer A, B, C, X, I
         common /MyCommonBlock/ A, B, C
         data A /10/, B /20/, C /30/, X /0/, I /1/
@@ -21,6 +22,7 @@
       end program LegacyFortran
 
       subroutine UpdateValue(x)
+        implicit none
         integer A, B, C, X
         common /MyCommonBlock/ A, B, C
         X = X + A + B + C
