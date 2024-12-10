@@ -22,11 +22,8 @@ consecutive positions because the latter maximises
 
 #### C
 
-Consider the example code below to illustrate the presence of non-consecutive
-access patterns. The elements of array `a` are accessed in a non-consecutive
-manner. In the scope of the outer loop, `for (i)`, all the iterations access
-the first row of the array. Thus, the code exhibits repeated accesses to all
-the elements of the first row, a total number of times equal to `rows`:
+The example code below illustrates a non-consecutive array access pattern in a
+two-dimensional array:
 
 ```c
 void example(float **a, unsigned rows, unsigned cols) {
@@ -38,13 +35,37 @@ void example(float **a, unsigned rows, unsigned cols) {
 }
 ```
 
+At first glance, the inner loop `for (j)` appears to access the elements of the
+array sequentially. However, the outer loop `for (i)` is repeatedly accessing
+the first row of the array. This results in a non-consecutive memory access
+pattern when considering the computation as a whole.
+
+CPUs rely on caches to reduce the cost of memory accesses. Instead of loading
+data from main memory element by element, CPUs read fixed-size blocks of data
+called cache lines (e.g., 64 bytes on `x86`). When a code accesses memory, the
+CPU fetches the entire cache line containing the requested data, making
+sequential memory accesses highly efficient due to spatial locality.
+
+In C, arrays are stored in row-major order, meaning that elements of a row are
+laid out sequentially in memory, followed by subsequent rows. This organization
+makes row-by-row processing naturally cache-friendly. However, the example code
+disrupts the spatial locality by repeatedly returning to the start of the first
+row.
+
+When working with large matrices that exceed the cache's capacity, this pattern
+can become particularly inefficient. Cache lines holding the start of the first
+row may be evicted to make room for subsequent data. As a result, the code may
+repeatedly reload already-seen lines from main memory, incurring a significant
+overhead.
+
+> [!TIP]
+> While modern CPUs implement prefetching mechanisms to understand and
+> anticipate the memory access patterns of a code, they are not foolproof.
+
 #### Fortran
 
-Consider the example code below to illustrate the presence of non-consecutive
-access patterns. The elements of array `a` are accessed in a non-consecutive
-manner. In the scope of the outer loop, `do j`, all the iterations access the
-first column of the array. Thus, the code exhibits repeated accesses to all the
-elements of the first column, a total number of times equal to `size(a, 2)`:
+The example code below illustrates a non-consecutive array access pattern in a
+two-dimensional array:
 
 ```fortran
 subroutine example(a)
@@ -59,6 +80,33 @@ subroutine example(a)
   end do
 end subroutine example
 ```
+
+At first glance, the inner loop `do i` appears to access the elements of the
+array sequentially. However, the outer loop `do j` is repeatedly accessing the
+first column of the array. This results in a non-consecutive memory access
+pattern when considering the computation as a whole.
+
+CPUs rely on caches to reduce the cost of memory accesses. Instead of loading
+data from main memory element by element, CPUs read fixed-size blocks of data
+called cache lines (e.g., 64 bytes on `x86`). When a code accesses memory, the
+CPU fetches the entire cache line containing the requested data, making
+sequential memory accesses highly efficient due to spatial locality.
+
+In Fortran, arrays are stored in column-major order, meaning that elements of a
+column are laid out sequentially in memory, followed by subsequent columns.
+This organization makes column-by-column processing naturally cache-friendly.
+However, the example code disrupts the spatial locality by repeatedly returning
+to the start of the first column.
+
+When working with large matrices that exceed the cache's capacity, this pattern
+can become particularly inefficient. Cache lines holding the start of the first
+column may be evicted to make room for subsequent data. As a result, the code
+may repeatedly reload already-seen lines from main memory, incurring a
+significant overhead.
+
+> [!TIP]
+> While modern CPUs implement prefetching mechanisms to understand and
+> anticipate the memory access patterns of a code, they are not foolproof.
 
 ### Related resources
 
