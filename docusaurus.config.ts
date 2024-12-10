@@ -40,6 +40,16 @@ const config: Config = {
             'README.md',
             'Checks/**/*.md',
             'Glossary/**/*.md',
+            // Standalone pages are stored in `static/pages/**` instead of
+            // `src/pages/**` to prevent conflicts between the `mdx-loader` of
+            // the `docs` plugin and the `mdx-loader` of the `pages` plugin. If
+            // stored in `src/pages/**`, both loaders attempt to process the
+            // same Markdown file, resulting in a build failure. This issue
+            // arises because the `docs` plugin's `path` is set to the root of
+            // the repository rather than a subdirectory. We do this to align
+            // the navigation experience between the Open Catalog website and
+            // its GitHub repository.
+            'static/pages/**/*.md',
           ],
           exclude: ['**/external/**'],
           editUrl:
@@ -114,6 +124,19 @@ const config: Config = {
               href: 'https://www.codee.com/',
             },
           ]
+        },
+        {
+          title: 'Legal',
+          items: [
+            {
+              label: 'Cookie policy',
+              href: '/cookie-policy',
+            },
+            {
+              label: 'Privacy policy',
+              href: '/privacy-policy',
+            },
+          ],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Appentra Solutions, S.L.`,

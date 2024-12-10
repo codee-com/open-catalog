@@ -174,3 +174,8 @@ table.dataTable tbody tr:nth-child(even) {
 table.dataTable tbody tr:hover {
   background-color: var(--ifm-color-highlight-light);
 }
+
+/* Class to hide a directoy or document from the sidebar */
+.sidebar_hidden {
+  display: none !important;
+}
