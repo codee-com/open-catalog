@@ -33,7 +33,7 @@ CPU version of `foo()`. This means every time `foo()` is called, the data must
 be transferred between the GPU and the CPU, negatively impacting performance:
 
 ```c
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 
@@ -52,7 +52,7 @@ device:
 
 ```c
 #pragma acc routine
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 
@@ -72,13 +72,8 @@ CPU version of `foo()`. This means every time `foo()` is called, the data must
 be transferred between the GPU and the CPU, negatively impacting performance:
 
 ```fortran
-integer function foo(a)
-  integer, intent(in) :: a
-  foo = 2 * a
-end function foo
-
 subroutine example(A)
-  integer, external :: foo
+  implicit none
   integer, intent(out) :: A(:)
   integer :: i
 
@@ -87,6 +82,14 @@ subroutine example(A)
     A(i) = foo(i)
   end do
   !$acc end kernels
+
+contains
+
+  pure integer function foo(a)
+    implicit none
+    integer, intent(in) :: a
+    foo = 2 * a
+  end function foo
 end subroutine example
 ```
 
@@ -95,13 +98,8 @@ To prevent the performance loss caused by constant data transfers, add the
 a GPU version of the function, allowing the loop to run entirely on the device:
 
 ```fortran
-integer function foo(a)
-  !$acc routine
-  integer, intent(in) :: a
-  foo = 2 * a
-end function foo
-
 subroutine example(A)
+  implicit none
   integer, external :: foo
   integer, intent(out) :: A(:)
   integer :: i
@@ -111,6 +109,15 @@ subroutine example(A)
     A(i) = foo(i)
   end do
   !$acc end kernels
+
+contains
+
+  pure integer function foo(a)
+    !$acc routine
+    implicit none
+    integer, intent(in) :: a
+    foo = 2 * a
+  end function foo
 end subroutine example
 ```
 

@@ -79,7 +79,7 @@ iterations. Not only may this introduce an unnecessary redundant comparison, it
 may also make the vectorization of the loop more difficult for some compilers:
 
 ```fortran
-subroutine example(array)
+pure subroutine example(array)
   integer, intent(out) :: array(:)
   integer :: i, total
 
@@ -99,7 +99,7 @@ duplicating the loop body and removing the condition. The resulting code is as
 follows:
 
 ```fortran
-subroutine example(array)
+pure subroutine example(array)
   integer, intent(out) :: array(:)
   integer :: i, total
 

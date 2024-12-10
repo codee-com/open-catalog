@@ -30,7 +30,7 @@ double example(int m, double *A, double *B, double *C) {
   double liveOut;
 
   // liveOut is private but used after the loop, so it should be lastprivate
-  #pragma omp parallel for private(liveOut)
+  #pragma omp parallel for private(liveOut) shared(A, B, C)
   for (int i = 0; i < m; i++) {
     liveOut = A[i] * B[i];
     C[i] = C[i] + liveOut;
@@ -48,7 +48,7 @@ subsequent operations on `liveOut` to work correctly:
 double example(int m, double *A, double *B, double *C) {
   double liveOut;
 
-  #pragma omp parallel for lastprivate(liveOut)
+  #pragma omp parallel for lastprivate(liveOut) shared(A, B, C)
   for (int i = 0; i < m; i++) {
     liveOut = A[i] * B[i];
     C[i] = C[i] + liveOut;
@@ -69,12 +69,14 @@ value from the last iteration:
 
 ```fortran
 real function example(A, B, C)
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: liveOut
+  use iso_fortran_env, only: real32
+  implicit none
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: liveOut
   integer :: i
 
-  !$omp parallel do private(liveOut)
+  !$omp parallel do private(i, liveOut) shared(A, B, C)
   do i = 1, size(C, 1)
     liveOut = A(i) * B(i)
     C(i) = C(i) + liveOut
@@ -90,12 +92,14 @@ subsequent operations on `liveOut` to work correctly:
 
 ```fortran
 real function example(A, B, C)
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: liveOut
+  use iso_fortran_env, only: real32
+  implicit none
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: liveOut
   integer :: i
 
-  !$omp parallel do lastprivate(liveOut)
+  !$omp parallel do lastprivate(liveOut) private(i) shared(A, B, C)
   do i = 1, size(C, 1)
     liveOut = A(i) * B(i)
     C(i) = C(i) + liveOut

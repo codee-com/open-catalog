@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-double example(int N) {
+__attribute__((const)) double example(int N) {
   double sum = 0.0;
 
   for (int i = 0; i < N; i++) {

@@ -1,6 +1,7 @@
 ! PWR062: Consider loop interchange by removing accumulation on array value
 
-subroutine matmul_improved_f(n, A, B, C) bind(c)
+! NOT-PWR070: Explicit-shape arrays used for C-interoperability
+pure subroutine matmul_improved_f(n, A, B, C) bind(c)
   use iso_c_binding, only : c_int, c_double
 
   implicit none

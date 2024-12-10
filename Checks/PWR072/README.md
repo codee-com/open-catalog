@@ -96,7 +96,7 @@ program test_implicit_save
 
 contains
 
-  integer function sum_array(array)
+  pure integer function sum_array(array)
     implicit none
     integer, intent(in) :: array(:)
     integer :: result
@@ -113,6 +113,12 @@ contains
 
 end program test_implicit_save
 ```
+
+> [!TIP]
+> Now the function doesn't retain its state between calls, so it can be
+> annotated with the `pure` keyword.
+>
+> Check the PWR003 entry for more details!
 
 ### Related resources
 

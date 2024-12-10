@@ -1,7 +1,7 @@
 ! PWR068: Encapsulate procedures within modules to avoid the risks of calling
 !         implicit interfaces
 
-subroutine factorial(number, result)
+pure subroutine factorial(number, result)
   implicit none
   integer, intent(in) :: number
   integer, intent(out) :: result

@@ -1,9 +1,11 @@
 ! PWR056: consider applying offloading parallelism to scalar reduction loop
 
+! NOT-PWR003: `pure` prevents OpenMP/OpenACC offloading
 function example(A) result(sum)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(in) :: A(:)
-  real(kind=8) :: sum
+  real(kind=real32), intent(in) :: A(:)
+  real(kind=real32) :: sum
   integer :: i
 
   sum = 0.0

@@ -1,7 +1,9 @@
 ! PWR063: avoid using legacy Fortran constructs
 
       program LegacyFortran
+        implicit none
         integer A, B, C, X, I
+        ! NOT-PWR073: We're using the `common block` as a legacy construct
         common /MyCommonBlock/ A, B, C
         data A /10/, B /20/, C /30/, X /0/, I /1/
 
@@ -18,10 +20,14 @@
 30      continue
         write(*,*) "Error: loop exceeded 10 iterations"
         stop
-      end program LegacyFortran
 
-      subroutine UpdateValue(x)
-        integer A, B, C, X
-        common /MyCommonBlock/ A, B, C
-        X = X + A + B + C
-      end subroutine UpdateValue
+        contains
+
+        subroutine UpdateValue(X)
+          implicit none
+          integer A, B, C
+          integer, intent(inout) :: X
+          common /MyCommonBlock/ A, B, C
+          X = X + A + B + C
+        end subroutine UpdateValue
+      end program LegacyFortran

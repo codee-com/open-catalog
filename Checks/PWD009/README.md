@@ -23,11 +23,9 @@ on non-overlapping positions of the array:
 
 ```c
 void example(int m, double *A, double *B, double *C) {
-  double temp;
-
-  #pragma omp parallel for default(none) private(temp, C) shared(A, B, m)
+  #pragma omp parallel for default(none) private(C) shared(A, B, m)
   for (int i = 0; i < m; i++) {
-    temp = A[i] * B[i];
+    double temp = A[i] * B[i];
     C[i] = C[i] + temp;
   }
 }
@@ -37,11 +35,9 @@ To fix this, `C` should be moved to a `shared` clause:
 
 ```c
 void example(int m, double *A, double *B, double *C) {
-  double temp;
-
-  #pragma omp parallel for default(none) private(temp) shared(A, B, C, m)
+  #pragma omp parallel for default(none) shared(A, B, C, m)
   for (int i = 0; i < m; i++) {
-    temp = A[i] * B[i];
+    double temp = A[i] * B[i];
     C[i] = C[i] + temp;
   }
 }
@@ -54,9 +50,11 @@ on non-overlapping positions of the array:
 
 ```fortran
 subroutine example(A, B, C)
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: temp
+  use iso_fortran_env, only: real32
+  implicit none
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: temp
   integer :: i
 
   !$omp parallel do default(none) private(i, temp, C) shared(A, B)
@@ -71,9 +69,11 @@ To fix this, `C` should be moved to a `shared` clause:
 
 ```fortran
 subroutine example(A, B, C)
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: temp
+  use iso_fortran_env, only: real32
+  implicit none
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: temp
   integer :: i
 
   !$omp parallel do default(none) private(i, temp) shared(A, B, C)

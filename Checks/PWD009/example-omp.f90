@@ -1,9 +1,11 @@
 ! PWD009: Incorrect privatization in parallel region
 
 subroutine example(A, B, C)
-  real, intent(in) :: A(:), B(:)
-  real, intent(inout) :: C(:)
-  real :: temp
+  use iso_fortran_env, only: real32
+  implicit none
+  real(kind=real32), intent(in) :: A(:), B(:)
+  real(kind=real32), intent(inout) :: C(:)
+  real(kind=real32) :: temp
   integer :: i
 
   !$omp parallel do default(none) private(i, temp, C) shared(A, B)

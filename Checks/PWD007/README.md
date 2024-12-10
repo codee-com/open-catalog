@@ -31,7 +31,7 @@ multithreading:
 void foo(int *x, int *y, int size) {
   y[0] = 0;
 
-  #pragma omp parallel for
+  #pragma omp parallel for shared(x, y, size)
   for (int i = 1; i < size; i++) {
     y[i] = y[i - 1] + x[i - 1];
   }
@@ -49,7 +49,7 @@ using the `scan` directive:
 void foo(int *x, int *y, int size) {
   int scan_x = 0;
 
-  #pragma omp parallel for reduction(inscan, +:scan_x)
+  #pragma omp parallel for reduction(inscan, +:scan_x) shared(x, y, size)
   for (int i = 0; i < size; i++) {
     y[i] = scan_x;
     #pragma omp scan exclusive(scan_x)
@@ -72,7 +72,7 @@ subroutine foo(x, y)
 
   y(1) = 0
 
-  !$omp parallel do
+  !$omp parallel do private(i) shared(x, y)
   do i = 2, size(y, 1)
     y(i) = y(i - 1) + x(i - 1)
   end do
@@ -96,7 +96,7 @@ subroutine foo(x, y)
 
   scan_x = 0
 
-  !$omp parallel do reduction(inscan, +:scan_x)
+  !$omp parallel do private(i) reduction(inscan, +:scan_x) shared(x, y)
   do i = 1, size(y, 1)
     y(i) = scan_x
     !$omp scan exclusive(scan_x)

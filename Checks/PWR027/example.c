@@ -1,6 +1,6 @@
 // PWR027: Annotate function for OpenACC offload
 
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 

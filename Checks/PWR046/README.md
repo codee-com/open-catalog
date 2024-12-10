@@ -23,7 +23,7 @@ to the following patterns:
 Have a look at the following code:
 
 ```c
-float example(float a, float b, float c) {
+__attribute__((const)) float example(float a, float b, float c) {
   return a / b / c;
 }
 ```
@@ -32,7 +32,7 @@ The expression `a / b / c` can be rewritten with a single division and a
 multiplication, like this:
 
 ```c
-float example(float a, float b, float c) {
+__attribute__((const)) float example(float a, float b, float c) {
   return a / (b * c);
 }
 ```

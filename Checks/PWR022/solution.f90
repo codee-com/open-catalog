@@ -1,6 +1,7 @@
 ! PWR022: move invariant conditional out of the loop to facilitate vectorization
 
-subroutine solution_f(n, A, B, C, D) bind(c)
+! NOT-PWR070: Explicit-shape arrays used for C-interoperability
+pure subroutine solution_f(n, A, B, C, D) bind(c)
   use iso_c_binding, only : c_int, c_double
 
   implicit none

@@ -1,6 +1,6 @@
 // PWR021: temporary computation can be extracted to a vectorizable loop
 
-int expensive_computation(int *C, int i) {
+__attribute__((pure)) int expensive_computation(int *C, int i) {
   return C[i] * 2;
 }
 

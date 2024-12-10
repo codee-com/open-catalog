@@ -106,7 +106,7 @@ void matmul(int n, const double *A, const double *B, double *C) {
 Have a look at the following matrix multiplication code:
 
 ```fortran
-subroutine matmul(n, A, B, C)
+pure subroutine matmul(n, A, B, C)
   implicit none
   integer, intent(in) :: n
   real, dimension(:, :), intent(in) :: A, B
@@ -133,7 +133,7 @@ To make the loop interchangeable, loop fission can be applied to move the
 initialization to a separate loop:
 
 ```fortran
-subroutine matmul(n, A, B, C)
+pure subroutine matmul(n, A, B, C)
   implicit none
   integer, intent(in) :: n
   real, dimension(:, :), intent(in) :: A, B
@@ -158,7 +158,7 @@ the loop interchange can be applied to leverage an efficient memory access
 pattern:
 
 ```fortran
-subroutine matmul(n, A, B, C)
+pure subroutine matmul(n, A, B, C)
   implicit none
   integer, intent(in) :: n
   real, dimension(:, :), intent(in) :: A, B

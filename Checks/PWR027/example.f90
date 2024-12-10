@@ -1,12 +1,7 @@
 ! PWR027: Annotate function for OpenACC offload
 
-integer function foo(a)
-  integer, intent(in) :: a
-  foo = 2 * a
-end function foo
-
 subroutine example(A)
-  integer, external :: foo
+  implicit none
   integer, intent(out) :: A(:)
   integer :: i
 
@@ -15,4 +10,12 @@ subroutine example(A)
     A(i) = foo(i)
   end do
   !$acc end kernels
+
+contains
+
+  pure integer function foo(a)
+    implicit none
+    integer, intent(in) :: a
+    foo = 2 * a
+  end function foo
 end subroutine example

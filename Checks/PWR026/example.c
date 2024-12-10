@@ -1,6 +1,6 @@
 // PWR026: Annotate function for OpenMP offload
 
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 

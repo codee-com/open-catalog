@@ -1,6 +1,6 @@
 // PWR025: Consider annotating pure function with OpenMP `declare simd`
 
-int foo(int a) {
+__attribute__((const)) int foo(int a) {
   return 2 * a;
 }
 

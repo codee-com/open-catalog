@@ -68,10 +68,11 @@ void example(double *D, double *X, double *Y, int n, double a) {
 
 ```fortran
 subroutine example(D, X, Y, a)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(out) :: D(:)
-  real(kind=8), intent(in) :: X(:), Y(:)
-  real(kind=8), intent(in) :: a
+  real(kind=real32), intent(out) :: D(:)
+  real(kind=real32), intent(in) :: X(:), Y(:)
+  real(kind=real32), intent(in) :: a
   integer :: i
 
   do i = 1, size(D, 1)
@@ -92,10 +93,11 @@ the data movement between the host memory and the accelerator memory:
 
 ```fortran
 subroutine example(D, X, Y, a)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(out) :: D(:)
-  real(kind=8), intent(in) :: X(:), Y(:)
-  real(kind=8), intent(in) :: a
+  real(kind=real32), intent(out) :: D(:)
+  real(kind=real32), intent(in) :: X(:), Y(:)
+  real(kind=real32), intent(in) :: a
   integer :: i
 
   !$acc data copyin(X, Y, a) copyout(D)

@@ -79,9 +79,10 @@ double example(double *A, int n) {
 
 ```fortran
 function example(A) result(sum)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(in) :: A(:)
-  real(kind=8) :: sum
+  real(kind=real32), intent(in) :: A(:)
+  real(kind=real32) :: sum
   integer :: i
 
   sum = 0.0
@@ -105,9 +106,10 @@ movement between the host memory and the accelerator memory:
 
 ```fortran
 function example(A) result(sum)
+  use iso_fortran_env, only: real32
   implicit none
-  real(kind=8), intent(in) :: A(:)
-  real(kind=8) :: sum
+  real(kind=real32), intent(in) :: A(:)
+  real(kind=real32) :: sum
   integer :: i
 
   sum = 0.0

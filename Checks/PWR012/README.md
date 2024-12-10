@@ -44,7 +44,7 @@ typedef struct {
   int B[1000];
 } data;
 
-int foo(data *d) {
+__attribute__((pure)) int foo(data *d) {
   int result = 0;
   for (int i = 0; i < 1000; i++) {
     result += d->A[i];
@@ -73,7 +73,7 @@ typedef struct {
   int B[1000];
 } data;
 
-int foo(int *A) {
+__attribute__((pure)) int foo(int *A) {
   int result = 0;
   for (int i = 0; i < 1000; i++) {
     result += A[i];

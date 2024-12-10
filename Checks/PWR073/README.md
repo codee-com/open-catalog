@@ -51,8 +51,9 @@ Let's start with an old-style program that relies on common blocks:
 ```fortran
 ! example.f90
 program test_common_block
+  use iso_fortran_env, only: real32
   implicit none
-  real    :: var1
+  real(kind=real32) :: var1
   integer :: var2
   common /my_common/ var1, var2
 
@@ -66,7 +67,7 @@ contains
 
 subroutine printVar1
   implicit none
-  real :: var1
+  real(kind=real32) :: var1
   common /my_common/ var1
 
   print *, "Var1: ", var1
@@ -107,16 +108,17 @@ to encapsulate the variables inside a module (Step 1). Due to the simplicity of
 this example, the `only` keyword (Step 2) is already leveraged:
 
 ```fortran
-! solution.f90
+! solution_without_private.f90
 module my_module
+  use iso_fortran_env, only: real32
   implicit none
   public
-  real    :: var1
+  real(kind=real32) :: var1
   integer :: var2
 end module my_module
 
 program test_module
-  use my_module
+  use my_module, only: var1, var2
   implicit none
 
   var1 = 3.14
@@ -146,7 +148,7 @@ end program test_module
 And now the program gives the correct results:
 
 ```txt
-$ gfortran solution.f90
+$ gfortran solution_without_private.f90
 $ ./a.out
 Var1:    3.14000010
 Var2:           20
@@ -154,7 +156,66 @@ Var2:           20
 
 Depending on your preferences, you might also set the module variables as
 `private` and create procedures to manage access to the contained data (e.g.,
-getters and setters).
+getters and setters):
+
+```fortran
+! solution.f90
+module my_module
+  use iso_fortran_env, only: real32
+  implicit none
+  private
+  real(kind=real32) :: var1
+  integer :: var2
+  public :: getVar1, setVar1, getVar2, setVar2
+
+contains
+
+  real(kind=real32) function getVar1()
+    getVar1 = var1
+  end function getVar1
+
+  subroutine setVar1(value)
+    real(kind=real32), intent(in) :: value
+    var1 = value
+  end subroutine setVar1
+
+  integer function getVar2()
+    getVar2 = var2
+  end function getVar2
+
+  subroutine setVar2(value)
+    integer, intent(in) :: value
+    var2 = value
+  end subroutine setVar2
+end module my_module
+
+program test_module
+  use my_module, only: setVar1, setVar2
+  implicit none
+
+  call setVar1(3.14)
+  call setVar2(20)
+
+  call printVar1
+  call printVar2
+
+contains
+
+subroutine printVar1
+  use my_module, only: getVar1
+  implicit none
+
+  print *, "Var1: ", getVar1()
+end subroutine printVar1
+
+subroutine printVar2
+  use my_module, only: getVar2
+  implicit none
+
+  print *, "Var2: ", getVar2()
+end subroutine printVar2
+end program test_module
+```
 
 ### Related resources
 

@@ -1,6 +1,6 @@
 ! PWR035: Avoid non-consecutive array access to improve performance
 
-subroutine example(a)
+pure subroutine example(a)
   implicit none
   integer, intent(out) :: a(:, :)
   integer :: i, j
