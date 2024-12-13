@@ -16,3 +16,4 @@ if (OCB_Fortran_COMPILER_ID STREQUAL "GNU")
   # compilers
   add_benchmark(PWR075)
 endif()
+add_benchmark(PWR079)
