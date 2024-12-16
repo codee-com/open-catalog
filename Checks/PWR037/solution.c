@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 __attribute__((const)) double square_root(const double value) {
-  return sqrtf(value);
+  return sqrt(value);
 }
 
 int main() {
