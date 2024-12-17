@@ -41,6 +41,7 @@ function(add_benchmark CHECKID)
   target_link_libraries(${CHECKID}
     PUBLIC
       benchmark::benchmark
+      m
   )
 
   target_include_directories(${CHECKID}
