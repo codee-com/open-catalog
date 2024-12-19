@@ -4,13 +4,13 @@
 
 // Computes the integral of $f(x) = x^{1.5} \sin(x)$ over the interval
 // $\{a, b\}$ using the midpoint rule with $n$ samples
-__attribute__((const)) double midpoint_rule_x_pow_1_5_sin_x(double a, double b,
-                                                            int n) {
+__attribute__((const)) double
+midpoint_rule_x_pow_1_5_sin_x_improved(double a, double b, int n) {
   double integral = 0.0;
   double dx = (b - a) / n;
   for (int i = 0; i < n; ++i) {
     double x = fma((i + 0.5), dx, a);
-    integral = fma(pow(x, 1.5) * sin(x), dx, integral);
+    integral = fma(x * sqrt(x) * sin(x), dx, integral);
   }
   return integral;
 }

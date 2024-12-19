@@ -41,6 +41,7 @@ function(add_benchmark CHECKID)
   target_link_libraries(${CHECKID}
     PUBLIC
       benchmark::benchmark
+      m
   )
 
   find_library(MATH_LIBRARY m)
