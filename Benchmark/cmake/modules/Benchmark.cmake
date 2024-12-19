@@ -41,8 +41,15 @@ function(add_benchmark CHECKID)
   target_link_libraries(${CHECKID}
     PUBLIC
       benchmark::benchmark
-      m
   )
+
+  find_library(MATH_LIBRARY m)
+  if(MATH_LIBRARY)
+    target_link_libraries(${CHECKID}
+      PUBLIC
+        ${MATH_LIBRARY}
+    )
+  endif()
 
   target_include_directories(${CHECKID}
     PRIVATE "${OCB_SOURCE_DIR}/external/google_benchmark/include"
