@@ -24,7 +24,7 @@ example:
 
 Using a function intended for a smaller data type, such as `sqrtf()` with a
 `double` input, causes an implicit narrowing of the input value. This implicit
-type conversion is allowed by the compiler, but results in a loss of precision
+type conversion is allowed by the standard, but results in a loss of precision
 that can propagate through chained calculations, impacting the overall accuracy
 of the program.
 
@@ -91,10 +91,11 @@ Square root of 2 is: 1.41421 35623 73095
 ```
 
 > [!IMPORTANT]
-> While higher-precision calculations may come with a slight performance cost,
-> they help ensure the accuracy and reliability of the code. Instead, if the
-> intended choice is to use the lower-precision calculation, adjust the data
-> type of the variable to ensure it matches the called function.
+> In this context, higher-precision calculations are not merely a performance
+> overhead. Instead, they address an invalid optimization that compromises the
+> accuracy and reliability of the code. If lower-precision calculations are
+> genuinely intended for performance reasons, adjust the variable's data type
+> to ensure it matches the called function.
 
 ### Related resources
 
