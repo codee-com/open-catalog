@@ -1,4 +1,4 @@
-// PWR031: Replace call to pow by multiplication, division and/or square root
+// PWR031: Replace pow by multiplication, division and/or square root
 
 #include <math.h>
 

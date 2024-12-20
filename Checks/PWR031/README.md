@@ -1,22 +1,23 @@
-# PWR031: Replace call to pow by multiplication, division and/or square root
+# PWR031: Replace pow by multiplication, division and/or square root
 
 ### Issue
 
-The `pow` mathematical function is computationally expensive and in many cases
-can be replaced by
+The `pow` function is computationally expensive and in many cases can be
+replaced by
 [faster mathematical operations](../../Glossary/Strength-reduction.md).
 
 ### Actions
 
-Replace the `pow` invocation by the corresponding calculation involving
-multiplications, divisions and/or square roots.
+Replace `pow` with equivalent calculations using multiplications, divisions
+and/or square roots where possible.
 
 ### Relevance
 
-Function `pow` is commonly used in scientific computations. In general, it is an
-expensive function. However, in some cases when the value of exponent is known
-at compile time, its runtime can be greatly reduced by replacing it with a
-combination of multiplications, divisions and square roots.
+The `pow` function is commonly used in scientific computations but is generally
+more expensive than alternative methods. When the exponent value is known at
+compile time, runtime performance can be significantly improved by substituting
+`pow` with a combination of simpler operations like multiplications, divisions,
+or square roots.
 
 > [!NOTE]
 > Some compilers under some circumstances (e.g. relaxed IEEE 754 semantics) can
