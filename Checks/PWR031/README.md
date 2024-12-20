@@ -35,12 +35,6 @@ The following code invokes `pow` to calculate `x` to the power of `1.5`:
 #include <math.h>
 #include <stdio.h>
 
-<<<<<<< HEAD
-void example(float *a, float x) {
-  for (int i = 0; i < 10; ++i) {
-    a[i] = pow(x, 1.5);
-  }
-=======
 __attribute__((const)) double raise_x_to_the_power_of_1_point_5(double x) {
   return pow(x, 1.5);
 }
@@ -49,7 +43,6 @@ int main() {
   printf("2 raised to the power of 1.5 is: %0.15f\n",
          raise_x_to_the_power_of_1_point_5(2.0));
   return 0;
->>>>>>> bcc5f27 (PWR031: Show transformations' numerical precision)
 }
 ```
 
