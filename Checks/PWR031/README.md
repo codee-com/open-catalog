@@ -2,8 +2,8 @@
 
 ### Issue
 
-The `pow` function is computationally expensive and in many cases can be
-replaced by
+The `pow` function (`**` operator in Fortran) is computationally expensive and
+in many cases can be replaced by
 [faster mathematical operations](../../Glossary/Strength-reduction.md).
 
 ### Actions
@@ -25,6 +25,8 @@ or square roots.
 > best performance across all the compilers.
 
 ### Code example
+
+#### C
 
 The following code invokes `pow` to calculate `x` to the power of `1.5`:
 
@@ -49,6 +51,42 @@ void example(float *a, float x) {
     a[i] = x * sqrt(x);
   }
 }
+```
+
+#### Fortran
+
+The following code uses the `**` operator to compute `x` to the power of `1.5`:
+
+```fortran
+subroutine example(a, x)
+  use iso_fortran_env, only : real32, int32
+  ! dummy args
+  real(kind=real32), intent(out) :: a(:)
+  real(kind=real32), intent(in) :: x
+  ! local vars
+  integer(kind=int32) :: i
+  !
+  do i = 1_int32, 10_int32
+    a(i) = x ** 1.5_real32
+  end do
+end subroutine example
+```
+
+This can be optimized by replacing `**` with multiplication and the square root:
+
+```fortran
+subroutine example(a, x)
+  use iso_fortran_env, only : real32, int32
+  ! dummy args
+  real(kind=real32), intent(out) :: a(:)
+  real(kind=real32), intent(in) :: x
+  ! local vars
+  integer(kind=int32) :: i
+  !
+  do i = 1_int32, 10_int32
+    a(i) = x * sqrt(x)
+  end do
+end subroutine example
 ```
 
 ### Related resources
