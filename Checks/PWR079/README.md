@@ -289,6 +289,9 @@ integer, pointer :: array(:) => NULL()
 
 ### Related resources
 
+- [PWR079
+  examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR079/)
+
 ### References
 
 - ["Fortran 2023 Interpretation
