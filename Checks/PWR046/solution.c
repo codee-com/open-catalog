@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 __attribute__((const)) float example(float a, float b, float c) {
-  return a / b / c;
+  return a / (b * c);
 }
 
 int main() {
