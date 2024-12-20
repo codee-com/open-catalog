@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 __attribute__((const)) double raise_x_to_the_power_of_1_point_5(double x) {
-  return pow(x, 1.5);
+  return x * sqrt(x);
 }
 
 int main() {

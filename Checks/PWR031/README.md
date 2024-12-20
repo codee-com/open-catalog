@@ -31,12 +31,25 @@ or square roots.
 The following code invokes `pow` to calculate `x` to the power of `1.5`:
 
 ```c
+// example.c
 #include <math.h>
+#include <stdio.h>
 
+<<<<<<< HEAD
 void example(float *a, float x) {
   for (int i = 0; i < 10; ++i) {
     a[i] = pow(x, 1.5);
   }
+=======
+__attribute__((const)) double raise_x_to_the_power_of_1_point_5(double x) {
+  return pow(x, 1.5);
+}
+
+int main() {
+  printf("2 raised to the power of 1.5 is: %0.15f\n",
+         raise_x_to_the_power_of_1_point_5(2.0));
+  return 0;
+>>>>>>> bcc5f27 (PWR031: Show transformations' numerical precision)
 }
 ```
 
@@ -44,13 +57,28 @@ This can also be accomplished by multiplying `x` by its square root, which is
 faster:
 
 ```c
-#include <math.h>
+// solution.c
+...
 
-void example(float *a, float x) {
-  for (int i = 0; i < 10; ++i) {
-    a[i] = x * sqrt(x);
-  }
+__attribute__((const)) double raise_x_to_the_power_of_1_point_5(double x) {
+  return x * sqrt(x);
 }
+
+...
+```
+
+Moreover, we can verify that the computation retains full precision by running
+the following commands and comparing the results:
+
+```txt
+$ gcc --version
+gcc (GCC) 14.2.1 20240910
+$ gcc example.c -lm -o example
+$ gcc solution.c -lm -o solution
+$ ./example
+2 raised to the power of 1.5 is: 2.828427124746190
+$ ./solution
+2 raised to the power of 1.5 is: 2.828427124746190
 ```
 
 #### Fortran
@@ -58,35 +86,52 @@ void example(float *a, float x) {
 The following code uses the `**` operator to compute `x` to the power of `1.5`:
 
 ```fortran
-subroutine example(a, x)
-  use iso_fortran_env, only : real32, int32
-  ! dummy args
-  real(kind=real32), intent(out) :: a(:)
-  real(kind=real32), intent(in) :: x
-  ! local vars
-  integer(kind=int32) :: i
+! example.f90
+program main
+  use iso_fortran_env, only : real64
+  implicit none
   !
-  do i = 1_int32, 10_int32
-    a(i) = x ** 1.5_real32
-  end do
-end subroutine example
+  print '(A, F0.15)', '2 raised to the power of 1.5 is: ', &
+      raise_x_to_the_power_of_1_point_5(2.0_real64)
+contains
+  pure function raise_x_to_the_power_of_1_point_5(x)
+    implicit none
+    ! function return type
+    real(kind=real64) :: raise_x_to_the_power_of_1_point_5
+    ! dummy args
+    real(kind=real64), intent(in) :: x
+    !
+    raise_x_to_the_power_of_1_point_5 = x ** 1.5_real64
+  end function raise_x_to_the_power_of_1_point_5
+end program main
 ```
 
 This can be optimized by replacing `**` with multiplication and the square root:
 
 ```fortran
-subroutine example(a, x)
-  use iso_fortran_env, only : real32, int32
-  ! dummy args
-  real(kind=real32), intent(out) :: a(:)
-  real(kind=real32), intent(in) :: x
-  ! local vars
-  integer(kind=int32) :: i
-  !
-  do i = 1_int32, 10_int32
-    a(i) = x * sqrt(x)
-  end do
-end subroutine example
+! solution.f90
+program main
+  ...
+contains
+  pure function raise_x_to_the_power_of_1_point_5(x)
+    ...
+    raise_x_to_the_power_of_1_point_5 = x * sqrt(x)
+  end function raise_x_to_the_power_of_1_point_5
+end program main
+```
+
+Moreover, we can verify that the computation retains full precision by running
+the following commands and comparing the results:
+
+```txt
+$ gfortran --version
+GNU Fortran (GCC) 14.2.1 20240910
+$ gfortran example.f90 -o example
+$ gfortran solution.f90 -o solution
+$ ./example
+2 raised to the power of 1.5 is: 2.828427124746190
+$ ./solution
+2 raised to the power of 1.5 is: 2.828427124746190
 ```
 
 ### Related resources

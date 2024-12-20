@@ -14,6 +14,6 @@ contains
     ! dummy args
     real(kind=real64), intent(in) :: x
     !
-    raise_x_to_the_power_of_1_point_5 = x ** 1.5_real64
+    raise_x_to_the_power_of_1_point_5 = x * sqrt(x)
   end function raise_x_to_the_power_of_1_point_5
 end program main
