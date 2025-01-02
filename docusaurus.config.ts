@@ -126,6 +126,9 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 
   plugins: [require.resolve('docusaurus-lunr-search')],
+
+  // Executed on client-side (web browser)
+  clientModules: [require.resolve('./src/scripts/custom.js')],
 };
 
 export default config;
