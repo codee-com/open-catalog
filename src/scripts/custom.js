@@ -25,6 +25,25 @@ const createDataTable = async () => {
     },
   });
 
+  // "<tickbox> --> <blank>" sorting logic
+  // (blanks before ticks by default)
+  const emptyString = (str) => str.trim() === "";
+
+  jQuery.extend(DT.ext.type.order, {
+    'ticks-asc': (a, b) => {
+      if (a === b) {
+        return 0;
+      }
+      return emptyString(a) ? 1 : -1;
+    },
+    'ticks-desc': (a, b) => {
+      if (a === b) {
+        return 0;
+      }
+      return emptyString(a) ? -1 : 1;
+    }
+  });
+
   const table = jQuery('#checks + table').first();
 
   // If found
@@ -38,6 +57,8 @@ const createDataTable = async () => {
       columnDefs: [
         // ID
         { 'targets': 0, 'type': 'checks' },
+        // C, Fortran, C++, AutoFix
+        { 'targets': [3, 4, 5, 6], 'type': 'ticks' },
       ],
       ordering: true,
       paging: false,
