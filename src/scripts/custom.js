@@ -3,11 +3,15 @@
 const createDataTable = async () => {
   const [
     DataTableCSS,
+    DataTableButtonsCSS,
     { 'default': DT },
+    DataTableButtons,
     { 'default': jQuery },
   ] = await Promise.all([
     import('datatables.net-dt/css/dataTables.dataTables.css'),
+    import('datatables.net-buttons-dt/css/buttons.dataTables.css'),
     import('datatables.net-dt'),
+    import('datatables.net-buttons/js/dataTables.buttons'),
     import('jquery'),
   ]);
 
@@ -60,10 +64,33 @@ const createDataTable = async () => {
         // C, Fortran, C++, AutoFix
         { 'targets': [3, 4, 5, 6], 'type': 'ticks' },
       ],
+      // Filters
+      layout: {
+        topStart: {
+          buttons: [
+            ...[
+              { 'label': 'All checks', 'searchValue': '' },
+              { 'label': 'Correctness', 'searchValue': 'correctness' },
+              { 'label': 'Modernization', 'searchValue': 'modernization' },
+              { 'label': 'Optimization', 'searchValue': 'optimization' },
+            ].map(({ label, searchValue }) => ({
+              'text': label,
+              'action': (event, dataTable, node, config) => {
+                dataTable.column(2).search(searchValue).draw();
+                dataTable.buttons().enable();
+                dataTable.buttons(node).disable();
+              }
+            })),
+          ]
+        }
+      },
       ordering: true,
       paging: false,
       searching: true,
     });
+
+    // By default, all checks are shown
+    dataTable.buttons([0]).disable();
   }
 };
 
