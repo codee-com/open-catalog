@@ -147,3 +147,16 @@ get involved:
 
 
 [^1]: [Codee](https://www.codee.com)
+
+
+<details>
+
+<summary>Technical bits for Open Catalog website</summary>
+
+Feel free to ignore me! I make the checks table behave dynamically.
+
+import ChecksTable from '@site/src/components/ChecksTable';
+
+<ChecksTable />
+
+</details>
