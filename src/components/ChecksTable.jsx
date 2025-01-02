@@ -23,6 +23,20 @@ const ChecksTable = () => {
 
             DataTable.use(DT);
 
+            // "PWR --> PWD --> RMK" sorting logic
+            // (sorted alphabetical by default)
+            const idPriority = { 'PWR': 1, 'PWD': 2, 'RMK': 3 };
+            const getIdPriority = (id) => idPriority[id.match(/^[A-Z]+/)] || 999;
+
+            jQuery.extend(DT.ext.type.order, {
+                'checks-asc': (a, b) => {
+                    return getIdPriority(a) - getIdPriority(b);
+                },
+                'checks-des': (a, b) => {
+                    return getIdPriority(b) - getIdPriority(a);
+                },
+            });
+
             // Assuming the checks table is the first one
             const table = jQuery("table").first();
 
@@ -33,6 +47,11 @@ const ChecksTable = () => {
 
                 // Convert the checks table into a DataTable
                 let dataTable = table.DataTable({
+                    // Apply custom sorting logic
+                    columnDefs: [
+                        // ID
+                        { 'targets': 0, 'type': 'checks' },
+                    ],
                     ordering: true,
                     paging: false,
                     searching: true,
