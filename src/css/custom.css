@@ -44,7 +44,7 @@
   --ifm-color-primary-lightest: #faf8ff;
   --ifm-background-color: #1b1725 !important; /* Otherwise they are overwritten by html[data-theme='dark'] */
   --ifm-background-surface-color: #32324a !important; /* Otherwise they are overwritten by html[data-theme='dark'] */
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
 }
 
 .footer--dark {
