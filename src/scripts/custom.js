@@ -52,9 +52,6 @@ const createDataTable = async () => {
 
   // If found
   if (table.length > 0) {
-    // DataTable styles
-    table.addClass("hover row-borders stripe");
-
     // Convert the checks table into a DataTable
     let dataTable = table.DataTable({
       // Apply custom sorting logic
@@ -77,8 +74,8 @@ const createDataTable = async () => {
               'text': label,
               'action': (event, dataTable, node, config) => {
                 dataTable.column(2).search(searchValue).draw();
-                dataTable.buttons().enable();
-                dataTable.buttons(node).disable();
+                jQuery(node).addClass('dt-button-clicked');
+                jQuery(node).siblings().removeClass('dt-button-clicked');
               }
             })),
           ]
@@ -90,7 +87,11 @@ const createDataTable = async () => {
     });
 
     // By default, all checks are shown
-    dataTable.buttons([0]).disable();
+    jQuery('.dt-button').first().addClass('dt-button-clicked');
+
+    // Replace the search bar label with a placeholder
+    jQuery('.dt-search label').remove();
+    jQuery('.dt-search input').attr('placeholder', 'Filter checks...');
   }
 };
 

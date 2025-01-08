@@ -22,29 +22,37 @@
   --ifm-heading-font-weight: bold;
   --ifm-line-height-base: 1.5;
   --ifm-color-primary: #5e33ff;
+  --ifm-color-primary-transparency-10: #5e33ff10;
+  --ifm-color-primary-transparency-20: #5e33ff20;
   --ifm-color-primary-dark: #4614ff;
   --ifm-color-primary-darker: #3a05ff;
   --ifm-color-primary-darkest: #2d00d6;
   --ifm-color-primary-light: #7652ff;
   --ifm-color-primary-lighter: #8261ff;
   --ifm-color-primary-lightest: #a68fff;
+  --ifm-color-highlight: #00000010;
+  --ifm-color-highlight-light: #00000005;
   --ifm-background-color: #ffffff;
   --ifm-code-font-size: 85%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: var(--ifm-color-highlight);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #a384ff;
+  --ifm-color-primary-transparency-10: #a384ff10;
+  --ifm-color-primary-transparency-20: #a384ff20;
   --ifm-color-primary-dark: #865dff;
   --ifm-color-primary-darker: #784aff;
   --ifm-color-primary-darkest: #4c10ff;
   --ifm-color-primary-light: #c0abff;
   --ifm-color-primary-lighter: #cebeff;
   --ifm-color-primary-lightest: #faf8ff;
+  --ifm-color-highlight: #ffffff10;
+  --ifm-color-highlight-light: #ffffff05;
   --ifm-background-color: #1b1725 !important; /* Otherwise they are overwritten by html[data-theme='dark'] */
   --ifm-background-surface-color: #32324a !important; /* Otherwise they are overwritten by html[data-theme='dark'] */
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+  --docusaurus-highlighted-code-line-bg: var(--ifm-color-highlight);
 }
 
 .footer--dark {
@@ -103,4 +111,66 @@ th {
 .footer__col:nth-child(2) svg {
   width: 1.5em;
   height: 1.5em;
+}
+
+/** Customize DataTables' components so they fit best the Docusaurus style **/
+
+/* There are multiple `!important` usages to ensure the default style of
+   components is overriden where needed */
+
+/* Filter buttons, Search box, Table */
+button.dt-button, .dt-search, table.dataTable {
+  color: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-base);
+}
+
+/* Filter buttons */
+button.dt-button {
+  background: none !important;
+  border-color: var(--ifm-color-primary) !important;
+  border-radius: 0.25rem !important;
+  border-width: 0px 0px 0.25rem 0px !important;
+  opacity: 0.50;
+}
+
+button.dt-button:hover {
+  opacity: 1.00;
+}
+
+button.dt-button-clicked {
+  background: var(--ifm-color-highlight) !important;
+  opacity: 1.00;
+}
+
+/* Search box */
+.dt-search input {
+  background-color: var(--ifm-color-highlight) !important;
+  border: 0px !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem !important;
+}
+
+/* Search box - Text */
+.dt-search input, .dt-search input::placeholder {
+  font-family: var(--ifm-font-family-base);
+}
+
+/* Table - Borders */
+table.dataTable th, table.dataTable td, table.dataTable tr:last-child {
+  border: 1px solid var(--ifm-color-highlight) !important;
+}
+
+/* Table header - Color */
+table.dataTable thead th {
+  background-color: var(--ifm-color-primary-transparency-20);
+}
+
+/* Table rows - Stripe */
+table.dataTable tbody tr:nth-child(even) {
+  background-color: var(--ifm-color-primary-transparency-10);
+}
+
+/* Table rows - Hover */
+table.dataTable tbody tr:hover {
+  background-color: var(--ifm-color-highlight-light);
 }
