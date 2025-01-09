@@ -10,10 +10,8 @@ pattern can be sped up by
 ### Actions
 
 Implement a version of the scalar reduction loop using an Application Program
-Interface (API) that enables offloading to accelerators. Codee assists the
-programmer by providing source code rewriting capabilities using
-[OpenMP](https://en.wikipedia.org/wiki/OpenMP) and
-[OpenACC](https://en.wikipedia.org/wiki/OpenACC) compiler directives.
+Interface (API) that enables offloading to accelerators, such as OpenMP or
+OpenACC.
 
 ### Relevance
 

@@ -26,9 +26,3 @@ layouts to reduce data transfers and memory access times.
 
 Alternatively, the OpenACC offload directives also enable the implementation of
 efficient data transfers in GPU programming.
-
-Overall, the Codee tools support GPU programming for C/C++/Fortran using OpenMP
-and OpenACC. It can automatically insert OpenMP or OpenACC directives in the
-source code to offload to accelerator devices such as GPUs, helping novice
-programmers to write GPU code at the expert level. Codee provides a systematic,
-more predictable approach that leverages parallel programming best practices.

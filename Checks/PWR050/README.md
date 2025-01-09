@@ -9,8 +9,7 @@ be sped up using [multithreading](../../Glossary/Multithreading.md).
 ### Actions
 
 Implement a version of the forall loop using an Application Program Interface
-(API) that enables multithreading on the CPU. Codee assists the programmer by
-providing source code rewriting capabilities using OpenMP compiler directives.
+(API) that enables multithreading on the CPU, such as OpenMP.
 
 ### Relevance
 

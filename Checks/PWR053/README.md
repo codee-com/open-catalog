@@ -9,9 +9,8 @@ can be sped up using [vectorization](../../Glossary/Vectorization.md).
 ### Actions
 
 Implement a version of the forall loop using an Application Program Interface
-(API) that enables vectorization. Codee assists the programmer by providing
-source code rewriting capabilities using compiler directives provided by OpenMP
-standard, GNU compiler, LLVM compiler and Intel compiler.
+(API) that enables vectorization, such as OpenMP, or using compiler-specific
+directives.
 
 ### Relevance
 

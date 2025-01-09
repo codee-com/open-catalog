@@ -8,11 +8,7 @@ parallel performance of the nested loop.
 ### Actions
 
 Parallelize the nested loops using offloading for the outer loop and SIMD
-vectorization for the inner loop. You can do so for OpenMP by invoking:
-
-```bash
-pwdirectives --offload omp-teams+simd foo.c:5 -o foo-hybrid.c
-```
+vectorization for the inner loop.
 
 ### Relevance
 

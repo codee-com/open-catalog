@@ -8,11 +8,7 @@ performance of the nested loop.
 ### Actions
 
 Parallelize the outer loop using multi-threading and the inner loop using
-vectorization. You can do so for OpenMP by invoking:
-
-```bash
-pwdirectives --multi omp-for+simd foo.c:5 -o foo-hybrid.c
-```
+vectorization.
 
 ### Relevance
 

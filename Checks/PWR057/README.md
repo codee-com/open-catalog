@@ -5,16 +5,13 @@
 A loop containing the
 [sparse reduction](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md)
 pattern can be sped up by
-[offloading it to an accelerator](../../Glossary/Offloading.md). Codee can do this
-automatically, no source code modification is needed by the developer.
+[offloading it to an accelerator](../../Glossary/Offloading.md).
 
 ### Actions
 
 Implement a version of the sparse reduction loop using an Application Program
-Interface (API) that enables offloading to accelerators. Codee assists the
-programmer by providing source code rewriting capabilities using
-[OpenMP](https://en.wikipedia.org/wiki/OpenMP) and
-[OpenACC](https://en.wikipedia.org/wiki/OpenACC) compiler directives.
+Interface (API) that enables offloading to accelerators, such as OpenMP or
+OpenACC.
 
 ### Relevance
 

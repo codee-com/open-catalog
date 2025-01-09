@@ -7,10 +7,9 @@ the loop body.
 
 ### Actions
 
-Use `pwdirectives` to vectorize the loop.
-
-Alternatively, you can perform [loop fission](../../Glossary/Loop-fission.md) to
-isolate the unpredictable memory accesses to a separate loop.
+Perform [loop fission](../../Glossary/Loop-fission.md) to isolate the
+unpredictable memory accesses to a separate loop. If not possible, consider
+evaluating the performance of the alternative scenarios described below.
 
 ### Relevance
 

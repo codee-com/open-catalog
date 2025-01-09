@@ -9,9 +9,7 @@ can be sped up by [offloading it to an accelerator](../../Glossary/Offloading.md
 ### Actions
 
 Implement a version of the forall loop using an Application Program Interface
-(API) that enables offloading to accelerators. Codee assists the programmer by
-providing source code rewriting capabilities using OpenMP and OpenACC compiler
-directives.
+(API) that enables offloading to accelerators, such as OpenMP or OpenACC.
 
 ### Relevance
 
