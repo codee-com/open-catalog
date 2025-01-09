@@ -1,4 +1,4 @@
-# RMK012: The vectorization cost model states the loop is not a SIMD opportunity because conditional execution renders vectorization inefficient
+# RMK012: Conditional execution in the loop body may prevent vectorization
 
 ### Issue
 

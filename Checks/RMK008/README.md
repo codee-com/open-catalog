@@ -1,4 +1,4 @@
-# RMK008: SIMD opportunity within an offloaded region
+# RMK008: Vectorization opportunity within an offloaded region
 
 ### Issue
 

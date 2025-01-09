@@ -1,4 +1,4 @@
-# RMK013: The vectorization cost model states the loop is not a SIMD opportunity because loops with low trip count unknown at compile time do not benefit from vectorization
+# RMK013: Low trip count unknown at compile time may prevent vectorization of the loop
 
 ### Issue
 
@@ -29,7 +29,7 @@ same operation is applied to a vector of data instead of to a single piece of
 data. The size of the vector is fixed, and it is often the case that the size of
 the data set is not an exact multiple of the vector size. In this case, in
 addition to a vectorized loop, it is necessary to introduce a drain loop which
-processes a few last pieces of data which do not fit the whol vector.
+processes a few last pieces of data which do not fit the whole vector.
 
 When the loop trip count is very low, it might happen that the vector part of
 the loop doesn't run at all, or it runs with only one or two iterations. If this

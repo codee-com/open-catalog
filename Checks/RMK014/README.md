@@ -1,9 +1,9 @@
-# RMK014: The vectorization cost model states the loop is not a SIMD opportunity due to unpredictable memory accesses in the loop body
+# RMK014: Unpredictable memory accesses in the loop body may prevent vectorization
 
 ### Issue
 
-Loop is not a SIMD opportunity because of the unpredictable memory accesses in
-the loop body.
+Loop might not leverage SIMD vectorization because of the unpredictable memory
+accesses in the loop body.
 
 ### Actions
 
@@ -13,12 +13,12 @@ evaluating the performance of the alternative scenarios described below.
 
 ### Relevance
 
-[Memory access pattern](../../Glossary/Memory-access-pattern.md) is very important
-for good software performance. The loop contains unpredictable memory accesses
-(either because of dereferencing a pointer or because it accesses array elements
-indirectly). This type of memory access pattern is very inefficient from the
-memory subsystem perspective, and these loops are typically not good SIMD
-opportunities.
+[Memory access pattern](../../Glossary/Memory-access-pattern.md) is very
+important for good software performance. The loop contains unpredictable memory
+accesses (either because of dereferencing a pointer or because it accesses
+array elements indirectly). This type of memory access pattern is very
+inefficient from the memory subsystem perspective, and these loops are
+typically not good SIMD vectorization opportunities.
 
 Occasionally, loops with unpredictable memory access pattern can benefit from
 vectorization: if the loop is computationally expensive, using

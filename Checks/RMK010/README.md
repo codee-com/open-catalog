@@ -1,9 +1,9 @@
-# RMK010: The vectorization cost model states the loop is not a SIMD opportunity due to strided memory accesses in the loop body
+# RMK010: Strided memory accesses in the loop body may prevent vectorization
 
 ### Issue
 
-Loop is not an SIMD opportunity because of the strided memory accesses in the
-loop body.
+Loop might not leverage SIMD vectorization because of the strided memory
+accesses in the loop body.
 
 ### Actions
 
@@ -12,10 +12,11 @@ tiling.
 
 ### Relevance
 
-[Memory access pattern](../../Glossary/Memory-access-pattern.md) is very important
-for good software performance. The loop contains strided memory accesses. This
-type of memory access pattern is inefficient from the memory subsystem
-perspective, and these loops are typically not good SIMD opportunities.
+[Memory access pattern](../../Glossary/Memory-access-pattern.md) is very
+important for good software performance. The loop contains strided memory
+accesses. This type of memory access pattern is inefficient from the memory
+subsystem perspective, and these loops are typically not good SIMD
+vectorization opportunities.
 
 Loops with strided memory accesses can be vectorized if the strided memory
 access is removed. This is typically the case when the strided memory access is
