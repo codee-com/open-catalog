@@ -122,6 +122,11 @@ end subroutine example
 > efficient implementation that balances synchronization and memory overheads
 > must be explored for each particular code.
 
+>[!WARNING]
+> OpenMP parallelization directives are not allowed in Fortran procedures
+> marked with the `pure` attribute. To enable their use, `pure` must be
+> removed.
+
 ### Related resources
 
 * [PWR052 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR052/)

@@ -136,6 +136,11 @@ end module example_module
   * However, the function also modifies `c`, memory outside of its scope, thus
     leading to a "normal" function.
 
+>[!WARNING]
+> Fortran procedures marked with the `pure` attribute do not allow
+> OpenACC/OpenMP parallelization directives. Be aware of this limitation in
+> case you intend to use them.
+
 ### Related resources
 
 * [PWR003 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR003/)

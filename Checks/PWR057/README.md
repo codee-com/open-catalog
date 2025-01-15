@@ -115,6 +115,11 @@ subroutine example(A, nodes)
 end subroutine example
 ```
 
+>[!WARNING]
+> OpenACC/OpenMP offloading directives are not allowed in Fortran procedures
+> marked with the `pure` attribute. To enable their use, `pure` must be
+> removed.
+
 ### Related resources
 
 * [PWR057 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR057/)

@@ -127,6 +127,11 @@ end function example
 > balancing synchronization and memory overheads, by taking advantage of a
 > reduction mechanism typically supported by the APIs for multithreading.
 
+>[!WARNING]
+> OpenMP parallelization directives are not allowed in Fortran procedures
+> marked with the `pure` attribute. To enable their use, `pure` must be
+> removed.
+
 ### Related resources
 
 * [PWR051 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR051/)
