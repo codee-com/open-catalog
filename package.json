@@ -26,6 +26,7 @@
     "jquery": "^3.7.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
+    "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.0.0",
     "remark-github-admonitions-to-directives": "^2.1.0"
   },
