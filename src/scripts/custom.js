@@ -60,6 +60,8 @@ const createDataTable = async () => {
         { 'targets': 0, 'type': 'checks' },
         // C, Fortran, C++, AutoFix
         { 'targets': [3, 4, 5, 6], 'type': 'ticks' },
+        // Disable 'Category' column to be orderable
+        { 'orderable': false, 'targets': 2 },
       ],
       // Filters
       layout: {
