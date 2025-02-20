@@ -4,12 +4,12 @@
 
 Importing modules without specifying elements with the `only` keyword can
 obscure their origin, hurting the readability of the code, and even lead to
-name conflicts.
+name conflicts or difficult-to-diagnose bugs.
 
 ### Actions
 
-Enhance code clarity by leveraging the `only` keyword in `use` statements,
-clearly specifying which parts of a module are needed.
+Enhance code clarity and reliability by leveraging the `only` keyword in `use`
+statements, clearly specifying which parts of a module are needed.
 
 ### Relevance
 
@@ -17,8 +17,16 @@ The default behavior of the `use` statement is to make all public parts of a
 module accessible to the program. This makes tracing the origin of each element
 more difficult, and can even cause name conflicts, especially in large
 codebases. These issues impact both the readability and maintainability of the
-code. In contrast, the `only` keyword restricts the visibility to explicitly
-mentioned elements, effectively addressing these problems.
+code.
+
+In procedures with implicit typing enabled, an `use` without the `only`
+specification can also easily lead to errors. If the imported module is later
+expanded with new members, these are automatically imported into the procedure
+and might inadvertedly shadow existing and implicitly typed variables,
+potentially leading to difficult-to-diagnose bugs.
+
+By leveraging the `only` keyword, the programmer restricts the visibility to
+explicitly mentioned elements, effectively preventing these problems.
 
 ### Code examples
 
