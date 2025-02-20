@@ -15,6 +15,12 @@ Many loops can benefit from vectorization. However, loops with calls to
 recursive functions cannot be vectorized. Recursive functions introduce complex
 control flow logic which the compilers cannot vectorize automatically.
 
+> [!TIP]
+> In addition to facilitating vectorization, rewriting algorithms in a
+> non-recursive way increases code resilience. Recursive calls may rapidly lead
+> to stack overflows when the recursion depth is too high, potentially causing
+> crashes.
+
 > [!NOTE]
 > Whether the loop with a recursive function call is vectorizable or not after
 > de-recursion depends on the property of the original recursive function itself.
