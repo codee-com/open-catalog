@@ -2,7 +2,8 @@
 
 ### Issue
 
-Mark functions that do not produce side effects as pure to enable compiler
+Mark functions that do not produce side effects as pure to facilitate reasoning
+about the flow of data, improving code readability and favoring compiler
 optimizations.
 
 In computer programming, a function can be considered pure if **its only side
