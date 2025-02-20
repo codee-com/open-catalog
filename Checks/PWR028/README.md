@@ -58,6 +58,13 @@ void example(float *a, float *b, float *c, unsigned size, unsigned inc) {
 }
 ```
 
+> [!TIP]
+> In addition to facilitating optimization, array-based notation is generally
+> less error-prone than pointer-based notation. This is especially relevant
+> when accessing multi-dimensional arrays with a single pointer `*`, where
+> offsets must be manually computed by multiplying indices with the
+> corresponding dimensions.
+
 ### Related resources
 
 * [PWR028 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR028/)
