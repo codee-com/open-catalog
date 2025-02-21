@@ -3,15 +3,15 @@ sidebar_position: 1
 sidebar_label: Index
 ---
 
-# Open Catalog of Code Guidelines for Correctness, Modernization, Security, and Optimization
+# Open Catalog of Code Guidelines for Correctness, Modernization, Security, Portability, and Optimization
 
 ## About
 
 This Open Catalog is a collaborative effort to consolidate expert knowledge on
-code guidelines for the correctness, modernization, security, and optimization
-of code written in C, C++, and Fortran programming languages. The Catalog
-consists of a comprehensive set of checks (rules) that describe specific issues
-in the source code and provide guidance on corrective actions, along with
+code guidelines for the correctness, modernization, security, portability, and
+optimization of code written in C, C++, and Fortran programming languages. The
+Catalog consists of a comprehensive set of checks (rules) that describe specific
+issues in the source code and provide guidance on corrective actions, along with
 extensive documentation, example codes and references to additional reading
 resources.
 

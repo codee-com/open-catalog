@@ -4,8 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives';
 
 const config: Config = {
-  title: 'Code Guidelines for Correctness, Modernization, Security, and Optimization',
-  tagline: 'A collaborative effort to consolidate expert knowledge on code guidelines for the correctness, modernization, security, and optimization of code written in C, C++, and Fortran programming languages',
+  title: 'Code Guidelines for Correctness, Modernization, Security, Portability, and Optimization',
+  tagline: 'A collaborative effort to consolidate expert knowledge on code guidelines for the correctness, modernization, security, portability, and optimization of code written in C, C++, and Fortran programming languages',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
