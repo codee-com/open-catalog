@@ -72,6 +72,7 @@ const createDataTable = async () => {
               { 'label': 'Correctness', 'searchValue': 'correctness' },
               { 'label': 'Modernization', 'searchValue': 'modernization' },
               { 'label': 'Security', 'searchValue': 'security' },
+              { 'label': 'Portability', 'searchValue': 'portability' },
               { 'label': 'Optimization', 'searchValue': 'optimization' },
             ].map(({ label, searchValue }) => ({
               'text': label,
