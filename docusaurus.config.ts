@@ -140,6 +140,10 @@ const config: Config = {
               label: 'Manage cookies',
               href: '#',
             },
+            {
+              label: 'License notice',
+              href: '/license-notice',
+            },
           ],
         },
       ],
