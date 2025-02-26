@@ -87,7 +87,7 @@ designed to demonstrate:
 | [PWR062](Checks/PWR062/) | Consider loop interchange by removing accumulation on array value                              | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR063](Checks/PWR063/) | Avoid using legacy Fortran constructs                                                          | correctness, modernization, security               |   | ✓       |     |         |
 | [PWR068](Checks/PWR068/) | Encapsulate procedures within modules to avoid the risks of calling implicit interfaces        | correctness, modernization, security               |   | ✓       |     |         |
-| [PWR069](Checks/PWR069/) | Use the keyword only to explicitly state what to import from a module                          | modernization, security                            |   | ✓       |     | ✓[^1]   |
+| [PWR069](Checks/PWR069/) | Use the keyword only to explicitly state what to import from a module                          | correctness, modernization, security               |   | ✓       |     | ✓[^1]   |
 | [PWR070](Checks/PWR070/) | Declare array dummy arguments as assumed-shape arrays                                          | correctness, modernization, security, optimization |   | ✓       |     |         |
 | [PWR071](Checks/PWR071/) | Prefer real(kind=kind_value) for declaring consistent floating types                           | modernization, portability, security               |   | ✓       |     |         |
 | [PWR072](Checks/PWR072/) | Split the variable initialization from the declaration to prevent the implicit 'save' behavior | correctness, security                              |   | ✓       |     | ✓[^1]   |
