@@ -22,43 +22,55 @@ consecutive positions because the latter maximises
 
 #### C
 
-Consider the example code below to illustrate the presence of non-consecutive
-access patterns. The elements of array `a` are accessed in a non-consecutive
-manner. In the scope of the outer loop, `for (i)`, all the iterations access
-the first row of the array. Thus, the code exhibits repeated accesses to all
-the elements of the first row, a total number of times equal to `rows`:
+The example code below illustrates a non-consecutive access pattern on a
+one-dimensional array. Each iteration of the loop accesses two elements located
+far apart in memory; one from the beginning and one from the end of the array:
 
 ```c
-void example(float **a, unsigned rows, unsigned cols) {
-  for (unsigned i = 0; i < rows; ++i) {
-    for (unsigned j = 0; j < cols; ++j) {
-      a[0][j] = 0.0f;
-    }
+void reverseArray(float *array, unsigned size) {
+  for (unsigned i = 0; i < size / 2; ++i) {
+    float temp = array[i];
+    array[i] = array[size - i - 1];
+    array[size - i - 1] = temp;
   }
 }
 ```
 
+Modern CPUs use prefetching mechanisms to predict and load upcoming memory
+accesses into the cache. However, these mechanisms are not foolproof,
+particularly when the access pattern is non-consecutive, such as the
+alternating access shown above. In such cases, the predictions might be
+incorrect, leading to inefficient use of the memory subsystem and degraded
+performance.
+
 #### Fortran
 
-Consider the example code below to illustrate the presence of non-consecutive
-access patterns. The elements of array `a` are accessed in a non-consecutive
-manner. In the scope of the outer loop, `do j`, all the iterations access the
-first column of the array. Thus, the code exhibits repeated accesses to all the
-elements of the first column, a total number of times equal to `size(a, 2)`:
+The example code below illustrates a non-consecutive access pattern on a
+one-dimensional array. Each iteration of the loop accesses two elements located
+far apart in memory; one from the beginning and one from the end of the array:
 
 ```fortran
-pure subroutine example(a)
+pure subroutine reverseArray(array)
   implicit none
-  integer, intent(out) :: a(:, :)
-  integer :: i, j
+  integer, intent(inout) :: array(:)
+  integer :: i, length, temp
 
-  do j = 1, size(a, 2)
-    do i = 1, size(a, 1)
-      a(i, 1) = 0
-    end do
+  length = size(array)
+
+  do i = 1, length / 2
+    temp = array(i)
+    array(i) = array(length - i + 1)
+    array(length - i + 1) = temp
   end do
-end subroutine example
+end subroutine reverseArray
 ```
+
+Modern CPUs use prefetching mechanisms to predict and load upcoming memory
+accesses into the cache. However, these mechanisms are not foolproof,
+particularly when the access pattern is non-consecutive, such as the
+alternating access shown above. In such cases, the predictions might be
+incorrect, leading to inefficient use of the memory subsystem and degraded
+performance.
 
 ### Related resources
 

@@ -1,13 +1,15 @@
 ! PWR035: Avoid non-consecutive array access to improve performance
 
-pure subroutine example(a)
+pure subroutine reverseArray(array)
   implicit none
-  integer, intent(out) :: a(:, :)
-  integer :: i, j
+  integer, intent(inout) :: array(:)
+  integer :: i, length, temp
 
-  do j = 1, size(a, 2)
-    do i = 1, size(a, 1)
-      a(i, 1) = 0
-    end do
+  length = size(array)
+
+  do i = 1, length / 2
+    temp = array(i)
+    array(i) = array(length - i + 1)
+    array(length - i + 1) = temp
   end do
-end subroutine example
+end subroutine reverseArray
