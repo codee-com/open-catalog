@@ -10,7 +10,7 @@ In C/C++ there are the following scopes:
 accessible from the place of definition until the end of the block where it is
 defined. In C++, blocks are delimited with curly brackets `{}`.
 
-* Function scope - function parameters have a function scope and can be used
+* Function scope - function arguments have a function scope and can be used
 anywhere inside the function.
 
 * File scope - defined outside functions, these variables are visible from the

@@ -56,8 +56,8 @@ end program test_discouraged_real_types
 ```
 
 To conveniently control the program's precision and ensure portability, it is
-recommended to use a central module where different `kind` parameters are
-defined, either using `selected_real_kind()`, or the `iso_fortran_env` module.
+recommended to use a central module where different `kind` values are defined,
+either using `selected_real_kind()`, or the `iso_fortran_env` module.
 
 Let's start with an example using `selected_real_kind()`, which allows to
 specify a minimum amount of significant digits and exponent range:

@@ -1,4 +1,4 @@
-! PWR008: Declare the intent for each procedure parameter
+! PWR008: Declare the intent for each procedure argument
 
 subroutine example(a, b)
   implicit none

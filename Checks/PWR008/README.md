@@ -1,17 +1,17 @@
-# PWR008: Declare the intent for each procedure parameter
+# PWR008: Declare the intent for each procedure argument
 
 ### Issue
 
-Each procedure parameter should have its intent declared to facilitate reasoning
+Each procedure argument should have its intent declared to facilitate reasoning
 about the flow of data in and out of the function.
 
 ### Actions
 
-Declare the proper intent for each procedure parameter.
+Declare the proper intent for each procedure argument.
 
 ### Relevance
 
-By declaring the intent of each procedure parameter the flow of data in and out
+By declaring the intent of each procedure argument the flow of data in and out
 of the function is made explicit in the source code. This not only improves code
 legibility but also allows reasoning about what the procedure does: by including
 all data inputted and outputted by a procedure in its signature, the
@@ -28,7 +28,7 @@ programming best practices.
 
 ### Code example
 
-In the following example, the intent of all the parameters of the function is
+In the following example, the intent of all the arguments of the function is
 not explicit in the code:
 
 ```fortran
@@ -47,7 +47,7 @@ contains
 end program example
 ```
 
-By enforcing the explicit declaration of the intent of the parameters of the
+By enforcing the explicit declaration of the intent of the arguments of the
 function, the source code looks as follows:
 
 ```fortran

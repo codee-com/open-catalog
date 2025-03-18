@@ -1,4 +1,4 @@
-// PWR012: Pass only required fields from derived type as parameters
+// PWR012: Pass only required fields from derived type as arguments
 
 #include <stdlib.h>
 

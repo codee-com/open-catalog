@@ -13,7 +13,7 @@ Annotate the pure function with `#pragma omp declare simd`.
 A loop invoking functions tends to make it difficult for the compiler to
 [vectorize](../../Glossary/Vectorization.md). However, calls to some functions can be
 vectorized. Calls to a pure function (function whose return value depends only
-on function parameters) can be vectorized if the compiler is instructed to do so
+on function arguments) can be vectorized if the compiler is instructed to do so
 with a compiler pragma.
 
 > [!NOTE]

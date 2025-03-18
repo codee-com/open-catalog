@@ -1,15 +1,15 @@
-# PWR001: Declare global variables as function parameters
+# PWR001: Pass global variables as function arguments
 
 ### Issue
 
 Best programming practices recommend writing self-contained functions, meaning
 that all the global variables used in the function must be declared locally
-either as parameters or as local variables in the function body.
+either as arguments or as local variables in the function body.
 
 ### Actions
 
 Explicitly declare all the global variables read or written in the function
-either as parameters or as local variables in the function body, including the
+either as arguments or as local variables in the function body, including the
 output variables.
 
 ### Relevance
@@ -30,7 +30,7 @@ optimization.
 > leading to deep code refactorizations. In some situations, an alternative
 > approach would be to outline the critical loop into a separate function. In
 > case there is a single output variable, the function return value may be used
-> instead of a parameter.
+> instead of an argument.
 
 > [!NOTE]
 > Enforcing this recommendation may be critical in the case the functions to be
@@ -43,7 +43,7 @@ optimization.
 
 In the following example, the flow of the data across function calls is not
 explicit. The global variables `A` and `B` are read or written in functions
-`init` and `add`. As the functions have no parameters, it is necessary to keep
+`init` and `add`. As the functions have no arguments, it is necessary to keep
 track of the read and write operations to `A` and `B` across multiple functions
 (and in real codes even across multiple files).
 
@@ -71,7 +71,7 @@ void example() {
 }
 ```
 
-When the arrays are passed explicitly as function parameters, with a simple
+When the arrays are passed explicitly as function arguments, with a simple
 glance at the code you notice which are the arrays involved during the execution
 of function `example`. In the refactored code the inputs and outputs of the
 function calls `init(A)` and `add(A, B)` are explicit, so it is easier to

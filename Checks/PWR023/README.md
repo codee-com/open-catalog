@@ -1,15 +1,15 @@
-# PWR023: Add `restrict` for pointer function parameters to hint the compiler that vectorization is safe
+# PWR023: Add `restrict` for pointer function arguments to hint the compiler that vectorization is safe
 
 ### Issue
 
-Use `restrict` for pointer function parameters to hint the compiler that there
+Use `restrict` for pointer function arguments to hint the compiler that there
 is no [pointer aliasing](../../Glossary/Pointer-aliasing.md) preventing
 [vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 
 Verify that there is no aliasing at the call sites and add `restrict` to the
-pointer function parameters.
+pointer function arguments.
 
 ### Relevance
 

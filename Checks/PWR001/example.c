@@ -1,4 +1,4 @@
-// PWR001: Declare global variables as function parameters
+// PWR001: Pass global variables as function arguments
 
 #define N 100
 

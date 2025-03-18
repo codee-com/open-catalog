@@ -1,4 +1,4 @@
-// PWR023: add ‘restrict’ for pointer function parameters to hint the compiler
+// PWR023: add ‘restrict’ for pointer function arguments to hint the compiler
 // that vectorization is safe
 
 int example(int *x, int *y) {

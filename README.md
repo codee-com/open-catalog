@@ -30,17 +30,17 @@ designed to demonstrate:
 
 | ID                       | Title                                                                                          | Category                                           | C | Fortran | C++ | AutoFix |
 |:------------------------:|:----------------------------------------------------------------------------------------------:|:--------------------------------------------------:|:-:|:-------:|:---:|:-------:|
-| [PWR001](Checks/PWR001/) | Declare global variables as function parameters                                                | correctness, modernization, security               | ✓ | ✓       | ✓   |         |
+| [PWR001](Checks/PWR001/) | Pass global variables as function arguments                                                    | correctness, modernization, security               | ✓ | ✓       | ✓   |         |
 | [PWR002](Checks/PWR002/) | Declare scalar variables in the smallest possible scope                                        | correctness, security                              | ✓ |         | ✓   |         |
 | [PWR003](Checks/PWR003/) | Explicitly declare pure functions                                                              | modernization, security, optimization              | ✓ | ✓       | ✓   |         |
 | [PWR004](Checks/PWR004/) | Declare OpenMP scoping for all variables                                                       | correctness                                        | ✓ | ✓       | ✓   |         |
 | [PWR005](Checks/PWR005/) | Disable default OpenMP scoping                                                                 | correctness                                        | ✓ | ✓       | ✓   |         |
 | [PWR006](Checks/PWR006/) | Avoid privatization of read-only variables                                                     | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR007](Checks/PWR007/) | Disable implicit declaration of variables                                                      | correctness, modernization, security               |   | ✓       |     | ✓[^1]   |
-| [PWR008](Checks/PWR008/) | Declare the intent for each procedure parameter                                                | correctness, modernization, security               |   | ✓       |     | ✓[^1]   |
+| [PWR008](Checks/PWR008/) | Declare the intent for each procedure argument                                                 | correctness, modernization, security               |   | ✓       |     | ✓[^1]   |
 | [PWR009](Checks/PWR009/) | Use OpenMP teams to offload work to GPU                                                        | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR010](Checks/PWR010/) | Avoid column-major array access in C/C++                                                       | optimization                                       | ✓ |         | ✓   |         |
-| [PWR012](Checks/PWR012/) | Pass only required fields from derived type as parameters                                      | modernization, optimization                        | ✓ | ✓       | ✓   |         |
+| [PWR012](Checks/PWR012/) | Pass only required fields from derived type as arguments                                       | modernization, optimization                        | ✓ | ✓       | ✓   |         |
 | [PWR013](Checks/PWR013/) | Avoid copying unused variables to or from the GPU                                              | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR014](Checks/PWR014/) | Out-of-dimension-bounds matrix access                                                          | correctness, security                              | ✓ |         | ✓   |         |
 | [PWR015](Checks/PWR015/) | Avoid copying unnecessary array elements to or from the GPU                                    | optimization                                       | ✓ | ✓       | ✓   |         |
@@ -51,7 +51,7 @@ designed to demonstrate:
 | [PWR020](Checks/PWR020/) | Consider loop fission to enable vectorization                                                  | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR021](Checks/PWR021/) | Consider loop fission with scalar to vector promotion to enable vectorization                  | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR022](Checks/PWR022/) | Move invariant conditional out of the loop to facilitate vectorization                         | optimization                                       | ✓ | ✓       | ✓   |         |
-| [PWR023](Checks/PWR023/) | Add 'restrict' for pointer function parameters to hint the compiler that vectorization is safe | optimization                                       | ✓ |         | ✓   |         |
+| [PWR023](Checks/PWR023/) | Add 'restrict' for pointer function arguments to hint the compiler that vectorization is safe  | optimization                                       | ✓ |         | ✓   |         |
 | [PWR024](Checks/PWR024/) | Loop can be rewritten in OpenMP canonical form                                                 | optimization                                       | ✓ |         | ✓   |         |
 | [PWR025](Checks/PWR025/) | Consider annotating pure function with OpenMP 'declare simd'                                   | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR026](Checks/PWR026/) | Annotate function for OpenMP Offload                                                           | optimization                                       | ✓ | ✓       | ✓   |         |

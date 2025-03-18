@@ -1,13 +1,13 @@
-# PWR012: Pass only required fields from derived data types as parameters
+# PWR012: Pass only required fields from derived data types as arguments
 
 ### Issue
 
-Pass only used fields from derived data types as parameters to promote data
+Pass only used fields from derived data types as arguments to promote data
 hiding.
 
 ### Actions
 
-Pass the used fields as separate parameters instead of the whole derived type.
+Pass the used fields as separate arguments instead of the whole derived type.
 
 ### Relevance
 
@@ -16,9 +16,9 @@ move around related variables. While in many cases this is an effective method
 to organize data, the compilers can have a hard time optimizing this code
 because increased visibility of data also renders optimizations more complex.
 
-Functions having derived data types used as parameters should make use of most
+Functions having derived data types used as arguments should make use of most
 if not all its fields. Ensuring that all fields from derived types passed as
-function parameters are used in the function body has several benefits: promotes
+function arguments are used in the function body has several benefits: promotes
 data hiding, makes inputs and outputs more explicit, helps to prevent unintended
 variable modifications, and also contributes to improve compiler and static
 analyzer code coverage.
@@ -179,11 +179,11 @@ end program example
 
 * [PWR012 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR012/)
 
-* [PWR001: Declare global variables as function parameters](../PWR001/README.md)
+* [PWR001: Declare global variables as function arguments](../PWR001/README.md)
 
 * [PWR002: Declare scalar variables in the smallest possible scope](../PWR002/README.md)
 
-* [PWR008: Declare the intent for each procedure parameter](../PWR008/README.md)
+* [PWR008: Declare the intent for each procedure argument](../PWR008/README.md)
 
 * [PWD006: Missing deep copy of non-contiguous data to the GPU](../PWD006/README.md)
 

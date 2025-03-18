@@ -1,4 +1,4 @@
-! PWR001: Declare global variables as function parameters
+! PWR001: Pass global variables as function arguments
 
 module globalsMod
   use iso_fortran_env, only: real32
