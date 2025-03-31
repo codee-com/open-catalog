@@ -1,15 +1,15 @@
-# PWR007: Disable implicit declaration of variables
+# PWR007: Disable the implicit declaration of variables and procedures
 
 ### Issue
 
-Fortran allows implicit data typing by default, which is error-prone and
-reduces the clarity of the code.
+Fortran allows implicit typing rules by default, which are error-prone and
+reduce the clarity of the code.
 
 ### Actions
 
 Add the `implicit none` statement after the `program`, `module`, or procedure
-declaration, while also declaring all variables explicitly to ensure the code
-compiles correctly.
+(`function`/`subroutine`) declaration, while also declaring all variables and
+procedures explicitly to ensure the code compiles and runs correctly.
 
 ### Relevance
 
@@ -41,10 +41,12 @@ used.
 
 ### Code example
 
+#### Implicit variables
+
 In the following example, all variables are implicitly typed:
 
-```fortran
-! example.f90
+```fortran {3,4} showLineNumbers
+! example_variable.f90
 program example
   num1 = 7
   num2 = 2.5
@@ -53,7 +55,7 @@ program example
 end program example
 ```
 
-As `num1` and `num2` start with the letter N, they are implicitly typed as
+As `num1` and `num2` start with the letter `n`, they are implicitly typed as
 `integer`, even though `num2` is intended to hold a floating-point value. As a
 result, the division is performed using integer arithmetic, yielding an
 incorrect result:
@@ -61,7 +63,7 @@ incorrect result:
 ```txt
 $ gfortran --version
 GNU Fortran (Debian 12.2.0-14) 12.2.0
-$ gfortran example.f90 -o example
+$ gfortran example_variable.f90 -o example
 $ ./example
    3.00000000
 ```
@@ -70,8 +72,8 @@ By adding the `implicit none` statement, the compiler will require explicit
 declarations for all variables. This helps ensure that `num2` is assigned the
 intended data type:
 
-```fortran
-! solution.f90
+```fortran {4-6} showLineNumbers
+! solution_variable.f90
 program solution
   use iso_fortran_env, only: real32
   implicit none
@@ -89,7 +91,7 @@ The division operation will now use floating-point arithmetic, producing a
 correct result:
 
 ```txt
-$ gfortran solution.f90 -o solution
+$ gfortran solution_variable.f90 -o solution
 $ ./solution
    2.79999995
 ```
@@ -104,6 +106,131 @@ $ ./solution
 > [!TIP]
 > Although not strictly necessary, `num2` is assigned a specific kind following
 > the recommendations outlined in [PWR071](/Checks/PWR071/).
+
+#### Implicit procedures
+
+The following example calculates the factorial of a number. Note how, despite
+using `implicit none` to disable the implicit declaration of variables, the
+main program is still allowed to call the implicit `factorial` procedure:
+
+```fortran showLineNumbers
+! example_procedure_factorial.f90
+pure subroutine factorial(number, result)
+  implicit none
+  integer, intent(in) :: number
+  integer, intent(out) :: result
+  integer :: i
+
+  result = 1
+  do i = 1, number
+    result = result * i
+  end do
+end subroutine factorial
+```
+
+```fortran {4,5,8} showLineNumbers
+! example_procedure.f90
+program example
+  use iso_fortran_env, only: real32
+  implicit none
+  real(kind=real32) :: number, result
+
+  number = 5
+  call factorial(number, result)
+  print *, "Factorial of", number, "is", result
+end program example
+```
+
+The main program incorrectly assumes that the `factorial` subroutine uses
+`real` variables, instead of `integer` variables. Consequently, running the
+program produces an incorrect result:
+
+```txt
+$ gfortran --version
+GNU Fortran (Debian 12.2.0-14) 12.2.0
+$ gfortran example_procedure_factorial.f90 example_procedure.f90 -o example
+$ ./example                                      
+ Factorial of   5.00000000     is   0.00000000
+```
+
+By using the `implicit none (type, external)` statement, we effectively disable
+both implicit variables and implicit procedures:
+
+```fortran {4} showLineNumbers
+! example_procedure_with_implicit.f90
+program example
+  use iso_fortran_env, only: real32
+  implicit none(type, external)
+  real(kind=real32) :: number, result
+
+  number = 5
+  call factorial(number, result)
+  print *, "Factorial of", number, "is", result
+end program example
+```
+
+```txt
+$ gfortran example_procedure_factorial.f90 example_procedure_with_implicit.f90 -o example
+example_procedure_with_implicit.f90:9:32:
+
+    9 |   call factorial(number, result)
+      |                                1
+Error: Procedure ‘factorial’ called at (1) is not explicitly declared
+```
+
+A simple solution is to encapsulate the procedure within a module, thus
+providing it with an explicit interface. This allows the compiler to verify the
+types of the provided arguments against those of the dummy arguments.
+
+Moving the `factorial` subroutine to a module is as simple as:
+
+```fortran showLineNumbers
+! solution_procedure_factorial.f90
+module mod_factorial
+  implicit none
+contains
+  pure subroutine factorial(number, result)
+    implicit none
+    integer, intent(in) :: number
+    integer, intent(out) :: result
+    integer :: i
+
+    result = 1
+    do i = 1, number
+      result = result * i
+    end do
+  end subroutine factorial
+end module mod_factorial
+```
+
+With the explicit interface, the compiler will refuse to compile the code
+unless the proper `integer` data types are used, avoiding the runtime bug:
+
+```fortran {5} showLineNumbers
+! solution_procedure.f90
+program solution
+  use mod_factorial, only: factorial
+  implicit none(type, external)
+  integer :: number, result
+
+  number = 5
+  call factorial(number, result)
+  print *, "Factorial of", number, "is", result
+end program solution
+```
+
+```txt
+$ gfortran solution_procedure_factorial.f90 solution_procedure.f90 -o solution
+$ ./solution
+ Factorial of           5 is         120
+```
+
+> [!TIP]
+> `implicit none(type, external)` allows simply declaring implicit procedures
+> as `external`. However, it's advised to provide an explicit interface at the
+> point of call (e.g., through a module), to enable compile-time argument
+> checks that prevent bugs like the one shown above. Refer to
+> [PWR068](/Checks/PWR068/) for more information.
 
 ### Related resources
 

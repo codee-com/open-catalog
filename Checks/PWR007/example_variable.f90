@@ -1,4 +1,4 @@
-! PWR007: Disable implicit declaration of variables
+! PWR007: Disable the implicit declaration of variables and procedures
 
 program example
   ! NOT-PWR071: We`re using implicit typing on purpose

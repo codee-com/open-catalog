@@ -36,7 +36,7 @@ designed to demonstrate:
 | [PWR004](Checks/PWR004/) | Declare OpenMP scoping for all variables                                                       | correctness                                        | ✓ | ✓       | ✓   |         |
 | [PWR005](Checks/PWR005/) | Disable default OpenMP scoping                                                                 | correctness                                        | ✓ | ✓       | ✓   |         |
 | [PWR006](Checks/PWR006/) | Avoid privatization of read-only variables                                                     | optimization                                       | ✓ | ✓       | ✓   |         |
-| [PWR007](Checks/PWR007/) | Disable implicit declaration of variables                                                      | correctness, modernization, security               |   | ✓       |     | ✓[^1]   |
+| [PWR007](Checks/PWR007/) | Disable the implicit declaration of variables and procedures                                   | correctness, modernization, security               |   | ✓       |     | ✓[^1]   |
 | [PWR008](Checks/PWR008/) | Declare the intent for each procedure argument                                                 | correctness, modernization, security               |   | ✓       |     | ✓[^1]   |
 | [PWR009](Checks/PWR009/) | Use OpenMP teams to offload work to GPU                                                        | optimization                                       | ✓ | ✓       | ✓   |         |
 | [PWR010](Checks/PWR010/) | Avoid column-major array access in C/C++                                                       | optimization                                       | ✓ |         | ✓   |         |
