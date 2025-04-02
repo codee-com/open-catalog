@@ -281,11 +281,28 @@ large, complex codebases where variables traverse multiple procedures and are
 subject to intricate conditional logic.
 
 If, for any reason, you still need to use `pointer` variables, it's a good
-practice to nullify them at their declaration for additional safety:
+practice to nullify them as early as possible for additional safety. For module
+variables and derived type initializations, you can nullify right at the point
+of declaration:
 
 ```fortran
-integer, pointer :: array(:) => NULL()
+type :: t
+  integer, pointer :: array(:) => null()
+end type
 ```
+
+But within procedures, it's best to declare the pointer variable first and then
+nullify it. This avoids inadvertently introducing an implicit `save` behavior:
+
+```fortran
+integer, pointer :: array(:)
+
+nullify(array)
+```
+
+> [!TIP]
+> Refer to [PWR072](/Checks/PWR072/) for more information on the dangers of the
+> implicit `save` behavior.
 
 ### Related resources
 
