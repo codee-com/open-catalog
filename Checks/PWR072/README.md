@@ -1,31 +1,30 @@
-# PWR072: Split the variable initialization from the declaration to prevent the implicit 'save' behavior
+# PWR072: Explicitly declare the 'save' attribute or split the variable initialization to prevent unintended behavior
 
 ### Issue
 
 In Fortran, when a variable is initialized at its declaration, it implicitly
-acquires the `save` attribute. This behavior is often unintended by the
-programmer and can break the program logic.
+acquires the `save` attribute. This behavior obscures the program logic and is
+often unintended by the programmer, potentially breaking the program logic.
 
 ### Actions
 
-Split the initialization of the variable from its declaration to remove the
-implicit `save` behavior and enhance code clarity.
+If the `save` behavior is intentional, explicitly add the attribute in the
+variable declaration to clarify the intent:
 
-> [!NOTE]
-> If the `save` behavior is intentional, explicitly add the attribute in the
-> variable declaration to clarify the intent:
->
-> ```fortran
-> integer, save :: count = 0
-> ```
+```fortran
+integer, save :: count = 0
+```
+
+Otherwise, split the initialization of the variable from its declaration to
+remove the implicit `save` behavior and prevent unintended effects.
 
 ### Relevance
 
 A variable with the `save` attribute retains its value across multiple
 invocations of the procedure in which it is defined. The implicit `save`
-behavior can cause debugging difficulties and lead to errors in program logic,
-particularly when working in complex codebases where functions are called
-multiple times during execution.
+behavior can cause debugging difficulties, even when intended, and lead to
+hard-to-diagnose errors in program logic, particularly when working in complex
+codebases where functions are called multiple times during execution.
 
 ### Code example
 
