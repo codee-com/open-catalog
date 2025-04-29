@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkopen_catalog=self.webpackChunkopen_catalog||[]).push([[5672],{5672:(e,a,c)=>{c.r(a)}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkopen_catalog=self.webpackChunkopen_catalog||[]).push([[9654],{9654:(e,a,c)=>{c.r(a),c.d(a,{default:()=>s});c(4692);const s=c(5668).A}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkopen_catalog=self.webpackChunkopen_catalog||[]).push([[8577],{549:(a,e,c)=>{"use strict";c.d(e,{A:()=>n});var s=c(8291);const n=s},5741:()=>{}}]);
