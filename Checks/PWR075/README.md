@@ -48,13 +48,15 @@ see the **References** section below for links to their official documentation.
 
 ### Code examples
 
+#### GNU Fortran extension
+
 Consider the following code, which checks if the file itself exists:
 
 ```fortran
-! example.f90
+! example-gnu.f90
 program example
   implicit none
-  character(len = *), parameter :: file  = "example.f90"
+  character(len = *), parameter :: file  = "example-gnu.f90"
 
   if(access(file, " ") == 0) then
     print *, "I exist"
@@ -69,8 +71,8 @@ Fortran extension that compiles successfully with `gfortran`:
 ```txt
 $ gfortran --version
 GNU Fortran (Debian 14.2.0-3) 14.2.0
-$ gfortran example.f90 -o example
-$ ./example
+$ gfortran example-gnu.f90 -o example-gnu
+$ ./example-gnu
  I exist
 ```
 
@@ -79,8 +81,8 @@ However, the same code fails to compile with LLVM's `flang` compiler:
 ```txt
 $ flang-new-18 --version
 Debian flang-new version 18.1.8 (9)
-$ flang-new-18 example.f90 -o example
-error: Semantic errors in example.f90
+$ flang-new-18 example-gnu.f90 -o example-gnu
+error: Semantic errors in example-gnu.f90
 ./example.f90:7:6: error: No explicit type declared for 'access'
     if(access(file, " ") == 0) then
        ^^^^^^
@@ -92,10 +94,10 @@ the built-in
 [`inquire`](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2024-2/inquire.html#GUID-D0115A20-D0BD-4B0F-92A5-F6CB6D2E985C):
 
 ```fortran
-! solution.f90
+! solution-gnu.f90
 program solution
   implicit none
-  character(len = *), parameter :: file  = "solution.f90"
+  character(len = *), parameter :: file  = "solution-gnu.f90"
   logical :: exists
 
   inquire(file=file, exist=exists)
@@ -109,9 +111,101 @@ end program solution
 This revised code compiles and runs successfully with `flang`:
 
 ```txt
-$ flang-new-18 solution.f90 -o solution
-$ ./solution
+$ flang-new-18 solution-gnu.f90 -o solution-gnu
+$ ./solution-gnu
  I exist
+```
+
+#### Intel Fortran extension
+
+Consider the following code:
+
+```fortran
+! example-intel.f90
+program main
+  implicit none
+
+  type :: foo_t
+    integer :: x
+  end type
+
+  type(foo_t) :: foo(2)
+  integer :: bar(2)
+
+  data foo%x /1/
+  data bar /1/
+
+  print *, foo
+  print *, bar
+end
+```
+
+This code relies on an Intel Fortran extension that allows `DATA` statements to
+partially initialize arrays or derived types. In this case, only the first
+element of `foo%x` and `bar` is initialized explicitly, while the remaining
+elements are implicitly zero-initialized.
+
+When compiled with Intel's `ifx` compiler, the program produces:
+
+```txt
+$ ifx --version
+ifx (IFX) 2024.0.0 20231017
+Copyright (C) 1985-2023 Intel Corporation. All rights reserved.
+$ ifx example-intel.f90 -o example-intel
+$ ./example-intel
+           1           0
+           1           0
+```
+
+By contrast, compilers that follow the Fortran standard strictly reject the
+code:
+
+```txt
+$ flang-new-18 --version
+Debian flang-new version 18.1.8 (9)
+$ flang-new-18 example-intel.f90 -o example-intel
+error: Semantic errors in example-intel.f90
+example-intel.f90:13:3: error: DATA statement set has no value for 'foo(2_8)%x'
+    data foo%x /1/
+    ^^^^^^^^^^^^^^
+example-intel.f90:14:3: error: DATA statement set has no value for 'bar(2_8)'
+    data bar /1/
+    ^^^^^^^^^^^^
+```
+
+To make the code portable and accepted by all standard-compliant Fortran
+compilers, each element of the arrays and derived types must be explicitly
+initialized. The corrected version of the program is:
+
+```fortran
+! solution-intel.f90
+program main
+  implicit none
+
+  type :: foo_t
+    integer :: x
+  end type
+
+  type(foo_t) :: foo(2)
+  integer :: bar(2)
+
+  data foo%x /1, 0/
+  data bar /1, 0/
+
+  print *, foo
+  print *, bar
+end
+```
+
+Now, the `DATA` statements provide values for all elements of `foo%x` and `bar`,
+eliminating any reliance on implicit zero initialization by a particular
+compiler:
+
+```txt
+$ flang-new-18 solution-intel.f90 -o solution-intel
+$ ./solution-intel
+ 1 0
+ 1 0
 ```
 
 ### Related resources
