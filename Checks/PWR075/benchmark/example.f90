@@ -1,7 +1,7 @@
-! PWR075: Avoid using GNU Fortran extensions
+! PWR075: Avoid using compiler-specific Fortran extensions
 !
 ! `dcosd` and `dsind` compute the cosine and sine of an angle given in degrees,
-! using real(8) types. As of August, 2024, they are GNU Fortran extensions.
+! using real(8) types. As of May, 2025, they are GNU Fortran extensions.
 
 ! Computes the distance between `n` pairs of points (P1(n), P2(n)) in 
 ! the circunferences given by radiuses(n)

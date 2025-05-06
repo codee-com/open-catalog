@@ -1,23 +1,23 @@
-# PWR075: Avoid using GNU Fortran extensions
+# PWR075: Avoid using compiler-specific Fortran extensions
 
 ### Issue
 
-Using compiler-specific extensions, such as those provided by GNU's `gfortran`,
-compromises the portability and consistency of code across different
-development environments.
+Using compiler-specific extensions, such as those provided by GNU's `gfortran`
+or Intel's `ifort` and `ifx`, compromises the portability and consistency of
+code across different development environments.
 
 ### Actions
 
-Refactor the code to replace existing GNU Fortran extensions with
+Refactor the code to replace existing compiler-specific extensions with
 standard-compliant Fortran code. The specific steps for refactoring will depend
 on the particular features being replaced.
 
 ### Relevance
 
-Fortran compilers, including GNU, often extend their support beyond the Fortran
-standard by introducing additional language features. While these extensions
-can provide enhanced functionality and convenience for programmers, they also
-present significant drawbacks.
+Fortran compilers often extend their support beyond the Fortran standard by
+introducing additional language features. While these extensions can provide
+enhanced functionality and convenience for programmers, they also present
+significant drawbacks.
 
 Even though some extensions may be supported by multiple compilers, there will
 inevitably be environments where the code is not compilable, complicating
@@ -32,13 +32,19 @@ relies on compiler-specific extensions from a now unsupported or inaccessible
 compiler version, developers are forced to port the code to new environments,
 further complicating the already challenging task of maintaining legacy code.
 
-For more information on which extensions are supported by GNU's `gfortran`,
-refer to the following resources:
+Some compiler-specific extensions include:
 
-- [Extensions implemented in GNU
-  Fortran](https://gcc.gnu.org/onlinedocs/gfortran/Extensions-implemented-in-GNU-Fortran.html).
-- [Extensions not implemented in GNU
-  Fortran](https://gcc.gnu.org/onlinedocs/gfortran/Extensions-not-implemented-in-GNU-Fortran.html).
+- GNU Fortran: shadowing host entities in internal procedures, forward
+referencing symbols in the specification part, or using `REAL` expressions in
+array subscripts.
+
+- Intel Fortran: calling functions as if they were subroutines, allowing
+`DATA` statements that do not fully initialize arrays or derived types, or
+accessing arrays beyond their declared bounds without triggering any semantic
+errors.
+
+For more information on which extensions are implemented by different compilers,
+see the **References** section below for links to their official documentation.
 
 ### Code examples
 
@@ -116,12 +122,12 @@ $ ./solution
 
 - ["Extensions (The GNU Fortran
 Compiler)"](https://gcc.gnu.org/onlinedocs/gfortran/Extensions.html), Free
-  Software Foundation, Inc. [last checked August 2024]
+  Software Foundation, Inc. [last checked May 2025]
 
 - ["Additional Language
-Features"](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2024-2/additional-language-features.html#dropdown-1-0-3-18),
-Intel Corporation. [last checked August 2024]
+Features"](https://www.intel.com/content/www/us/en/docs/fortran-compiler/developer-guide-reference/2025-1/additional-language-features.html),
+Intel Corporation. [last checked May 2025]
 
 - ["HPE Cray Fortran Language
 Extensions"](https://support.hpe.com/hpesc/public/docDisplay?docId=dp00004438en_us&docLocale=en_US),
-Hewlett Packard Enterprise Development LP. [last checked August 2024]
+Hewlett Packard Enterprise Development LP. [last checked May 2025]

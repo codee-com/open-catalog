@@ -1,4 +1,4 @@
-! PWR075: Avoid using GNU Fortran extensions
+! PWR075: Avoid using compiler-specific Fortran extensions
 
 program example
   implicit none
