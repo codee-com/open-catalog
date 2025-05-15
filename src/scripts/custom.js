@@ -102,16 +102,30 @@ const createDataTable = async () => {
   }
 };
 
+const syncDataTableWithURL = async (location) => {
+  const { default: jQuery } = await import('jquery');
+
+  const hash = location.hash.toLowerCase().substr(1); // (0) is the `#` part
+  // Allow an empty `hash` to go through, since it matches the "All checks"
+  // option
+  const categoryButton = jQuery(`#filter-button-${hash}`);
+  if (categoryButton.length == 1) {
+    categoryButton.first().trigger('click');
+  }
+}
+
 // Add here actions that must be run after Docusaurus has made the DOM
 // available for further manipulation
-export function onRouteDidUpdate({ location, previousLocation }) {
-  // Abort if we are still on the same page; the action fires even when
-  // navigating within the same page (e.g., between `#` headings)
-  if (location.pathname !== previousLocation?.pathname) {
-
-    // Main `README.md`
-    if (location.pathname === '/') {
-      createDataTable();
+export async function onRouteDidUpdate({ location, previousLocation }) {
+  // Main `README.md`
+  if (location.pathname === '/') {
+    // Omit if we are still on the same page; the action fires even when
+    // navigating within the same page (e.g., between `#` headings)
+    if (location.pathname !== previousLocation?.pathname) {
+      // Wait until the table is loaded since there are dependant actions
+      await createDataTable();
     }
+
+    syncDataTableWithURL(location);
   }
 }
