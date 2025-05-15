@@ -83,6 +83,22 @@ const createDataTable = async () => {
                 dataTable.column(2).search(searchValue).draw();
                 jQuery(node).addClass('dt-button-clicked');
                 jQuery(node).siblings().removeClass('dt-button-clicked');
+                if (searchValue) {
+                  // Set the category as the URL hash; this way, users can easily
+                  // share the view to the table
+                  //
+                  // Note: The preferred approach would be to use Docusaurus'
+                  // routing capabilities, instead of the default browser API.
+                  // However, they would require to wrap all this code into a
+                  // React component that is imported in the plain `.md` file. We
+                  // had something like this in the past for another
+                  // functionality, and decided to refactor the underlying
+                  // problem to not pollute the plain `.md` file view, which is
+                  // rendered as-is in GitHub.
+                  window.history.replaceState(null, '', `#${searchValue}`);
+                } else { // All checks, just remove the URL hash
+                  window.history.replaceState(null, '', window.location.pathname);
+                }
               }
             })),
           ]
