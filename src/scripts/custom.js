@@ -76,6 +76,9 @@ const createDataTable = async () => {
               { 'label': 'Optimization', 'searchValue': 'optimization' },
             ].map(({ label, searchValue }) => ({
               'text': label,
+              'attr': {
+                id: `filter-button-${searchValue}`
+              },
               'action': (event, dataTable, node, config) => {
                 dataTable.column(2).search(searchValue).draw();
                 jQuery(node).addClass('dt-button-clicked');
