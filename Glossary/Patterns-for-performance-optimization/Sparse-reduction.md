@@ -38,7 +38,7 @@ for (int nel = 0; nel < nelements; ++nelements) {
 
 #### Fortran
 
-```f90
+```fortran
 do nel = 1, nelements
   A(nodes1(nel)) = A(nodes1(nel)) + elemental_contribution(nel)
   A(nodes2(nel)) = A(nodes2(nel)) + elemental_contribution(nel)

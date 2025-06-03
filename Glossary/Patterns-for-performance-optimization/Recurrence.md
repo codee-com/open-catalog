@@ -29,7 +29,7 @@ for (int i = 1; i < N; i++) {
 
 #### Fortran
 
-```f90
+```fortran
 y(1) = 0
 do i = 2, N
   y(2) = y(i - 1) + x(i - 1)

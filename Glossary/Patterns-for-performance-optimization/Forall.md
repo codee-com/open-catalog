@@ -24,7 +24,7 @@ for (int i = 0; i < n; ++i) {
 
 #### Fortran
 
-```f90
+```fortran
 do i = 1, n
   D(i) = a * X(i) + Y(i)
 end do

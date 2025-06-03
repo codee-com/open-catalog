@@ -26,7 +26,7 @@ for (int i = 0; i < N; ++i) {
 
 #### Fortran
 
-```f90
+```fortran
 do i = 1, n
   sum = sum + A(i)
 end do
