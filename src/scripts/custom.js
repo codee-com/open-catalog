@@ -74,15 +74,36 @@ const createDataTable = async () => {
               { 'label': 'Security', 'searchValue': 'security' },
               { 'label': 'Portability', 'searchValue': 'portability' },
               { 'label': 'Optimization', 'searchValue': 'optimization' },
+              { 'label': 'CWE', 'searchValue': 'cwe' },
+              { 'label': 'ISO/IEC 24772-8', 'searchValue': 'iso' },
+              { 'label': 'SEI CERT C', 'searchValue': 'sei' },
             ].map(({ label, searchValue }) => ({
               'text': label,
               'attr': {
                 id: `filter-button-${searchValue}`
               },
               'action': (event, dataTable, node, config) => {
-                dataTable.column(2).search(searchValue).draw();
+                // Clear all previous searches
+                dataTable.columns().search('');
+
+                // Apply filter: if filtering by a security standard (ISO, SEI,
+                // CWE), show only rows where the corresponding column is
+                // non-empty. Otherwise, filter by category using an exact match
+                // in column 2
+                if (['cwe', 'iso', 'sei'].includes(searchValue)) {
+                  let columnIdx = {'cwe': 3, 'iso': 4, 'sei': 5}[searchValue];
+                  dataTable.column(columnIdx).search(
+                    '^(?!\\s*$).+', /* regex = */true, /* smart = */ false);
+                } else {
+                  dataTable.column(2).search(searchValue);
+                }
+
+                // Draw the result
+                dataTable.draw();
+
                 jQuery(node).addClass('dt-button-clicked');
                 jQuery(node).siblings().removeClass('dt-button-clicked');
+
                 if (searchValue) {
                   // Set the category as the URL hash; this way, users can easily
                   // share the view to the table
