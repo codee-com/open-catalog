@@ -20,13 +20,13 @@ contains
   real(kind=c_double) function dcosd(degrees)
     real(kind=c_double), intent(in) :: degrees
     ! `dcos` expects the angle to be in radians, not degrees
-    dcosd = dcos(degrees * pi / 180.0)
+    dcosd = dcos(degrees * pi / 180.0_c_double)
   end function dcosd
 
   real(kind=c_double) function dsind(degrees)
     real(kind=c_double), intent(in) :: degrees
     ! `dsin` expects the angle to be in radians, not degrees
-    dsind = dsin(degrees * pi / 180.0)
+    dsind = dsin(degrees * pi / 180.0_c_double)
   end function dsind
 end module trigonometric_utils
 
