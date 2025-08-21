@@ -177,9 +177,12 @@ def main():
     args = parse_args()
     if not args.build.exists():
         args.build.mkdir()
-    # CMake 3.10 doesn't support the -B flag
-    echorun(["cmake", f"{SCRIPT_DIR}", *args.cmake_args], cwd=args.build, check=True)
-    echorun(["cmake", "--build", f"{args.build}", "--", "all"], check=True)
+    try:
+        # CMake 3.10 doesn't support the -B flag
+        echorun(["cmake", f"{SCRIPT_DIR}", *args.cmake_args], cwd=args.build, check=True)
+        echorun(["cmake", "--build", f"{args.build}", "--", "all"], check=True)
+    except subprocess.CalledProcessError as e:
+        exit("Build command failed")
 
     benchmarks_to_run = list((args.build / Path("bin")).iterdir())
     if args.check:
@@ -212,4 +215,7 @@ def main():
 
 
 if __name__ == "__main__":
+  try:
     main()
+  except KeyboardInterrupt:
+    sys.exit("Aborted by the user")
