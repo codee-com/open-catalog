@@ -47,6 +47,11 @@ function(add_benchmark CHECKID)
       benchmark::benchmark
   )
 
+  # Setup separated dirs to avoid output files clashing between checks
+  set_target_properties(${CHECKID} PROPERTIES
+    Fortran_MODULE_DIRECTORY "${CHECKID}"
+  )
+
   find_library(MATH_LIBRARY m)
   if(MATH_LIBRARY)
     target_link_libraries(${CHECKID}
