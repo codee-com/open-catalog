@@ -3,7 +3,17 @@ add_custom_target(run
   COMMENT "Running all the available benchmarks"
 )
 
-# Utility function to automatically create the build target for the given check 
+# Helper function to scan the files in the check directories
+function(scan_check_files VAR CHECKID EXPR)
+  file(GLOB files "${OCB_CHECKS_DIR}/${CHECKID}/${OCB_CHECKS_BENCH_CODES_DIR}/${EXPR}")
+  if(NOT files)
+    file(GLOB files "${OCB_CHECKS_DIR}/${CHECKID}/${EXPR}")
+  endif()
+  # Propagate the result to the calling function
+  set(${VAR} "${files}" PARENT_SCOPE)
+endfunction()
+
+# Utility function to automatically create the build target for the given check
 function(add_benchmark CHECKID)
   set(files)
 
@@ -12,17 +22,11 @@ function(add_benchmark CHECKID)
   #   - Prioritize benchmark-specific codes for the check, if available
   #   - Otherwise, compile the usual code examples created for the README
   if (OCB_ENABLE_C)
-    file(GLOB c_files "${OCB_CHECKS_DIR}/${CHECKID}/${OCB_CHECKS_BENCH_CODES_DIR}/*.c")
-    if(NOT c_files)
-      file(GLOB c_files "${OCB_CHECKS_DIR}/${CHECKID}/*.c")
-    endif()
+    scan_check_files(c_files "${CHECKID}" "*.c")
     list(APPEND files ${c_files})
   endif()
   if (OCB_ENABLE_Fortran)
-    file(GLOB fortran_files "${OCB_CHECKS_DIR}/${CHECKID}/${OCB_CHECKS_BENCH_CODES_DIR}/*.f90")
-    if(NOT fortran_files)
-      file(GLOB fortran_files "${OCB_CHECKS_DIR}/${CHECKID}/*.f90")
-    endif()
+    scan_check_files(fortran_files "${CHECKID}" "*.f90")
     list(APPEND files ${fortran_files})
   endif()
 
