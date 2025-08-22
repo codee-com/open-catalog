@@ -2,7 +2,7 @@
 !
 ! The Fortran standard specifies the availability of:
 !
-!   - `cosd` and `sind`, which operate on degrees and real(4) types (Fortran 23).
+!   - `cosd` and `sind`, which operate on degrees and real type (Draft Fortran 2023: 16.9.62; 16.9.191).
 !   - `dcos` and `dsin`, which operate on radians and real(8) types (Fortran 77).
 !
 ! To replace `dcosd` and `dsind`, let's convert from degrees to radians
@@ -20,13 +20,13 @@ contains
   real(kind=c_double) function dcosd(degrees)
     real(kind=c_double), intent(in) :: degrees
     ! `dcos` expects the angle to be in radians, not degrees
-    dcosd = dcos(degrees * pi / 180.0)
+    dcosd = dcos(degrees * pi / 180.0_c_double)
   end function dcosd
 
   real(kind=c_double) function dsind(degrees)
     real(kind=c_double), intent(in) :: degrees
     ! `dsin` expects the angle to be in radians, not degrees
-    dsind = dsin(degrees * pi / 180.0)
+    dsind = dsin(degrees * pi / 180.0_c_double)
   end function dsind
 end module trigonometric_utils
 
