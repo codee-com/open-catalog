@@ -6,7 +6,7 @@ import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-di
 const config: Config = {
   title: 'Code Guidelines for Correctness, Modernization, Security, Portability, and Optimization',
   tagline: 'A collaborative effort to consolidate expert knowledge on code guidelines for the correctness, modernization, security, portability, and optimization of code written in C, C++, and Fortran programming languages',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logos/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://open-catalog.codee.com',
@@ -70,8 +70,8 @@ const config: Config = {
     navbar: {
       logo: {
         alt: 'Codee Logo',
-        src: 'img/logo.png',
-        srcDark: 'img/logo-dark.png',
+        src: 'img/logos/logo.png',
+        srcDark: 'img/logos/logo-dark.png',
       },
       title: 'open catalog',
       items: [
