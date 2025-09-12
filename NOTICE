@@ -1,4 +1,11 @@
-This product includes software developed by third parties under permissive
+The Apache License, Version 2.0 applies to the source code and contents of this
+repository unless otherwise noted.
+
+Certain contents (e.g., company logos, legal documents...) may not be licensed
+under the Apache License 2.0. In such cases, see the `LICENSE` file located in
+the directories that contain those items for more information.
+
+This product also includes software developed by third parties under permissive
 licenses that allow for redistribution, either under the terms of the License
 or under their own terms.
 

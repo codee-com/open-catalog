@@ -147,7 +147,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Appentra Solutions, S.L.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Appentra Solutions, S.L. - Contents licensed under the Apache License, Version 2.0; see <a href="https://github.com/codee-com/open-catalog/blob/main/NOTICE" target="_blank">NOTICE</a> for exceptions`,
     },
     prism: {
       theme: prismThemes.github,
