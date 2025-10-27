@@ -56,18 +56,24 @@ them.
 Consider the following code, which sums the elements of an array after applying
 the specified transformation:
 
-```c {8,24} showLineNumbers
+```c {14,30} showLineNumbers
 // example.c
 #include <stdio.h>
-#include <string.h>
 
-double transform_and_sum(const double *array, size_t size, const char *option) {
+typedef enum {
+  OPTION_HALF,
+  OPTION_DOUBLE,
+  OPTION_UNKNOWN,
+} TransformOption;
+
+double transform_and_sum(const double *array, size_t size,
+                         TransformOption option) {
   double sum = 0.0;
 
   double factor;
-  if (strcmp(option, "half") == 0) {
+  if (option == OPTION_HALF) {
     factor = 0.5;
-  } else if (strcmp(option, "double") == 0) {
+  } else if (option == OPTION_DOUBLE) {
     factor = 2.0;
   }
 
@@ -80,7 +86,7 @@ double transform_and_sum(const double *array, size_t size, const char *option) {
 
 int main() {
   double array[] = {0.25, 0.25, 0.25, 0.25};
-  printf("Sum is: %f\n", transform_and_sum(array, 4, "unknownOption"));
+  printf("Sum is: %f\n", transform_and_sum(array, 4, OPTION_UNKNOWN));
 
   return 0;
 }
@@ -89,7 +95,7 @@ int main() {
 Note how `factor`, an automatic variable, is only explicitly initialized when
 the received `option` is known. Since the C standard does not guarantee any
 specific initial value, the state of `factor` is indeterminate in the previous
-scenario (using an `unknownOption`), leading to different outcomes depending on
+scenario (using `OPTION_UNKNOWN`), leading to different outcomes depending on
 the compiler and its settings:
 
 - For instance, `gcc -O2` behaves as if the `if` branch was taken:
@@ -136,16 +142,24 @@ double factor = 1.0;
 Consider the following code, which sums the elements of an array after applying
 the specified transformation:
 
-```fortran {9,20} showLineNumbers
+```fortran {17,28} showLineNumbers
 ! example.f90
+
+module options
+  integer, parameter :: OPTION_HALF   = 1
+  integer, parameter :: OPTION_DOUBLE = 2
+  integer, parameter :: OPTION_UNKNOWN = 3
+end module options
+
 program main
   use iso_fortran_env, only: real32
+  use options, only: OPTION_HALF, OPTION_DOUBLE, OPTION_UNKNOWN
   implicit none
 
   real(kind=real32) :: array(4)
   array = [0.25, 0.25, 0.25, 0.25]
 
-  print *, "Sum is:", transform_and_sum(array, "unknownOption")
+  print *, "Sum is:", transform_and_sum(array, OPTION_UNKNOWN)
 
 contains
 
@@ -153,7 +167,7 @@ contains
     implicit none
 
     real(kind=real32), intent(in) :: array(:)
-    character(len=*), intent(in) :: option
+    integer, intent(in) :: option
 
     real(kind=real32) :: sum
     real(kind=real32) :: factor
@@ -161,9 +175,9 @@ contains
 
     sum = 0.0
 
-    if (option == "half") then
+    if (option == OPTION_HALF) then
       factor = 0.5
-    else if (option == "double") then
+    else if (option == OPTION_DOUBLE) then
       factor = 2.0
     end if
 
@@ -180,7 +194,7 @@ end program main
 Note how `factor` is only explicitly initialized when the received `option` is
 known. Since the Fortran standard does not guarantee any specific initial
 value, the state of `factor` is indeterminate in the previous scenario (using
-an `unknownOption`), leading to different outcomes depending on the compiler
+`OPTION_UNKNOWN`), leading to different outcomes depending on the compiler
 and its settings:
 
 - For instance, `gfortran -O2` behaves as if the `if` branch was taken:

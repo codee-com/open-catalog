@@ -1,15 +1,21 @@
 // PWR080: Conditionally initialized variables can lead to undefined behavior
 
 #include <stdio.h>
-#include <string.h>
 
-double transform_and_sum(const double *array, size_t size, const char *option) {
+typedef enum {
+  OPTION_HALF,
+  OPTION_DOUBLE,
+  OPTION_UNKNOWN,
+} TransformOption;
+
+double transform_and_sum(const double *array, size_t size,
+                         TransformOption option) {
   double sum = 0.0;
 
   double factor;
-  if (strcmp(option, "half") == 0) {
+  if (option == OPTION_HALF) {
     factor = 0.5;
-  } else if (strcmp(option, "double") == 0) {
+  } else if (option == OPTION_DOUBLE) {
     factor = 2.0;
   }
 
@@ -22,7 +28,7 @@ double transform_and_sum(const double *array, size_t size, const char *option) {
 
 int main() {
   double array[] = {0.25, 0.25, 0.25, 0.25};
-  printf("Sum is: %f\n", transform_and_sum(array, 4, "unknownOption"));
+  printf("Sum is: %f\n", transform_and_sum(array, 4, OPTION_UNKNOWN));
 
   return 0;
 }
