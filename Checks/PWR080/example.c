@@ -8,8 +8,8 @@ typedef enum {
   OPTION_UNKNOWN,
 } TransformOption;
 
-double transform_and_sum(const double *array, size_t size,
-                         TransformOption option) {
+__attribute__((pure)) double transform_and_sum(const double *array, size_t size,
+                                               TransformOption option) {
   double sum = 0.0;
 
   double factor;

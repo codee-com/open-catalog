@@ -1,6 +1,7 @@
 ! PWR080: Conditionally initialized variables can lead to undefined behavior
 
 module options
+  implicit none
   integer, parameter :: OPTION_HALF   = 1
   integer, parameter :: OPTION_DOUBLE = 2
   integer, parameter :: OPTION_UNKNOWN = 3
@@ -18,7 +19,7 @@ program main
 
 contains
 
-  real(kind=real32) function transform_and_sum(array, option)
+  pure real(kind=real32) function transform_and_sum(array, option)
     implicit none
 
     real(kind=real32), intent(in) :: array(:)
