@@ -126,7 +126,7 @@ to major security standards to clarify their relevance to software security
 **AutoFix**: Denotes tools that support automatic correction of the
 corresponding check. Readers are encouraged to report additional tools with
 autofix capabilities for these checks. The tools are tagged in the table as
-follows:
+detailed in the footnotes.
 
 ## Contributing
 
@@ -151,6 +151,5 @@ get involved:
     your changes, and submit a [Pull
     Request](https://github.com/codee-com/open-catalog/pulls). We'd love to see
     your contributions!
-
 
 [^1]: [Codee](https://www.codee.com)
