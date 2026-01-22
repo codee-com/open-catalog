@@ -122,7 +122,7 @@ designed to demonstrate:
 | [RMK016](Checks/RMK016/) | Tune compiler optimization flags to avoid potential changes in floating point precision                     | correctness, security                              | [CWE-189](https://cwe.mitre.org/data/definitions/189.html)                                                                                                                                                                                     |                                                                                                                                                                                                                                                                                                                                                                                               | [FLP01-C](https://wiki.sei.cmu.edu/confluence/display/c/FLP01-C.+Take+care+in+rearranging+floating-point+expressions)                                                                                                                                                                                                                                                                               |                                                                                                                              | ✓ | ✓       | ✓   |         |
 
 **CWE**, **ISO/IEC 24772-8**, and **SEI CERT C**: Map checks in the Open Catalog
-to major security standards to clarify their relevance to software security
+to major security standards to clarify their relevance to software security.
 
 **AutoFix**: Denotes tools that support automatic correction of the
 corresponding check. Readers are encouraged to report additional tools with
