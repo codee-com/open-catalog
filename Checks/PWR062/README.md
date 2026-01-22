@@ -181,7 +181,7 @@ end subroutine matmul
 
 * [PWR062 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR062/)
 
-* [PWR010: Avoid column-major array access in C/C++](../PWR010/README.md)
+* [PWR010: Avoid column-major array access in C/C++](../../Deprecated/PWR010/README.md)
 
 * [PWR039: Consider loop interchange to improve the locality of reference and enable vectorization](../PWR039/README.md)
 

@@ -39,6 +39,7 @@ const config: Config = {
           include: [
             'README.md',
             'Checks/**/*.md',
+            'Deprecated/**/*.md',
             'Glossary/**/*.md',
             // Standalone pages are stored in `static/pages/**` instead of
             // `src/pages/**` to prevent conflicts between the `mdx-loader` of
@@ -156,7 +157,20 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 
-  plugins: [require.resolve('docusaurus-lunr-search')],
+  plugins: [
+    require.resolve('docusaurus-lunr-search'),
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/Deprecated/PWR010',
+            from: '/Checks/PWR010',
+          },
+        ],
+      },
+    ],
+  ],
 
   // Executed on client-side (web browser)
   clientModules: [require.resolve('./src/scripts/custom.js')],

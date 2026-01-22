@@ -1,5 +1,14 @@
 # PWR010: Avoid column-major array access in C/C++
 
+> [!WARNING]
+> This check was deprecated in favor of [PWR039](../../Checks/PWR039/README.md)
+> and [PWR040](../../Checks/PWR040/README.md). This is because PWR010 can apply
+> to loops with multiple array accesses. When the stride is fixed, applying it
+> may break the other accesses, creating a conflicting situation. In contrast,
+> [PWR039](../../Checks/PWR039/README.md) and
+> [PWR040](../../Checks/PWR040/README.md) only apply when all accesses are
+> inefficient, which makes the check safe and actionable.
+
 ### Issue
 
 In the  C and C++ programming languages, matrices are stored in a
@@ -55,7 +64,7 @@ for (int i = 0; i < n; ++i) {
 
 ### Related resources
 
-* [PWR010 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR010/)
+* [PWR010 examples](https://github.com/codee-com/open-catalog/tree/main/Deprecated/PWR010/)
 
 ### References
 
