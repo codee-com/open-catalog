@@ -175,6 +175,10 @@ const config: Config = {
             to: '/Deprecated/RMK001',
             from: '/Checks/RMK001',
           },
+          {
+            to: '/Deprecated/RMK002',
+            from: '/Checks/RMK002',
+          },
         ],
       },
     ],
