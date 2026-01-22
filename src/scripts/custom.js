@@ -77,6 +77,7 @@ const createDataTable = async () => {
               { 'label': 'CWE', 'searchValue': 'cwe' },
               { 'label': 'ISO/IEC 24772-8', 'searchValue': 'iso' },
               { 'label': 'SEI CERT C', 'searchValue': 'sei' },
+              { 'label': 'SEI CERT C++', 'searchValue': 'sei-cpp' },
             ].map(({ label, searchValue }) => ({
               'text': label,
               'attr': {
@@ -90,8 +91,9 @@ const createDataTable = async () => {
                 // CWE), show only rows where the corresponding column is
                 // non-empty. Otherwise, filter by category using an exact match
                 // in column 2
-                if (['cwe', 'iso', 'sei'].includes(searchValue)) {
-                  let columnIdx = {'cwe': 3, 'iso': 4, 'sei': 5}[searchValue];
+                if (['cwe', 'iso', 'sei', 'sei-cpp'].includes(searchValue)) {
+                  let columnIdx =
+                    { 'cwe': 3, 'iso': 4, 'sei': 5, 'sei-cpp': 6 }[searchValue];
                   dataTable.column(columnIdx).search(
                     '^(?!\\s*$).+', /* regex = */true, /* smart = */ false);
                 } else {
