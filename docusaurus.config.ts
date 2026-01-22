@@ -171,6 +171,10 @@ const config: Config = {
             to: '/Deprecated/PWR033',
             from: '/Checks/PWR033',
           },
+          {
+            to: '/Deprecated/RMK001',
+            from: '/Checks/RMK001',
+          },
         ],
       },
     ],
