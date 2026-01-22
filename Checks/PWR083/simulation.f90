@@ -1,4 +1,4 @@
-! PWR083: Match dummy and actual argument types in procedure calls
+! PWR083: Match the types of dummy and actual arguments in procedure calls
 
 pure subroutine updateSimulationTime(numberSteps, prevTime, newTime)
   use iso_fortran_env, only: real32

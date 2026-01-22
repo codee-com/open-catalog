@@ -1,4 +1,4 @@
-! PWR083: Match dummy and actual argument types in procedure calls
+! PWR083: Match the types of dummy and actual arguments in procedure calls
 
 ! NOT-PWR070: Explicit-shape arrays used for C-interoperability
 pure subroutine update_simulation_state(numberSteps, n, state)
