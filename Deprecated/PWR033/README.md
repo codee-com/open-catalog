@@ -1,5 +1,12 @@
 # PWR033: Move invariant conditional out of the loop to avoid redundant computations
 
+> [!WARNING]
+> This check was deprecated in favor of [PWR022](../../Checks/PWR022/README.md).
+> This is because PWR033 largely overlaps with
+> [PWR022](../../Checks/PWR022/README.md), but
+> [PWR022](../../Checks/PWR022/README.md) provides clearer actionable guidance
+> and better examples.
+
 ### Issue
 
 [Loop-invariant conditional](../../Glossary/Loop-unswitching.md) can be moved out of
@@ -103,7 +110,7 @@ end subroutine
 
 ### Related resources
 
-* [PWR033 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR033/)
+* [PWR033 examples](https://github.com/codee-com/open-catalog/tree/main/Deprecated/PWR033/)
 
 ### References
 
