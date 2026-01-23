@@ -77,19 +77,19 @@ int example_impure(int a) {
 * `const` function:
   * Depends only on `a` and `b`. If successive calls are made with the same `a`
     and `b` values, the output will not change.
-  * Returns a value without modifying any data outside of the function.
+  * Returns a value without modifying any data outside the function.
 
 * `pure` function:
   * Depends on `c`, a global variable whose value can be modified between
     successive calls to the function by other parts of the program. Even if
     successive calls are made with the same `a` value, the output can differ
     depending on the state of `c`.
-  * Returns a value without modifying any data outside of the function.
+  * Returns a value without modifying any data outside the function.
 
 * "Normal" function:
   * Depends on `c`, a global variable. This restricts the function to be
     `pure`, at most.
-  * However, the function also modifies `c`, memory outside of its scope, thus
+  * However, the function also modifies `c`, memory outside its scope, thus
     leading to a "normal" function.
 
 In the case of the `pure` and "normal" functions, it is equivalent that they
@@ -129,12 +129,12 @@ end module example_module
     successive calls to the function by other parts of the program. Even if
     successive calls are made with the same `a` value, the output can be
     different depending on the state of `c`.
-  * Returns a value without modifying any data outside of the function.
+  * Returns a value without modifying any data outside the function.
 
 * "Normal" function:
   * Depends on `c`, a public variable. This restricts the function to be
     `pure`, at most.
-  * However, the function also modifies `c`, memory outside of its scope, thus
+  * However, the function also modifies `c`, memory outside its scope, thus
     leading to a "normal" function.
 
 >[!WARNING]

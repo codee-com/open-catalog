@@ -5,7 +5,7 @@ efficiency of vectorization by splitting the loop execution into several
 sections.
 
 Instead of iterating from `0` to `N`, the loop iterates in sections which are
-smaller in size, e.g. `0` to `S`, from `S` to `2S - 1`, etc.
+smaller, e.g. `0` to `S`, from `S` to `2S - 1`, etc.
 
 There are two distinct use cases for loop sectioning:
 

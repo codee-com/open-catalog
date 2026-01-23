@@ -2,12 +2,12 @@
 
 ### Issue
 
-A condition that depends only on the iterator variable can be moved outside of
-the loop.
+A condition that depends only on the iterator variable can be moved outside the
+loop.
 
 ### Actions
 
-Move iterator-dependent condition outside of the loop.
+Move iterator-dependent condition outside the loop.
 
 ### Relevance
 
@@ -15,13 +15,13 @@ A condition that depends only on the iterator is predictable: we know exactly at
 which iteration of the loop it is going to be true. Nevertheless, it is
 evaluated in each iteration of the loop.
 
-Moving the iterator-dependent condition outside of the loop will result in fewer
+Moving the iterator-dependent condition outside the loop will result in fewer
 instructions executed in the loop. This transformation can occasionally enable
 vectorization, and for the loops that are already vectorized, it can increase
 vectorization efficiency.
 
 > [!NOTE]
-> Moving an iterator-dependent condition outside of the loop is a creative
+> Moving an iterator-dependent condition outside the loop is a creative
 > process. Depending on the type of condition, it can involve loop peeling,
 > [loop fission](../../Glossary/Loop-fission.md) or loop unrolling.
 

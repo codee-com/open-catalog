@@ -8,7 +8,7 @@ boost.
 
 ### Actions
 
-Calculate the reciprocal outside of the loop and replace the division with
+Calculate the reciprocal outside the loop and replace the division with
 multiplication with a reciprocal
 
 ### Relevance
@@ -18,7 +18,7 @@ performing the division in each iteration of the loop, one could do the
 following:
 
 * For the expression  `A / B`, calculate the reciprocal of the denominator
-(`RECIP_B = 1.0 / B`) and put it outside of the loop.
+(`RECIP_B = 1.0 / B`) and put it outside the loop.
 
 * Replace the expression `A / B`, use `A * RECIP_B`.
 

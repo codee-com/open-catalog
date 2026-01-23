@@ -3,18 +3,18 @@
 ### Issue
 
 Conditional evaluates to the same value for all loop iterations and can be
-[moved outside of the loop](../../Glossary/Loop-unswitching.md) to favor
+[moved outside the loop](../../Glossary/Loop-unswitching.md) to favor
 [vectorization](../../Glossary/Vectorization.md).
 
 ### Actions
 
-Move the invariant conditional outside of the loop by duplicating the loop body.
+Move the invariant conditional outside the loop by duplicating the loop body.
 
 ### Relevance
 
 Classical vectorization requirements do not allow branching inside the loop
 body, which would mean no `if` and `switch` statements inside the loop body are
-allowed. However, loop invariant conditionals can be extracted outside of the
+allowed. However, loop invariant conditionals can be extracted outside the
 loop to facilitate vectorization. Therefore, it is often good to extract
 invariant conditional statements out of vectorizable loops to increase
 performance. A conditional whose expression evaluates to the same value for all

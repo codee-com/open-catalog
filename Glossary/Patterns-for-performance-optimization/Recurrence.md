@@ -39,7 +39,7 @@ end do
 ### Parallelizing recurrences with OpenMP and OpenACC
 
 In general, codes containing a recurrence pattern are difficult to parallelize
-in an efficient manner, and may even not be parallelizable at all. An example of
+efficiently, and may even not be parallelizable at all. An example of
 parallelizable recurrence is the computation of a cumulative sum, which can be
 computed efficiently in parallel through parallel prefix sum operations. This is
 usually known as scan operation and it is supported in OpenMP since version 5.0.  

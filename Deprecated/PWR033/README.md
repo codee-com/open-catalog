@@ -51,7 +51,7 @@ void example(int addTwo) {
 
 In each iteration, the increment statement evaluates the argument to decide how
 much to increment. However, this value is fixed for the whole execution of the
-function and thus, the conditional can be moved outside of the loop. The
+function and thus, the conditional can be moved outside the loop. The
 resulting code is as follows:
 
 ```c
@@ -87,7 +87,7 @@ end subroutine
 
 In each iteration, the increment statement evaluates the argument to decide how
 much to increment. However, this value is fixed for the whole execution of the
-function and thus, the conditional can be moved outside of the loop. The
+function and thus, the conditional can be moved outside the loop. The
 resulting code is as follows:
 
 ```fortran

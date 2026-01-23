@@ -19,8 +19,8 @@ for low performance on modern computer systems. Matrices are
 Iterating over them column-wise (in C) and row-wise (in Fortran) is inefficient,
 because it uses the memory subsystem suboptimally.
 
-Nested loops that iterate over matrices in an inefficient manner can be
-optimized by applying [loop tiling](../../Glossary/Loop-tiling.md). In contrast to
+Nested loops that iterate over matrices inefficiently can be optimized by
+applying [loop tiling](../../Glossary/Loop-tiling.md). In contrast to
 [loop interchange](../../Glossary/Loop-interchange.md), loop tiling doesn't remove
 the inefficient memory access, but instead breaks the problem into smaller
 subproblems. Smaller subproblems have a much better

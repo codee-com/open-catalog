@@ -33,7 +33,7 @@ vectorization.
 
 * If the condition in the loop is always evaluated to a  loop-invariant value
 (i.e. its value is either true or false across the execution of the loop), this
-condition can be moved outside of the loop (see
+condition can be moved outside the loop (see
 [loop unswitching](../../Glossary/Loop-unswitching.md)).
 
 * If the condition in the loop depends on iterator variables only, the conditions

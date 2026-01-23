@@ -6,7 +6,7 @@ A scalar variable should be declared in the smallest
 [scope](../../Glossary/Variable-scope.md) possible. In computer programming, the term
 scope of a variable usually refers to the part of the code where the variable
 can be used (e.g. a function, a loop). During the execution of a program, a
-variable cannot be accessed from outside of its scope. This effectively limits
+variable cannot be accessed from outside its scope. This effectively limits
 the visibility of the variable, which prevents its value from being read or
 written in other parts of the code.
 
@@ -40,7 +40,7 @@ incompatible purposes, making code testing significantly easier.
 
 In the following code, the function `example` declares a variable `t` used in
 each iteration of the loop to hold a value that is then assigned to the array
-`result`. The variable `t` is not used outside of the loop.
+`result`. The variable `t` is not used outside the loop.
 
 ```c
 void example() {
@@ -96,7 +96,7 @@ code within larger programs by grouping sections together. Conveniently,
 
 In the following code, the subroutine `example` declares a variable `t` used in
 each iteration of the loop to hold a value that is then assigned to the array
-`result`. The variable `t` is not used outside of the loop.
+`result`. The variable `t` is not used outside the loop.
 
 ```fortran
 subroutine example()

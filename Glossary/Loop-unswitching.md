@@ -2,7 +2,7 @@
 
 **Loop unswitching** is a program optimization technique, where invariant
 conditions inside loops (i.e. conditions whose value is always the same inside
-the loop) can be taken outside of the loop by creating copies of the loop.
+the loop) can be taken outside the loop by creating copies of the loop.
 
 To illustrate loop unswitching, consider the following example:
 
@@ -22,7 +22,7 @@ in case `a[i]` is negative and we are debugging, we want to log an error.
 
 The condition `if (debug)` is loop invariant, since the variable `debug` never
 changes its value. By doing loop unswitching and moving this condition outside
-of the loop, the loop becomes faster. Here is the same loop after loop
+the loop, the loop becomes faster. Here is the same loop after loop
 unswitching:
 
 ```c

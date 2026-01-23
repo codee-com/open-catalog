@@ -7,7 +7,7 @@ optimization techniques, notably
 [loop fission](Loop-fission.md). In this technique, a temporary scalar
 is converted to a vector whose value is preserved between loop iterations, with
 the goal to enable loop fission needed to extract the statements preventing
-optimizations outside of the critical loop.
+optimizations outside the critical loop.
 
 ### Loop interchange
 

@@ -8,9 +8,9 @@ to several CPU cores in order to speed up its execution.
 
 The crucial underlying concept of multithreading is **thread**. The simplest way
 to imagine a thread is as an independent worker, which has its own code that it
-is executing. Some of the data used by the thread is local to the thread, and
-some of it is shared among all threads. An important aspect of multithreading is
-that all the threads in principle have access to the same address space.
+is executing. Some data used by the thread is local to the thread, and some of
+it is shared among all threads. An important aspect of multithreading is that
+all the threads in principle have access to the same address space.
 
 Although the user can create as many logical threads as they want, for optimum
 performance the number of threads should correspond to the number of CPU cores.
