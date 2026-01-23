@@ -23,7 +23,7 @@ The Open Catalog includes
 designed to demonstrate:
 
 - No performance degradation when implementing the correctness, modernization,
-  and security recommendations.
+  security, and portability recommendations.
 - Potential performance enhancements achievable through the optimization
   recommendations.
 
