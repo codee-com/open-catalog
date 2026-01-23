@@ -22,7 +22,7 @@ code.
 In procedures with implicit typing enabled, an `use` without the `only`
 specification can also easily lead to errors. If the imported module is later
 expanded with new members, these are automatically imported into the procedure
-and might inadvertedly shadow existing and implicitly typed variables,
+and might inadvertently shadow existing and implicitly typed variables,
 potentially leading to difficult-to-diagnose bugs.
 
 By leveraging the `only` keyword, the programmer restricts the visibility to

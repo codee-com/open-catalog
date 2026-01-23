@@ -48,12 +48,13 @@ follows:
 * Access to `d[i]` is constant. It doesn't depend on the value of `j` and it has
 the same value inside the innermost loop.
 
-* Access to `a[j]` is sequential. Everytime the iterator variable `j` increases by
-1, the loop is accessing the next neighboring element. The same applies to the
-access to `index[j]`.
+* Access to `a[j]` is sequential. Every time the iterator variable `j`
+increases by 1, the loop is accessing the next neighboring element. The same
+applies to the access to `index[j]`.
 
-* Access to `b[j * n]` is strided. Everytime the iterator variable `j` increases
-by 1, the loop is accessing the element of the array `b` increased by `n`.
+* Access to `b[j * n]` is strided. Every time the iterator variable `j`
+increases by 1, the loop is accessing the element of the array `b` increased by
+`n`.
 
 * Access to `c[index[j]]` is random. The value accessed when the iterator variable
 `j` increases its value is not known and it is considered random.

@@ -23,7 +23,7 @@ loop in parallel on the accelerator, as well as add the appropriate
 synchronization to avoid race conditions at runtime.
 
 Typically, **minimizing the computational overhead of offloading is the biggest
-challenge to speedup the code using accelerators**.
+challenge to speed up the code using accelerators**.
 
 > [!NOTE]
 > Offloading scalar reduction loops incurs an overhead due to the synchronization

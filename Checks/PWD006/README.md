@@ -13,9 +13,9 @@ memory segments are copied to the memory of the accelerator device.
 
 ### Relevance
 
-The data of non-scalar variables might be spread across memory, laid out in non-
-contiguous regions. One classical example is a dynamically-allocated two-
-dimensional array in C/C++, which consists of a contiguous array of pointers
+The data of non-scalar variables might be spread across memory, laid out in
+non-contiguous regions. One classical example is a dynamically-allocated
+two-dimensional array in C/C++, which consists of a contiguous array of pointers
 pointing to separate contiguous arrays that contain the actual data. Note that
 the elements of each individual array are contiguous in memory but the different
 arrays are scattered in the memory. This also holds for dynamically-allocated
@@ -85,7 +85,7 @@ void foo(int **A) {
 }
 ```
 
-The *enter/exit data* statements ressemble how the dynamic bi-dimensional memory
+The *enter/exit data* statements resemble how the dynamic bi-dimensional memory
 is allocated in the CPU. An array of pointers is allocated first, followed by
 the allocation of all the separate arrays that contain the actual data. Each
 allocation constitutes a contiguous memory segment and must be transferred

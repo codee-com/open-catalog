@@ -11,7 +11,7 @@ undefined behavior due to its indeterminate value.
 To prevent bugs in the code, ensure the problematic variable is initialized in
 all possible code paths. It may help to add explicit `else` or `default`
 branches in control-flow blocks, or even set a default initial value
-inmediately after declaring the variable.
+immediately after declaring the variable.
 
 ### Relevance
 

@@ -36,7 +36,7 @@ and more efficient:
   - In general, they lack compile-time checks for consistency between the
     provided and the expected array.
 
-Aditionally, explicit-shape and assumed-size dummy arguments require contiguous
+Additionally, explicit-shape and assumed-size dummy arguments require contiguous
 memory. This forces the creation of intermediate data copies when working with
 array slices or strided accesses. In contrast, assumed-shape arrays can handle
 these scenarios directly, leading to enhanced performance.

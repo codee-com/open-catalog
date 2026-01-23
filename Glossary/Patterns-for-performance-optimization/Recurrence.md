@@ -13,7 +13,7 @@ A more formal definition is that a recurrence is a computation `a(s) = e`, where
 `e` contains a set of occurrences `a(s1), ..., a(sm)` so that, in the general
 case, the subscripts `s, s1, ..., sm` are different. Note that in the classical
 sense, a recurrence satisfies the additional constraint that at least one
-subscript is symbolically different than `s`, and thus dependencies between
+subscript is symbolically different from `s`, and thus dependencies between
 different loop iterations are introduced. 
 
 ### Code examples

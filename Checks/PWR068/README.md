@@ -206,7 +206,7 @@ Factorial of           5 is         120
 > [!TIP]
 > When interoperating between Fortran and C/C++, it's necessary to manually
 > define explicit interfaces for the C/C++ procedures to call. Although this is
-> not a perfect solution, since the are no guarantees that these interfaces
+> not a perfect solution, since there are no guarantees that these interfaces
 > will match the actual C/C++ procedures, it's still best to make the
 > interfaces as explicit as possible. This includes specifying details such as
 > argument intents, to help the Fortran compiler catch early as many issues as

@@ -62,7 +62,7 @@ for (int jj = 0; jj < m; jj += TILE_SIZE) {
 The careful reader might notice that after this intervention, the values for the
 array `a` will be read `m / TILE_SIZE` times from the memory. If the size of
 array `a` is large, then it can be useful to perform loop tiling on the loop
-over `i` a as well, like this:
+over `i` as well, like this:
 
 ```c
 for (int ii = 0; ii < n; ii += TILE_SIZE_I) {

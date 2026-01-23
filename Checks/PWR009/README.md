@@ -20,7 +20,7 @@ specific setup in order to better exploit its capabilities.
 The OpenMP `parallel` construct specifies a parallel region of the code that
 will be executed by a team of threads. It is normally accompanied by a
 worksharing construct so that each thread of the team takes care of part of the
-work (e.g the `for` construct assigns a subset of the loop iterations to each
+work (e.g., the `for` construct assigns a subset of the loop iterations to each
 thread). This attains a single level of parallelism since all work is
 distributed across a team of threads. This works well for multi-core CPUs but
 GPUs are composed of a high number of processing units organized into groups

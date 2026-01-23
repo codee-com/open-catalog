@@ -17,8 +17,8 @@ written in the first loop and read in the second loop.
 
 Vectorization is one of the most important ways to speed up computation in the
 loop. In practice, loops may contain vectorizable statements, but vectorization
-may be either inhibited or inefficient due to the usage of data stored in non-
-consecutive memory locations. Programs exhibit different types of
+may be either inhibited or inefficient due to the usage of data stored in
+non-consecutive memory locations. Programs exhibit different types of
 [memory access patterns](../../Glossary/Memory-access-pattern.md) that lead to
 non-consecutive memory access, e.g. strided, indirect, random accesses.
 

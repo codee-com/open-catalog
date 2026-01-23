@@ -34,8 +34,8 @@ __attribute__((const)) double example(double a, double b, double c) {
 }
 ```
 
-In the above example, the expression `a + b * c` is effectively a FMA operation
-and it can be replaced with a call to `fma`:
+In the above example, the expression `a + b * c` is effectively an FMA
+operation and it can be replaced with a call to `fma`:
 
 ```c
 #include <math.h>

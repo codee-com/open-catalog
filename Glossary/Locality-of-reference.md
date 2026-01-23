@@ -47,7 +47,7 @@ brings performance gain.
 
 Writing code that makes efficient use of vectorization is essential to write
 performant code for modern hardware. For example, loop fission enables splitting
-an non-vectorizable loop into two or more loops. The goal of the fission is to
+a non-vectorizable loop into two or more loops. The goal of the fission is to
 isolate the statements preventing the vectorization into a dedicated loop. By
 doing this, we enable vectorization in the rest of the loop, which can lead to
 speed improvements. Note loop fission introduces overheads (e.g. loop control

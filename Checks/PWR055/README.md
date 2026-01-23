@@ -19,7 +19,7 @@ is not straightforward. Essentially, the programmer must explicitly manage the
 data transfers between the host and the accelerator, specify how to execute the
 loop in parallel on the accelerator, as well as add the appropriate
 synchronization to avoid race conditions at runtime. Typically, minimizing the
-computational overhead of offloading is the biggest challenge to speedup the
+computational overhead of offloading is the biggest challenge to speed up the
 code using accelerators.
 
 > [!NOTE]

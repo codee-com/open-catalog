@@ -14,7 +14,7 @@ statements in a first loop and the non-vectorizable statements in a second loop.
 
 [vectorization](../../Glossary/Vectorization.md) is one of the most important ways to
 speed up the computation of a loop. In practice, loops may contain a mix of
-computations where only a part of the loop body introduces loop-carrie
+computations where only a part of the loop body introduces loop-carried
 dependencies that prevent vectorization. Different types of compute patterns
 make explicit the loop-carried dependencies present in the loop. On the one
 hand, the
@@ -25,7 +25,7 @@ vectorized:
 
 * The
 [sparse reduction compute pattern](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md) - e.g.
-the reduction variable has an read-write indirect memory access pattern which
+the reduction variable has a read-write indirect memory access pattern which
 does not allow to determine the dependencies between the loop iterations at
 compile-time.
 

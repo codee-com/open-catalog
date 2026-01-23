@@ -12,7 +12,7 @@ innermost loop.
 
 ### Relevance
 
-Vectorization takes advantage of having as high a trip count (ie. number of
+Vectorization takes advantage of having as high a trip count (i.e., number of
 iterations) as possible. When loops are
 [perfectly nested](../../Glossary/Perfect-loop-nesting.md) and they can be safely
 interchanged, making the loop with the highest trip count the innermost should

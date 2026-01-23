@@ -22,7 +22,7 @@ or square roots.
 > [!NOTE]
 > Some compilers under some circumstances (e.g. relaxed IEEE 754 semantics) can
 > do this optimization automatically. However, doing it manually will guarantee
-> best performance across all the compilers.
+> the best performance across all the compilers.
 
 ### Code example
 

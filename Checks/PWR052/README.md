@@ -19,7 +19,7 @@ computers, but writing multithreaded code is not straightforward. Essentially,
 the programmer must explicitly specify how to execute the loop in vector mode on
 the hardware, as well as add the appropriate synchronization to avoid race
 conditions at runtime. Typically, minimizing the computational overhead of
-multithreading is the biggest challenge to speedup the code.
+multithreading is the biggest challenge to speed up the code.
 
 > [!NOTE]
 > Executing sparse reduction loops using multithreading incurs an overhead due to

@@ -28,7 +28,7 @@ vectorized:
 
 * The
 [sparse reduction compute pattern](../../Glossary/Patterns-for-performance-optimization/Sparse-reduction.md) - e.g.
-the reduction variable has an read-write indirect memory access pattern which
+the reduction variable has a read-write indirect memory access pattern which
 does not allow to determine the dependencies between the loop iterations at
 compile-time.
 
