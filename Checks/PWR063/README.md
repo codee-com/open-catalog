@@ -118,7 +118,7 @@ arithmetic `if` statement:
 ```
 
 Although it is a simple program, using an arithmetic `if` to drive the flow of
-the loop makes the behaviour of the program less explicit than modern loop
+the loop makes the behavior of the program less explicit than modern loop
 construct.
 
 We may improve the readability, intent, and maintainability of the code if we

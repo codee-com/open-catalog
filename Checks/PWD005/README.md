@@ -11,7 +11,7 @@ Update the copied array range to match the actual array usage in the code.
 
 ### Relevance
 
-Minimising data transfers is one of the main optimization points when offloading
+Minimizing data transfers is one of the main optimization points when offloading
 computations to the GPU. An opportunity for such optimization occurs whenever
 only part of an array is required in a computation. In such cases, only a part
 of the array may be transferred to or from the GPU. However, the developer must

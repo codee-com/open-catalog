@@ -15,7 +15,7 @@ or changing the data layout to avoid non-consecutive access in hot loops.
 ### Relevance
 
 Accessing an array in a non-consecutive order is less efficient than accessing
-consecutive positions because the latter maximises
+consecutive positions because the latter maximizes
 [locality of reference](../../Glossary/Locality-of-reference.md).
 
 ### Code example
