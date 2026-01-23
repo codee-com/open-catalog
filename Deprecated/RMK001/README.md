@@ -1,4 +1,4 @@
-# RMK001: loop nesting that might benefit from hybrid parallelization using multithreading and SIMD
+# RMK001: Loop nesting that might benefit from hybrid parallelization using multithreading and SIMD
 
 > [!WARNING]
 > This check was deprecated in favor of [PWR050](../../Checks/PWR050/README.md),

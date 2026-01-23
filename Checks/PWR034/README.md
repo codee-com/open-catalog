@@ -1,4 +1,4 @@
-# PWR034: avoid strided array access to improve performance
+# PWR034: Avoid strided array access to improve performance
 
 ### Issue
 

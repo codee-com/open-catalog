@@ -1,4 +1,4 @@
-# RMK003: potential temporary variable for the loop which might be privatizable, thus enabling the loop parallelization
+# RMK003: Potential temporary variable for the loop which might be privatizable, thus enabling the loop parallelization
 
 > [!WARNING]
 > This check was deprecated due to the lack of actionable guidance and examples.
