@@ -17,7 +17,7 @@ In C, there are several versions of the same mathematical function for different
 types. For example, the square root function is available for floats, doubles
 and long doubles through `sqrtf`, `sqrt` and `sqrtl`, respectively. Oftentimes,
 the developer who is not careful will not use the function matching the data
-type. For instance, most developers will just use "sqrt" for any data type,
+type. For instance, most developers will just use `sqrt` for any data type,
 instead of using `sqrtf` when the argument is float.
 
 The type mismatch does not cause a compiler error because of the implicit type

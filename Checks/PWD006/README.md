@@ -90,7 +90,7 @@ is allocated in the CPU. An array of pointers is allocated first, followed by
 the allocation of all the separate arrays that contain the actual data. Each
 allocation constitutes a contiguous memory segment and must be transferred
 individually using *enter data*. The deallocation takes place in the inverted
-order and the same happens with the *exit *data statements.
+order and the same happens with the *exit* data statements.
 
 ### Related resources
 
