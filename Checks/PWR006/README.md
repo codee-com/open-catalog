@@ -13,7 +13,7 @@ Set the scope of the read-only variable to shared.
 
 Since a read-only variable is never written to, it can be safely shared without
 any risk of race conditions. **Sharing variables is more efficient than
-privatizing** them from a memory perspective so it should be favored whenever
+privatizing** them from a memory perspective, so it should be favored whenever
 possible.
 
 ### Code example

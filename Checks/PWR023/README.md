@@ -18,7 +18,7 @@ guarantee that the pointers do not alias one another, i.e. no memory address is
 accessible through two different pointers. The developer can use the `restrict`
 C keyword to inform the compiler that the specified block of memory is not
 aliased by any other block. Providing this information can help the compiler
-generate more efficient code or vectorize the loop. Therefore it is always
+generate more efficient code or vectorize the loop. Therefore, it is always
 recommended to use `restrict` whenever possible so that the compiler has as much
 information as possible to perform optimizations such as vectorization.
 

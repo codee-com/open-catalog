@@ -12,7 +12,7 @@ Change the data scope of the variable from private to shared.
 
 Specifying an invalid scope for a variable may introduce race conditions and
 produce incorrect results. For instance, when a variable must be shared among
-threads but it is privatized instead.
+threads, but it is privatized instead.
 
 ### Code example
 

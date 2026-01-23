@@ -35,7 +35,7 @@ end do
 ### Parallelizing scalar reductions with OpenMP and OpenACC
 
 The computation of the scalar reduction has concurrent read-write accesses to
-the scalar reduction variable. Therefore a scalar reduction can be computed in
+the scalar reduction variable. Therefore, a scalar reduction can be computed in
 parallel safely only if additional synchronization is inserted in order to avoid
 race conditions associated to the reduction variable. 
 

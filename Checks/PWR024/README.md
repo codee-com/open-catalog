@@ -3,8 +3,8 @@
 ### Issue
 
 The loop is currently not in
-[OpenMP canonical](../../Glossary/OpenMP-canonical-form.md) form but it can be made
-OpenMP compliant through refactoring.
+[OpenMP canonical](../../Glossary/OpenMP-canonical-form.md) form, but it can be
+made OpenMP compliant through refactoring.
 
 ### Actions
 
