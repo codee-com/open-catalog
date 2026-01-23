@@ -12,7 +12,7 @@ Protect the recurrence or execute the code sequentially if that is not possible.
 ### Relevance
 
 The recurrence computation pattern occurs when the same memory position is read
-and written to, at least once, in different  iterations of a loop. It englobes
+and written to, at least once, in different iterations of a loop. It englobes
 both true dependencies (read-after-write) and anti-dependencies (write-after-
 read) across loop iterations. Sometimes the term "loop-carried dependencies" is
 also used. If a loop with a recurrence computation pattern is parallelized

@@ -15,7 +15,7 @@ Add `default(none)` to disable default OpenMP scoping.
 When the scope for a variable is not specified in an
 [OpenMP](../../Glossary/OpenMP.md) `parallel` directive, a default scope is assigned
 to it. Even when set explicitly, using a default scope is considered a bad
-practice since it can lead to  wrong data scopes inadvertently being applied to
+practice since it can lead to wrong data scopes inadvertently being applied to
 variables. Thus, it is recommended to explicitly set the scope for each
 variable.
 

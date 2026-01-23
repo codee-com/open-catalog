@@ -14,7 +14,7 @@ ways:
 
 * **Temporal locality**: If the CPU has accessed a certain memory location, there
 is a high probability that it will access it again in the near future. Using the
-same values in different  loop iterations is an example of temporal locality.
+same values in different loop iterations is an example of temporal locality.
 
 * **Spatial locality**: If the CPU has accessed a certain memory location, there
 is a high probability that it will access its neighboring locations in the near

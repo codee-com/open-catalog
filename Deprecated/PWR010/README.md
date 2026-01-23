@@ -11,7 +11,7 @@
 
 ### Issue
 
-In the  C and C++ programming languages, matrices are stored in a
+In the C and C++ programming languages, matrices are stored in a
 [row-major layout](../../Glossary/Row-major-and-column-major-order.md); thus,
 iterating the matrix column-wise is non-optimal and should be avoided if
 possible.

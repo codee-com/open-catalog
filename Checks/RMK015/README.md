@@ -16,7 +16,7 @@ debugging tools.
 
 Compilers are designed to **convert source code into efficient executable code
 for the target hardware**, **reducing the cost of the compilation process** and
-**facilitating the debugging  process** by the programmer. Compilers provide
+**facilitating the debugging process** by the programmer. Compilers provide
 optimization flags to improve performance, as well as optimization flags for
 reducing the size of the executable code. Typical compiler optimization flags
 for performance are `-O0`, `-O1`, `-O2`, `-O3` and `-Ofast`. On the other hand,

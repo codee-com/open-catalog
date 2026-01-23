@@ -24,7 +24,7 @@ variable modifications, and also contributes to improve compiler and static
 analyzer code coverage.
 
 In parallel programming, derived data types are often discouraged when
-offloading to the GPU  because they may inhibit compiler analyses and
+offloading to the GPU because they may inhibit compiler analyses and
 optimizations due to [pointer aliasing](../../Glossary/Pointer-aliasing.md). Also, it
 can cause unnecessary data movements impacting performance or incorrect data
 movements impacting correctness and even crashes impacting code quality.

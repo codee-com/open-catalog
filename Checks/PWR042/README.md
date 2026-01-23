@@ -104,7 +104,7 @@ first and the third loops are single non-nested loops, so let's focus on the
 second loop nest as it will have a higher impact on performance.
 
 Note that this loop nest is perfectly nested, making loop interchange
-applicable. This optimization will turn the `ij`  order into `ji`, improving
+applicable. This optimization will turn the `ij` order into `ji`, improving
 the locality of reference:
 
 ```c
@@ -187,7 +187,7 @@ first and the third loops are single non-nested loops, so let's focus on the
 second loop nest as it will have a higher impact on performance.
 
 Note that this loop nest is perfectly nested, making loop interchange
-applicable. This optimization will turn the `ij`  order into `ji`, improving
+applicable. This optimization will turn the `ij` order into `ji`, improving
 the locality of reference:
 
 ```fortran

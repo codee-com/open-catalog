@@ -3,7 +3,7 @@
 ### Issue
 
 The copy of a non-scalar variable to an accelerator device has been requested
-but none or  only a part of its data will be transferred because it is laid out
+but none or only a part of its data will be transferred because it is laid out
 non-contiguously in memory.
 
 ### Actions
@@ -25,7 +25,7 @@ In order to offload such non-scalar variables to an accelerator device using
 OpenMP or OpenACC, it is not enough to add it to a data movement clause. This is
 known as deep copy and currently is not automatically supported by either OpenMP
 or OpenACC. To overcome this limitation, all the non-contiguous memory segments
-must be explicitly transferred by the programmer.  In OpenMP 4.5, this can be
+must be explicitly transferred by the programmer. In OpenMP 4.5, this can be
 achieved through the *enter/exit data* execution statements. Alternatively, the
 code could be refactored so that it uses variables with contiguous data layouts
 (eg. flatten an array of arrays).
