@@ -30,7 +30,7 @@ efficient one.
 In order to perform the loop interchange, the loops need to be
 [perfectly nested](../../Glossary/Perfect-loop-nesting.md), i.e. all the statements
 need to be inside the innermost loop. However, due to the initialization of a
-reduction variablе, loop interchange is not directly applicable.
+reduction variable, loop interchange is not directly applicable.
 
 > [!NOTE]
 > Often, loop interchange enables vectorization of the innermost loop which
