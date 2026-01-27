@@ -3,8 +3,8 @@
 ### Issue
 
 Mark functions that do not produce side effects as pure to facilitate reasoning
-about the flow of data, improving code readability and favoring compiler
-optimizations.
+about data flow and program semantics, improving readability, maintainability,
+and correctness.
 
 In computer programming, a function can be considered pure if **its only side
 effect is returning a value, without modifying any memory outside its own local
@@ -36,14 +36,14 @@ Add the appropriate annotations to the function. For instance:
 ### Relevance
 
 Explicitly declaring properties about the functions called in the code provides
-valuable hints that can ease data flow analysis and optimizations for both the
-compiler and the developer. Determining whether a function is pure can be a
-challenging and time-consuming task, especially in complex codebases.
+valuable hints that help both the compiler and the developer better understand
+program semantics and data flow. Determining whether a function is pure can
+be a difficult and time-consuming task, especially in complex codebases.
 
-For that matter, one of the biggest challenges of parallel programming is the
-correct management of data scoping; i.e., how to handle all the variables in
-the code effectively, to avoid common pitfalls like race conditions. Insights
-such as annotating pure functions can be incredibly helpful in this context.
+One of the main challenges in large software projects is the correct
+management of data scoping and side effects; that is, handling variables in
+a way that avoids unintended interactions and non-obvious bugs. Insights such
+as annotating pure functions can be particularly helpful in this context.
 
 ### Code example
 
