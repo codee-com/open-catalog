@@ -37,6 +37,7 @@ In the following example, a struct containing two arrays is passed to the `foo`
 function, which only uses one of the arrays:
 
 ```c
+// example.c
 #include <stdlib.h>
 
 typedef struct {
@@ -44,7 +45,7 @@ typedef struct {
   int B[1000];
 } data;
 
-__attribute__((pure)) int foo(data *d) {
+__attribute__((pure)) int foo(const data *d) {
   int result = 0;
   for (int i = 0; i < 1000; i++) {
     result += d->A[i];
@@ -53,7 +54,7 @@ __attribute__((pure)) int foo(data *d) {
 }
 
 void example() {
-  data *d = (data *) malloc(sizeof(data));
+  data *d = (data *)malloc(sizeof(data));
   for (int i = 0; i < 1000; i++) {
     d->A[i] = d->B[i] = 1;
   }
@@ -66,6 +67,7 @@ This can be easily addressed by only passing the required array and rewriting
 the function body accordingly:
 
 ```c
+// solution.c
 #include <stdlib.h>
 
 typedef struct {
@@ -73,7 +75,7 @@ typedef struct {
   int B[1000];
 } data;
 
-__attribute__((pure)) int foo(int *A) {
+__attribute__((pure)) int foo(const int *A) {
   int result = 0;
   for (int i = 0; i < 1000; i++) {
     result += A[i];
@@ -81,8 +83,8 @@ __attribute__((pure)) int foo(int *A) {
   return result;
 }
 
-void example() {
-  data *d = (data *) malloc(sizeof(data));
+void solution() {
+  data *d = (data *)malloc(sizeof(data));
   for (int i = 0; i < 1000; i++) {
     d->A[i] = d->B[i] = 1;
   }
@@ -97,6 +99,7 @@ In the following example, a derived type containing two arrays is passed to the
 `foo` function, which only uses one of the arrays:
 
 ```fortran
+! example.f90
 program example
 
   implicit none
@@ -108,17 +111,18 @@ program example
 
 contains
 
-  subroutine foo(d)
+  pure subroutine foo(d)
     implicit none
     type(data), intent(in) :: d
     integer :: i, sum
 
+    sum = 0
     do i = 1, 10
       sum = sum + d%a(i)
     end do
   end subroutine foo
 
-  subroutine bar()
+  pure subroutine bar()
     implicit none
     type(data) :: d
     integer :: i
@@ -138,7 +142,8 @@ This can be easily addressed by only passing the required array and rewriting
 the procedure body accordingly:
 
 ```fortran
-program example
+! solution.f90
+program solution
 
   implicit none
 
@@ -149,17 +154,18 @@ program example
 
 contains
 
-  subroutine foo(a)
+  pure subroutine foo(a)
     implicit none
     integer, intent(in) :: a(:)
     integer :: i, sum
 
+    sum = 0
     do i = 1, size(a, 1)
       sum = sum + a(i)
     end do
   end subroutine foo
 
-  subroutine bar()
+  pure subroutine bar()
     implicit none
     type(data) :: d
     integer :: i
@@ -172,7 +178,7 @@ contains
     call foo(d%a)
   end subroutine bar
 
-end program example
+end program solution
 ```
 
 ### Related resources

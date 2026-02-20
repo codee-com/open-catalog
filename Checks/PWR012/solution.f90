@@ -1,6 +1,6 @@
 ! PWR012: Pass only required fields from derived type as arguments
 
-program example
+program solution
 
   implicit none
 
@@ -11,14 +11,14 @@ program example
 
 contains
 
-  pure subroutine foo(d)
+  pure subroutine foo(a)
     implicit none
-    type(data), intent(in) :: d
+    integer, intent(in) :: a(:)
     integer :: i, sum
 
     sum = 0
-    do i = 1, 10
-      sum = sum + d%a(i)
+    do i = 1, size(a, 1)
+      sum = sum + a(i)
     end do
   end subroutine foo
 
@@ -32,7 +32,7 @@ contains
       d%b(i) = 1
     end do
 
-    call foo(d)
+    call foo(d%a)
   end subroutine bar
 
-end program example
+end program solution
