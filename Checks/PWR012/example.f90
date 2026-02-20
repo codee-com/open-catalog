@@ -1,4 +1,4 @@
-! PWR012: Pass only required fields from derived type as arguments
+! PWR012: Pass only required fields from derived type as arguments to minimize data movements
 
 program example
 

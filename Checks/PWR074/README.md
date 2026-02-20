@@ -1,9 +1,9 @@
-# PWR012: Pass only required fields from derived type as arguments to minimize data movements
+# PWR074: Pass only required fields from derived type as arguments to increase code clarity
 
 ### Issue
 
-Pass only used fields from derived data types as arguments to minimize data
-movements.
+Pass only used fields from derived data types as arguments to increase code
+clarity.
 
 ### Actions
 
@@ -11,27 +11,23 @@ Pass the used fields as separate arguments instead of the whole derived type.
 
 ### Relevance
 
-Derived data types (such as structs in C or derived types in Fortran) are
-convenient constructs to group and move around related variables. While in many
-cases this is an effective method to organize data, the compilers can have a
-hard time optimizing this code because increased visibility of data also renders
-optimizations more complex.
+Derived data types are convenient constructs to group and move around related
+variables. While in many cases this is an effective method to organize data, it
+can also obscure a function's purpose and introduce unneeded dependencies.
 
-Functions having derived data types used as arguments should make use of most
-if not all its fields. Ensuring that all fields from derived types passed as
-function arguments are used in the function body benefits optimization by making
-it easier to reason about inputs and outputs, thus improving compiler and static
-analyzer code coverage.
+This is specifically the case for _Plain Old Data_ types, such as C `struct`s
+or Fortran derived types that do not use the Object-Oriented features available
+since Fortran 2003. In C++ or Fortran code with an Object-Oriented design,
+a better alternative is to use encapsulation to avoid depending on the
+implementation of the type.
 
-In parallel programming, derived data types are often discouraged when
-offloading to the GPU because they may inhibit compiler analyses and
-optimizations due to [pointer aliasing](../../Glossary/Pointer-aliasing.md). Also, it
-can cause unnecessary data movements impacting performance or incorrect data
-movements impacting correctness and even crashes impacting code quality.
+Functions having these _Plain Old Data_ types used as arguments should make
+use of most if not all its fields. This promotes data hiding, makes inputs and
+outputs more explicit and helps to prevent unintended variable modifications.
 
 > [!NOTE]
-> This issue can also hurt the code clarity. See check
-> [PWR074](../PWR074/README.md) for more details.
+> This issue can also impact optimization. See check
+> [PWR012](../PWR012/README.md) for more details.
 
 ### Code example
 
@@ -187,7 +183,7 @@ end program solution
 
 ### Related resources
 
-* [PWR012 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR012/)
+* [PWR074 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR074/)
 
 * [PWR001: Declare global variables as function arguments](../PWR001/README.md)
 
@@ -195,4 +191,16 @@ end program solution
 
 * [PWR008: Declare the intent for each procedure argument](../PWR008/README.md)
 
-* [PWD006: Missing deep copy of non-contiguous data to the GPU](../PWD006/README.md)
+### References
+
+* [Plain old data structures](https://en.wikipedia.org/wiki/Passive_data_structure)
+[last checked February 2026]
+
+* [Encapsulation](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming))
+[last checked February 2026]
+
+* [Data Hiding in C - Stephen Friederichs](https://www.embeddedrelated.com/showarticle/166.php)
+[last checked October 2020]
+
+* [Information hiding](https://en.wikipedia.org/wiki/Information_hiding)
+[last checked October 2020]
