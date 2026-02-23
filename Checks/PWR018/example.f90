@@ -1,6 +1,7 @@
 ! PWR018: Call to recursive function within a loop may inhibit vectorization
 
 module mod_fibonacci
+  implicit none
   contains
   recursive function fibonacci(n) result(fibo)
     implicit none

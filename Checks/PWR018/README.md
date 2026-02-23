@@ -35,6 +35,7 @@ In the following example, the loop is invoking a recursive function computing
 the Fibonacci number. This recursion inhibits the vectorization of the loop:
 
 ```c
+// example.c
 double fib(unsigned n) {
   if (n == 0) {
     return 0.0;
@@ -57,7 +58,8 @@ double example(unsigned times) {
 As an alternative, Fibonacci's sequence can be calculated non-recursively:
 
 ```c
-double example(unsigned times) {
+// solution.c
+__attribute__((pure)) double solution(unsigned times) {
   double sum = 0.0;
   double fib_0 = 0.0;
   double fib_1 = 1.0;
@@ -77,7 +79,9 @@ In the following example, the loop is invoking a recursive function computing
 the Fibonacci number. This recursion inhibits the vectorization of the loop:
 
 ```fortran
+! example.f90
 module mod_fibonacci
+  implicit none
   contains
   recursive function fibonacci(n) result(fibo)
     implicit none
@@ -112,7 +116,8 @@ end subroutine example
 As an alternative, Fibonacci's sequence can be calculated non-recursively:
 
 ```fortran
-subroutine example(times)
+! solution.f90
+subroutine solution(times)
   implicit none
   integer, intent(in) :: times
   integer :: i, sum
@@ -128,7 +133,7 @@ subroutine example(times)
     fib_0 = fib_1
     fib_1 = fib
   end do
-end subroutine example
+end subroutine solution
 ```
 
 ### Related resources

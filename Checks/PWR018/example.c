@@ -1,6 +1,6 @@
 // PWR018: Call to recursive function within a loop may inhibit vectorization
 
-double fib(unsigned n) {
+__attribute__((pure)) double fib(unsigned n) {
   if (n == 0) {
     return 0.0;
   }
@@ -11,7 +11,7 @@ double fib(unsigned n) {
 }
 
 double example(unsigned times) {
-  double sum = 0.;
+  double sum = 0.0;
   for (unsigned i = 0; i < times; i++) {
     sum += fib(i);
   }
