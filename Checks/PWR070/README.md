@@ -6,29 +6,28 @@ When procedures receive arrays in explicit-shape or assumed-size form,
 programmers are required to manually pass array properties as additional
 arguments. This practice limits the compiler's ability to perform compatibility
 checks, increasing the risk of difficult-to-diagnose runtime bugs.
-Additionally, these types of arrays can result in suboptimal performance
-compared to assumed-shape arrays.
 
 ### Actions
 
-To improve both code safety and performance, transform explicit-shape and
-assumed-size array dummy arguments to assumed-shape form.
+To improve code safety, transform explicit-shape and assumed-size array dummy
+arguments to assumed-shape form.
 
 ### Relevance
 
 Fortran supports various methods for passing allocated arrays to procedures.
 Typically, assumed-shape arrays should be preferred over explicit-shape and
-assumed-size arrays, as they provide equivalent functionality while being safer
-and more efficient:
+assumed-size arrays, as they provide equivalent functionality while being
+safer:
 
-- **Assumed-shape arrays** are simply declared with a colon for each dimension;
-    e.g., `real :: arr(:)`, `real :: arr(:, :)`. They offer several benefits:
+- **Assumed-shape arrays** are declared with a colon for each dimension; e.g.,
+    `real :: arr(:)`, `real :: arr(:, :)`. They offer several benefits:
   - Compile-time checks for the compatibility of the passed array's rank.
   - Automatic deduction of the size of each dimension from the passed array,
       accessible via `shape(arr)` and `size(arr, dim)`.
 
 - **Explicit-shape and assumed-size arrays** require manual specification of
-  dimension sizes as separate arguments, increasing the likelihood of errors:
+  dimension sizes, often as separate arguments, increasing the likelihood of
+  errors:
   - Explicit-shape arrays specify the size of all dimensions; e.g., `real ::
     arr(i, j)`.
   - Assumed-size arrays leave the size of the last dimension unspecified; e.g.,
@@ -36,10 +35,13 @@ and more efficient:
   - In general, they lack compile-time checks for consistency between the
     provided and the expected array.
 
-Additionally, explicit-shape and assumed-size dummy arguments require contiguous
-memory. This forces the creation of intermediate data copies when working with
-array slices or strided accesses. In contrast, assumed-shape arrays can handle
-these scenarios directly, leading to enhanced performance.
+> [!NOTE]
+> Additionally, explicit-shape and assumed-size dummy arguments require
+> contiguous memory. The compiler may silently create contiguous temporary
+> copies when passing non-contiguous data, such as array slices. In contrast,
+> assumed-shape arrays can handle some of these scenarios directly, potentially
+> leading to enhanced performance. See [PWR087](../PWR087/README.md) for more
+> details.
 
 ### Code examples
 
@@ -172,17 +174,11 @@ $ ./a.out
  Row           2 Sum:   6.00000000
 ```
 
-> [!TIP]
-> As explained previously, if the subroutines operate on a slice of the matrix,
-> assumed-shape arrays can manage the slice directly, potentially improving
-> performance.
->
-> Check the PWR070 benchmark for a demonstration!
-
 > [!WARNING]
 > Beware that any procedures involving assumed-shape array arguments must have
 > explicit interfaces at the point of call. If not, the updated code won't
-> compile.
+> compile. `sum_rows_assumed_shape()` provides an explicit interface due to
+> being contained inside its caller.
 >
 > Check the [PWR068 entry](../PWR068/) for more details on implicit and explicit
 > interfaces!
