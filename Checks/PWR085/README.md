@@ -1,38 +1,43 @@
-# PWR018: Call to recursive function within a loop inhibits vectorization
+# PWR085: Favor iterative implementations over recursion to prevent stack overflows
 
 ### Issue
 
-Recursive calls within a loop inhibit
-[vectorization](../../Glossary/Vectorization.md).
+Uncontrolled recursive calls may lead to program crashes.
 
 ### Actions
 
-Rewrite the loop without the recursive function call to enable vectorization.
+Rewrite the function using an iterative approach to avoid exhausting stack
+memory.
 
 ### Relevance
 
-Many loops can benefit from vectorization. However, loops with calls to
-recursive functions cannot be vectorized. Recursive functions introduce complex
-control flow logic which the compilers cannot vectorize automatically.
+Recursive procedures can be the most natural implementation of certain
+algorithms. However, in general, each recursive call will require its own stack
+frame; which may lead to unbounded stack growth and, eventually, overflow.
+
+When the recursive call is the last action of the procedure, the caller's frame
+can be replaced with that of the callee, conserving stack space. However, this
+tail-call optimization is not required by the C, C++ or Fortran standards.
+
+Therefore even in these cases an iterative approach is required to reliably
+prevent uncontrolled stack growth, which can be fatal in a variety and a mix of
+scenarios, such as:
+- A system with limited stack memory.
+- An algorithm that requires a high number of recursive iterations.
+- A badly implemented control condition that does not exit when needed or when
+the recursion becomes too deep.
 
 > [!TIP]
-> In addition to facilitating vectorization, rewriting algorithms in a
-> non-recursive way increases code resilience. Recursive calls may rapidly lead
-> to stack overflows when the recursion depth is too high, potentially causing
-> crashes. See check [PWR085](../PWR085/README.md) for more details.
-
-> [!NOTE]
-> Whether the loop with a recursive function call is vectorizable or not after
-> de-recursion depends on the property of the original recursive function itself.
-> If the complex control flow logic remains after de-recursion, the loop will
-> remain not vectorizable.
+> In addition to increasing code resilience, rewriting algorithms
+> in a non-recursive way facilitates vectorization. See check
+> [PWR018](../PWR018/README.md) for more details.
 
 ### Code example
 
 #### C
 
 In the following example, the loop is invoking a recursive function computing
-the Fibonacci number. This recursion inhibits the vectorization of the loop:
+the Fibonacci number:
 
 ```c
 // example.c
@@ -76,7 +81,7 @@ __attribute__((pure)) double solution(unsigned times) {
 #### Fortran
 
 In the following example, the loop is invoking a recursive function computing
-the Fibonacci number. This recursion inhibits the vectorization of the loop:
+the Fibonacci number:
 
 ```fortran
 ! example.f90
@@ -138,10 +143,12 @@ end subroutine solution
 
 ### Related resources
 
-* [PWR018 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR018/)
+* [PWR085 examples](https://github.com/codee-com/open-catalog/tree/main/Checks/PWR085/)
 
 ### References
 
-* [Vectorization](../../Glossary/Vectorization.md)
+* [CWE - CWE-674: Uncontrolled Recursion](https://cwe.mitre.org/data/definitions/674.html)
+[last checked February 2026]
 
-* [OpenMP canonical form](../../Glossary/OpenMP-canonical-form.md)
+* [Tail call optimization](https://en.wikipedia.org/wiki/Tail_call)
+[last checked February 2026]
