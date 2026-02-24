@@ -22,3 +22,6 @@ yarn-error.log*
 # Local deployment home files
 /.npm
 /.config
+
+# clangd
+/Benchmark/.cache
