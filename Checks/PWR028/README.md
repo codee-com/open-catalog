@@ -63,7 +63,7 @@ void example(float *a, float *b, float *c, unsigned size, unsigned inc) {
 > less error-prone than pointer-based notation. This is especially relevant
 > when accessing multi-dimensional arrays with a single pointer `*`, where
 > offsets must be manually computed by multiplying indices with the
-> corresponding dimensions.
+> corresponding dimensions. See [PWR086](../PWR086/README.md)
 
 ### Related resources
 

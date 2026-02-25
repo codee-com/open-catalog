@@ -69,7 +69,7 @@ for (int i = 0; i < size; i++) {
 > less error-prone than pointer-based notation. This is especially relevant
 > when accessing multi-dimensional arrays with a single pointer `*`, where
 > offsets must be manually computed by multiplying indices with the
-> corresponding dimensions.
+> corresponding dimensions. See [PWR086](../PWR086/README.md)
 
 ### References
 
