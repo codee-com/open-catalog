@@ -26,6 +26,7 @@ for older compilers. Thus, the use of `for` loops is encouraged.
 Consider the following loop:
 
 ```c
+// example.c
 __attribute__((pure)) int example(int *A) {
   int sum = 0;
   int i = 0;
@@ -41,7 +42,8 @@ executing, and this loop is therefore countable. It can be converted to a `for`
 loop, like this:
 
 ```c
-__attribute__((pure)) int example(int *A) {
+// solution.c
+__attribute__((pure)) int solution(int *A) {
   int sum = 0;
   for (int i = 0; i < 1000; i++) {
     sum += A[i];
