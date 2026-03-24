@@ -1,5 +1,5 @@
-! PWR068: Encapsulate procedures within modules to avoid the risks of calling
-!         implicit interfaces
+! PWR068: Call procedures through explicit interfaces, preferably as module
+!         procedures
 
 function euclidean_distance_f(x1, y1, x2, y2)
   use iso_c_binding, only : c_double

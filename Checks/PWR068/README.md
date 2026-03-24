@@ -1,43 +1,77 @@
-# PWR068: Encapsulate procedures within modules to avoid the risks of calling implicit interfaces
+# PWR068: Call procedures through explicit interfaces, preferably as module procedures
 
 ### Issue
 
 Calling a procedure without an explicit interface prevents the compiler from
-verifying argument compatibility, increasing the risk of difficult-to-diagnose
-runtime bugs.
+verifying compatibility between the actual arguments at the call site and the
+procedure's dummy arguments. As a result, argument mismatches may compile
+without warning and later surface as incorrect results and
+difficult-to-diagnose runtime bugs.
 
 ### Actions
 
-To enhance code safety and reliability, encapsulate procedures within modules
-to automatically provide an explicit interface at the point of the call.
+To enhance code safety and reliability, ensure that procedure calls use
+explicit interfaces.
+
+For most Fortran code, prefer defining procedures inside modules. Module
+procedures automatically provide explicit interfaces to callers through `use`
+association mechanisms, making it the safest and most maintainable approach for
+most cases.
+
+Other mechanisms can also provide explicit interfaces when module procedures
+are not the right fit. For example:
+
+- Internal procedures also provide explicit interfaces automatically through
+  host association.
+- Explicit `interface` blocks are helpful for C/C++ interoperable procedures,
+  dummy procedures, and procedure pointers.
 
 ### Relevance
 
-Fortran allows procedures to be called without explicit information about the
-number of expected arguments, order, or properties such as their type. In such
-cases, an _implicit interface_ is used. The caller simply provides a list of
-memory addresses, which the called procedure assumes point to variables
-matching the dummy arguments. This can easily lead to issues such as:
+Fortran allows procedure calls even when the caller has no information about
+the number, order, or properties of the dummy arguments (`type`, `kind`,
+`rank`, attributes, etc.). In such cases, the call uses an _implicit
+interface_.
 
-- **Type mismatches:** Passing variables of one type (e.g., `real`) as another
-type (e.g., `integer`) causes errors due to different internal representations.
+With an implicit interface, the caller simply provides a list of memory
+addresses, and the called procedure interprets them according to its dummy
+argument declarations. Because the compiler does not know enough about the
+procedure at the call site, it isn't able to detect problems such as:
 
-- **Missing arguments:**
-  - **Input arguments:** Omitted arguments are initialized to undefined
-    values, resulting in unpredictable behavior.
-  - **Output arguments:** Writing omitted arguments results in invalid memory
-    accesses, potentially crashing the program.
+- **Wrong number of arguments:**
+  - Missing actual arguments may cause the procedure to access unrelated
+    memory, leading to undefined behavior.
+  - Excess actual arguments may also lead to undefined behavior; for example,
+    by interfering with hidden information passed by the compiler, such as
+    descriptors for array arguments.
 
-In contrast, a procedure with an explicit interface informs the compiler about
-the expected arguments, allowing it to perform the necessary checks at the
-point of the call during compile-time. The preferred approach to ensure a
-procedure has an explicit interface is to encapsulate it within a module, as
-illustrated below.
+- **Incompatible argument characteristics:** Passing actual arguments whose
+  characteristics are incompatible with those of the dummy arguments. For
+  example, passing a `real` where an `integer` is expected, or using a `real32`
+  `kind` where `real64` is required.
+
+- **Swapped arguments:** Accidentally changing the order of arguments can also
+  introduce incompatibilities even when the number of arguments is correct.
+
+> [!TIP]
+> To learn more about these issues and the importance of explicit interfaces,
+> see [PWR083](../PWR083/), [PWR088](../PWR088/), and [PWR089](../PWR089/).
+
+In contrast, when a procedure call is made through an explicit interface, the
+compiler can verify argument compatibility at compile time, catching any errors
+before they reach runtime.
+
+For most Fortran code, the best way to avoid implicit interfaces is to define
+procedures inside modules. The interface is automatically derived from the
+procedure definition, remaining consistent at all times.
+
+Alternatives for less common scenarios are discussed after the code examples
+below.
 
 ### Code examples
 
-The following program calculates the factorial of a number. To simulate a real
-project with multiple source files, the main program and the factorial
+The following program calculates the factorial of a number. To reflect a common
+project layout with multiple source files, the main program and the factorial
 procedure are in different files:
 
 ```fortran {4,5} showLineNumbers
@@ -85,10 +119,10 @@ The compiler cannot catch this bug during compilation because the called
 procedure has an implicit interface: it is an `external` element defined in
 another source file.
 
-A simple solution is to encapsulate the procedure within a module. This informs
-the compiler about the exact location where the called subroutine is defined,
-enabling it to verify the provided arguments against the actual dummy
-arguments.
+A simple solution is to encapsulate the procedure within a module. This makes
+an explicit interface available to callers through `use` association
+mechanisms, allowing the compiler to verify the provided arguments against the
+actual dummy arguments.
 
 Moving the `factorial` subroutine to a module is as simple as:
 
@@ -151,32 +185,47 @@ $ ./a.out
 Factorial of           5 is         120
 ```
 
-> [!NOTE]
-> The previous example demonstrates how calls to `external` procedures are
-> performed through implicit interfaces. The same problem would occur if
-> `factorial` were an implicitly declared procedure, as shown in the following
-> example:
-> 
-> ```fortran {5} showLineNumbers
-> program test_implicit_interface
->   use iso_fortran_env, only: real32
->   real(kind=real32) :: number, result
-> 
->   number = 5
->   call factorial(number, result)
->   print *, "Factorial of", number, "is", result
-> end program test_implicit_interface
-> ```
+The problem is not limited to `external` procedures. Any call made without an
+explicit interface carries the same risk. For example, in the following program
+there is no `implicit none` statement, so `factorial` is an implicit entity
+that also lacks an explicit interface when called:
+
+```fortran {5} showLineNumbers
+program test_implicit_interface
+  use iso_fortran_env, only: real32
+  real(kind=real32) :: number, result
+
+  number = 5
+  call factorial(number, result)
+  print *, "Factorial of", number, "is", result
+end program test_implicit_interface
+```
+
+> [!TIP]
+> Internal procedures also provide explicit interfaces automatically through
+> host association. They are a good choice when a procedure is only needed
+> within a single host procedure:
 >
-> Note the absence of `implicit none`, allowing the symbol `factorial` to be
-> interpreted as an implicitly declared entity.
+> ```fortran showLineNumbers
+> subroutine sub()
+>   call internal()
+> contains
+>   subroutine internal()
+>     ! statements...
+>   end subroutine internal
+> end subroutine sub
+> ```
 
 > [!WARNING]
-> It's possible to manually define explicit interfaces using the `interface`
-> construct at the call site. However, this approach introduces risks. The
-> procedure's definition must be duplicated, but there's no mechanism to ensure
-> this replica matches the actual definition of the original procedure, which
-> can easily lead to errors:
+> A handwritten `interface` block can provide an explicit interface, but also
+> introduces risks. The interface must duplicate the target procedure's
+> definition, but the compiler does not verify whether this replica matches the
+> actual specification of the procedure or not.
+>
+> In this example, the interface declared manually for `factorial` is
+> incorrect; the dummy arguments are `real` instead of `integer`. The compiler
+> will accept the call because it is only checked against the handwritten
+> `interface`, producing an incorrect result during execution:
 >
 > ```fortran {6,7} showLineNumbers
 > program test_implicit_interface
@@ -198,23 +247,20 @@ Factorial of           5 is         120
 > end program test_implicit_interface
 > ```
 >
-> In this example, the manually declared interface for `factorial` is
-> incorrect; the dummy arguments are declared as `real` instead of `integer`.
-> This error won't be caught at compile time, and will still result in an
-> unexpected output during execution.
+> Generally, manual `interface` blocks should be reserved for cases where
+> module procedures aren't applicable, such as calling interoperable C/C++
+> procedures, dummy procedures, and procedure pointers.
 
 > [!TIP]
-> When interoperating between Fortran and C/C++, it's necessary to manually
-> define explicit interfaces for the C/C++ procedures to call. Although this is
-> not a perfect solution, since there are no guarantees that these interfaces
-> will match the actual C/C++ procedures, it's still best to make the
-> interfaces as explicit as possible. This includes specifying details such as
-> argument intents, to help the Fortran compiler catch early as many issues as
-> possible.
+> Many modern Fortran features require explicit interfaces, including
+> assumed-shape arrays, optional arguments, procedure arguments, and more.
+> Avoiding implicit interfaces is therefore also a prerequisite for writing
+> robust modern Fortran.
 
 > [!TIP]
-> If modifying legacy code is not feasible, create a module procedure that wraps
-> the legacy procedure as an indirect approach to ensure argument compatibility.
+> If modifying legacy code is not feasible, consider creating module procedures
+> that wrap the legacy ones. This provides safer interfaces for call sites
+> while preserving existing implementations intact.
 
 ### Related resources
 

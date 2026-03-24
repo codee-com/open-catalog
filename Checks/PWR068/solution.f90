@@ -1,5 +1,5 @@
-! PWR068: Encapsulate procedures within modules to avoid the risks of calling
-!         implicit interfaces
+! PWR068: Call procedures through explicit interfaces, preferably as module
+!         procedures
 
 program test_explicit_interface
   use mod_factorial, only: factorial
