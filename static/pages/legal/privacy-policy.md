@@ -20,13 +20,14 @@ governed by the laws of Spain.
 
 ## Responsible for data processing
 
-Appentra Solutions SL (hereinafter "Codee" or "us"), as the Data Controller,
-domiciled at P.º Marítimo, 22b, 15679 Cambre, A Coruña, undertakes to comply
-with the provisions of Organic Law 3/2018, of December 5, on the Protection of
-Personal Data and guarantee of digital rights (LOPDGDD) and with REGULATION
-(EU) 2016 / 679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of April 27, 2016
-regarding the protection of natural persons with regard to the processing of
-personal data and the free circulation of these data (RGPD).
+Plexus Codee SLU (hereinafter "Codee" or "us"), as the Data Controller,
+domiciled at Rúa de José Villar Granjel, 22, Polígono de Boisaca, 15890
+Santiago de Compostela, A Coruña, undertakes to comply with the provisions of
+Organic Law 3/2018, of December 5, on the Protection of Personal Data and
+guarantee of digital rights (LOPDGDD) and with REGULATION (EU) 2016 / 679 OF
+THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of April 27, 2016 regarding the
+protection of natural persons with regard to the processing of personal data
+and the free circulation of these data (RGPD).
 
 All communications related to the processing of your personal data should be
 addressed to our Data Protection Officer at info@codee.com.

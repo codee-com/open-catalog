@@ -9,8 +9,8 @@ custom_edit_url: null
 
 In compliance with the provisions of Law 34/2002, of July 11, on Services of the
 Information Society and Electronic Commerce (LSSI) and in compliance with the
-European Directive 2009/136 / CE, we inform the user that Appentra Solutions SL
-(hereinafter, "Appentra") as the owner of the website
+European Directive 2009/136 / CE, we inform the user that Plexus Codee SLU
+(hereinafter, "Codee") as the owner of the website
 https://open-catalog.codee.com/, which uses cookies on it (hereinafter,
 "Website").
 
@@ -58,7 +58,7 @@ on their equipment. However, disabling cookies may affect the proper functioning
 of certain sections of the Website.
 
 Likewise, the user has the possibility to revoke at any time the consent given
-for the use of cookies by Appentra, without affecting the illegality of the
+for the use of cookies by Codee, without affecting the illegality of the
 treatment based on the consent prior to its withdrawal, configuring their
 browser in the terms provided in the previous point.
 

@@ -107,7 +107,7 @@ const config: Config = {
             },
             {
               label: 'Youtube',
-              href: 'https://www.youtube.com/@codee_com/',
+              href: 'https://www.youtube.com/@plexuscodee',
               icon: 'mdi:youtube',
             },
             {
@@ -148,7 +148,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Appentra Solutions, S.L. - Contents licensed under the Apache License, Version 2.0; see <a href="https://github.com/codee-com/open-catalog/blob/main/NOTICE" target="_blank">NOTICE</a> for exceptions`,
+      copyright: `Copyright © ${new Date().getFullYear()} Plexus Codee, S.L.U. - Contents licensed under the Apache License, Version 2.0; see <a href="https://github.com/codee-com/open-catalog/blob/main/NOTICE" target="_blank">NOTICE</a> for exceptions`,
     },
     prism: {
       theme: prismThemes.github,
