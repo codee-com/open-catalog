@@ -18,25 +18,25 @@
     "@docusaurus/core": "^3.9.2",
     "@docusaurus/plugin-client-redirects": "^3.9.2",
     "@docusaurus/preset-classic": "^3.9.2",
-    "@iconify/react": "^5.0.2",
+    "@iconify/react": "^6.0.4",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "datatables.net-buttons-dt": "^3.2.0",
     "datatables.net-dt": "^2.1.8",
     "docusaurus-lunr-search": "^3.4.0",
-    "jquery": "^3.7.1",
+    "jquery": "^4.1.0",
     "prism-react-renderer": "^2.3.0",
-    "react": "^18.0.0",
-    "react-cookie-consent": "^9.0.0",
-    "react-dom": "^18.0.0",
-    "react-ga4": "^2.1.0",
+    "react": "^19.3.1",
+    "react-cookie-consent": "^10.0.2",
+    "react-dom": "^19.3.1",
+    "react-ga4": "^3.0.1",
     "remark-github-admonitions-to-directives": "^2.1.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.1",
     "@docusaurus/tsconfig": "^3.6.1",
     "@docusaurus/types": "^3.6.1",
-    "typescript": "~5.2.2"
+    "typescript": "^7.0.2"
   },
   "browserslist": {
     "production": [
